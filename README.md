@@ -16,6 +16,12 @@
   * Activity group.
   * Staff.
   * Login/Registration.
+* __Advanced funcionability__:
+  * One user can not be registered in two or more activities at the same time. 
+* __Technology__:
+  * Sent an email when an user has registered
+* __Graphics__:
+  * Dashboard about affluence of users in each activity
 * __Authors:__
   * **Carlos Olmo Sahuquillo** [@CarlUndert] (https://github.com/CarlUndert)  
   Contact: c.olmosa@alumnos.urjc.es
