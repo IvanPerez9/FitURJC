@@ -11,12 +11,11 @@
   * Gym user.
   * Admin user.
   * Profile user.
-* __Entities:__
-  * 
-  * 
-  * 
-  * 
-  * 
+* __Entities__:
+  * Users.
+  * Activity group.
+  * Staff.
+  * Login/Registration.
 * __Authors:__
   * **Carlos Olmo Sahuquillo** [@CarlUndert] (https://github.com/CarlUndert)  
   Contact: c.olmosa@alumnos.urjc.es
