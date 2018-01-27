@@ -10,7 +10,7 @@
 * __Users__:
   * Gym user.
   * Admin user.
-  * Profile user.
+  * Default user.
 * __Entities__:
   * Users.
   * Activity group.
