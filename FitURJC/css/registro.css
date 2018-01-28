@@ -29,6 +29,11 @@ body{
     margin: 0;
     position: absolute;
 }
+
+#goBack{
+    color: #ff5722;
+}
+
 .hero:after{
     position: absolute;
     z-index: 1;

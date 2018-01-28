@@ -58,6 +58,11 @@ section {
   margin-top: 0;
 }
 
+.btn-primary:hover {
+  color: #fff;
+  background-color: #6fb10a;
+  border-color: #6fb10a;
+}
 
 ::-moz-selection {
   color: #fff;
