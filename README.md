@@ -1,6 +1,8 @@
 # FitURJC
 
-![alt text](https://github.com/IvanPerez9/FitURJC/blob/master/FitURJC/img/logoFITURJC.png "Logo FitURJC")
+<p align="center">
+<img width="300" height="300" src="https://github.com/IvanPerez9/FitURJC/blob/master/FitURJC/img/logoFITURJC.png">
+</p>
 
 ### Description
 
