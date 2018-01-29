@@ -15,9 +15,10 @@
   * Users.
   * Activity group.
   * Staff.
-  * Login/Registration.
+  * Activity History.
 * __Advanced funcionability__:
   * One user can not be registered in two or more activities at the same time. 
+  * Personalized Recommendations.
 * __Technology__:
   * Sent an email when an user has registered
 * __Graphics__:
