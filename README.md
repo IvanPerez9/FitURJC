@@ -1,5 +1,7 @@
 # FitURJC
 
+![alt text](https://github.com/IvanPerez9/FitURJC/blob/master/FitURJC/img/logoFITURJC.png "Logo FitURJC")
+
 ### Description
 
 * __If you want a online gym, this is the perfect page. You have some filters and inputs fields in order to find your perfect routine.__
