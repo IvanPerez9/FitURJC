@@ -316,3 +316,17 @@ header.masthead p {
 .btn-primary:active, .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
+
+#welcome-user {
+    color: #fff3cd;
+    background-color: #ee4b28;
+    height: 100%;
+    width: 100%;
+}
+#welcome-user:hover {
+    background-color: #6fb10a;
+}
+
+#registered-activities-user {
+    text-decoration: underline;
+}
