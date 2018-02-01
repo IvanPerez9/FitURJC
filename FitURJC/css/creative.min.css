@@ -324,3 +324,14 @@ header.masthead p {
 .btn-primary:active, .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
+
+/* Teachers */ 
+
+.img-circle{
+  border-radius: 50%;
+  max-height: 250px;
+  max-width: 250px;
+  min-height: 250px;
+  min-width: 250px;
+  padding: 1rem;
+}
