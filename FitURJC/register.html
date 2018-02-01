@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="En">
 
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <meta name="description" content="Love Authority." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
     <link rel="stylesheet" href="css/registro.css" />
@@ -29,7 +29,10 @@
                                 Sign up to get started
                             </p>
                             <div class="mt-4">
-                                <form method="post">
+                                <form method="post"> <!-- Method to not saw the password -->
+                                    <div class="form-group">
+                                            <input type="name" class="form-control" name="acount-name" value="" placeholder="Acount name">
+                                    </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" value="" placeholder="Enter email address">
                                     </div>
@@ -86,6 +89,7 @@
         </div>
     </section>
 
+    
 </body>
 
 </html>

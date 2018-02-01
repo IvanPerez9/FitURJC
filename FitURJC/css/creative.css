@@ -270,6 +270,10 @@ header.masthead p {
   font-size: 18px;
 }
 
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-description {
+  font-size: 10px;
+}
+
 .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }

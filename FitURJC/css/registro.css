@@ -1,7 +1,4 @@
-/* 
-    Created on : Jul 4, 2017, 12:43:10 AM
-    Author     : Atta-Ur-Rehman Shah (http://attacomsian.com)
-*/
+
 /*Google fonts*/
 @import url('https://fonts.googleapis.com/css?family=Hind:400,500,700');
 
@@ -144,6 +141,7 @@ a, a:hover{
     width: 100%;
     z-index: -1;
 }
+
 .social-login .btn{
     color: #fff;
     width: 40px;
@@ -168,4 +166,50 @@ a, a:hover{
 }
 .social-login .btn-github {
     background: #000000;
+}
+
+/* For profile settings */
+#card{
+    background-image: url('../img/prueba2.jpg');
+    background-size: cover;
+    background-position: center center;
+    min-height: 100%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    margin: 0;
+    position: absolute;
+}
+
+#row_style{
+    background: rgba(0,0,0,0.7);
+    padding-left: 4rem;
+    padding-right: 4rem;
+    border-radius: 1%;
+}
+
+#profileForm{
+    padding:1rem;
+}
+
+#imageForm{
+    padding-top:7rem;
+    padding-right: 12rem;
+}
+.img-circle{
+    border-radius: 50%;
+    max-height: 250px;
+    max-width: 250px;
+    padding-bottom: 1rem;
+}
+/*
+#changeImgBtn{
+    height:100px;
+    width: 25px;
+}
+*/
+
+#profile_pic{
+    height:250px;
+    width: 250px;
 }
