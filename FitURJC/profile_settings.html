@@ -18,13 +18,11 @@
             <div class="row" id="row_style" >
                 <!-- Section Header -->
                 <div id="imageForm" class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                    <h2>
-                        <span class="highlight-text"> 
-                            <img src="img/profile/default_user.jpg" class="img-circle" alt="Custom Image">
+                        <span id="profile_pic"> 
+                            <img src="img/profile/default_user.jpg" class="img-circle" alt="Profile Image" style='object-fit:contain' />
                         </span>
-                    </h2>
                     <br>
-                    <spam id="button">
+                    <spam id="changeImgBtn">
                         <button type="submit" class="btn btn-primary" id="changeImg">Change profile image</button>
                     </spam>
                 </div>
@@ -59,7 +57,7 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="age" style="margin-bottom:10px;">Age:</label>
-                                <input style="border-radius:0px!important" type="text" class="form-control" id="age" placeholder="25">
+                                <input style="border-radius:0px!important" type="date" class="form-control" id="age" placeholder="25" >
                             </div>
                         </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">

@@ -142,11 +142,6 @@ a, a:hover{
     z-index: -1;
 }
 
-.img-circle{
-    border-radius: 50%;
-    size:10rem;
-}
-
 .social-login .btn{
     color: #fff;
     width: 40px;
@@ -200,4 +195,21 @@ a, a:hover{
 #imageForm{
     padding-top:7rem;
     padding-right: 12rem;
+}
+.img-circle{
+    border-radius: 50%;
+    max-height: 250px;
+    max-width: 250px;
+    padding-bottom: 1rem;
+}
+/*
+#changeImgBtn{
+    height:100px;
+    width: 25px;
+}
+*/
+
+#profile_pic{
+    height:250px;
+    width: 250px;
 }
