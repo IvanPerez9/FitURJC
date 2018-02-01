@@ -58,10 +58,6 @@ section {
   margin-top: 0;
 }
 
-#img-logo{
-  height: 2.5rem;
-}
-
 ::-moz-selection {
   color: #fff;
   background: #212529;
@@ -271,6 +267,10 @@ header.masthead p {
 
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
   font-size: 18px;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-description {
+  font-size: 10px;
 }
 
 .portfolio-box:hover .portfolio-box-caption {
