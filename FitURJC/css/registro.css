@@ -212,6 +212,8 @@ a, a:hover{
 #profile_pic{
     height:250px;
     width: 250px;
+<<<<<<< HEAD
+=======
 }
 
 .profile-pic {
@@ -240,4 +242,5 @@ a, a:hover{
     display: inline-block;
     padding-top: 4.5em;
     padding-bottom: 4.5em;
+>>>>>>> 5070a7f39583f1e0abd7de79160c48673d11415c
 }
