@@ -350,6 +350,7 @@ header.masthead p {
   min-width: 250px;
   padding: 1rem;
 }
-.mecagoentodo{
-  font-size: 20px !important;
+
+#registered-sub-activities-user {
+  font-style: italic;
 }
