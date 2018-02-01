@@ -334,3 +334,14 @@ header.masthead p {
 #registered-activities-user {
     text-decoration: underline;
 }
+
+/* Teachers */ 
+
+.img-circle{
+  border-radius: 50%;
+  max-height: 250px;
+  max-width: 250px;
+  min-height: 250px;
+  min-width: 250px;
+  padding: 1rem;
+}

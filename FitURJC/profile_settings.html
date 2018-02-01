@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>FitURJC Profile Settings</title>
     <meta name="description" content="Love Authority." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,12 +16,12 @@
     <div class="card-body" id="card">
         <div class="container">
             <!-- Row for the background -->
-            <div class="row" id="row_style" >
+            <div class="row" id="row_style">
                 <!-- Section Header -->
                 <div id="imageForm" class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-                        <span id="profile_pic"> 
-                            <img src="img/profile/default_user.jpg" class="img-circle" alt="Profile Image" style='object-fit:contain' />
-                        </span>
+                    <span id="profile_pic">
+                        <img src="img/profile/fiturjc_default_user.jpg" class="img-circle" alt="Profile Image" style='object-fit:contain' />
+                    </span>
                     <br>
                     <spam id="changeImgBtn">
                         <button type="submit" class="btn btn-primary" id="changeImg">Change profile image</button>
@@ -57,12 +58,17 @@
                         <form role="form">
                             <div class="form-group">
                                 <label for="age" style="margin-bottom:10px;">Age:</label>
-                                <input style="border-radius:0px!important" type="date" class="form-control" id="age" placeholder="25" >
+                                <input style="border-radius:0px!important" type="date" data-date-format="DD MMMM YYYY" class="form-control" id="age" placeholder="25">
                             </div>
                         </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-                            <button type="submit" class="btn btn-primary " id="update">Update</button>
-                            <button type="submit" class="btn btn-primary" id="update">Delete</button>
+                            <button type="submit" class="btn btn-primary " id="update-btn"> Update</button>
+                            <button type="submit" class="btn btn-primary " id="cancel-btn"> Cancel</button>
+                            <script type="text/javascript">
+                                document.getElementById("cancel-btn").onclick = function () {
+                                    location.href = "index.html"; // Cuando el puto Carlos tenga su html va aquí
+                                };
+                            </script>
                         </div>
                     </div>
                 </div>
