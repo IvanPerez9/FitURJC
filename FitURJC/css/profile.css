@@ -170,6 +170,10 @@ h6{
     font: cursive; 
 }
 
+p{
+    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
 #age{
     font-size: 12px; 
     font: oblique bold 120% cursive;
