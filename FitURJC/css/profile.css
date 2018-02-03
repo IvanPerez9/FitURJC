@@ -167,11 +167,11 @@ a, a:hover{
 
 h6{
     font-size: 12px; 
+    font-weight: bold;
     font: cursive; 
 }
 
 p{
-    font-size: 10px; 
     font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -214,7 +214,7 @@ p{
     column-span:all; 
 }
 
-.card_body{
+#card_body{
         -webkit-column-count: 2; 
         -moz-column-count: 2; 
         column-count: 2;
