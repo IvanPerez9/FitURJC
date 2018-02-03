@@ -160,21 +160,12 @@ a, a:hover{
     width: 250px;
 }
 
-#user_name{
+#personal_information{
     font-size: 12px; 
     font: oblique bold 120% cursive;
-}
-
-h3{
-    font-size: 12px; 
-    font-weight: bold;
     font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
-    font: oblique cursive; 
-}
-
-p{
-    font-size: 12px;
-    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
+    justify-content: center;
 }
 
 #age{
@@ -210,7 +201,7 @@ p{
     padding-bottom: 4.5em;
 }
 
-.personal_information, .performance_profile{
+#personal_information, #performance_profile{
     -webkit-column-span:all;
     -moz-column-span:all;
     column-span:all; 
