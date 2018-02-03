@@ -336,3 +336,6 @@ header.masthead p {
   min-width: 250px;
   padding: 1rem;
 }
+#registered-activities-user{
+  text-decoration: underline;
+}
