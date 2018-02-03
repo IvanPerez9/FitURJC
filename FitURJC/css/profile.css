@@ -208,3 +208,21 @@ p{
     padding-bottom: 4.5em;
 }
 
+h1{
+    -webkit-column-span:all;
+    -moz-column-span:all;
+    column-span:all;
+}
+
+#profile_pic{
+    -webkit-column-span:all;
+    -moz-column-span:all;
+    column-span:all; 
+}
+
+.card-body{
+        -webkit-column-count: 2; 
+        -moz-column-count: 2; 
+        column-count: 2;
+}
+
