@@ -36,5 +36,8 @@
  Contact: d.penam@alumnos.urjc.es
   * **Iván Pérez Huete**      [@IvanPerez9] (https://github.com/IvanPerez9)   
  Contact: i.perezhu@alumnos.urjc.es
+
+ * __Navigation Diagram:__
+ <img width="300" height="300" src="https://github.com/IvanPerez9/FitURJC/blob/master/FitURJC/img/Navigation Diagram.png">
  
 * __[Trello's Board](https://trello.com/b/2hRp8ruG/fiturjcdaw)__
