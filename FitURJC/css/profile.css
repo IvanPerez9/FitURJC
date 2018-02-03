@@ -6,6 +6,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+    background-image: url('../img/profileBackGround.jpg');
 }
 body{
     font-family: 'Hind';
@@ -26,7 +27,6 @@ body{
     margin: 0;
     position: absolute;
 }
-
 .hero:after{
     position: absolute;
     z-index: 1;
@@ -88,11 +88,6 @@ a, a:hover{
 .text-primary{
     color: #ff5722 !important;
 }
-.custom-control-input:checked~.custom-control-indicator {
-    color: #fff;
-    background-color: #ff5722;
-    outline-color: #ff5722; 
-}
 .content-divider.center {
     text-align: center;
 }
@@ -121,7 +116,7 @@ a, a:hover{
 }
 
 /* For user profile */
-#card{
+#card_body{
     background-image: url('../img/profileBackGround.jpg');
     background-size: cover;
     background-position: center center;
@@ -133,7 +128,7 @@ a, a:hover{
     position: absolute;
 }
 
-#row_style{
+#row{
     background: rgba(0,0,0,0.7);
     padding-left: 6rem;
     padding-right: 6rem;
