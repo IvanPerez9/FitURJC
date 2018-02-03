@@ -48,7 +48,7 @@ h6 {
 }
 
 .text-faded {
-  color:#f05f40
+    color:#ffffff
 }
 
 section {
@@ -57,12 +57,6 @@ section {
 
 .section-heading {
   margin-top: 0;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #6fb10a;
-  border-color: #6fb10a;
 }
 
 ::-moz-selection {
@@ -173,10 +167,15 @@ img::-moz-selection {
   }
 }
 
+.input-group{
+  width: 10rem;
+}
+
+
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url("../img/prueba.jpg");
+  background-image: linear-gradient(rgb(82, 72, 72), rgba(15, 19, 20, 0)),url("../img/prueba1.jpg");
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -304,6 +303,11 @@ header.masthead p {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
+.btn-Login{
+  padding: rem;
+}
+
+
 .btn-xl {
   padding: 1rem 2rem;
 }
@@ -322,24 +326,6 @@ header.masthead p {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
 
-#welcome-user {
-    color: #fff3cd;
-    background-color: #ee4b28;
-    height: 100%;
-    width: 100%;
-}
-#welcome-user:hover {
-    background-color: #6fb10a;
-}
-
-#registered-activities-user {
-    text-decoration: underline;
-}
-
-.size-navbar-user{
-  font-size: 10px;  
-}
-
 /* Teachers */ 
 
 .img-circle{
@@ -349,8 +335,4 @@ header.masthead p {
   min-height: 250px;
   min-width: 250px;
   padding: 1rem;
-}
-
-#registered-sub-activities-user {
-  font-style: italic;
 }
