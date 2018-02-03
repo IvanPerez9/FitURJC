@@ -117,10 +117,8 @@ a, a:hover{
 
 /* For user profile */
 #card_body{
-    background-color: rgb(46, 46, 46);
-    opacity: 0.6;
     background-size: contain;
-    background-position: center center center center;
+    background-position: center center;
     min-height: 100%;
     min-width: 100%;
     width: auto;
@@ -198,9 +196,11 @@ a, a:hover{
 }
 
 #personal_information, #performance_profile{
-    -webkit-column-span:all;
+    /*-webkit-column-span:all;
     -moz-column-span:all;
-    column-span:all; 
+    column-span:all;*/     
+    background-color: rgb(46, 46, 46);
+    opacity: 0.4;
 }
 
 #card_body{
