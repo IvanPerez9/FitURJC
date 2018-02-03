@@ -193,7 +193,7 @@ a, a:hover{
     -moz-column-span:all;
     column-span:all;*/ 
     background-color: rgb(53, 53, 53);
-    object-position: center;
+    opacity: 0.5;
 }
 
 #card_body{
