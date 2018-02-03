@@ -24,7 +24,11 @@
                     </span>
                     <br>
                     <spam id="changeImgBtn">
-                        <button type="submit" class="btn btn-primary" id="changeImg">Change profile image</button>
+                        <!--<button type="submit" class="btn btn-primary" id="changeImg">Change profile image</button> -->
+                        <label for="file-upload" class="custom-file-upload">
+                            <i id="changeImgBtn"></i> CHANGE PROFILE PICTURE
+                        </label>
+                        <input id="file-upload" type="file"/>
                     </spam>
                 </div>
                 <!-- Section Header End. Col divide into columms-->
@@ -62,8 +66,8 @@
                             </div>
                         </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-                            <button type="submit" class="btn btn-primary " id="update-btn"> Update</button>
-                            <button type="submit" class="btn btn-primary " id="cancel-btn"> Cancel</button>
+                            <button type="submit" class="btn btn-primary " id="update-btn"> Update </button>
+                            <button type="submit" class="btn btn-primary " id="cancel-btn"> Cancel </button>
                             <script type="text/javascript">
                                 document.getElementById("cancel-btn").onclick = function () {
                                     location.href = "user.html"; 

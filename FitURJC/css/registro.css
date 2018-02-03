@@ -169,6 +169,7 @@ a, a:hover{
 }
 
 /* For profile settings */
+
 #card{
     background-image: url('../img/prueba2.jpg');
     background-size: cover;
@@ -200,10 +201,9 @@ a, a:hover{
     border-radius: 50%;
     max-height: 250px;
     max-width: 250px;
-    min-height:250px;
-    min-width: 250px;
     padding-bottom: 1rem;
 }
+
 /*
 #changeImgBtn{
     height:100px;
@@ -242,4 +242,24 @@ a, a:hover{
     display: inline-block;
     padding-top: 4.5em;
     padding-bottom: 4.5em;
+}
+
+/* Change profile pic */
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid  #ff5722;
+    background-color:  #ff5722;
+    border-radius: 4%;
+    display: inline-block;
+    padding: 1rem;
+    width: 14rem;
+    cursor: pointer;
+}
+
+#changeImgBtn{
+    text-transform: uppercase;
+    font-weight: 500;
 }
