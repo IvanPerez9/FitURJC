@@ -117,7 +117,7 @@ a, a:hover{
 
 /* For user profile */
 #card_body{
-    background-image: url('../img/profileBackGround.jpg');
+    background-color: rgb(46, 46, 46);
     background-size: cover;
     background-position: center center;
     min-height: 100%;
