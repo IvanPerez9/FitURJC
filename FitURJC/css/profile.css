@@ -127,7 +127,7 @@ a, a:hover{
     position: absolute;
 }
 
-#row{
+body{
     background: rgba(0,0,0,0.7);
     padding-left: 6rem;
     padding-right: 6rem;
@@ -198,9 +198,9 @@ a, a:hover{
 #personal_information, #performance_profile{
     /*-webkit-column-span:all;
     -moz-column-span:all;
-    column-span:all;*/     
+    column-span:all;*/ 
     background-color: rgb(46, 46, 46);
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 #card_body{
