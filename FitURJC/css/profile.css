@@ -118,8 +118,9 @@ a, a:hover{
 /* For user profile */
 #card_body{
     background-color: rgb(46, 46, 46);
-    background-size: cover;
-    background-position: center center;
+    opacity: 0.6;
+    background-size: contain;
+    background-position: center center center center;
     min-height: 100%;
     min-width: 100%;
     width: auto;
