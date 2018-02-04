@@ -121,12 +121,19 @@ a, a:hover{
 #card_body{
     background-size: contain;
     background-position: center center;
+    position: absolute;
     min-height: 100%;
     min-width: 100%;
     width: auto;
     height: auto;
     margin: 0;
-    position: absolute;
+}
+
+#row{
+    background: rgba(0,0,0,0.7);
+    padding-left: 4rem;
+    padding-right: 4rem;
+    border-radius: 1%;
 }
 
 #profileForm{
@@ -191,12 +198,13 @@ a, a:hover{
 }
 
 #personal_information, #performance_profile{
-    /*-webkit-column-span:all;
+    -webkit-column-span:all;
     -moz-column-span:all;
-    column-span:all;*/ 
+    column-span:all;
     background-position: center center;
-    background-color: rgb(53, 53, 53);
-    opacity: 0.6;
+    padding: 0% 0% 5% 5%;
+    /*background-color: rgb(53, 53, 53);
+    opacity: 0.6;*/
 }
 
 #card_body{
