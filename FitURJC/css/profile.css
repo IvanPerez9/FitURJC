@@ -8,7 +8,7 @@ body {
     height: 100%;
     background-image: url('../img/profileBackGround.jpg');
     background-size: cover;
-    opacity: 0.8;
+    opacity: 1;
 }
 body{
     font-family: 'Hind';
@@ -19,7 +19,7 @@ body{
     width: 120px;
 }
 .hero{
-    background-image: url('../img/prueba2.jpg');
+    /*background-image: url('../img/prueba2.jpg');*/
     background-size: cover;
     background-position: center center;
     min-height: 100%;
@@ -118,6 +118,10 @@ a, a:hover{
 }
 
 /* For user profile */
+p{
+    font-size: medium;
+}
+
 #card_body{
     background-size: contain;
     background-position: center center;
@@ -129,8 +133,8 @@ a, a:hover{
     margin: 0;
 }
 
-#row{
-    background: rgba(0,0,0,0.7);
+.row{
+    background: rgba(0,0,0,0.8);
     padding-left: 4rem;
     padding-right: 4rem;
     border-radius: 1%;
