@@ -39,5 +39,35 @@
 
  * __Navigation Diagram:__
  <img width="500" height="300" src="https://github.com/IvanPerez9/FitURJC/blob/master/FitURJC/img/Navigation Diagram.png" align="center">
+
+ * __Pages:__
+ * __Index.html - Main page:__
+    ![Index](FitURJC/img/captures/Index1.png)
+    ![Index](FitURJC/img/captures/Index2.png)
+    ![Index](FitURJC/img/captures/Index3.png)
+    ![Index](FitURJC/img/captures/Index4.png)
+      * Description: This is the first page you can see in our application. You have a login section and a sign in section too. If you only want to see some superficial information you have some sections to inspect our services along with our professionals.
+      
+* __Register.html:__
+    ![Register](FitURJC/img/captures/Register1.png)
+  * Description: Here is where you can register as a new member. It consist of a few typical fields, such as "user name" , "password" ...
+       
+* __Login.html:__
+    ![Login](FitURJC/img/captures/Login1.png)
+  * Description: Similar to the previous page, but in this case, you have to be identified yourself as a member.
+
+* __User.html:__
+    ![User](FitURJC/img/captures/User1.png)
+    ![User](FitURJC/img/captures/User2.png)
+    * Description: This is the page you can see when you log in. It shows information about your activities, it also shows a record of your past and future activities, and finally some suggestions about group activities you may be interested.
+      
+* __Profile.html:__
+    ![Profile](FitURJC/img/captures/Profile1.png)
+    * Description: This is the client profile. For example you can check your profile section, description, watch registered activities and update your profile.
+      
+* __Profile Settings.html:__
+    ![Profile settings](FitURJC/img/captures/ProfileSettings1.png)
+    * Description: If you are identified like a member, you have the possibility to change your profile pic, password or even set your birthdate.
+
  
 * __[Trello's Board](https://trello.com/b/2hRp8ruG/fiturjcdaw)__
