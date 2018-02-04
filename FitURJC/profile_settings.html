@@ -23,13 +23,14 @@
                         <img src="img/profile/fiturjc_default_user.jpg" class="img-circle" alt="Profile Image" style='object-fit:contain' />
                     </span>
                     <br>
-                    <spam id="changeImgBtn">
+                    <span id="changeImgBtn">
                         <!--<button type="submit" class="btn btn-primary" id="changeImg">Change profile image</button> -->
                         <label for="file-upload" class="custom-file-upload">
                             <i id="changeImgBtn"></i> CHANGE PROFILE PICTURE
                         </label>
-                        <input id="file-upload" type="file"/>
-                    </spam>
+                        <input id="file-upload" type="file" />
+                    </span>
+
                 </div>
                 <!-- Section Header End. Col divide into columms-->
                 <div id="profileForm" class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
@@ -67,10 +68,10 @@
                         </form>
                         <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
                             <button type="submit" class="btn btn-primary " id="update-btn"> Update </button>
-                            <button type="submit" class="btn btn-primary " id="cancel-btn"> Cancel </button>
+                            <button type="reset" class="btn btn-primary " id="cancel-btn"> Cancel </button>
                             <script type="text/javascript">
                                 document.getElementById("cancel-btn").onclick = function () {
-                                    location.href = "user.html"; 
+                                    location.href = "user.html";
                                 };
                             </script>
                         </div>
@@ -82,7 +83,23 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-containertent">
-
+                        <p class="mt-4 social-login text-center">
+                            <a href="#" class="btn btn-twitter">
+                                <em class="ion-social-twitter"></em>
+                            </a>
+                            <a href="#" class="btn btn-facebook">
+                                <em class="ion-social-facebook"></em>
+                            </a>
+                            <a href="#" class="btn btn-linkedin">
+                                <em class="ion-social-linkedin"></em>
+                            </a>
+                            <a href="#" class="btn btn-google">
+                                <em class="ion-social-googleplus"></em>
+                            </a>
+                            <a href="#" class="btn btn-github">
+                                <em class="ion-social-github"></em>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

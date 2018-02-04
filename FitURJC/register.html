@@ -7,7 +7,7 @@
     <meta name="description" content="Love Authority." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
     <link rel="stylesheet" href="css/register.css" />
@@ -29,9 +29,10 @@
                                 Sign up to get started
                             </p>
                             <div class="mt-4">
-                                <form method="post"> <!-- Method to not saw the password -->
+                                <form method="post">
+                                    <!-- Method to not saw the password -->
                                     <div class="form-group">
-                                            <input type="name" class="form-control" name="acount-name" value="" placeholder="Acount name">
+                                        <input type="name" class="form-control" name="acount-name" value="" placeholder="Acount name">
                                     </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" value="" placeholder="Enter email address">
@@ -42,54 +43,60 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control" name="confirm-password" value="" placeholder="Confirm password">
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-                                </form>
-                                <div class="clearfix"></div>
-                                <p class="content-divider center mt-4">
-                                    <span>or</span>
-                                </p>
+                                    <div style="float: left; width: 48%">
+                                        <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
+                                    </div>
+                                    <div style="float: right; width: 48%">
+                                        <button type="reset" class="btn btn-primary btn-block"> Cancel </button>
+                                    </div>
                             </div>
-                            <p class="mt-4 social-login text-center">
-                                <a href="#" class="btn btn-twitter">
-                                    <em class="ion-social-twitter"></em>
-                                </a>
-                                <a href="#" class="btn btn-facebook">
-                                    <em class="ion-social-facebook"></em>
-                                </a>
-                                <a href="#" class="btn btn-linkedin">
-                                    <em class="ion-social-linkedin"></em>
-                                </a>
-                                <a href="#" class="btn btn-google">
-                                    <em class="ion-social-googleplus"></em>
-                                </a>
-                                <a href="#" class="btn btn-github">
-                                    <em class="ion-social-github"></em>
-                                </a>
-                            </p>
-                            <p class="text-center">
-                                Already have an account?
-                                <a href="login.html">Login Now</a>
-                            </p>
-                            <p class="text-center">
-                                <button type="submit" class="btn btn-primary" id="goBackbtn">Go Back</button>
-                                <script type="text/javascript">
-                                    document.getElementById("goBackbtn").onclick = function () {
-                                        location.href = "index.html";
-                                    };
-                                </script>
+                            </form>
+                            <div class="clearfix"></div>
+                            <p class="content-divider center mt-4">
+                                <span>or</span>
                             </p>
                         </div>
+                        <p class="mt-4 social-login text-center">
+                            <a href="#" class="btn btn-twitter">
+                                <em class="ion-social-twitter"></em>
+                            </a>
+                            <a href="#" class="btn btn-facebook">
+                                <em class="ion-social-facebook"></em>
+                            </a>
+                            <a href="#" class="btn btn-linkedin">
+                                <em class="ion-social-linkedin"></em>
+                            </a>
+                            <a href="#" class="btn btn-google">
+                                <em class="ion-social-googleplus"></em>
+                            </a>
+                            <a href="#" class="btn btn-github">
+                                <em class="ion-social-github"></em>
+                            </a>
+                        </p>
+                        <p class="text-center">
+                            Already have an account?
+                            <a href="login.html">Login Now</a>
+                        </p>
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-primary" id="goBackbtn">Go Back</button>
+                            <script type="text/javascript">
+                                document.getElementById("goBackbtn").onclick = function () {
+                                    location.href = "index.html";
+                                };
+                            </script>
+                        </p>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="col-sm-12 mt-5 footer">
-
-                </div>
             </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 mt-5 footer">
+
+            </div>
+        </div>
         </div>
     </section>
 
-    
+
 </body>
 
 </html>

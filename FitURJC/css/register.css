@@ -142,6 +142,8 @@ a, a:hover{
     z-index: -1;
 }
 
+/* Footer */
+
 .social-login .btn{
     color: #fff;
     width: 40px;
@@ -203,13 +205,6 @@ a, a:hover{
     max-width: 250px;
     padding-bottom: 1rem;
 }
-
-/*
-#changeImgBtn{
-    height:100px;
-    width: 25px;
-}
-*/
 
 #profile_pic{
     height:250px;
