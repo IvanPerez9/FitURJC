@@ -346,4 +346,7 @@ header.masthead p {
   text-decoration: underline;
 }
 
-#
+#activities{
+  margin: 0px auto;
+  align-content: center;
+}
