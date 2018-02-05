@@ -274,6 +274,12 @@ header.masthead p {
   font-size: 10px;
 }
 
+.project-join {
+  font-size: 10px;
+  color: #212529;
+  text-align: right;
+}
+
 .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
