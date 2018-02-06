@@ -241,9 +241,6 @@ a, a:hover{
 
 /* Change profile pic */
 
-input[type="file"] {
-    display: none;
-}
 .custom-file-upload {
     border: 1px solid  #ff5722;
     background-color:  #ff5722;

@@ -2,14 +2,21 @@
 <html lang="en">
 
 <head>
-    <title>FitURJC Profile Settings</title>
+    <title>Profile Settings</title>
+    <link rel="shortcut icon" href="img/iconLogo.ico" />
     <meta name="description" content="Love Authority." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+
+    <!-- Custom css -->
     <link rel="stylesheet" href="css/register.css" />
+    <!-- Custom scripts for this template -->
+    <script type="text/javascript" src="js/uploadImg.js"></script>
+
 </head>
 
 <body>
@@ -20,16 +27,13 @@
                 <!-- Section Header -->
                 <div id="imageForm" class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
                     <span id="profile_pic">
-                        <img src="img/profile/fiturjc_default_user.jpg" class="img-circle" alt="Profile Image" style='object-fit:contain' />
+                        <img id="myImg" src="img/profile/fiturjc_default_user.jpg" class="img-circle" alt="Profile Image" style='object-fit:contain' />
                     </span>
                     <br>
-                    <span id="changeImgBtn">
-                        <!--<button type="submit" class="btn btn-primary" id="changeImg">Change profile image</button> -->
-                        <label for="file-upload" class="custom-file-upload">
-                            <i id="changeImgBtn"></i> CHANGE PROFILE PICTURE
-                        </label>
-                        <input id="file-upload" type="file" />
-                    </span>
+                    <div>
+                        <label for="files" class="btn btn-primary" id="changeImgBtn">Select Image</label>
+                        <input id="files" style="visibility:hidden;" type="file">
+                    </div>
 
                 </div>
                 <!-- Section Header End. Col divide into columms-->
