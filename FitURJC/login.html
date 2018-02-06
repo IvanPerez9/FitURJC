@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Free Bootstrap 4 Login/Register Forms By Wired Dots</title>
+    <title>FitURJC Login</title>
     <meta name="description" content="Love Authority." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
-    <link rel="stylesheet" href="css/registro.css" />
+    <link rel="stylesheet" href="css/register.css" />
 
 
 </head>
@@ -44,7 +44,13 @@
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description text-white">Keep me logged in</span>
                                     </label>
-                                    <button type="submit" class="btn btn-primary float-right">Sign in</button>
+                                    <button type="submit" class="btn btn-primary float-right" id="singinbtn">Sign in</button>
+                                    <script type="text/javascript">
+                                        document.getElementById("singinbtn").onclick = function () {
+                                            location.href = "user.html";
+                                        };
+                                    </script>
+                                    <!-- Este ultimo script no va y no sé porqué -->
                                 </form>
                                 <div class="clearfix"></div>
                                 <p class="content-divider center mt-4">
