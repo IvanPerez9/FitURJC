@@ -259,3 +259,7 @@ input[type="file"] {
     font-weight: 500;
 }
 
+/* Add activity */
+#description-activity {
+    height: 150px;
+}
