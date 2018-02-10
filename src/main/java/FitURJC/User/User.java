@@ -17,6 +17,8 @@ public class User {
 	private String nickname;
 	private String name;
 	private String surname;
+	private String passwordHash;
+	private String email;
 	private int age;
 	private String description;
 
@@ -70,16 +72,35 @@ public class User {
 		this.nickname = nickname;
 	}
 	
+	
+	public String getPasswordHash() {
+		return passwordHash;
+	}
+
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
 		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", description="
 				+ description + "]";
 	}
 
-	public User(String name, String surname, int age, String description, String nickname) {
+	public User(String name, String surname, int age,String passwordHash,String email, String description, String nickname) {
 		super();
 		this.name = name;
 		this.surname = surname;
+		this.passwordHash = passwordHash;
+		this.email = email;
 		this.age = age;
 		this.description = description;
 		this.nickname = nickname;
