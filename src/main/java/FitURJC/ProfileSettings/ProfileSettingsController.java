@@ -21,16 +21,14 @@ public class ProfileSettingsController {
 //	@Autowired
 //	private UserComponent userComponent;
 	
-	@RequestMapping ("/profileSettings")
-	public String userProfile(Model model, HttpServletRequest request) {
-		
-		long variable = 1;
-		User userSettings = userRepository.findOne(variable);
-		model.addAttribute("userPage",userSettings); // La var que uso para el acceso a datos
-		
-		
-		return "profile_settings"; // El del template
-	}
+	@RequestMapping("/profileSettings/{id}")
+    public String userProfile(Model model, @PathVariable long id, HttpServletRequest request) {
+        User userSettings = userRepository.findOne(id);
+        model.addAttribute("userPage", userSettings); // La var que uso para el
+                                                        // acceso a datos
+
+        return "profile_settings"; // El del template
+    }
 	
 	@RequestMapping("/profileSettings/edit")
     public String userProfileEdit(Model model, @PathVariable long id, @RequestParam String name,@RequestParam String surname, @RequestParam String email, @RequestParam String passwordHash, @RequestParam int age)
