@@ -1,17 +1,22 @@
 package FitURJC.User;
 
+import java.util.*;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
 public class User {
 
-	@Id 
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nickname;
@@ -22,12 +27,16 @@ public class User {
 	private int age;
 	private String description;
 
-	public User () {}
-	
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
+
+	public User() {
+	}
+
 	public long getId() {
 		return id;
 	}
-	
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -63,7 +72,7 @@ public class User {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public String getNickname() {
 		return nickname;
 	}
@@ -71,14 +80,13 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
-	
+
 	public String getPasswordHash() {
 		return passwordHash;
 	}
 
 	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
+		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 	}
 
 	public String getEmail() {
@@ -89,21 +97,31 @@ public class User {
 		this.email = email;
 	}
 
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString() {
 		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", description="
 				+ description + "]";
 	}
 
-	public User(String name, String surname, int age,String passwordHash,String email, String description, String nickname) {
+	public User(String name, String surname, int age, String passwordHash, String email, String description,
+			String nickname, String... roles) {
 		super();
 		this.name = name;
 		this.surname = surname;
-		this.passwordHash = passwordHash;
+		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 		this.email = email;
 		this.age = age;
 		this.description = description;
 		this.nickname = nickname;
+		this.roles = new ArrayList<>(Arrays.asList(roles));
 	}
 
 }
