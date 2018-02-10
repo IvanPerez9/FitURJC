@@ -22,7 +22,7 @@ public class DatabaseUsage implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 		
-		User user1 = new User("William", "Wallace", 25, "contrasena", "ww@gmail.com", "por escocia", "WW");
+		User user1 = new User("William", "Wallace", 25, "contrasena", "ww@gmail.com", "por escocia", "WW", "ROLE_USER");
 		Course course1 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course2 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course3 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
@@ -33,6 +33,8 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course2);
 		courseRepository.save(course3);
 		courseRepository.save(course4);
+		
+		// Add roles , and string
 		
 	}
 
