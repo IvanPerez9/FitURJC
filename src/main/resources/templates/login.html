@@ -33,12 +33,12 @@
 							<div class="mt-4">
 								<form method="post" action="/login">
 									<div class="form-group">
-										<input type="email" class="form-control" id="email" value=""
-											placeholder="Enter email address">
+										<input type="text" class="form-control" id="nickname"
+											name="nickname" value="" placeholder="Enter email address">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" id="password"
-											value="" placeholder="Enter password">
+											name="password" value="" placeholder="Enter password">
 									</div>
 									<label class="custom-control custom-checkbox mt-2"> <input
 										type="checkbox" class="custom-control-input"> <span
@@ -46,14 +46,15 @@
 										class="custom-control-description text-white">Keep me
 											logged in</span>
 									</label> <input type="submit" name="login-submit" id="login-submit"
-										tabindex="4" class="form-control btn btn-login btn-primary" value="Log In">
-										<input type="hidden" name="_csrf" value="{{token}}"/>
+										tabindex="4" class="form-control btn btn-login btn-primary"
+										value="Log In">
+									<!--  
 									<script type="text/javascript">
 										document.getElementById("singinbtn").onclick = function() {
 											location.href = "user.html";
 										};
 									</script>
-									<!-- Este ultimo script no va y no sé porqué -->
+									-->
 								</form>
 								<div class="clearfix"></div>
 								<p class="content-divider center mt-4">
@@ -82,7 +83,7 @@
 									Back</button>
 								<script type="text/javascript">
 									document.getElementById("goBackbtn").onclick = function() {
-										location.href = "index.html";
+										location.href = "/";
 									};
 								</script>
 							</p>

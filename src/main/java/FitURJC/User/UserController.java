@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
 @Controller
+@RequestMapping (value = "/user")
 public class UserController {
 	
 	@Autowired
@@ -17,7 +18,7 @@ public class UserController {
 //	@Autowired
 //	private UserComponent userComponent;
 	
-	@RequestMapping ("/{nickname}")
+	@RequestMapping (value = "/{nickname}")
 	public String userProfile(Model model, @PathVariable String nickname, HttpServletRequest request) {
 		
 		User user = userRepository.findByNickname(nickname);
