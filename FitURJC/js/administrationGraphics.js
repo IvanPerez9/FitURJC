@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 $(document).ready(function(){
     "use strict";
 =======
-/*$(document).ready(function(){
+$(document).ready(function(){
     //var popCanvas = $("#popChart");
     //var popCanvas = document.getElementById("popChart");
     var popCanvas = document.getElementById("popChart").getContext("2d");
