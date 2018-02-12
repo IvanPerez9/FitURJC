@@ -8,6 +8,8 @@ import FitURJC.User.User;
 import FitURJC.User.UserRepository;
 import FitURJC.course.Course;
 import FitURJC.course.CourseRepository;
+import FitURJC.facilities.Facilities;
+import FitURJC.facilities.FacilitiesRepository;
 
 @Controller
 public class DatabaseUsage implements CommandLineRunner {
@@ -17,6 +19,9 @@ public class DatabaseUsage implements CommandLineRunner {
 	
 	@Autowired
 	CourseRepository courseRepository;
+	
+	@Autowired
+	FacilitiesRepository facilitiesRepository;
 	
 	
 	@Override
@@ -28,11 +33,17 @@ public class DatabaseUsage implements CommandLineRunner {
 		Course course3 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course4 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		
+		
+		
+		
 		userRepository.save(user1);
 		courseRepository.save(course1);
 		courseRepository.save(course2);
 		courseRepository.save(course3);
 		courseRepository.save(course4);
+		for(int i=1; i<= 5; i++){
+			 facilitiesRepository.save(new Facilities("/img/facilities/"+ 1 +".jpg"));
+			}
 		
 		// Add roles , and string
 		
