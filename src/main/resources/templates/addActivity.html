@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="En">
+
+<head>
+    <meta charset="utf-8">
+    <title>FitURJC AddActivity</title>
+    <link rel="shortcut icon" href="img/iconLogo.ico" />
+    
+    <meta name="description" content="Love Authority." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+    <link rel="stylesheet" href="css/register.css" />
+    
+
+</head>
+
+<body>
+    <!--hero section-->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-8 mx-auto">
+                    <div class="card border-none">
+                        <div class="card-body">
+                            <div class="mt-2 text-center">
+                                <h2>Add Activity</h2>
+                            </div>
+                            <div class="mt-4">
+                                <form method="post">
+                                    <!-- Method to not saw the password -->
+                                    <div class="form-group">
+                                        <input type="name" class="form-control" name="activity-name" value="" placeholder="Activity name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="facilities" class="form-control" name="facilities" value="" placeholder="Enter facilities activity">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-daterange input-group">
+                                            <input type="date" class="input-sm form-control" name="start" value="" placeholder="Enter day start" />
+                                            <input type="date" class="input-sm form-control" name="end" value="" placeholder="Enter day finish" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-daterange input-group">
+                                            <input type="time" class="input-sm form-control" name="start" value="" placeholder="Enter hour start" />
+                                            <input type="time" class="input-sm form-control" name="end" value="" placeholder="Enter hour finish" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="eventDesc" rows="4" placeholder="Description"></textarea>
+                                    </div>
+                                    <div style="float: left; width: 48%">
+                                        <button type="submit" class="btn btn-primary btn-block"> Guardar </button>
+                                    </div>
+                                    <div style="float: right; width: 48%">
+                                        <button type="reset" class="btn btn-primary btn-block"> Cancel </button>
+                                    </div>
+                                </form>
+                            </div>  
+                            <div class="clearfix"></div>
+                        </div> 
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-primary" id="goBackbtn">Go Back</button>
+                            <script type="text/javascript">
+                                document.getElementById("goBackbtn").onclick = function () {
+                                    location.href = "index.html";
+                                };
+                            </script>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12 mt-5 footer"></div>
+        </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

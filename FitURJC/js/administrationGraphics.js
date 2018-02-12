@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 $(document).ready(function(){
     "use strict";
+=======
+/*$(document).ready(function(){
+    //var popCanvas = $("#popChart");
+    //var popCanvas = document.getElementById("popChart");
+    var popCanvas = document.getElementById("popChart").getContext("2d");
+>>>>>>> 4175427db5ed6bede717159fe3d5713c7750674f
 
     var datos= {
         type: "pie",
@@ -41,3 +48,4 @@ $(document).ready(function(){
     var popCanvas = document.getElementById('popChart').getContext('2d');
     window.pie = new Chart(popCanvas,datos);
 });
+*/
