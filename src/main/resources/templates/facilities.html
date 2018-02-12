@@ -3,54 +3,116 @@
 
 <head>
 
-<meta charset="utf-8">
-<title>FitURJC Facilities</title>
-<link rel="shortcut icon" href="img/iconLogo.ico" />
+  <meta charset="utf-8">
+  <title>FitURJC Facilities</title>
+  <link rel="shortcut icon" href="img/iconLogo.ico"/>
 
-<meta name="description" content="Love Authority." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Love Authority." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
-<link rel="stylesheet" href="/css/facilities.css" />
+  <link rel="stylesheet" href="css/facilities.css" />
+  
+  
 
 </head>
 
 <body>
-
-	<section class="hero">
-		<div class="container">
-			<div class="row">
-			{{#facilities}}
-				<div class="card-deck">
-					<div class="cold-md-3">
-						<div class="card">
-							<img class="card-img-top" src="{{src}}" alt="Aerobic">
-						</div>
-					</div>
-				</div>
-				{{/facilities}}
-			</div>
-		</div>
-		
-		<br>
-		<p class="text-center">
-			<button type="submit" class="btn btn-primary" id="spinner">
-				Pulse para ver mas</button>
-			<script type="text/javascript">
-				document.getElementById("spinner").onclick = function() {
-					location.href = "index.html";
-				};
-			</script>
-		</p>
-	</section>
-
+            
+    <table style="text-align: left; margin-left: auto; margin-right: auto;" width="100%" cellpadding="0" cellspacing="0">
+        <tbody>
+        		
+               <tr>
+               {{#facilities}}
+                   <td>
+                        <img class="card-img-top" src="/img/facilities/1.jpg" >
+                        <img class="card-img-top" src="/img/facilities/2.jpg" >
+                        
+                   </td>
+                   {{/facilities}}
+               </tr> 
+               
+               
+        </tbody>
+    </table>
+    <!--section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="card-deck">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Aerobic">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Aerobic">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Body combat">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card-deck">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Aerobic">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Aerobic">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Body combat">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="img/facilities/1.jpg" alt="Card image cap">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+            <p class="text-center">
+                <button type="submit" class="btn btn-primary" id="spinner">
+                    Pulse para ver mas
+                </button>
+                <script type="text/javascript">
+                    document.getElementById("spinner").onclick = function () {
+                        location.href = "index.html";
+                    };
+                </script>
+            </p>  
+    </section-->
+    
 </body>
 
 </html>
