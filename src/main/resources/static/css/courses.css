@@ -146,3 +146,11 @@ a, a:hover{
 .card{
 	margin-top: 25px;
 }
+
+@media (min-width: 1200px){
+.navbar-light .navbar-toggler {
+    color: rgba(0,0,0,.5);
+    border-color: rgba(0,0,0,.1);
+    background-color: red; !important
+}
+}

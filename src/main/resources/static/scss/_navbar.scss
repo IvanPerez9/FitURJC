@@ -1,7 +1,7 @@
 // Styling for the navbar
 #mainNav {
   border-bottom: 1px solid fade-out($gray-900, .9);
-  background-color: $white;
+  background-color: $red;
   @include sans-serif-font;
   @include transition-all;
   .navbar-brand {
@@ -27,9 +27,9 @@
         }
         &.active {
           color: $primary !important;
-          background-color: transparent;
+          background-color: red;
           &:hover {
-            background-color: transparent;
+            background-color: red;
           }
         }
       }
@@ -37,7 +37,7 @@
   }
   @media (min-width: 992px) {
     border-color: transparent;
-    background-color: transparent;
+    background-color: red;
     .navbar-brand {
       color: fade-out($white, .3);
       &:focus,
@@ -57,7 +57,7 @@
     }
     &.navbar-shrink {
       border-bottom: 1px solid fade-out($gray-900, .9);
-      background-color: $white;
+      background-color: $red;
       .navbar-brand {
         color: $primary;
         &:focus,

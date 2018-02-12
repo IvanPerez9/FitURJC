@@ -4022,7 +4022,6 @@ tbody.collapse.show {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
-  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -4359,6 +4358,7 @@ tbody.collapse.show {
 .navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0.5);
   border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(220, 53, 69, 0.1);
 }
 
 .navbar-light .navbar-toggler-icon {
