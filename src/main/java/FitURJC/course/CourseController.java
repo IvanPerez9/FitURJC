@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
 @Controller
+@RequestMapping (value = "/courses")
 public class CourseController {
 	
 	@Autowired
@@ -18,7 +19,7 @@ public class CourseController {
 //	@Autowired
 //	private UserComponent userComponent;
 	
-	@RequestMapping ("/courses")
+	@RequestMapping (value = "/")
 	public String userProfile(Model model, HttpServletRequest request) {
 		
 		List<Course> courses = courseRepository.findAll();

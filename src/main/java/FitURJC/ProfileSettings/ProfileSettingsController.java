@@ -14,6 +14,7 @@ import FitURJC.User.UserRepository;
 import org.springframework.ui.Model;
 
 @Controller
+@RequestMapping(value = "/profileSettings")
 public class ProfileSettingsController {
 	
 	@Autowired
@@ -21,7 +22,7 @@ public class ProfileSettingsController {
 //	@Autowired
 //	private UserComponent userComponent;
 	
-	@RequestMapping("/profileSettings/{id}")
+	@RequestMapping(value = "/{id}")
     public String userProfile(Model model, @PathVariable long id, HttpServletRequest request) {
         User userSettings = userRepository.findOne(id);
         model.addAttribute("userPage", userSettings); // La var que uso para el
@@ -30,7 +31,7 @@ public class ProfileSettingsController {
         return "profile_settings"; // El del template
     }
 	
-	@RequestMapping("/profileSettings/edit")
+	@RequestMapping(value = "/edit")
     public String userProfileEdit(Model model, @PathVariable long id, @RequestParam String name,@RequestParam String surname, @RequestParam String email, @RequestParam String passwordHash, @RequestParam int age)
            {
 

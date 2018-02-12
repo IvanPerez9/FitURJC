@@ -171,3 +171,8 @@ a, a:hover {
     font-size: 150px;
     font-weight: 600;
 }
+
+.errorbtn {
+    text-align: center;
+    margin-top: 1.5rem;
+}
