@@ -67,6 +67,7 @@ a, a:hover{
         padding: 20px;
     }
 }
+
 @media (min-width: 768px) {
 .col-md-3 {
     -webkit-box-flex: 0;
@@ -96,9 +97,12 @@ a, a:hover{
 .btn-primary:hover, .btn-primary:focus{
     color: #fff !important;
 }
+
+
 .form-group {
     margin-bottom: 1.5rem;
 }
+
 .form-control{
     height: 45px;
     font-size: 16px;

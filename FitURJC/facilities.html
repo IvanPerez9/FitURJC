@@ -2,27 +2,23 @@
 <html lang="en">
 
 <head>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-    rel='stylesheet' type='text/css'>
 
   <meta charset="utf-8">
   <title>FitURJC Facilities</title>
   <link rel="shortcut icon" href="img/iconLogo.ico"/>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Love Authority." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
-  <link rel="stylesheet" href="css/register.css" />
-  <!--link rel="stylesheet" href="css/bootstrap-grid.css" /-->
+  <link rel="stylesheet" href="css/facilities.css" />
+  
+  
 
 </head>
 
@@ -88,12 +84,19 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-warning btn-block">
-            Pulse aqui para ver mas :S
-        </button>    
+        <br>
+            <p class="text-center">
+                <button type="submit" class="btn btn-primary" id="spinner">
+                    Pulse para ver mas
+                </button>
+                <script type="text/javascript">
+                    document.getElementById("spinner").onclick = function () {
+                        location.href = "index.html";
+                    };
+                </script>
+            </p>  
     </section>
-
-
+    
 </body>
 
 </html>
