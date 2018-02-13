@@ -29,10 +29,13 @@
                                 Sign up to get started
                             </p>
                             <div class="mt-4">
-                                <form method="post">
+                                <form method="post" action="/register">
                                     <!-- Method to not saw the password -->
                                     <div class="form-group">
-                                        <input type="name" class="form-control" name="acount-name" value="" placeholder="Acount name">
+                                        <input type="text" class="form-control" name="acount-name" value="" placeholder="Acount name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="acount-surname" value="" placeholder="Acount surname">
                                     </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" value="" placeholder="Enter email address">
@@ -42,6 +45,9 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control" name="confirm-password" value="" placeholder="Confirm password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="date" value="" placeholder="Age">
                                     </div>
                                     <div style="float: left; width: 48%">
                                         <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
