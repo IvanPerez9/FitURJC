@@ -1,4 +1,4 @@
-package FitURJC.ProfileSettings;
+package FitURJC.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import FitURJC.User.User;
+import FitURJC.User.UserComponent;
 import FitURJC.course.Course;
 import FitURJC.course.CourseRepository;
 
@@ -20,19 +22,34 @@ public class MainController {
 
 	@Autowired
 	private CourseRepository courseRepository;
+	
+	@Autowired
+	private UserComponent userComponent;
 
 	@RequestMapping(value = "/")
 	public String getIndex(Model model) {
-		List<Course> courses = courseRepository.findAll();
+/*		List<Course> courses = courseRepository.findAll();
 		model.addAttribute("courses", courses);
-		return "index";
+		return "users";*/
+		// Comprobar si hay un usuario logueado y añadirlo
+		if ((userComponent.isLoggedUser())) {
+			long userLogged_id = userComponent.getLoggedUser().getId();
+
+			if (userComponent.getLoggedUser().getId() == userLogged.getId()) {
+				model.addAttribute("logged", true);
+			}
+			// Comprobar si es admin
+			model.addAttribute("admin", request.isUserInRole("ROLE_ADMIN"));
+			return "users";
+		} else {
+			return "users";
+		}
 	}
 
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
 	}
-
 	@RequestMapping("/loginerror")
 	public String loginerror(Model model) {
 		model.addAttribute("loginerror", true);
