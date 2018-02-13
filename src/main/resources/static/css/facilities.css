@@ -177,3 +177,16 @@ a, a:hover {
     font-size: 150px;
     font-weight: 600;
 }
+
+.facilities{
+	margin-bottom: 20px;
+}
+
+.styleMoreEvents{
+	text-align:center;
+}
+
+#btnMoreFacilities{
+	margin: 0 auto;
+	margin-bottom: 25px;
+}

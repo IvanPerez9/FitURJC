@@ -41,8 +41,10 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course2);
 		courseRepository.save(course3);
 		courseRepository.save(course4);
-		for(int i=1; i<= 5; i++){
-			facilitiesRepository.save(new Facilities("/img/facilities/"+ 1 +".jpg"));
+		for(int i=1; i<= 12; i++){
+			for (int j = 1; j <= 5; j++) {
+				facilitiesRepository.save(new Facilities("/img/facilities/"+ i +".jpg"));
+			}
 		}
 		
 		// Add roles , and string
