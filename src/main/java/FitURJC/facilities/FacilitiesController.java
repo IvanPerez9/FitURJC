@@ -16,6 +16,7 @@ public class FacilitiesController {
 	@Autowired
 	private FacilitiesRepository facilitiesRepository;
 	
+	
 	@RequestMapping (value = "/facilities")
 	public String userProfile (Model model, HttpServletRequest request) {
 		
@@ -24,8 +25,10 @@ public class FacilitiesController {
 		return "facilities";
 	}
 	
+	
 	@RequestMapping(value = "/moreFacilities")
 	  public String moreAllShelf(Model model, @RequestParam int page) {
+		
 	    Page<Facilities> facilities = facilitiesRepository.findAll(new PageRequest(page, 10));
 	    model.addAttribute("facility", facilities);
 	    return "list_facilities";
