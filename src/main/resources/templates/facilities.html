@@ -12,7 +12,6 @@
 
 <link rel="stylesheet" href="/css/fontawesome-all.min.css">
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="/js/script.js"></script>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -24,17 +23,20 @@
 </head>
 
 <body>
-	<div class="container-fluid">
+	<section class="hero">
+	<div class="container">
 		<div class="row" id="listFacilities">
 				{{#facilities}} {{> facility_template}} {{/facilities}} <br>
 		</div>
 		<br>
 		<div class="styleMoreFacilities">
 			<div id="spinner"></div>
-			<button id="btnMoreFacilities" type="button"
-				class="btn-succes btnMoreFacilities">Ver mas</button>
+			<p class="text-center">
+			<button id="btnMoreFacilities" type="button" class="btn btn-primary">Ver mas</button>
+			</p>
 		</div>
 	</div>
+	</section>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="/js/moreFacilities.js"></script>
