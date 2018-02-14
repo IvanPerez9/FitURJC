@@ -28,13 +28,14 @@ public class MainController {
 
 	@RequestMapping(value = "/")
 	public String getIndex(Model model) {
-		List<Course> courses = courseRepository.findAll();
+		/*	List<Course> courses = courseRepository.findAll();
 		model.addAttribute("courses", courses);
 		return "index"; // Si le pones user, no la encuentra
-	}
+		*/
 		// Comprobar si hay un usuario logueado y añadirlo
-		/*if ((userComponent.isLoggedUser())) {
+		if ((userComponent.isLoggedUser())) {
 			long userLogged_id = userComponent.getLoggedUser().getId();
+			User userLogged = userRepo.findOne(userLogged_id);
 
 			if (userComponent.getLoggedUser().getId() == userLogged.getId()) {
 				model.addAttribute("logged", true);
@@ -45,7 +46,7 @@ public class MainController {
 		} else {
 			return "users";
 		}
-	}*/
+	}
 
 	@RequestMapping("/login")
 	public String login() {

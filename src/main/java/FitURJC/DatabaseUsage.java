@@ -32,6 +32,10 @@ public class DatabaseUsage implements CommandLineRunner {
 		Course course2 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course3 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course4 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course5 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course6 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course7 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course8 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		
 		
 		
