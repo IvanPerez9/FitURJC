@@ -2,12 +2,7 @@ package FitURJC.User;
 
 import java.util.*;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,7 +18,10 @@ public class User {
 	private String name;
 	private String surname;
 	private String passwordHash;
+
+	@Column(unique = true)
 	private String email;
+
 	private int age;
 	private String description;
 
@@ -109,6 +107,7 @@ public class User {
 	public String toString() {
 		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", description="
 				+ description + "]";
+
 	}
 
 	public User(String name, String surname, int age, String passwordHash, String email, String description,

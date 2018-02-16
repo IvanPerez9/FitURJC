@@ -1,23 +1,26 @@
 package FitURJC.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import FitURJC.User.User;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 
+@Controller
 public class LoginController {
 
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
 	}
 	@RequestMapping("/loginerror")
 	public String loginerror(Model model) {
 		model.addAttribute("loginerror", true);
-		return "login";
+		return "loginerror";
 	}
 	
 	
