@@ -22,9 +22,5 @@ public class LoginController {
 		model.addAttribute("loginerror", true);
 		return "loginerror";
 	}
-	
-	
-	
 
-	
 }
