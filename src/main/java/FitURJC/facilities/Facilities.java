@@ -26,15 +26,6 @@ public class Facilities {
 	public void setSrc(String src) {
 		this.src = src;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }

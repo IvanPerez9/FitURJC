@@ -4,9 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import FitURJC.course.Course;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
 public class User {
@@ -30,6 +29,8 @@ public class User {
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
+
+	private List<Course> courses;
 
 	public User() {
 	}
@@ -85,16 +86,12 @@ public class User {
 		return nickname;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	public String getPasswordHash() {
 		return passwordHash;
 	}
 
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
+	public void changePassword(String newPassword) {
+		this.passwordHash = new BCryptPasswordEncoder().encode(newPassword);
 	}
 
 	public String getEmail() {
@@ -103,6 +100,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Course> getCourses() {
+		return new ArrayList<>(this.courses);
+	}
+
+	public void addCurso(Course curso) {
+		this.courses.add(curso);
 	}
 
 	public List<String> getRoles() {

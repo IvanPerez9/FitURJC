@@ -37,17 +37,14 @@ public class DatabaseUsage implements CommandLineRunner {
 		Course course7 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course8 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 
+
+
 		
 		userRepository.save(user1);
 		courseRepository.save(course1);
 		courseRepository.save(course2);
 		courseRepository.save(course3);
 		courseRepository.save(course4);
-		courseRepository.save(course5);
-		courseRepository.save(course6);
-		courseRepository.save(course7);
-		courseRepository.save(course8);
-
 		for(int i=1; i<= 12; i++){
 			for (int j = 1; j <= 5; j++) {
 				facilitiesRepository.save(new Facilities("/img/facilities/"+ i +".jpg"));
