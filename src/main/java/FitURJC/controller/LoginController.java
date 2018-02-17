@@ -22,5 +22,11 @@ public class LoginController {
 		model.addAttribute("loginerror", true);
 		return "loginerror";
 	}
+	
+	@RequestMapping(value ="/register", method = RequestMethod.GET)
+		public String register() {
+			return "register";
+		}
+	
 
 }

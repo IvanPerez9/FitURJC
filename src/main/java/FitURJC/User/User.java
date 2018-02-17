@@ -30,7 +30,7 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	private List<Course> courses;
+//	private List<Course> courses;
 
 	public User() {
 	}
@@ -102,13 +102,13 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Course> getCourses() {
-		return new ArrayList<>(this.courses);
-	}
+//	public List<Course> getCourses() {
+//		return new ArrayList<>(this.courses);
+//	}
 
-	public void addCurso(Course curso) {
-		this.courses.add(curso);
-	}
+//	public void addCurso(Course curso) {
+//		this.courses.add(curso);
+//	}
 
 	public List<String> getRoles() {
 		return roles;
