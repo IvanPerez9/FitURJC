@@ -48,6 +48,8 @@ public class DatabaseUsage implements CommandLineRunner {
 		Facility facility5 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
 		Facility facility6 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
 
+
+
 		
 		userRepository.save(user1);
 		
