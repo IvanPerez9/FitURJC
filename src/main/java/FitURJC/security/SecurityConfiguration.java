@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().passwordParameter("password");
 
         // Redirect Url on success and on failure
-        http.formLogin().defaultSuccessUrl("/user");
+        http.formLogin().defaultSuccessUrl("/user/");
         http.formLogin().failureUrl("/loginerror");
 
         // Logout

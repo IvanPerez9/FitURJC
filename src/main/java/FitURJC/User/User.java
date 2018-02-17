@@ -14,10 +14,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+
+	@Column(unique = true)
 	private String nickname;
 	private String name;
 	private String surname;
 	private String passwordHash;
+	private String imgSrc;
 
 	@Column(unique = true)
 	private String email;
@@ -55,6 +58,13 @@ public class User {
 		this.surname = surname;
 	}
 
+	public String getImgSrc() {
+		return imgSrc;
+	}
+
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
 	public int getAge() {
 		return age;
 	}
@@ -121,6 +131,7 @@ public class User {
 		this.description = description;
 		this.nickname = nickname;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.imgSrc = "hola";
 	}
 
 }
