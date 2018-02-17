@@ -37,7 +37,6 @@ public class Course {
 		this.description = description;
 	}
 
-	
 	public String getSchedule1() {
 		return schedule1;
 	}
