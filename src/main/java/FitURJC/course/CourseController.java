@@ -16,7 +16,7 @@ public class CourseController {
 //	@Autowired
 //	private UserComponent userComponent;
 	
-	@RequestMapping (value = "/")
+	@RequestMapping (value = "")
 	public String userProfile(Model model) {
 		List<Course> courses = courseRepository.findAll();
 		model.addAttribute("courses",courses);
