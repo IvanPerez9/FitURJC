@@ -52,10 +52,10 @@ public class DatabaseUsage implements CommandLineRunner {
 //			courseRepository.save(new Course("/img/facilities/"+ j +".jpg"));
 //		}
 
-		for(int i=1; i<= 12; i++){
-			for (int j = 1; j <= 5; j++) {
-				facilitiesRepository.save(new Facilities("/img/facilities/"+ i +".jpg"));
-			}
+		for(int i=1; i<=40; i++){
+			//for (int j = 1; j <= 5; j++) {
+				facilitiesRepository.save(new Facilities("/img/facilities/facilities_"+ i +".jpeg"));
+			//}
 		}
 		
 		// Add roles , and string
