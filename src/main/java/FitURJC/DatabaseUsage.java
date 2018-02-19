@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
-import FitURJC.Facility.Facility;
-import FitURJC.Facility.FacilityRepository;
 import FitURJC.User.User;
 import FitURJC.User.UserRepository;
 import FitURJC.course.Course;
@@ -25,8 +23,6 @@ public class DatabaseUsage implements CommandLineRunner {
 	@Autowired
 	FacilitiesRepository facilitiesRepository;
 	
-	@Autowired
-	FacilityRepository facilityRepository;
 	
 	
 	@Override
@@ -40,15 +36,6 @@ public class DatabaseUsage implements CommandLineRunner {
 		Course course4 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course5 = new Course("Step", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course6 = new Course("Zumba", "blablacar", "10:00-11:00", "15:00-16:00");
-		
-		Facility facility1 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
-		Facility facility2 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
-		Facility facility3 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
-		Facility facility4 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
-		Facility facility5 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
-		Facility facility6 = new Facility("Boxing", "Where to practice boxing and learn the values ​​of boxing beyond combat");
-
-
 
 		
 		userRepository.save(user1);
@@ -59,13 +46,6 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course4);
 		courseRepository.save(course5);
 		courseRepository.save(course6);
-		
-		facilityRepository.save(facility1);
-		facilityRepository.save(facility2);
-		facilityRepository.save(facility3);
-		facilityRepository.save(facility4);
-		facilityRepository.save(facility5);
-		facilityRepository.save(facility6);
 		
 		
 //		for (int j = 1; j <= 6; j++) {
