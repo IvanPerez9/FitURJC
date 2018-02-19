@@ -25,7 +25,7 @@ public class DatabaseUsage implements CommandLineRunner {
 	
 	
 	
-	@Override
+	@Override 
 	public void run(String... arg0) throws Exception {
 
 		User user1 = new User("William", "Wallace", 25, "contrasena", "ww@gmail.com", "por escocia", "WW", "ROLE_USER");
@@ -35,7 +35,13 @@ public class DatabaseUsage implements CommandLineRunner {
 		Course course3 = new Course("CrossFit", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course4 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
 		Course course5 = new Course("Step", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course6 = new Course("Zumba", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course6 = new Course("Swiming", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course7 = new Course("Dumbbells", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course8 = new Course("Switching circuit", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course9 = new Course("Cardio", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course10 = new Course("Pilates", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course11 = new Course("Yoga", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course12 = new Course("Training", "blablacar", "10:00-11:00", "15:00-16:00");
 
 		
 		userRepository.save(user1);
@@ -46,6 +52,12 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course4);
 		courseRepository.save(course5);
 		courseRepository.save(course6);
+		courseRepository.save(course7);
+		courseRepository.save(course8);
+		courseRepository.save(course9);
+		courseRepository.save(course10);
+		courseRepository.save(course11);
+		courseRepository.save(course12);
 		
 		
 //		for (int j = 1; j <= 6; j++) {
