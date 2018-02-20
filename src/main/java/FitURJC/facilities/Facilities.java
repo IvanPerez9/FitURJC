@@ -1,4 +1,4 @@
-package FitURJC.facilities;
+package fiturjc.facilities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

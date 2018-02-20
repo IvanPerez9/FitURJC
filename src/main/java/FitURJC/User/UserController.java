@@ -1,4 +1,4 @@
-package FitURJC.User;
+package fiturjc.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AuthorizationServiceException;

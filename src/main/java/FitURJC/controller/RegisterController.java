@@ -1,4 +1,4 @@
-package FitURJC.controller;
+package fiturjc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

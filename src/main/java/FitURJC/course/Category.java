@@ -1,4 +1,4 @@
-package FitURJC.course;
+package fiturjc.course;
 
 public enum Category {
 	STRENGTH,

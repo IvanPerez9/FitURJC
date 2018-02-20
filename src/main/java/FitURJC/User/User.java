@@ -1,10 +1,10 @@
-package FitURJC.User;
+package fiturjc.user;
 
 import java.util.*;
 
 import javax.persistence.*;
 
-import FitURJC.course.Course;
+import fiturjc.course.Course;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity

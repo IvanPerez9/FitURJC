@@ -1,4 +1,4 @@
-package FitURJC.User;
+package fiturjc.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

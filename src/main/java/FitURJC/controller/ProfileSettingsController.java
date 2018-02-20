@@ -1,4 +1,4 @@
-package FitURJC.controller;
+package fiturjc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import FitURJC.User.User;
-import FitURJC.User.UserRepository;
+import fiturjc.user.User;
+import fiturjc.user.UserRepository;
 
 import org.springframework.ui.Model;
 

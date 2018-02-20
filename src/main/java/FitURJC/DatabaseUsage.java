@@ -1,16 +1,16 @@
-package FitURJC;
+package fiturjc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
-import FitURJC.User.User;
-import FitURJC.User.UserRepository;
-import FitURJC.course.Category;
-import FitURJC.course.Course;
-import FitURJC.course.CourseRepository;
-import FitURJC.facilities.Facilities;
-import FitURJC.facilities.FacilitiesRepository;
+import fiturjc.user.User;
+import fiturjc.user.UserRepository;
+import fiturjc.course.Category;
+import fiturjc.course.Course;
+import fiturjc.course.CourseRepository;
+import fiturjc.facilities.Facilities;
+import fiturjc.facilities.FacilitiesRepository;
 
 @Controller
 public class DatabaseUsage implements CommandLineRunner {

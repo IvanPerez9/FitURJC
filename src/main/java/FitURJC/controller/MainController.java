@@ -1,4 +1,4 @@
-package FitURJC.controller;
+package fiturjc.controller;
 
 import java.util.List;
 
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import FitURJC.User.User;
-import FitURJC.User.UserComponent;
-import FitURJC.User.UserRepository;
-import FitURJC.course.Course;
-import FitURJC.course.CourseRepository;
+import fiturjc.user.User;
+import fiturjc.user.UserComponent;
+import fiturjc.user.UserRepository;
+import fiturjc.course.Course;
+import fiturjc.course.CourseRepository;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
