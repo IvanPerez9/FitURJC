@@ -11,6 +11,7 @@ public class Course {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	private String src;
 	private String name;
 	private String description;
 	private String schedule1;
@@ -24,6 +25,15 @@ public class Course {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = src;
+	}
+
 	public String getName() {
 		return name;
 	}

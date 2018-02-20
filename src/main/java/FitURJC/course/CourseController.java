@@ -28,18 +28,18 @@ public class CourseController {
 		return "courses";
 	}
 	
-	@RequestMapping (value = "/courses")
-	public String userProfile (Model model, HttpServletRequest request) {
-		Page<Course> courses = courseRepository.findAll(new PageRequest(0,6));
-		model.addAttribute("courses", courses);
-		return "courses";
-	}
-	
-	@RequestMapping (value = "/moreFacilities")
-	public String moreAllShelf(Model model, @RequestParam int page) {
-		Page<Course> courses = courseRepository.findAll(new PageRequest(page,6));
-		model.addAttribute("course", courses);
-		return "list_courses";
-	}
+//	@RequestMapping (value = "/courses")
+//	public String userProfile (Model model, HttpServletRequest request) {
+//		Page<Course> courses = courseRepository.findAll(new PageRequest(0,6));
+//		model.addAttribute("courses", courses);
+//		return "courses";
+//	}
+//	
+//	@RequestMapping (value = "/moreCourses")
+//	public String moreAllShelf(Model model, @RequestParam int page) {
+//		Page<Course> courses = courseRepository.findAll(new PageRequest(page,6));
+//		model.addAttribute("course", courses);
+//		return "list_courses";
+//	}
 	
 }
