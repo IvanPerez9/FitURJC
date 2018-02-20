@@ -67,14 +67,25 @@
 
 	<section class="hero">
 		<div class="container">
-			<div class="row">
+			<div class="row" id="listCourses">
 			{{#courses}}
 				 {{> course_template}}
-			{{/courses}}</div>
+			{{/courses}}
+			</div>
+			<br>
+			<div class="styleMoreCourses">
+				<div id="spinner"></div>
+				<p class="text-center">
+					<button id="btnMoreCourses" type="button" class="btn btn-primary">See more</button>
+					<form method="get" action="/">
+						<button id="goBack" type="submit" class="btn btn-primary">Go back</button>
+					</form>
+			</div>
 		</div>
 	</section>
-
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/moreCourses.js"></script>
 </body>
 
 </html>

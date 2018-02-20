@@ -25,6 +25,7 @@ public class DatabaseUsage implements CommandLineRunner {
 	
 	
 	
+	@Autowired
 	@Override 
 	public void run(String... arg0) throws Exception {
 
@@ -58,12 +59,12 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course10);
 		courseRepository.save(course11);
 		courseRepository.save(course12);
-		
-		
-//		for (int j = 1; j <= 6; j++) {
-//			courseRepository.save(new Course("/img/facilities/"+ j +".jpg"));
-//		}
 
+		
+//		for(int i=1; i<=12; i++) {
+//			courseRepository.save(new Course("/img/course/course_"+ i +".jpg"));
+//		}
+		
 		for(int i=1; i<=40; i++){
 			//for (int j = 1; j <= 5; j++) {
 				facilitiesRepository.save(new Facilities("/img/facilities/facilities_"+ i +".jpeg"));
