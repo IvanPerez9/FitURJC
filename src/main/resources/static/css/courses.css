@@ -1,4 +1,3 @@
-
 /*Google fonts*/
 @import url('https://fonts.googleapis.com/css?family=Hind:400,500,700');
 
@@ -27,9 +26,10 @@ body{
     position: absolute;
 }
 
-#goBack{
-    color: #ff5722;
+#spinner {
+    color: white;
 }
+
 
 .hero:after{
     position: absolute;
@@ -153,4 +153,30 @@ a, a:hover{
     border-color: rgba(0,0,0,.1);
     background-color: red; !important
 }
+	
+.spinner {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 150px;
+    font-weight: 600;
+}
+
+.courses{
+	margin-bottom: 20px;
+}
+
+.styleMoreEvents{
+	text-align:center;
+}
+
+#btnMoreCourses{
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
+#goBack{
+    margin: 0 auto;
+	margin-bottom: 25px;
+}
+
 }

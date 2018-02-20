@@ -195,3 +195,12 @@ a, a:hover {
     margin: 0 auto;
 	margin-bottom: 25px;
 }
+
+.size-img-facilities {
+    min-width: 170px;
+    max-height: 130px;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    border-bottom-left-radius: calc(.25rem - 1px);
+    border-bottom-right-radius: calc(.25rem - 1px);
+}
