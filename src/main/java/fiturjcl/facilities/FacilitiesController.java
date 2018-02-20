@@ -1,4 +1,4 @@
-package fiturjc.facilities;
+package fiturjcl.facilities;
 
 import javax.servlet.http.HttpServletRequest;
 

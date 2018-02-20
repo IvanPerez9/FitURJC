@@ -1,4 +1,4 @@
-package fiturjc.course;
+package fiturjcl.course;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
