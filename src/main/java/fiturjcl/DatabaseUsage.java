@@ -32,24 +32,24 @@ public class DatabaseUsage implements CommandLineRunner {
 		User user2 = new User("Chemi", "G", 99, "pass", "chemi@email.com", "uee", "chemg", "ROLE_USER");
         User user3 = new User("Cucu", "tras", 99, "pass", "chemi2@email.com", "uee", "cucutras", "ROLE_USER");
 		
-		Course course1 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course2 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course11 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course12 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course13 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course14 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course1 = new Course("Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course2 = new Course("Body Combat", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course11 = new Course("Boxing", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course12 = new Course("Cardio", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course13 = new Course("CrossFit", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course14 = new Course("Dumbbells", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
 	    // STRENGTH CATEGORIES
-	    Course course3 = new Course("BodyPump", Category.STRENGTH, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course4 = new Course("BodyPump", Category.STRENGTH, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course3 = new Course("Phisical Therapy", Category.STRENGTH, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course4 = new Course("Pilates", Category.STRENGTH, "blablacar", "10:00-11:00", "15:00-16:00");
 	    // FREESTYLE CATEGORIES
-	    Course course5 = new Course("Bosu", Category.FREESTYLE, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course6 = new Course("Freestyle group training outdoor", Category.FREESTYLE, "blablacar", "10:00-11:00",
+	    Course course5 = new Course("Spinning", Category.FREESTYLE, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course6 = new Course("Step", Category.FREESTYLE, "blablacar", "10:00-11:00",
 	        "15:00-16:00");
 	    // DANCE CATEGORIES
-	    Course course7 = new Course("Zumba", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course8 = new Course("Love to dance", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course7 = new Course("Swiming", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course8 = new Course("Switching circuit", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
 	    // MIND CATEGORIES
-	    Course course9 = new Course("BodyBalance", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course9 = new Course("Training", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");
 	    Course course10 = new Course("Yoga", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");		
 		
 		courseRepository.save(course1);
@@ -64,6 +64,8 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course10);
 		courseRepository.save(course11);
 		courseRepository.save(course12);
+		courseRepository.save(course13);
+		courseRepository.save(course14);
 		
 		user2.addCourse(course1);
 		

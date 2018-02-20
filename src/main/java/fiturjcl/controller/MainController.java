@@ -14,6 +14,8 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -44,8 +46,8 @@ public class MainController {
 
 	@RequestMapping(value = "/")
 	public String getIndex(Model model) {
-		List<Course> courses = courseRepository.findAll();
-		model.addAttribute("courses", courses);
+		Page<Course> coursesIndex = courseRepository.findAll(new PageRequest(0,6));
+		model.addAttribute("courses", coursesIndex);
 		return "index";
 	}
 
