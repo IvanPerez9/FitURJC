@@ -139,7 +139,7 @@ public class User {
 		this.description = description;
 		this.nickname = nickname;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-		this.imgSrc = "hola";
+		this.imgSrc = "default.png";
 	}
 
 }

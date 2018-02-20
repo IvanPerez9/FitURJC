@@ -1,8 +1,13 @@
 package fiturjcl.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -13,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fiturjcl.course.Course;
@@ -42,6 +49,15 @@ public class MainController {
 		return "index";
 	}
 
+	@RequestMapping(value = "/image/{nickname}/{imgSrc}.{ext}")
+	public void getImage(HttpServletResponse res, @PathVariable String imgSrc, @PathVariable String nickname, @PathVariable String ext) throws FileNotFoundException, IOException {
+		File file = new File("imgs/"+ nickname + "/" + imgSrc + "." + ext);
+		if (file.exists()){
+			res.setContentType("image/png");
+			res.setContentLength(new Long(file.length()).intValue());
+			FileCopyUtils.copy(new FileInputStream(file), res.getOutputStream());
+		}
+	}
 
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
