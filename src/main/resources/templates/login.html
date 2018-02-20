@@ -34,7 +34,8 @@
 								<form method="post" action="/login">
 									<div class="form-group">
 										<input type="text" class="form-control" id="email"
-											name="email" value="" placeholder="Enter email"> <!--  Poner el correo  -->
+											name="email" value="" placeholder="Enter email">
+										<!--  Poner el correo  -->
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" id="password"
@@ -79,14 +80,12 @@
 									Now</a>
 							</p>
 							<p class="text-center">
-								<button type="submit" class="btn btn-primary" id="goBackbtn">Go
-									Back</button>
-								<script type="text/javascript">
-									document.getElementById("goBackbtn").onclick = function() {
-										location.href = "/";
-									};
-								</script>
+							<form method="get" action="/">
+								<button type="submit" class= "btn btn-primary btn-block">Go
+									back</button>
+							</form>
 							</p>
+
 						</div>
 					</div>
 				</div>
