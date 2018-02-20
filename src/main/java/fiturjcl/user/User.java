@@ -108,8 +108,8 @@ public class User {
 		return new ArrayList<>(this.courses);
 	}
 
-	public void addCurso(Course curso) {
-		this.courses.add(curso);
+	public void addCourse(Course course) {
+		this.courses.add(course);
 	}
 
 	public List<String> getRoles() {

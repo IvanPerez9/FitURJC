@@ -6,6 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import fiturjcl.course.Category;
+import fiturjcl.course.CourseRepository;
+
 import org.springframework.ui.Model;
 
 import java.security.Principal;
@@ -14,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -21,6 +27,9 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
 
 	@Autowired
 	private UserService userService;
@@ -33,8 +42,10 @@ public class UserController {
 		if (userComponent.isLoggedUser()) {
 			User userLogged = userRepository.findByNickname(userComponent.getLoggedUser().getNickname());
 			User userPage = userRepository.findByNickname(nickname);
-			if (userLogged == userPage) { // If an user tries to enter another user page
+			if (userLogged == userPage) { // If an user tries to enter another user page. Counts will be given the categories 
+				Map<Category, Long> counts = userPage.getCourses().stream().map(course -> course.getCategory()).collect(Collectors.groupingBy(category -> category, Collectors.counting()));
 				model.addAttribute("userPage", userPage);
+				model.addAttribute("counts", counts);
 				return "user";
 			}
 		}

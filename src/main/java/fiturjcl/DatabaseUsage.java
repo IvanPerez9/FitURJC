@@ -50,12 +50,7 @@ public class DatabaseUsage implements CommandLineRunner {
 	    Course course8 = new Course("Love to dance", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
 	    // MIND CATEGORIES
 	    Course course9 = new Course("BodyBalance", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");
-	    Course course10 = new Course("Yoga", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");
-
-		
-		userRepository.save(user1);
-		userRepository.save(user2);
-		userRepository.save(user3);
+	    Course course10 = new Course("Yoga", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");		
 		
 		courseRepository.save(course1);
 		courseRepository.save(course2);
@@ -69,6 +64,13 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course10);
 		courseRepository.save(course11);
 		courseRepository.save(course12);
+		
+		user2.addCourse(course1);
+		
+		userRepository.save(user1);
+		userRepository.save(user2);
+		userRepository.save(user3);
+		
 
 		
 //		for(int i=1; i<=12; i++) {
@@ -82,6 +84,8 @@ public class DatabaseUsage implements CommandLineRunner {
 		}
 		
 		// Add roles , and string
+		
+		
 		
 	}
 

@@ -202,7 +202,7 @@
 			<div class="container-fluid p-0">
 				<div class="row no-gutters">
 					<div class="col-lg-4 col-sm-6">
-						Map<Category, Long> counts = "user".getCourses().stream().map(course -> course.getCategory()).collect(Collectors.groupingBy(category -> category, Collectors.counting()));
+						{{counts}}
 					</div>
 				</div>
 			</div>
