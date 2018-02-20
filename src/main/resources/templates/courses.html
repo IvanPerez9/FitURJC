@@ -49,13 +49,14 @@
 					<li class="nav-item col-l-7 col-md-9 col-sm-7 col-xs-12 ">
 						<ul class="navbar-nav ml-auto ">
 							<div class="btn-group">
-								<button type="button" class="btn btn-danger">Welcome, William Wallace
+								<button type="button" class="btn btn-danger">Welcome, {{visitor.getName}} {{visitor.getSurname}}
 								</button> 
 								<button type="button" class="btn btn-danger dropdown-toggle"
 									data-toggle="dropdown"></button>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="/users/{nickname}">View profile</a></li>
-									<li><a href="/">Sign off</a></li>
+									<li><a href="/user/{{visitor.getNickname}}">Your User Page</a></li>
+									<li><a href="/user/{nickname}">View profile</a></li>
+									<li><a href="/logout">Sign off</a></li>
 								</ul>
 							</div>
 						</ul>

@@ -28,7 +28,9 @@ public class DatabaseUsage implements CommandLineRunner {
 	@Override 
 	public void run(String... arg0) throws Exception {
 
-		User user1 = new User("William", "Wallace", 25, "contrasena", "ww@gmail.com", "por escocia", "WW", "ROLE_USER");
+		User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "por escocia", "WW", "ROLE_USER");
+		User user2 = new User("Chemi", "G", 99, "pass", "chemi@email.com", "uee", "chemg", "ROLE_USER");
+        User user3 = new User("Cucu", "tras", 99, "pass", "chemi2@email.com", "uee", "cucutras", "ROLE_USER");
 		
 		Course course1 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
 	    Course course2 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
@@ -52,6 +54,8 @@ public class DatabaseUsage implements CommandLineRunner {
 
 		
 		userRepository.save(user1);
+		userRepository.save(user2);
+		userRepository.save(user3);
 		
 		courseRepository.save(course1);
 		courseRepository.save(course2);

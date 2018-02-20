@@ -31,9 +31,8 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	private List<Course> courses = new ArrayList<Course>();
-//	private List<Course> courses;
 
 	public User() {
 	}
@@ -105,13 +104,13 @@ public class User {
 		this.email = email;
 	}
 
-//	public List<Course> getCourses() {
-//		return new ArrayList<>(this.courses);
-//	}
+	public List<Course> getCourses() {
+		return new ArrayList<>(this.courses);
+	}
 
-//	public void addCurso(Course curso) {
-//		this.courses.add(curso);
-//	}
+	public void addCurso(Course curso) {
+		this.courses.add(curso);
+	}
 
 	public List<String> getRoles() {
 		return roles;
@@ -127,8 +126,6 @@ public class User {
 				+ description + "]";
 
 	}
-	
-	
 	
 
 	public User(String name, String surname, int age, String passwordHash, String email, String description,

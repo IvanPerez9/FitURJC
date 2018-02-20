@@ -25,6 +25,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/logout").permitAll();
         http.authorizeRequests().antMatchers("/register").permitAll();
         http.authorizeRequests().antMatchers("/newUser").permitAll();
+        
+        //User Pages
+        http.authorizeRequests().antMatchers("/courses").hasAnyRole("USER");
 
         // Login form
         http.formLogin().loginPage("/login");

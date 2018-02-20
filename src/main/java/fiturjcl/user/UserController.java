@@ -16,42 +16,50 @@ import java.util.Arrays;
 import java.util.Date;
 
 @Controller
-@RequestMapping (value = "/user")
+@RequestMapping(value = "/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping ("/{nickname}")
+	@Autowired
+	private UserComponent userComponent;
+
+	@RequestMapping("/{nickname}")
 	public String userProfile(Model model, @PathVariable String nickname) {
-		
-		User user = userRepository.findByNickname(nickname);
-		model.addAttribute("userPage",user);
-		return "user";
+		if (userComponent.isLoggedUser()) {
+			User userLogged = userRepository.findByNickname(userComponent.getLoggedUser().getNickname());
+			User userPage = userRepository.findByNickname(nickname);
+			if (userLogged == userPage) { // If an user tries to enter another user page
+				model.addAttribute("userPage", userPage);
+				return "user";
+			}
+		}
+		return "redirect:/403.html";
 	}
 
 	@RequestMapping("/")
-	public String userRedirectToProfile(Principal p){
+	public String userRedirectToProfile(Principal p) {
 
-		if(p == null || p.getName().isEmpty())
+		if (p == null || p.getName().isEmpty())
 			throw new AuthorizationServiceException("Al carrer al carrer y al carrer");
 
 		User u = userRepository.findByEmail(p.getName());
 
-		if(u == null){
-		    throw new IllegalArgumentException("User not found");
-        }
+		if (u == null) {
+			throw new IllegalArgumentException("User not found");
+		}
 
-        return "redirect:/user/" + u.getNickname();
+		return "redirect:/user/" + u.getNickname();
 	}
-	
+
 	@RequestMapping("/newUser")
 	public String newUser(Model model, User user, @RequestParam String password) throws ParseException {
 		userService.createNewUser(user, password);
 		return "redirect:/user/{nickname}";
 	}
-	
+
 }
