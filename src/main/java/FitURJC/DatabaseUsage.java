@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 
 import FitURJC.User.User;
 import FitURJC.User.UserRepository;
+import FitURJC.course.Category;
 import FitURJC.course.Course;
 import FitURJC.course.CourseRepository;
 import FitURJC.facilities.Facilities;
@@ -30,18 +31,25 @@ public class DatabaseUsage implements CommandLineRunner {
 
 		User user1 = new User("William", "Wallace", 25, "contrasena", "ww@gmail.com", "por escocia", "WW", "ROLE_USER");
 		
-		Course course1 = new Course("Aerobic", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course2 = new Course("Body Combat", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course3 = new Course("CrossFit", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course4 = new Course("Spinning", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course5 = new Course("Step", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course6 = new Course("Swiming", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course7 = new Course("Dumbbells", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course8 = new Course("Switching circuit", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course9 = new Course("Cardio", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course10 = new Course("Pilates", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course11 = new Course("Yoga", "blablacar", "10:00-11:00", "15:00-16:00");
-		Course course12 = new Course("Training", "blablacar", "10:00-11:00", "15:00-16:00");
+		Course course1 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course2 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course11 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course12 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course13 = new Course("Pro Cycling", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course14 = new Course("Aqua Aerobic", Category.CARDIO, "blablacar", "10:00-11:00", "15:00-16:00");
+	    // STRENGTH CATEGORIES
+	    Course course3 = new Course("BodyPump", Category.STRENGTH, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course4 = new Course("BodyPump", Category.STRENGTH, "blablacar", "10:00-11:00", "15:00-16:00");
+	    // FREESTYLE CATEGORIES
+	    Course course5 = new Course("Bosu", Category.FREESTYLE, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course6 = new Course("Freestyle group training outdoor", Category.FREESTYLE, "blablacar", "10:00-11:00",
+	        "15:00-16:00");
+	    // DANCE CATEGORIES
+	    Course course7 = new Course("Zumba", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course8 = new Course("Love to dance", Category.DANCE, "blablacar", "10:00-11:00", "15:00-16:00");
+	    // MIND CATEGORIES
+	    Course course9 = new Course("BodyBalance", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");
+	    Course course10 = new Course("Yoga", Category.MIND, "blablacar", "10:00-11:00", "15:00-16:00");
 
 		
 		userRepository.save(user1);

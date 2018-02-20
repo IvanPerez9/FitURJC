@@ -9,7 +9,7 @@ $(document).ready(function(){
       .done(function(data) {
       $('#spinner').empty();
         if (!$.trim(data)) {
-          $("#btnMoreFacilities").html("No hay más resultados");
+          $("#btnMoreFacilities").html("No more results available");
         } else {
           $("#listFacilities").append(data);
         }

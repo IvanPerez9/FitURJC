@@ -30,6 +30,7 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
+	private List<Course> courses = new ArrayList<Course>();
 //	private List<Course> courses;
 
 	public User() {
@@ -124,6 +125,9 @@ public class User {
 				+ description + "]";
 
 	}
+	
+	
+	
 
 	public User(String name, String surname, int age, String passwordHash, String email, String description,
 			String nickname, String... roles) {
