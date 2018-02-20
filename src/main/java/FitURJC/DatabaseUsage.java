@@ -24,9 +24,7 @@ public class DatabaseUsage implements CommandLineRunner {
 	@Autowired
 	FacilitiesRepository facilitiesRepository;
 	
-	
-	
-	@Autowired
+
 	@Override 
 	public void run(String... arg0) throws Exception {
 
