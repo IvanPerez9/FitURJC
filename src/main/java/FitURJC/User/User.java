@@ -30,6 +30,7 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
+	@ManyToMany(cascade=CascadeType.ALL)
 	private List<Course> courses = new ArrayList<Course>();
 //	private List<Course> courses;
 
