@@ -41,17 +41,18 @@ public class CourseController {
 	}
 	
 	@RequestMapping (value = "/courses")
-	public String getCoursesPageable (Model model, HttpServletRequest request) {
+	public String userProfile (Model model, HttpServletRequest request) {
 		Page<Course> courses = courseRepository.findAll(new PageRequest(0,6));
 		model.addAttribute("courses", courses);
 		return "courses";
 	}
 	
-	@RequestMapping (value = "/moreFacilities")
+	@RequestMapping (value = "/moreCourses")
 	public String moreAllShelf(Model model, @RequestParam int page) {
 		Page<Course> courses = courseRepository.findAll(new PageRequest(page,6));
 		model.addAttribute("course", courses);
 		return "list_courses";
-	}
+}
+
 	
 }
