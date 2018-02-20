@@ -1,4 +1,4 @@
-package FitURJC.User;
+package fiturjcl.user;
 
 
 import java.io.FileNotFoundException;

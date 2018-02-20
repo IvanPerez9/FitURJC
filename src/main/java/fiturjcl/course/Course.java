@@ -1,4 +1,4 @@
-package FitURJC.course;
+package fiturjcl.course;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +13,7 @@ public class Course {
 	private long id;
 	private String src;
 	private String name;
+	private Category category;
 	private String description;
 	private String schedule1;
 	private String schedule2;
@@ -59,12 +60,47 @@ public class Course {
 	public void setSchedule2(String schedule2) {
 		this.schedule2 = schedule2;
 	}
-	public Course(String name, String description, String schedule1, String schedule2) {
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Course){
+			Course c1 = (Course) obj;
+			return this.category.equals(c1.category);
+		}else{
+			return false;
+		}
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		return (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
+	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", description=" + description + ", schedule1=" + schedule1
+				+ ", schedule2=" + schedule2 + ", category=" + category + "]";
+	}
+
+	public Course(String name, Category category, String description, String schedule1, String schedule2) {
 		super();
 		this.name = name;
+		this.category = category;
 		this.description = description;
 		this.schedule1 = schedule1;
 		this.schedule2 = schedule2;
 	}
+	
 	
 }

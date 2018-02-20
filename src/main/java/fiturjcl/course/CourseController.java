@@ -1,4 +1,4 @@
-package FitURJC.course;
+package fiturjcl.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

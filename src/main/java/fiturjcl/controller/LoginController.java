@@ -1,11 +1,11 @@
-package FitURJC.controller;
+package fiturjcl.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import FitURJC.User.User;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import fiturjcl.user.User;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;

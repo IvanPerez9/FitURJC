@@ -1,11 +1,12 @@
-package FitURJC.User;
+package fiturjcl.user;
 
 import java.util.*;
 
 import javax.persistence.*;
 
-import FitURJC.course.Course;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import fiturjcl.course.Course;
 
 @Entity
 public class User {
@@ -30,6 +31,8 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
+	@ManyToMany(cascade=CascadeType.ALL)
+	private List<Course> courses = new ArrayList<Course>();
 //	private List<Course> courses;
 
 	public User() {
@@ -124,6 +127,9 @@ public class User {
 				+ description + "]";
 
 	}
+	
+	
+	
 
 	public User(String name, String surname, int age, String passwordHash, String email, String description,
 			String nickname, String... roles) {

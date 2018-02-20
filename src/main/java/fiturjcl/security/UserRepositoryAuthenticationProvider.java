@@ -1,4 +1,4 @@
-package FitURJC.security;
+package fiturjcl.security;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import FitURJC.User.*;
+import fiturjcl.user.*;
 
 @Component
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {

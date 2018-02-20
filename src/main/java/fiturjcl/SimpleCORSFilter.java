@@ -1,4 +1,4 @@
-package FitURJC;
+package fiturjcl;
 
 import java.io.IOException;
 import javax.servlet.Filter;
