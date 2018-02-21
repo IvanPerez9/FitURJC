@@ -28,9 +28,11 @@ import fiturjcl.course.Course;
 import fiturjcl.course.CourseRepository;
 import fiturjcl.user.User;
 import fiturjcl.user.UserComponent;
+import fiturjcl.user.UserDto;
 import fiturjcl.user.UserRepository;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.WebRequest;
 
 @Controller
 public class MainController {
@@ -60,7 +62,14 @@ public class MainController {
 			FileCopyUtils.copy(new FileInputStream(file), res.getOutputStream());
 		}
 	}
-
+	/* NUEVO
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String showRegistrationForm(WebRequest request, Model model) {
+	    UserDto userDto = new UserDto();
+	    model.addAttribute("user", userDto);
+	    return "registration";
+	}
+*/
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
 
