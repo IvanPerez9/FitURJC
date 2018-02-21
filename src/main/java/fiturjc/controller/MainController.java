@@ -1,4 +1,4 @@
-package fiturjcl.controller;
+package fiturjc.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,14 +23,13 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import fiturjcl.course.Course;
-import fiturjcl.course.CourseRepository;
-import fiturjcl.user.User;
-import fiturjcl.user.UserComponent;
-import fiturjcl.user.UserRepository;
-
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import fiturjc.course.Course;
+import fiturjc.course.CourseRepository;
+import fiturjc.user.User;
+import fiturjc.user.UserComponent;
+import fiturjc.user.UserRepository;
 
 @Controller
 public class MainController {

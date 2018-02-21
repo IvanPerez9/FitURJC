@@ -1,4 +1,4 @@
-package fiturjcl.security;
+package fiturjc.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -46,6 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Disable CSRF Protection, not compatible with current version of Mustache
         http.csrf().disable();
+        http.cors();
     }
 
     @Override

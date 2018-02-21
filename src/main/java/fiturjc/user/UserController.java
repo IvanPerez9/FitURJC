@@ -1,14 +1,17 @@
-package fiturjcl.user;
+package fiturjc.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import fiturjcl.course.Category;
-import fiturjcl.course.CourseRepository;
+import fiturjc.course.Category;
+import fiturjc.course.CourseRepository;
+import fiturjc.service.UserService;
 
 import org.springframework.ui.Model;
 
@@ -71,6 +74,13 @@ public class UserController {
 	public String newUser(Model model, User user, @RequestParam String password) throws ParseException {
 		userService.createNewUser(user, password);
 		return "redirect:/user/{nickname}";
+	}
+	
+	@PostMapping (value="/imageUpload")
+	public String imgUpload(@RequestParam MultipartFile file) {
+		User u = userComponent.getLoggedUser(); // The user itself 
+		userService.setImage(u,file);
+		return "mi polla" ;
 	}
 
 }

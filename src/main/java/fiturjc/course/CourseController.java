@@ -1,4 +1,4 @@
-package fiturjcl.course;
+package fiturjc.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import fiturjcl.user.User;
-import fiturjcl.user.UserService;
+import fiturjc.service.UserService;
+import fiturjc.user.User;
 
 import java.security.Principal;
 import java.util.List;

@@ -1,8 +1,8 @@
-package fiturjcl.course;
+package fiturjc.course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import fiturjcl.user.User;
+import fiturjc.user.User;
 
 @Repository
 public interface CourseRepository extends JpaRepository <Course, Long>{

@@ -1,4 +1,4 @@
-package fiturjcl.user;
+package fiturjc.service;
 
 
 import java.io.FileNotFoundException;
@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import fiturjc.user.User;
+import fiturjc.user.UserRepository;
+
 
 @Service
 public class UserService {
@@ -20,8 +23,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-//	@Autowired
-//	private urTeamService imageService;
+	@Autowired
+	private ImageService imageService;
 
 	public List<User> getUsers() {
 		return userRepository.findAll();
@@ -50,7 +53,6 @@ public class UserService {
 	public User updateUserInfo(String nickname, User user) {
 		User userToEdit = userRepository.findByNickname(nickname);
 		if (userToEdit != null) {
-			user.setId(userToEdit.getId());
 			user.changePassword(userToEdit.getPasswordHash());
 			userRepository.save(user);
 			return user;
@@ -61,6 +63,13 @@ public class UserService {
 
 	public User findByEmail(String email) {
 		return userRepository.findByEmail(email);
+	}
+
+	public void setImage(User u, MultipartFile file) {
+		if(imageService.isValidImage(file)) {
+			u.setImgSrc(imageService.uploadImage(file));
+			userRepository.save(u);
+		}
 	}
 
 }
