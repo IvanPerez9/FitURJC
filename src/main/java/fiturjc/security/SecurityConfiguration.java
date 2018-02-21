@@ -46,7 +46,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Disable CSRF Protection, not compatible with current version of Mustache
         http.csrf().disable();
-        http.cors();
     }
 
     @Override

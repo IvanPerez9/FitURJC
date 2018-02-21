@@ -1,12 +1,8 @@
 package fiturjc.service;
 
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +21,7 @@ public class UserService {
 
 	@Autowired
 	private ImageService imageService;
+	
 
 	public List<User> getUsers() {
 		return userRepository.findAll();

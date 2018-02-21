@@ -1,8 +1,14 @@
 package fiturjc.user;
 
+import java.security.Principal;
+import java.text.ParseException;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,17 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import fiturjc.course.Category;
 import fiturjc.course.CourseRepository;
 import fiturjc.service.UserService;
-
-import org.springframework.ui.Model;
-
-import java.security.Principal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -80,7 +75,7 @@ public class UserController {
 	public String imgUpload(@RequestParam MultipartFile file) {
 		User u = userComponent.getLoggedUser(); // The user itself 
 		userService.setImage(u,file);
-		return "mi polla" ;
+		return "redirect:/user/" + u.getNickname() ;
 	}
 
 }
