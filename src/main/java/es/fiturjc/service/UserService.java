@@ -110,4 +110,8 @@ public class UserService {
 		userRepository.save(editedUser);
 	}
 
+	public User findByNickname(String nickname) {
+		return userRepository.findByNickname(nickname);
+	}
+
 }

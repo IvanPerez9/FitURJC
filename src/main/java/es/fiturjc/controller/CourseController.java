@@ -22,9 +22,6 @@ public class CourseController {
 	@Autowired
 	private UserService userService;
 
-	// @Autowired
-	// private UserComponent userComponent;
-
 	@RequestMapping(value = "")
 	public String getCourses(Model model, Principal principal) {
 		boolean isLogged = principal != null;
@@ -34,19 +31,5 @@ public class CourseController {
 		model.addAttribute("visitor", visitor);
 		return "courses";
 	}
-
-	// @RequestMapping (value = "/")
-	// public String userProfile (Model model, HttpServletRequest request) {
-	//
-	// return "courses";
-	// }
-
-	//
-	// @RequestMapping (value = "/moreCourses")
-	// public String moreAllShelf(Model model, @RequestParam int page) {
-	// Page<Course> courses = courseRepository.findAll(new PageRequest(page,6));
-	// model.addAttribute("course", courses);
-	// return "list_courses";
-	// }
 
 }

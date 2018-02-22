@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Course {
 
-	@Id 
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String src;
@@ -17,16 +17,23 @@ public class Course {
 	private String description;
 	private String schedule1;
 	private String schedule2;
-	
-	public Course () {}
-	
+
+	protected Course() {
+	}
+
+	public Course(String name, Category category, String description, String schedule1, String schedule2) {
+		super();
+		this.name = name;
+		this.category = category;
+		this.description = description;
+		this.schedule1 = schedule1;
+		this.schedule2 = schedule2;
+	}
+
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	
+
 	public String getSrc() {
 		return src;
 	}
@@ -38,12 +45,15 @@ public class Course {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -51,16 +61,19 @@ public class Course {
 	public String getSchedule1() {
 		return schedule1;
 	}
+
 	public void setSchedule1(String schedule1) {
 		this.schedule1 = schedule1;
 	}
+
 	public String getSchedule2() {
 		return schedule2;
 	}
+
 	public void setSchedule2(String schedule2) {
 		this.schedule2 = schedule2;
 	}
-	
+
 	public Category getCategory() {
 		return category;
 	}
@@ -68,19 +81,16 @@ public class Course {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Course){
+		if (obj instanceof Course) {
 			Course c1 = (Course) obj;
 			return this.category.equals(c1.category);
-		}else{
+		} else {
 			return false;
 		}
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -93,14 +103,4 @@ public class Course {
 				+ ", schedule2=" + schedule2 + ", category=" + category + "]";
 	}
 
-	public Course(String name, Category category, String description, String schedule1, String schedule2) {
-		super();
-		this.name = name;
-		this.category = category;
-		this.description = description;
-		this.schedule1 = schedule1;
-		this.schedule2 = schedule2;
-	}
-	
-	
 }

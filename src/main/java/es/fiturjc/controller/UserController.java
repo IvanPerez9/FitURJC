@@ -18,15 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Category;
 import es.fiturjc.model.User;
-import es.fiturjc.repository.UserRepository;
 import es.fiturjc.service.UserService;
 
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
-
-	@Autowired
-	private UserRepository userRepository;
 
 	@Autowired
 	private UserService userService;
@@ -37,9 +33,9 @@ public class UserController {
 	@RequestMapping("/{nickname}")
 	public String userProfile(Model model, @PathVariable String nickname) {
 		if (userComponent.isLoggedUser()) {
-			User userLogged = userRepository.findByNickname(userComponent.getLoggedUser().getNickname());
-			User userPage = userRepository.findByNickname(nickname);
-			if (userLogged == userPage) { // If an user tries to enter another user page. Counts will be given the
+			User userLogged =userComponent.getLoggedUser();
+			User userPage = userService.findByNickname(nickname);
+			if (userLogged.getNickname().equals(userPage.getNickname())) { // If an user tries to enter another user page. Counts will be given the
 											// categories
 				Map<Category, Long> counts = userPage.getCourses().stream().map(course -> course.getCategory())
 						.collect(Collectors.groupingBy(category -> category, Collectors.counting()));
@@ -57,7 +53,7 @@ public class UserController {
 		if (p == null || p.getName().isEmpty())
 			throw new AuthorizationServiceException("Al carrer al carrer y al carrer");
 
-		User u = userRepository.findByEmail(p.getName());
+		User u = userComponent.getLoggedUser();
 
 		if (u == null) {
 			throw new IllegalArgumentException("User not found");
