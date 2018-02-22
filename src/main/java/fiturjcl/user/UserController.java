@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fiturjcl.controller.UserService;
 import fiturjcl.course.Category;
 import fiturjcl.course.CourseRepository;
 
@@ -67,10 +68,10 @@ public class UserController {
 		return "redirect:/user/" + u.getNickname();
 	}
 
-	@RequestMapping("/newUser")
+	/*@RequestMapping("/newUser")
 	public String newUser(Model model, User user, @RequestParam String password) throws ParseException {
 		userService.createNewUser(user, password);
 		return "redirect:/user/{nickname}";
 	}
-
+	*/
 }

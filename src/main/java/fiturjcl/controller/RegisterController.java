@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fiturjcl.user.User;
 import fiturjcl.user.UserDto;
+import fiturjcl.user.UserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -24,8 +26,10 @@ public class RegisterController {
         
     }*/
 	
+	@Autowired
+	private UserService service;
 	
-	/* NUEVO
+
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public ModelAndView registerUserAccount(
 	  @ModelAttribute("user") @Valid UserDto accountDto, 
@@ -52,5 +56,5 @@ public class RegisterController {
 	    registered = service.registerNewUserAccount(accountDto);
 	    return registered;
 	}
-	*/
+
 }

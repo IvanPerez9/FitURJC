@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fiturjcl.user.User;
-import fiturjcl.user.UserService;
+import fiturjcl.controller.UserService;
 
 import java.security.Principal;
 import java.util.List;

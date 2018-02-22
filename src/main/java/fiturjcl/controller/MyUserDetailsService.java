@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import fiturjcl.user.User;
 import fiturjcl.user.UserRepository;
-/* NUEVO
+
 @Service
 @Transactional
 public class MyUserDetailsService implements UserDetailsService {
@@ -57,4 +57,4 @@ public class MyUserDetailsService implements UserDetailsService {
       throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-}*/
+}
