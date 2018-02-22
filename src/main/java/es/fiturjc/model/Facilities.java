@@ -7,25 +7,25 @@ import javax.persistence.Id;
 
 @Entity
 public class Facilities {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String src;
-	
-	
-	public Facilities() {	
+
+	protected Facilities() {
 	}
-	
+
 	public Facilities(String src) {
 		this.src = src;
 	}
+
 	public String getSrc() {
 		return src;
 	}
+
 	public void setSrc(String src) {
 		this.src = src;
 	}
-
 
 }
