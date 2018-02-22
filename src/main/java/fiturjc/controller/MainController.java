@@ -1,4 +1,4 @@
-package fiturjcl.controller;
+package fiturjc.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD:src/main/java/fiturjcl/controller/MainController.java
 
 import fiturjcl.course.Course;
 import fiturjcl.course.CourseRepository;
@@ -31,8 +32,16 @@ import fiturjcl.user.UserComponent;
 import fiturjcl.user.UserDto;
 import fiturjcl.user.UserRepository;
 
+=======
+>>>>>>> 6477cd8f4c70f77682084d4cbb095401355799a8:src/main/java/fiturjc/controller/MainController.java
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
+
+import fiturjc.course.Course;
+import fiturjc.course.CourseRepository;
+import fiturjc.user.User;
+import fiturjc.user.UserComponent;
+import fiturjc.user.UserRepository;
 
 @Controller
 public class MainController {

@@ -1,4 +1,4 @@
-package fiturjcl.user;
+package fiturjc.user;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

@@ -1,4 +1,4 @@
-package fiturjcl.security;
+package fiturjc.security;
 //package FitURJC.security;
 //
 //import javax.servlet.http.HttpServletRequest;

@@ -37,10 +37,16 @@
 						alt="Profile Image" style='object-fit: contain' />
 					</span> <br>
 					<div>
-						<label for="files" class="btn btn-primary" id="changeImgBtn">Select
-							Image</label> <input id="files" style="visibility: hidden;" type="file">
+						<form class="form-horizontal" name="registration"
+							action="/user/imageUpload" id="formulario" method="post"
+							enctype="multipart/form-data">
+							<div class="col-lg-10">
+								<label>Select your Avatar:	 </label><input type="file"
+									name="file" />
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
 					</div>
-
 				</div>
 				<!-- Section Header End. Col divide into columms-->
 				<div id="profileForm"
@@ -78,8 +84,7 @@
 								<div class="form-group">
 									<label for="age" style="margin-bottom: 10px;">Age:</label> <input
 										style="border-radius: 0px !important" type="text"
-										class="form-control" id="age" placeholder="Age"
-										value="25">
+										class="form-control" id="age" placeholder="Age" value="25">
 								</div>
 								<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
 									<button type="submit" class="btn btn-primary " id="update-btn">
