@@ -67,10 +67,11 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@PostMapping("/ACIONNNN")
-	public String registerUser(@RequestParam String nameUser) {
-		//userService.createNewUser(user, pass);
-		return null;
+	@PostMapping("/register")
+	public String registerUser(@RequestParam String nickname,@RequestParam String name,@RequestParam String surname,@RequestParam String email,@RequestParam String password,@RequestParam String age) {
+		User user = userService.createNewUser(nickname,name,surname,email,password,age);
+		userComponent.setLoggedUser(user);
+		return "redirect:/user/" + user.getNickname();
 	}
 
 	@RequestMapping("/newUser")
