@@ -3,41 +3,31 @@
 
 <head>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link
-	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<title>FitURJC User</title>
+	<link rel="shortcut icon" href="/img/iconLogo.ico" />
 
-<meta charset="utf-8">
-<title>FitURJC User</title>
-<link rel="shortcut icon" href="/img/iconLogo.ico" />
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-<link href="/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-	rel='stylesheet' type='text/css'>
-
-<link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-
-<link href="/css/creative.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/creative.min.css" />
-
-<link rel="stylesheet" href="/css/calendar.css" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link
+		href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+		rel='stylesheet' type='text/css'>
+	
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<link
+		href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+		rel='stylesheet' type='text/css'>
+	
+	<link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+	
+	<link href="/css/creative.css" rel="stylesheet">
+		
+	<link rel="stylesheet" href="/css/calendar.css" />
 
 </head>
 
@@ -46,12 +36,6 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
 		id="mainNav">
 		<div class="container">
-			<!--  button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button-->
 			<a class="navbar-brand js-scroll-trigger" href="#page-top">HOME</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
@@ -68,20 +52,27 @@
 						href="#calendar">Calendar</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#recomendation">Recommendation</a></li>
+					
 					<li class="nav-item">
-						<ul class="navbar-nav ml-auto">
-							<div class="btn-group">
-								<button type="button" class="btn btn-danger">{{userPage.name}}</button>
-								<button type="button" class="btn btn-danger dropdown-toggle"
-									data-toggle="dropdown"></button>
-
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="/user/editUser">Edit
-											profile</a></li>
-									<li><a href="/logout">Sign off</a></li>
-								</ul>
-							</div>
-						</ul>
+						<div class="btn-group">
+							<button type="button" class="btn btn-danger">
+								{{userPage.name}}
+							</button>
+							<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="/user/editUser">
+										Edit profile
+									</a>
+								</li>
+								<li>
+									<a href="/logout">
+										Sign off
+									</a>
+								</li>
+							</ul>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -98,30 +89,35 @@
 						<div class="container">
 							<div class="row" id="card_body">
 								<div class="col-md-3" id="personal_information">
-									<span id="profile_pic"> <img src="{{userPage.imgSrc}}"
-										class="img-circle" alt="Profile Image"
-										style='object-fit: contain' />
-									</span> <br> <span id="user_name">
-										<h4>{{userPage.name}},</h4>
-										<h4>{{userPage.surname}}</h4>
-									</span> <span id="age">
-										<h5>{{userPage.age}} years</h5>
-									</span>
+									<span id="profile_pic"> 
+										<img src="{{userPage.imgSrc}}" class="img-circle" alt="Profile Image" style='object-fit: contain'>
+									</span> 
 								</div>
-								<div class="col-md-8" id="performance_profile">
+								<div class="col-md-9" id="performance_profile">
 									<div id="information_user">
 										<h3>
-											Who am I?
-											<h3>
-				
-												<br>
+											My data
+										</h3>
 									</div>
+									<br> 
+									<span id="user_name">
+										<h4>
+											Name: {{userPage.name}}
+										</h4>
+										<h4>
+											Surname: {{userPage.surname}}
+										</h4>
+									</span> 
+									<span id="age">
+										<h4>
+											Years{{userPage.age}}
+										</h4>
+									</span>
 								</div>
 							</div>
 							<div class="clearfix"></div>
 							<div class="col-md-12 footer"></div>
 						</div>
-					</section>
 					<h1 class="text-uppercase">
 						<strong>Let's see your activity</strong>
 					</h1>
@@ -131,12 +127,13 @@
 	</header>
 
 
-	<section id="calendar">
+	<section class="p-0" id="calendar">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading">Calendar</h2>
-					<hr class="my-4"></hr>
+					<hr class="my-4">
+				
 					<div class="agenda">
 						<div class="table-responsive">
 							<table class="table table-condensed table-bordered">
@@ -190,10 +187,11 @@
 			</div>
 		</div>
 	</section>
+	
 	<section id="recomendation">
 		<div class="col-lg-12 text-center">
 			<h2 class="section-heading">Recommendation</h2>
-			<hr class="my-4"></hr>
+			<hr class="my-4">
 			<div class="container-fluid p-0">
 				<div class="row no-gutters">
 					<div class="col-lg-4 col-sm-6">{{counts}}</div>

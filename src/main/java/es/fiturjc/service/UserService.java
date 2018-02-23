@@ -98,7 +98,7 @@ public class UserService {
 				String newPassword = entry.getValue().get(0);
 				if (!newPassword.isEmpty())
 					editedUser.changePassword(entry.getValue().get(0));
-				break;
+				break; 
 			case "age":
 				String newAge = entry.getValue().get(0);
 				if (!newAge.isEmpty())
