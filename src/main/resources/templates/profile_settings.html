@@ -55,26 +55,26 @@
 					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
 					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 						<h1>FitURJC Account</h1>
-						<form role="form">
+						<form role="form" method="post" action="/user/editedUser" enctype="multipart/form-data">
 							<div class="form-group">
 								<div class="form-group">
 									<label for="name">Name</label> <input
-										style="border-radius: 0px !important" type="name"
+										style="border-radius: 0px !important" type="text" name="name"
 										class="form-control" id="name" value="{{userPage.name}}">
 								</div>
 								<div class="form-group">
 									<label for="name">Surname</label> <input
-										style="border-radius: 0px !important" type="name"
+										style="border-radius: 0px !important" type="text" name="surname"
 										class="form-control" id="surname" value="{{userPage.surname}}">
 								</div>
 								<div class="form-group">
 									<label for="email">Email:</label> <input
-										style="border-radius: 0px !important" type="email"
+										style="border-radius: 0px !important" type="text" name="email"
 										class="form-control" id="email" value="{{userPage.email}}">
 								</div>
 								<div class="form-group">
 									<label for="pwd">New password:</label> <input
-										style="border-radius: 0px !important" type="password"
+										style="border-radius: 0px !important" type="text" name="password"
 										class="form-control" id="pwd" placeholder="Enter new password">
 								</div>
 								<div class="form-group">
@@ -85,21 +85,13 @@
 								</div>
 								<div class="form-group">
 									<label for="age" style="margin-bottom: 10px;">Age:</label> <input
-										style="border-radius: 0px !important" type="text"
+										style="border-radius: 0px !important" type="text" name="age"
 										class="form-control" id="age" placeholder="Age" value="25">
 								</div>
 								<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-									<p class="btn btn-primary " id="cancel-btn">
-										<a href="/User" style="text-decoration: none;">Update</a>
-									</p>
-									<p class="btn btn-primary " id="cancel-btn">
-										<a href="/user" style="text-decoration: none;">Cancel</a>
-									</p>
-									<!--  
-									<form method="get" action="/">
-										<button id="cancel-btn" type="submit" class="btn btn-primary">Cancel</button>
-									</form>
-									-->
+									<button type="submit" class="btn btn-primary">Update</button>
+									<input class="btn btn-primary " id="cancel-btn" type="reset" onclick="location.href='/user/{{userPage.nickname}}';"
+										style="text-decoration: none;" value="Cancel" />
 								</div>
 							</div>
 						</form>
