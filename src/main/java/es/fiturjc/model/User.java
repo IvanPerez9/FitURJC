@@ -126,7 +126,7 @@ public class User {
 		this.age = age;
 		this.nickname = nickname;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
-		this.imgSrc = "default.png";
+		this.imgSrc = "/uploads/img/default";
 	}
 
 }

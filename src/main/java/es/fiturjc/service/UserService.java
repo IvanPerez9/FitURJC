@@ -114,4 +114,12 @@ public class UserService {
 		return userRepository.findByNickname(nickname);
 	}
 
+	public User createNewUser(String nickname, String name, String surname, String email, String password, String age) {
+		User user = new User(name,surname,Integer.parseInt(age),password,email, nickname,"ROLE_USER");
+		userRepository.save(user);
+		return user;
+		
+	//	User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
+	}
+
 }
