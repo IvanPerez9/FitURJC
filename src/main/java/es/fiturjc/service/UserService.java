@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.multipart.MultipartFile;
 
+import es.fiturjc.model.Course;
 import es.fiturjc.model.User;
 import es.fiturjc.repository.UserRepository;
 
@@ -120,6 +121,13 @@ public class UserService {
 		return user;
 		
 	//	User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
+	}
+
+	public User addCourse(User user, Course course) {
+		user.addCourse(course);
+		userRepository.save(user);
+		return user;
+		
 	}
 
 }

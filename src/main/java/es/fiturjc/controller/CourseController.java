@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.User;
 import es.fiturjc.service.CourseService;
@@ -21,6 +24,8 @@ public class CourseController {
 	private CourseService courseService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserComponent userComponent;
 
 	@RequestMapping(value = "")
 	public String getCourses(Model model, Principal principal) {
@@ -32,4 +37,12 @@ public class CourseController {
 		return "courses";
 	}
 
+	@PostMapping("/{id}/add")
+	public String addCourse(Model model, @PathVariable long id) {
+		Course course = courseService.findCourse(id);
+		User user =  userComponent.getLoggedUser();
+		userService.addCourse(user,course);
+		return "redirect:/courses";
+	}
+	
 }

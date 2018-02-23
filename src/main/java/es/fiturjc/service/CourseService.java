@@ -23,6 +23,10 @@ public class CourseService {
 		return courseRepository.findAll(new PageRequest(0, 6));
 
 	}
+
+	public Course findCourse(long id) {
+		return courseRepository.findOne(id);
+	}
 	
 
 }
