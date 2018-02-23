@@ -23,33 +23,36 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-<!— Bootstrap core CSS —>
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!— Custom fonts for this template —>
+
 <link href="/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
 	rel='stylesheet' type='text/css'>
 
-<!— Plugin CSS —>
 <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-<!— Custom styles for this template —>
 <link href="/css/creative.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/creative.min.css" />
+
 <link rel="stylesheet" href="/css/calendar.css" />
 
 </head>
 
 <body id="page-top">
 
-	<!-- Navigation  class="nav-link js-scroll-trigger"-->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
 		id="mainNav">
 		<div class="container">
+			<!--  button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button-->
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">HOME</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -57,17 +60,14 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<!-- Navigation -->
-			<div class="collapse navbar-collapse mecagoentodo"
-				id="navbarResponsive">
+			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/courses">Courses</a> <!-- poner curso.html cuando este creado -->
-					</li>
+						href="/courses">Courses</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#calendar">Calendar</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#recomendation">Recomendation</a></li>
+						href="#recomendation">Recommendation</a></li>
 					<li class="nav-item">
 						<ul class="navbar-nav ml-auto">
 							<div class="btn-group">
@@ -92,11 +92,9 @@
 		<div class="container my-auto">
 			<div class="row">
 				<div class="col-lg-10 mx-auto">
-					<section class="hero">
-						<header>
-							<h1>Your fitURJC profile</h1>
-							<br>
-						</header>
+					<h1 class="text-uppercase">
+						<img src="/img/Logo2.png" alt="FitURJC-Logo">
+					</h1>
 						<div class="container">
 							<div class="row" id="card_body">
 								<div class="col-md-3" id="personal_information">
@@ -115,7 +113,7 @@
 										<h3>
 											Who am I?
 											<h3>
-												<p>{{userPage.description}}</p>
+				
 												<br>
 									</div>
 								</div>
@@ -150,7 +148,6 @@
 									</tr>
 								</thead>
 								<tbody>
-									<!-- Single event in a single day -->
 									<tr>
 										<td class="agenda-date" class="active" rowspan="1">
 											<div class="dayofmonth">26</div>
@@ -162,8 +159,6 @@
 											<div class="agenda-event">Aerobic</div>
 										</td>
 									</tr>
-
-									<!-- Multiple events in a single day (note the rowspan) -->
 									<tr>
 										<td class="agenda-date" class="active" rowspan="3">
 											<div class="dayofmonth">24</div>
@@ -194,7 +189,6 @@
 				</div>
 			</div>
 		</div>
-		</div>
 	</section>
 	<section id="recomendation">
 		<div class="col-lg-12 text-center">
@@ -211,16 +205,13 @@
 		<div class="container"></div>
 	</section>
 
-	<!— Bootstrap core JavaScript —>
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!— Plugin JavaScript —>
 	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
 	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-	<!— Custom scripts for this template —>
 	<script src="js/creative.min.js"></script>
 
 </body>

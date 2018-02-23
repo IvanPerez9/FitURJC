@@ -24,7 +24,6 @@ public class User {
 	private String email;
 
 	private int age;
-	private String description;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
@@ -74,14 +73,6 @@ public class User {
 		this.age = age;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getNickname() {
 		return nickname;
 	}
@@ -120,13 +111,12 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + ", description="
-				+ description + "]";
+		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + " ]";
 
 	}
 	
 
-	public User(String name, String surname, int age, String passwordHash, String email, String description,
+	public User(String name, String surname, int age, String passwordHash, String email,
 			String nickname, String... roles) {
 		super();
 		this.name = name;
@@ -134,7 +124,6 @@ public class User {
 		this.passwordHash = new BCryptPasswordEncoder().encode(passwordHash);
 		this.email = email;
 		this.age = age;
-		this.description = description;
 		this.nickname = nickname;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.imgSrc = "default.png";

@@ -27,11 +27,11 @@ public class DatabaseUsage implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 
-		User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "por escocia", "WW", "ROLE_USER");
+		User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
 		user1.setImgSrc("/uploads/img/default");
-		User user2 = new User("Chemi", "G", 99, "pass", "chemi@email.com", "uee", "chemg", "ROLE_USER");
+		User user2 = new User("Chemi", "G", 99, "pass", "chemi@email.com", "chemg", "ROLE_USER");
 		user2.setImgSrc("/uploads/img/default");
-		User user3 = new User("Cucu", "tras", 99, "pass", "chemi2@email.com", "uee", "cucutras", "ROLE_USER");
+		User user3 = new User("Cucu", "tras", 99, "pass", "chemi2@email.com", "cucutras", "ROLE_USER");
 		user3.setImgSrc("/uploads/img/default");
 		Course course1 = new Course("Aerobic", Category.CARDIO, "Turn your heartbeat up while you dance to the latest music hits! A real fat burning session", "10:00-11:00", "15:00-16:00");
 	    Course course2 = new Course("Body Combat", Category.CARDIO, "Release adrenaline and gain strength with this Japanese sport. The king of all contact sports", "10:00-11:00", "15:00-16:00");
