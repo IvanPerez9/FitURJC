@@ -257,6 +257,10 @@ a, a:hover{
     font-weight: 500;
 }
 
+.hidden{
+	visibility: hidden;
+}
+
 /* Add activity */
 #description-activity {
     height: 150px;

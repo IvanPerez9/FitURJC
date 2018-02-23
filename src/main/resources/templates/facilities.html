@@ -24,20 +24,22 @@
 
 <body>
 	<section class="hero">
-	<div class="container">
-		<div class="row" id="listFacilities">
+		<div class="container">
+			<div class="row" id="listFacilities">
 				{{#facilities}} {{> facility_template}} {{/facilities}} <br>
-		</div>
-		<br>
-		<div class="styleMoreFacilities">
-			<div id="spinner"></div>
-			<p class="text-center">
-				<button id="btnMoreFacilities" type="button" class="btn btn-primary">See more</button>
+			</div>
+			<br>
+			<div class="styleMoreFacilities">
+				<div id="spinner"></div>
+				<p class="text-center">
+					<button id="btnMoreFacilities" type="button"
+						class="btn btn-primary">See more</button>
 				<form method="get" action="/">
-					<button id="goBack" type="submit" class="btn btn-warning">Go back</button>
+					<button id="goBack" type="submit" class="btn btn-warning">Go
+						back</button>
 				</form>
+			</div>
 		</div>
-	</div>
 	</section>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
