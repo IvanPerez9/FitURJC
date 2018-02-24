@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
@@ -38,8 +39,9 @@ public class CourseController {
 	}
 
 	@PostMapping("/{id}/add")
-	public String addCourse(Model model, @PathVariable long id) {
+	public String addCourse(Model model, @PathVariable long id, @RequestParam String idSchedule) {
 		Course course = courseService.findCourse(id);
+		System.out.println(idSchedule);
 		User user =  userComponent.getLoggedUser();
 		userService.addCourse(user,course);
 		return "redirect:/courses";

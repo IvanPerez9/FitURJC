@@ -1,9 +1,19 @@
 package es.fiturjc.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Course {
@@ -15,19 +25,20 @@ public class Course {
 	private String name;
 	private Category category;
 	private String description;
-	private String schedule1;
-	private String schedule2;
-
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+	private List<Schedule> schedules = new ArrayList<Schedule>();
+	
 	protected Course() {
 	}
 
-	public Course(String name, Category category, String description, String schedule1, String schedule2) {
+	public Course(String name, Category category, String description, List<Schedule> schedules) {
 		super();
 		this.name = name;
 		this.category = category;
 		this.description = description;
-		this.schedule1 = schedule1;
-		this.schedule2 = schedule2;
+		this.schedules = schedules;
 	}
 
 	public long getId() {
@@ -58,20 +69,17 @@ public class Course {
 		this.description = description;
 	}
 
-	public String getSchedule1() {
-		return schedule1;
+
+	public void addSchedule (Schedule schedule) {
+		this.schedules.add(schedule);
 	}
 
-	public void setSchedule1(String schedule1) {
-		this.schedule1 = schedule1;
+	public List<Schedule> getSchedules() {
+		return schedules;
 	}
 
-	public String getSchedule2() {
-		return schedule2;
-	}
-
-	public void setSchedule2(String schedule2) {
-		this.schedule2 = schedule2;
+	public void setSchedules(List<Schedule> schedules) {
+		this.schedules = schedules;
 	}
 
 	public Category getCategory() {
@@ -99,8 +107,8 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", name=" + name + ", description=" + description + ", schedule1=" + schedule1
-				+ ", schedule2=" + schedule2 + ", category=" + category + "]";
+		return "Course [id=" + id + ", src=" + src + ", name=" + name + ", category=" + category + ", description="
+				+ description + ", schedules=" + schedules + "]";
 	}
 
 }
