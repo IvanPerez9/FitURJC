@@ -2,21 +2,14 @@
 	<div class="card">
 		<img class="card-img-top" src="/img/courses/{{name}}.jpg"
 			alt="{{name}}">
-		<div class="card-block">
-			<hr>
-			<h4 class="card-title">{{name}}</h4>
-			<p class="card-text">{{description}}</p>
-		</div>
 		<div class="card-footer">
-		
-			<form action="/courses/{{id}}/add" method="post">
-			{{#schedules}}
-				<textarea class="btn btn-warning btn-block form-control" id="idSchedule" name= "idSchedule"
-					value="{{id}}" >{{schedule}}</textarea>
-					<input type="submit" class="btn btn-warning btn-block" value="subscribe" />	
-					<hr>
-			{{/schedules}}
-			</form>
-		</div>
+		 {{#schedules}}
+            <form action="/courses/{{id}}/{{idSchedule}}/add" method="post">
+                <input class="btn btn-warning btn-block form-control"
+                    id="idSchedule" name="idSchedule" value="{{schedule}}" /> <input
+                    type="submit" class="btn btn-warning btn-block" value="subscribe" />
+            </form>    <hr>
+             {{/schedules}}
+         </div>
 	</div>
 </div>

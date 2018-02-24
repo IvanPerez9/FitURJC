@@ -11,7 +11,7 @@ public class Schedule {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long idSchedule;
 	private String schedule;
 	
 	protected Schedule() {

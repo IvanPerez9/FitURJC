@@ -19,22 +19,20 @@ public class AdminController {
 	@Autowired
 	private UserRepository usersRepository;
 	
-	@RequestMapping("")
+	@RequestMapping("13")
 	public String editProfile(Model model) {
-		return "admin";
+		return "das";
 	}
 	
-	@RequestMapping("")
+	@RequestMapping("31")
 	public String registeredUsers() {
-		return "admin-controlUsers";
+		return "adsds";
 	}
 	
-	@RequestMapping("")
+	@RequestMapping("2")
 	public String passwordChange() {
-		return "admin-passwordChange";
+		return "adasda";
 	}
-	
-	
 	@RequestMapping("/{id}")
 	public String registeredCourses(Model model,@PathVariable long id) throws Exception{
 		List<Course> courses=usersRepository.findOne(id).getCourses();		

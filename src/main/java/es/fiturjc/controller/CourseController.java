@@ -38,8 +38,9 @@ public class CourseController {
 		return "courses";
 	}
 
-	@PostMapping("/{id}/add")
-	public String addCourse(Model model, @PathVariable long id, @RequestParam String idSchedule) {
+	
+	@PostMapping("/{id}/{idSchedule}/add")
+	public String addCourse(Model model, @PathVariable long id, @PathVariable String idSchedule) {
 		Course course = courseService.findCourse(id);
 		System.out.println(idSchedule);
 		User user =  userComponent.getLoggedUser();
