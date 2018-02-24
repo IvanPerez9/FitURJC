@@ -41,10 +41,11 @@ public class CourseController {
 	
 	@PostMapping("/{id}/{idSchedule}/add")
 	public String addCourse(Model model, @PathVariable long id, @PathVariable String idSchedule) {
+		
 		Course course = courseService.findCourse(id);
 		System.out.println(idSchedule);
 		User user =  userComponent.getLoggedUser();
-		userService.addCourse(user,course);
+		userService.addCourseWithSchedule(user,course,idSchedule);
 		return "redirect:/courses";
 	}
 	
