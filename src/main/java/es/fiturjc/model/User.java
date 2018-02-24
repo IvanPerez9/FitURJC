@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
@@ -28,7 +30,9 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	@ManyToMany
+//	@LazyCollection
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private List<Course> courses = new ArrayList<Course>();
 
 	public User() {
