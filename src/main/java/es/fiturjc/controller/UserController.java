@@ -1,7 +1,10 @@
 package es.fiturjc.controller;
 
 import java.security.Principal;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Category;
+import es.fiturjc.model.Course;
 import es.fiturjc.model.User;
+import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
 
 @Controller
@@ -29,18 +34,33 @@ public class UserController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	@Autowired
+    private CourseService courseService;
 
 	@RequestMapping("/{nickname}")
 	public String userProfile(Model model, @PathVariable String nickname) {
 		if (userComponent.isLoggedUser()) {
+			courseService.getAllCourses().size();
 			User userLogged =userComponent.getLoggedUser();
 			User userPage = userService.findByNickname(nickname);
 			if (userLogged.getNickname().equals(userPage.getNickname())) { // If an user tries to enter another user page. Counts will be given the
 											// categories
 				Map<Category, Long> counts = userPage.getCourses().stream().map(course -> course.getCategory())
 						.collect(Collectors.groupingBy(category -> category, Collectors.counting()));
+				Set<Course> recomendations = new HashSet<Course>();
+                List<Course> userCourses = courseService.getAllCourses();
+                for (Course course : courseService.getAllCourses()) {
+                    Long number = counts.get(course.getCategory());
+                    if(number != null){
+                        if (userCourses.size()>=number) {
+                            recomendations.add(course);
+                        }
+                    }
+                }
+                recomendations.removeAll(userCourses);
 				model.addAttribute("userPage", userPage);
-				model.addAttribute("counts", counts);
+				model.addAttribute("recomendations", recomendations);
 				return "user";
 			}
 		}
