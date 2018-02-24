@@ -71,3 +71,12 @@
 
  
 * __[Trello's Board](https://trello.com/b/2hRp8ruG/fiturjcdaw)__
+
+* __[Configuration Instructions]__
+  * Description: Spring Framework provides several data access methods, we use data access via JPA to a MySQL database using Hibernate.
+First we create the project, modifying the pom.xml file so that it contains the dependencies and configurations for JPA and MySQL.
+
+To indicate to Spring how to access the Database, we need to create the configuration file: application.properties located in src / main / resources.
+
+We have to create a JPA entity, making a relationship with a relational database. Using the CrudRepository interface we can delete, create, edit or search elements in our data set.
+We add the main class in the MySQL database.
