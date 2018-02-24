@@ -29,31 +29,31 @@
                     <li>
                         <a href="admin.html">
                             <i class="fa fa-user-circle-o"></i>
-                            <p>Editar perfil</p>
+                            <p>Edit profile</p>
                         </a>
                     </li>
                     <li>
                         <a href="admin-passwordChange.html">
                             <i class="fa fa-key"></i>
-                            <p>Cambiar contraseña</p>
+                            <p>Change password</p>
                         </a>
                     </li>
                     <li>
                         <a href="admin-controlUsers.html">
                             <i class="fa fa-user"></i>
-                            <p>Gestión de usuarios</p>
+                            <p>User management</p>
                         </a>
                     </li>
                     <li>
                         <a href="admin-controlActivities.html">
                             <i class="fa fa-users"></i>
-                            <p>Gestión de cursos</p>
+                            <p>Course management</p>
                         </a>
                     </li>
                     <li>
                         <a href="admin-graphics.html">
                             <i class="fa fa-flag"></i>
-                            <p>Graficos</p>
+                            <p>Graphics</p>
                         </a>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><span class="fa fa-reply"></span> Volver</a>
+                        <a class="navbar-brand" href="#"><span class="fa fa-reply"></span> Back</a>
                     </div>
                 </div>
             </nav>
@@ -80,29 +80,12 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">Eventos</h4>
+                                    <h4 class="title">Activities</h4>
                                 </div>
                                 <div class="content">
-                                    <ul>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Aerobic </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Body Combat </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Crossfit </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Spinning </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Step </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Zumba </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Aerobic </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Body Combat </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Crossfit </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Spinning </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Step </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Zumba </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Aerobic </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Body Combat </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Crossfit </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Spinning </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Step </li>
-                                        <li> <i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> Zumba </li>
-                                    </ul>
+                                    {{#courses}}
+                                    	<i class="fa fa-pencil-square-o"></i> <i class="fa fa-times"></i> {{name}}
+                                    {{/courses}}                                    
                                 </div>
                             </div>
                         </div>
@@ -128,34 +111,33 @@
             <li>
                 <a href="admin.html">
                     <i class="fa fa-user-circle-o"></i>
-                    <p>Editar perfil</p>
+                    <p>Edit profile</p>
                 </a>
             </li>
             <li>
                 <a href="admin-passwordChange.html">
                     <i class="fa fa-key"></i>
-                    <p>Cambiar contraseña</p>
+                    <p>Change password</p>
                 </a>
             </li>
             <li>
                 <a href="admin-controlUsers.html">
                     <i class="fa fa-user"></i>
-                    <p>Gestión de usuarios</p>
+                    <p>User management</p>
                 </a>
             </li>
             <li>
                 <a href="admin-controlActivities.html">
                     <i class="fa fa-users"></i>
-                    <p>Gestión de cursos</p>
+                    <p>Course management</p>
                 </a>
             </li>
             <li>
                 <a href="admin-graphics.html">
                     <i class="fa fa-flag"></i>
-                    <p>Graficos</p>
+                    <p>Graphics</p>
                 </a>
             </li>
-        </ul>
         </ul>
     </div>
 </div>
