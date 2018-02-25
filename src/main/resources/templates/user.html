@@ -130,9 +130,17 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading">Calendar</h2>
-					<hr class="my-4"></hr>
-					<div class="agenda">
-						<div class="table-responsive">
+					<hr class="my-4">
+
+                    {{#schedules}}
+                        Time: {{schedule}}
+                        Course Name: {{course.name}}
+                    <hr>
+                    {{/schedules}}
+
+
+					<!--<div class="agenda">
+						<!--<div class="table-responsive">
 							<table class="table table-condensed table-bordered">
 								<thead>
 									<tr>
@@ -178,7 +186,7 @@
 									</tr>
 								</tbody>
 							</table>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
