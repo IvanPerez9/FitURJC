@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import es.fiturjc.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,9 @@ public class UserController {
 	@Autowired
     private CourseService courseService;
 
+	@Autowired
+	private ScheduleRepository scheduleRepository;
+
 	@RequestMapping("/profile")
 	public String userProfile(Model model) {
 
@@ -48,6 +52,7 @@ public class UserController {
 
 		model.addAttribute("userPage", userLogged);
 		model.addAttribute("recomendations", userService.getRecommendedCoursesForUser(userLogged));
+		model.addAttribute("schedules", scheduleRepository.findByListUsersContains(userLogged));
 		return "user";
 	}
 

@@ -72,12 +72,11 @@ a, a:hover{
     background-color: #fff;
 }
 .btn{
-    -webkit-transition: 350ms ease all;
-    transition: 350ms ease all;
-    text-transform: uppercase;
-    font-weight: 500;
-    padding: .6rem 1.5rem;
-    cursor: pointer;
+    font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 300px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 .btn:hover, .btn:focus {
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.15);
