@@ -3,6 +3,7 @@ package es.fiturjc.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -92,24 +93,21 @@ public class Course {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Course) {
-			Course c1 = (Course) obj;
-			return this.category.equals(c1.category);
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
-	}
-
-	@Override
 	public String toString() {
 		return "Course [id=" + id + ", src=" + src + ", name=" + name + ", category=" + category + ", description="
 				+ description + ", schedules=" + schedules + "]";
 	}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return id == course.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

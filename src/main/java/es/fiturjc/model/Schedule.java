@@ -1,8 +1,7 @@
 package es.fiturjc.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Schedule {
@@ -14,7 +13,7 @@ public class Schedule {
 	private String schedule;
 
 	@ManyToMany
-	private List<User> listUsers = new ArrayList<>();
+	private Set<User> listUsers = new HashSet<>();
 
 
 
@@ -56,5 +55,19 @@ public class Schedule {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Schedule schedule = (Schedule) o;
+        return idSchedule == schedule.idSchedule;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(idSchedule);
     }
 }

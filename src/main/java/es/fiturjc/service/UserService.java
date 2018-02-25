@@ -123,8 +123,8 @@ public class UserService {
 		userRepository.save(editedUser);
 	}
 
-	public User findByNickname(String nickname) {
-		return userRepository.findByNickname(nickname);
+	public User findByNickname(User u) {
+		return userRepository.findByNickname(u.getNickname());
 	}
 
 	public User createNewUser(String nickname, String name, String surname, String email, String password, String age) {
@@ -135,38 +135,36 @@ public class UserService {
 	//	User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
 	}
 
-	public User addUserToSchedule(User user, Course course,Schedule schedule) {
-		schedule.annadirUsuario(user);
-		userRepository.save(user);
-		return user;
-	}
-	
-	/*public User addCourse(User user, Course course) {
-		user.addCourse(course);
-		userRepository.save(user);
-		return user;
-		
-	}*/
+	// MAL MAL MAL
+//	public User addUserToSchedule(User user, Course course, Schedule schedule) {
+//		schedule.annadirUsuario(user);
+//		userRepository.save(user);
+//		return user;
+//	}
 
     public Collection<Course> getRecommendedCoursesForUser(User u){
-       Optional<Entry<Category, Long>> favouriteCategory = getCourses(u).stream().map(course -> course.getCategory())
+       Optional<Entry<Category, Long>> favouriteCategory = getCourses(u).stream().map(Course::getCategory)
                .collect(Collectors.groupingBy(category -> category, Collectors.counting()))
                .entrySet().stream().max(Comparator.comparingLong(Entry::getValue));
 
        if(!favouriteCategory.isPresent()){
-           return new ArrayList<>();
+           return null;
        }
 
+       Set<Course> coursesEnrrolled = new HashSet<>(this.getCourses(u));
+
         return courseRepository.findByCategory(favouriteCategory.get().getKey())
-                .stream().filter(c -> !isEnrolledInCourse(u, c)).collect(Collectors.toList());
+                .stream()
+                .filter(c -> !coursesEnrrolled.contains(c))
+                .collect(Collectors.toList());
     }
 
     public List<Course> getCourses(User u){
-        return scheduleRepository.findByListUsersContains(u).stream().map(Schedule::getCourse).collect(Collectors.toList());
+        return scheduleRepository
+                .findByListUsersContains(u)
+                .stream().map(Schedule::getCourse)
+                .collect(Collectors.toList());
     }
 
-    public boolean isEnrolledInCourse(User u, Course c){
-        return getCourses(u).contains(c);
-    }
 
 }
