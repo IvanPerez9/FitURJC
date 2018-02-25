@@ -1,13 +1,12 @@
 <div class="col-md-4">
 	<div class="card">
-		<img class="card-img-top" src="/img/courses/{{name}}.jpg"
-			alt="{{name}}">
+		<img class="card-img-top" src="/img/courses/{{name}}.jpg" alt="{{name}}">
 		<div class="card-footer">
-		 {{#schedules}}
-                <a href="courses/{{idSchedule}}/add" class="btn btn-warning btn-block"
-                    id="idSchedule">{{schedule}}</a> <!--input
-                    type="submit" class="btn btn-warning btn-block" value="subscribe" /-->
-			{{/schedules}}
+		{{#schedules}}
+        		<a href="courses/{{idSchedule}}/add" class="btn btn-warning btn-block" id="idSchedule">
+        			{{schedule}}
+        		</a>
+		{{/schedules}}
          </div>
 	</div>
 </div>
