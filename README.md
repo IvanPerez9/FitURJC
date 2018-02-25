@@ -71,6 +71,12 @@
 	
 * __Class Diagram:__
     ![Class Diagram](FitURJC/img/captures/ClassDiagram.png)
+	
+* __Template Diagram:__
+    ![Template Diagram](FitURJC/img/captures/TemplateDiagram.png)
+	
+* __Data Base Model:__
+    ![EER Data Base Model](FitURJC/img/captures/EERModelDataBase.png)
     
 * __[Configuration Instructions]__
   * Description: Spring Framework provides several data access methods, we use data access via JPA to a MySQL database using    Hibernate.

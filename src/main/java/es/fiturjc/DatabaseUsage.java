@@ -49,7 +49,7 @@ public class DatabaseUsage implements CommandLineRunner {
 		List<Schedule> scheduleList = new ArrayList<Schedule>();
 		List<Schedule> scheduleList2 = new ArrayList<Schedule>();
 		
-		
+		// Add schedule to a schedule list. Fix with the schedule part on users 
 		scheduleList.add(schedule1);
 		scheduleList.add(schedule2);
 	//	scheduleList.add(schedule3);
