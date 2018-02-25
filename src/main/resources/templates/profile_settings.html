@@ -51,7 +51,7 @@
 					class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
 					<div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
 						<h1>FitURJC Account</h1>
-						<form role="form" method="post" action="/user/editedUser" enctype="multipart/form-data">
+						<form role="form" method="post" action="/user/profile" enctype="multipart/form-data">
 							<div class="form-group">
 								<div class="form-group">
 									<label for="name">Name</label> <input
@@ -86,7 +86,7 @@
 								</div>
 								<div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
 									<button type="submit" class="btn btn-primary">Update</button>
-									<input class="btn btn-primary " id="cancel-btn" type="reset" onclick="location.href='/user/{{userPage.nickname}}';"
+									<input class="btn btn-primary " id="cancel-btn" type="reset" onclick="location.href='/user/profile';"
 										style="text-decoration: none;" value="Cancel" />
 								</div>
 							</div>
