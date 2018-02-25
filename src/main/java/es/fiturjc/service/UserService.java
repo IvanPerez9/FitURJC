@@ -1,15 +1,17 @@
 package es.fiturjc.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
+
+import es.fiturjc.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.multipart.MultipartFile;
 
+import es.fiturjc.repository.CourseRepository;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
@@ -27,6 +29,11 @@ public class UserService {
 
 	@Autowired
 	private ImageService imageService;
+
+	@Autowired
+	private CourseRepository courseRepository;
+
+	private static final long MAXIMUM_RECOMMENDED_COURSES = 3;
 
 	public List<User> getUsers() {
 		return userRepository.findAll();
@@ -128,19 +135,38 @@ public class UserService {
 	//	User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
 	}
 
-	public User addCourseWithSchedule(User user, Course course,String idSchedule) {
-		Schedule schedule1 = scheduleRepository.getOne(Long.parseLong(idSchedule));
-		user.addCourse(course);
+	public User addUserToSchedule(User user, Course course,Schedule schedule) {
+		schedule.annadirUsuario(user);
 		userRepository.save(user);
 		return user;
-		
 	}
 	
-	public User addCourse(User user, Course course) {
+	/*public User addCourse(User user, Course course) {
 		user.addCourse(course);
 		userRepository.save(user);
 		return user;
 		
-	}
+	}*/
+
+    public Collection<Course> getRecommendedCoursesForUser(User u){
+       Optional<Entry<Category, Long>> favouriteCategory = getCourses(u).stream().map(course -> course.getCategory())
+               .collect(Collectors.groupingBy(category -> category, Collectors.counting()))
+               .entrySet().stream().max(Comparator.comparingLong(Entry::getValue));
+
+       if(!favouriteCategory.isPresent()){
+           return new ArrayList<>();
+       }
+
+        return courseRepository.findByCategory(favouriteCategory.get().getKey())
+                .stream().filter(c -> !isEnrolledInCourse(u, c)).collect(Collectors.toList());
+    }
+
+    public List<Course> getCourses(User u){
+        return scheduleRepository.findByListUsersContains(u).stream().map(Schedule::getCourse).collect(Collectors.toList());
+    }
+
+    public boolean isEnrolledInCourse(User u, Course c){
+        return getCourses(u).contains(c);
+    }
 
 }

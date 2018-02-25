@@ -3,13 +3,12 @@ package es.fiturjc.controller;
 import java.security.Principal;
 import java.util.List;
 
+import es.fiturjc.model.Schedule;
+import es.fiturjc.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
@@ -28,6 +27,9 @@ public class CourseController {
 	@Autowired
 	private UserComponent userComponent;
 
+	@Autowired
+	ScheduleRepository scheduleRepository;
+
 	@RequestMapping(value = "")
 	public String getCourses(Model model, Principal principal) {
 		boolean isLogged = principal != null;
@@ -39,14 +41,25 @@ public class CourseController {
 	}
 
 	
-	@PostMapping("/{id}/{idSchedule}/add")
-	public String addCourse(Model model, @PathVariable long id, @PathVariable String idSchedule) {
-		
-		Course course = courseService.findCourse(id);
-		System.out.println(idSchedule);
+	@GetMapping("/{idSchedule}/add")
+	public String addCourse(@PathVariable long idSchedule) {
+
+		if(!userComponent.isLoggedUser())
+			return "redirect:/403.html";
+
 		User user =  userComponent.getLoggedUser();
-		userService.addCourseWithSchedule(user,course,idSchedule);
-		return "redirect:/courses";
+
+		Schedule sch = scheduleRepository.findOne(idSchedule);
+		if(sch == null)
+			return "redirect:/404.html";
+
+		sch.annadirUsuario(user);
+
+		// Esta en CascadeAll
+		scheduleRepository.save(sch);
+
+		return "redirect:/user/profile";
+
 	}
 	
 }

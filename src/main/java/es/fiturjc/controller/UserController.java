@@ -38,38 +38,22 @@ public class UserController {
 	@Autowired
     private CourseService courseService;
 
-	@RequestMapping("/{nickname}")
-	public String userProfile(Model model, @PathVariable String nickname) {
-		if (userComponent.isLoggedUser()) {
-			courseService.getAllCourses().size();
-			User userLogged =userComponent.getLoggedUser();
-			User userPage = userService.findByNickname(nickname);
-			if (userLogged.getNickname().equals(userPage.getNickname())) { // If an user tries to enter another user page. Counts will be given the
-											// categories
-				Map<Category, Long> counts = userPage.getCourses().stream().map(course -> course.getCategory())
-						.collect(Collectors.groupingBy(category -> category, Collectors.counting()));
-				Set<Course> recomendations = new HashSet<Course>();
-                List<Course> userCourses = courseService.getAllCourses();
-                for (Course course : courseService.getAllCourses()) {
-                    Long number = counts.get(course.getCategory());
-                    if(number != null){
-                        if (userCourses.size()>=number) {
-                            recomendations.add(course);
-                        }
-                    }
-                }
-                recomendations.removeAll(userCourses);
-				model.addAttribute("userPage", userPage);
-				model.addAttribute("recomendations", recomendations);
-				return "user";
-			}
+	@RequestMapping("/profile")
+	public String userProfile(Model model) {
+
+		if(!userComponent.isLoggedUser()){
+			return "redirect:/403.html";
 		}
-		return "redirect:/403.html";
+		User userLogged = userComponent.getLoggedUser();
+
+		model.addAttribute("userPage", userLogged);
+		model.addAttribute("recomendations", userService.getRecommendedCoursesForUser(userLogged));
+		return "user";
 	}
 
 	@RequestMapping("/")
 	public String userRedirectToProfile(Principal p) {
-
+/*
 		if (p == null || p.getName().isEmpty())
 			throw new AuthorizationServiceException("Al carrer al carrer y al carrer");
 
@@ -77,16 +61,11 @@ public class UserController {
 
 		if (u == null) {
 			throw new IllegalArgumentException("User not found");
-		}
+		}*/
 
-		return "redirect:/user/" + u.getNickname();
+		return "redirect:/user/profile";
 	}
 
-	/**
-	 * 
-	 * @param model
-	 * @return
-	 */
 	@PostMapping("/register")
 	public String registerUser(@RequestParam String nickname,@RequestParam String name,@RequestParam String surname,@RequestParam String email,@RequestParam String password,@RequestParam String age) {
 		User user = userService.createNewUser(nickname,name,surname,email,password,age);
@@ -107,31 +86,16 @@ public class UserController {
 		return "redirect:/user/" + u.getNickname();
 	}
 
-	/**
-	 * View for the edit user Form
-	 * 
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value = "/editUser")
-	public String userProfile(Model model) {
-		User userSettings = userComponent.getLoggedUser();
-		model.addAttribute("userPage", userSettings); // Variable that i use // Data access
+	public String editUserProfile(Model model) {
+		if(!userComponent.isLoggedUser())
+		    return "redirect:/403.html";
+
+		User loggedUser = userComponent.getLoggedUser();
+		model.addAttribute("userPage", loggedUser); // Variable that i use // Data access
 		return "profile_settings";
 	}
 
-	/**
-	 * Controller for the edited user.
-	 * 
-	 * @param model
-	 * @param id
-	 * @param name
-	 * @param surname
-	 * @param email
-	 * @param passwordHash
-	 * @param age
-	 * @return
-	 */
 	@PostMapping(value = "/editedUser")
 	public String userProfileEdit(@RequestParam MultiValueMap<String, String> params) {
 		User editedUser = userComponent.getLoggedUser();

@@ -4,12 +4,10 @@
 			alt="{{name}}">
 		<div class="card-footer">
 		 {{#schedules}}
-            <form action="/courses/{{id}}/{{idSchedule}}/add" method="post">
-                <input class="btn btn-warning btn-block form-control"
-                    id="idSchedule" name="idSchedule" value="{{schedule}}" /> <input
-                    type="submit" class="btn btn-warning btn-block" value="subscribe" />
-            </form>    <hr>
-             {{/schedules}}
+                <a href="courses/{{idSchedule}}/add" class="btn btn-warning btn-block"
+                    id="idSchedule">{{schedule}}</a> <!--input
+                    type="submit" class="btn btn-warning btn-block" value="subscribe" /-->
+			{{/schedules}}
          </div>
 	</div>
 </div>

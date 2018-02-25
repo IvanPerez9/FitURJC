@@ -15,7 +15,13 @@ public class Schedule {
 
 	@ManyToMany
 	private List<User> listUsers = new ArrayList<>();
-	
+
+
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    Course course;
+
+
 	protected Schedule() {
 		
 	}
@@ -44,4 +50,11 @@ public class Schedule {
 
 		return new ArrayList<>(listUsers);
 	}
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }

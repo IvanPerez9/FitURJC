@@ -13,4 +13,6 @@ import java.util.List;
 public interface ScheduleRepository extends JpaRepository <Schedule, Long>{
 
 	public List<Schedule> findByListUsersContains(User u);
+
+
 }

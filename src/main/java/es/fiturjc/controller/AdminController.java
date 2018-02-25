@@ -50,7 +50,7 @@ public class AdminController {
 		return "admin-passwordChange";
 	}
 	
-	@RequestMapping(value="/{nickname}/courses", method=RequestMethod.GET)
+/*	@RequestMapping(value="/{nickname}/courses", method=RequestMethod.GET)
 	public String registeredCourses(Model model,@PathVariable String nickname) {
 		User user=usersRepository.findByNickname(nickname);
 		if(user.getRoles().contains("Admin")) {
@@ -58,7 +58,7 @@ public class AdminController {
 			model.addAttribute("courses", courses);	
 		}
 		return "admin-controlActivities";
-	}
+	}*/
 
 }
 

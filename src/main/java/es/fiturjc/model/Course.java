@@ -1,6 +1,7 @@
 package es.fiturjc.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,19 +27,19 @@ public class Course {
 	private Category category;
 	private String description;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="course")
 	private List<Schedule> schedules = new ArrayList<Schedule>();
 	
 	protected Course() {
 	}
 
 
-	public Course(String name, Category category, String description, List<Schedule> schedules) {
+	public Course(String name, Category category, String description, Schedule... schedules) {
 		super();
 		this.name = name;
 		this.category = category;
 		this.description = description;
-		this.schedules = schedules;
+		this.schedules = Arrays.asList(schedules);
 	}
 
 	public long getId() {

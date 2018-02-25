@@ -20,31 +20,28 @@ public class App {
 		SpringApplication.run(App.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/*").allowedOrigins("").allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
-						.allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin",
-								"Access-Control-Request-Method", "Access-Control-Request-Headers")
-						.exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
-						.allowCredentials(true).maxAge(3600);
-			}
-		};
-	}
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurerAdapter() {
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/*").allowedOrigins("").allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
+//						.allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin",
+//								"Access-Control-Request-Method", "Access-Control-Request-Headers")
+//						.exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
+//						.allowCredentials(true).maxAge(3600);
+//			}
+//		};
+//	}
 	
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
-		return new EmbeddedServletContainerCustomizer() {
-			@Override
-			public void customize(ConfigurableEmbeddedServletContainer container) {
-				ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
-				ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
-				ErrorPage error403Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403.html");
-				ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
-				container.addErrorPages(error401Page, error404Page, error403Page, error500Page);
-			}
-		};
+		return container -> {
+            ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
+            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
+            ErrorPage error403Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403.html");
+            ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
+            container.addErrorPages(error401Page, error404Page, error403Page, error500Page);
+        };
 	}
 
 }
