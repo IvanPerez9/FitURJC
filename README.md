@@ -17,9 +17,9 @@
   * Default user.
 * __Entities__:
   * Users.
-  * Activity group.
-  * Staff.
-  * Activity History.
+  * Courses.
+  * Facilities.
+  * Schedules.
 * __Advanced funcionability__:
   * One user can not be registered in two or more activities at the same time. 
   * Personalized Recommendations.
@@ -71,8 +71,14 @@
 	
 * __Class Diagram:__
     ![Class Diagram](FitURJC/img/captures/ClassDiagram.png)
+	
+* __Template Diagram:__
+    ![Template Diagram](FitURJC/img/captures/TemplateDiagram.png)
+	
+* __Data Base Model:__
+    ![EER Data Base Model](FitURJC/img/captures/EERModelDataBase.png)
     
-* __[Configuration Instructions]__
+* __Configuration Instructions:__
   * Description: Spring Framework provides several data access methods, we use data access via JPA to a MySQL database using    Hibernate.
 First we create the project, modifying the pom.xml file so that it contains the dependencies and configurations for JPA and MySQL.
 

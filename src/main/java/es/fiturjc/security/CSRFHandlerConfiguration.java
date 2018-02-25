@@ -1,6 +1,11 @@
 package es.fiturjc.security;
-//package FitURJC.security;
-//
+
+
+
+//Seems to be needed in the API
+
+
+
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //
