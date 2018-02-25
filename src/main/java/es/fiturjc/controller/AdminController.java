@@ -1,6 +1,7 @@
 package es.fiturjc.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class AdminController {
 	private UserService userService;
 	
 	@RequestMapping(value="/editProfile/{nickname}",method=RequestMethod.PUT)
-	public String editProfile(@PathVariable String nickname,@RequestBody MultiValueMap<String,String> params) {
+	public String editProfile(@PathVariable String nickname,@RequestBody Map<String,String> params) {
 		userService.editUser(usersRepository.findByNickname(nickname), params);
 		return "admin";
 	}

@@ -110,7 +110,7 @@
 								 
 								<div id="age">
 									<h4>
-										Years {{userPage.age}}
+										Years: {{userPage.age}}
 									</h4>
 								</div>
 								</div>
@@ -190,15 +190,20 @@
 			<h2 class="section-heading">Recommendation</h2>
 			<hr class="my-4"></hr>
 			<div class="container-fluid p-0">
-				<div class="row no-gutters">
-                    {{#recomendations}}
-                        {{> course_template}}
-                    {{/recomendations}}
-
-					{{^recomendations}}
-					Vaya, no tienes ninguna recomendacion, apuntate a algun curso pedazo subnormal
-					{{/recomendations}}
-                </div>
+		    		{{#recomendations}}
+					{{> course_template}}
+		        {{/recomendations}}
+		
+				{{^recomendations}}
+					<p class="mb-5">
+						You have not signed up for any course yet
+					</p>
+					<form method="get" action="/courses">
+						<button id="subscribe" type="submit" class="btn btn-warning">
+							Subscribe!
+						</button>
+					</form>
+				{{/recomendations}}     
 			</div>
 		</div>
 	</section>
@@ -210,14 +215,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-	<script src="js/creative.min.js"></script>
+	<script src="/js/creative.min.js"></script>
 
 </body>
 
