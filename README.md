@@ -68,6 +68,9 @@
 * __Profile Settings.html:__
     ![Profile settings](FitURJC/img/captures/ProfileSettings1.png)
     * Description: If you are identified like a member, you have the possibility to change your profile pic, password or even set your birthdate.
+	
+* __Class Diagram:__
+    ![Class Diagram](FitURJC/img/captures/ClassDiagram.png
     
 * __[Configuration Instructions]__
   * Description: Spring Framework provides several data access methods, we use data access via JPA to a MySQL database using    Hibernate.
