@@ -33,7 +33,7 @@ public class DatabaseUsage implements CommandLineRunner {
 	private ScheduleRepository scheduleRepository;
 	
 	@Override
-	public void run(String... arg0) throws Exception {
+	public void run(String... arg0) {
 
 		User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
 		user1.setImgSrc("/uploads/img/default");

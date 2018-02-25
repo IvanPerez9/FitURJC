@@ -34,13 +34,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/{nickname}/users", method=RequestMethod.GET)
-	public String registeredUsers(Model model, @PathVariable String nickname) throws Exception{
+	public String registeredUsers(Model model, @PathVariable String nickname) {
 		User user=usersRepository.findByNickname(nickname);
 		if(user.getRoles().contains("Admin")) {
 			List<User> users=usersRepository.findAll();
 			users.remove(user);
 			model.addAttribute("users",users);
-		}		
+		}
 		return "admin-controlUsers";
 	}
 	
@@ -51,10 +51,10 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/{nickname}/courses", method=RequestMethod.GET)
-	public String registeredCourses(Model model,@PathVariable String nickname) throws Exception{
+	public String registeredCourses(Model model,@PathVariable String nickname) {
 		User user=usersRepository.findByNickname(nickname);
 		if(user.getRoles().contains("Admin")) {
-			List<Course> courses=user.getCourses();		
+			List<Course> courses=user.getCourses();
 			model.addAttribute("courses", courses);	
 		}
 		return "admin-controlActivities";

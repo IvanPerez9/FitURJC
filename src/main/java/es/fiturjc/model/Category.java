@@ -5,5 +5,5 @@ public enum Category {
 	CARDIO,
 	FREESTYLE,
 	DANCE,
-	MIND;
+	MIND
 }

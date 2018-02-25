@@ -16,11 +16,7 @@ public class ImageService {
 	public static final String IMG_CONTROLLER_URL = "/uploads/img/";
 
 	public boolean isValidImage(MultipartFile file) {
-		if (file != null && !file.isEmpty()) {
-			return true;
-		} else {
-			return false;
-		}
+        return file != null && !file.isEmpty();
 	}
 
 	public String uploadImage(MultipartFile file) {

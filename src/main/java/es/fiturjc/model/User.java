@@ -1,12 +1,13 @@
 package es.fiturjc.model;
 
-import java.util.*;
-
-import javax.persistence.*;
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 public class User {
@@ -30,9 +31,9 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+/*	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
-	private List<Course> courses = new ArrayList<Course>();
+	private List<Course> courses = new ArrayList<Course>();*/
 
 	public User() {
 	}
@@ -96,13 +97,13 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Course> getCourses() {
+/*	public List<Course> getCourses() {
 		return new ArrayList<>(this.courses);
 	}
 
 	public void addCourse(Course course) {
 		this.courses.add(course);
-	}
+	}*/
 
 	public List<String> getRoles() {
 		return roles;

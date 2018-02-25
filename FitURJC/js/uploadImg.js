@@ -11,5 +11,5 @@ $(document).ready(function () {
 
     function imageIsLoaded(e) {
         $('#myImg').attr('src', e.target.result);
-    };
+    }
 });

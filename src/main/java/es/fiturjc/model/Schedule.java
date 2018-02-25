@@ -1,9 +1,8 @@
 package es.fiturjc.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Schedule {
@@ -13,6 +12,9 @@ public class Schedule {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idSchedule;
 	private String schedule;
+
+	@ManyToMany
+	private List<User> listUsers = new ArrayList<>();
 	
 	protected Schedule() {
 		
@@ -30,5 +32,16 @@ public class Schedule {
 		super();
 		this.schedule = schedule;
 	}
-	
+
+	public void annadirUsuario(User user){
+		this.listUsers.add(user);
+	}
+
+	public void borrarUsuario(User user){
+		this.listUsers.remove(user);
+	}
+	public List<User> dameUsuarios(){
+
+		return new ArrayList<>(listUsers);
+	}
 }

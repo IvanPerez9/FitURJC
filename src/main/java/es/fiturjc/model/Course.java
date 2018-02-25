@@ -27,11 +27,11 @@ public class Course {
 	private String description;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SELECT)
 	private List<Schedule> schedules = new ArrayList<Schedule>();
 	
 	protected Course() {
 	}
+
 
 	public Course(String name, Category category, String description, List<Schedule> schedules) {
 		super();

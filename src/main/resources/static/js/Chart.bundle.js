@@ -28,7 +28,7 @@ module.exports = {
    hslaString: hslaString,
    hwbString: hwbString,
    keyword: keyword
-}
+};
 
 function getRgba(string) {
    if (!string) {
@@ -773,7 +773,7 @@ module.exports = {
   lch2lab: lch2lab,
   lch2xyz: lch2xyz,
   lch2rgb: lch2rgb
-}
+};
 
 
 function rgb2hsl(rgb) {
@@ -1422,7 +1422,7 @@ var conversions = require(3);
 
 var convert = function() {
    return new Converter();
-}
+};
 
 for (var func in conversions) {
   // export Raw versions
@@ -1511,7 +1511,7 @@ Converter.prototype.getValues = function(space) {
 
 module.exports = convert;
 },{"3":3}],5:[function(require,module,exports){
-'use strict'
+'use strict';
 
 module.exports = {
 	"aliceblue": [240, 248, 255],
@@ -1671,8 +1671,8 @@ module.exports = {
 //! license : MIT
 //! momentjs.com
 
-;(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+(function (global, factory) {
+            typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     global.moment = factory()
 }(this, (function () { 'use strict';
