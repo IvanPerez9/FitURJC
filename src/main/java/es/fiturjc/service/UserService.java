@@ -84,43 +84,43 @@ public class UserService {
 	/**
 	 * Edit user with all the parameters
 	 * 
-	 * @param editedUser
+	 * @param user
 	 * @param params
 	 */
 
-	public void editUser(User editedUser, MultiValueMap<String, String> params) {
-		for (Entry<String, List<String>> entry : params.entrySet()) {
+	public void editUser(User user, Map<String, String> params) {
+		for (Entry<String, String> entry : params.entrySet()) {
 			switch (entry.getKey()) {
 			case "name":
-				String newName = entry.getValue().get(0);
+				String newName = entry.getValue();
 				if (!newName.isEmpty())
-					editedUser.setName(entry.getValue().get(0));
+					user.setName(entry.getValue());
 				break;
 			case "surname":
-				String newSurname = entry.getValue().get(0);
+				String newSurname = entry.getValue();
 				if (!newSurname.isEmpty())
-					editedUser.setSurname(entry.getValue().get(0));
+					user.setSurname(entry.getValue());
 				break;
 			case "email":
-				String newEmail = entry.getValue().get(0);
+				String newEmail = entry.getValue();
 				if (!newEmail.isEmpty())
-					editedUser.setEmail(entry.getValue().get(0));
+					user.setEmail(entry.getValue());
 				break;
 			case "password":
-				String newPassword = entry.getValue().get(0);
+				String newPassword = entry.getValue();
 				if (!newPassword.isEmpty())
-					editedUser.changePassword(entry.getValue().get(0));
+					user.changePassword(entry.getValue());
 				break; 
 			case "age":
-				String newAge = entry.getValue().get(0);
+				String newAge = entry.getValue();
 				if (!newAge.isEmpty())
-					editedUser.setAge(Integer.parseInt(entry.getValue().get(0)));
+					user.setAge(Integer.parseInt(entry.getValue()));
 				break;
 			default:
 				break;
 			}
 		}
-		userRepository.save(editedUser);
+		userRepository.save(user);
 	}
 
 	public User findByNickname(User u) {

@@ -83,7 +83,7 @@ public class UserController {
 	public String imgUpload(@RequestParam MultipartFile file) {
 		User u = userComponent.getLoggedUser(); // The user itself
 		userService.setImage(u, file);
-		return "redirect:/user/" + u.getNickname();
+		return "redirect:/user/profile";
 	}
 
 	@RequestMapping(value = "/editUser")
@@ -97,11 +97,11 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/editedUser")
-	public String userProfileEdit(@RequestParam MultiValueMap<String, String> params) {
-		User editedUser = userComponent.getLoggedUser();
-		userService.editUser(editedUser, params);
+	public String userProfileEdit(@RequestParam Map<String, String> params) {
+ 		User loggedUser = userComponent.getLoggedUser();
+		userService.editUser(loggedUser, params);
 
-		return "redirect:/user/editUser";
+		return "redirect:/user/profile";
 	}
 
 }
