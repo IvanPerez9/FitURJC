@@ -77,13 +77,13 @@ public class UserController {
 	public String registerUser(@RequestParam String nickname,@RequestParam String name,@RequestParam String surname,@RequestParam String email,@RequestParam String password,@RequestParam String age) {
 		User user = userService.createNewUser(nickname,name,surname,email,password,age);
 		userComponent.setLoggedUser(user);
-		return "redirect:/user/profile" ;
+		return "redirect:/" ;
 	}
 
 	@RequestMapping("/newUser")
 	public String newUser(Model model, User user, @RequestParam String password) {
 		userService.createNewUser(user, password);
-		return "redirect:/user/profile";
+		return "redirect:/";
 	}
 
 	@PostMapping("/imageUpload")
