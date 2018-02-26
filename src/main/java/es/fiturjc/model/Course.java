@@ -27,6 +27,7 @@ public class Course {
 	private String name;
 	private Category category;
 	private String description;
+	private int capacity;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="course")
 	private List<Schedule> schedules = new ArrayList<Schedule>();
@@ -35,11 +36,12 @@ public class Course {
 	}
 
 
-	public Course(String name, Category category, String description, Schedule... schedules) {
+	public Course(String name, Category category, String description, int capacity, Schedule... schedules) {
 		super();
 		this.name = name;
 		this.category = category;
 		this.description = description;
+		this.capacity = capacity;
 		this.schedules = Arrays.asList(schedules);
 	}
 
@@ -71,6 +73,16 @@ public class Course {
 		this.description = description;
 	}
 
+	
+	public int getCapacity() {
+		return capacity;
+	}
+
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
 
 	public void addSchedule (Schedule schedule) {
 		this.schedules.add(schedule);
@@ -95,7 +107,7 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", src=" + src + ", name=" + name + ", category=" + category + ", description="
-				+ description + ", schedules=" + schedules + "]";
+				+ description + ", capacity=" + capacity + ", schedules=" + schedules + "]";
 	}
 
     @Override

@@ -21,7 +21,6 @@ public class CourseService {
 
 	public Page<Course> getPageCourses() {
 		return courseRepository.findAll(new PageRequest(0, 6));
-
 	}
 
 	public Course findCourse(long id) {
