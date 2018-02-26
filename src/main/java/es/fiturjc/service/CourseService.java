@@ -8,7 +8,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import es.fiturjc.model.Course;
+import es.fiturjc.model.User;
 import es.fiturjc.repository.CourseRepository;
+
 
 @Service
 public class CourseService {
@@ -27,5 +29,12 @@ public class CourseService {
 		return courseRepository.findOne(id);
 	}
 	
+	public void follow(User user, Course course) {
+		if (user.getCourseList().contains(course)) {
+			user.removeCourse(course);
+		} else {
+			user.addCourse(course);
+		}
+	}
 
 }

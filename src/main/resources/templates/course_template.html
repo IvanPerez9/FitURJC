@@ -1,6 +1,6 @@
 <div class="col-lg-4 col-sm-6">
-	<a class="portfolio-box"> 
-	<img class="img-fluid" src="img/courses/{{name}}.jpg" alt= "{{name}}">
+	<div class="portfolio-box"> 
+	<img class="img-fluid" src="/img/courses/{{name}}.jpg" alt="{{name}}"/>
 		<div class="portfolio-box-caption">
 			<div class="portfolio-box-caption-content">
 				<div class="project-category text-faded">
@@ -15,13 +15,14 @@
 				</div>
 			</div>
 		</div>
-	</a>
+	</div>
 	<div class="card-footer">
-	Capacity: {{capacity}}
+	
 	{{#schedules}}
 		<a href="courses/{{idSchedule}}/add" class="btn btn-warning btn-block" id="klik">
 		{{schedule}}
    		</a>
+   		Capacity: {{capacity}}
 	{{/schedules}}
     </div>
 </div>

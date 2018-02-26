@@ -6,25 +6,30 @@ import java.util.*;
 @Entity
 public class Schedule {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idSchedule;
 	private String schedule;
+	private int capacity;
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
 
 	@ManyToMany
 	private Set<User> listUsers = new HashSet<>();
 
-
-
-    @ManyToOne(cascade=CascadeType.ALL)
-    Course course;
-
+	@ManyToOne(cascade = CascadeType.ALL)
+	Course course;
 
 	protected Schedule() {
-		
+
 	}
-	
+
 	public String getSchedule() {
 		return schedule;
 	}
@@ -38,36 +43,46 @@ public class Schedule {
 		this.schedule = schedule;
 	}
 
-	public void annadirUsuario(User user){
-		this.listUsers.add(user);
+	public void addUser(User user) {
+		if(!listUsers.contains(user)) {
+			this.listUsers.add(user);
+			this.capacity = getCapacity() + 1;
+		}
 	}
 
-	public void borrarUsuario(User user){
-		this.listUsers.remove(user);
+	public void deleteUser(User user) {
+		if(!listUsers.contains(user)) {
+			this.listUsers.remove(user);
+			this.capacity = getCapacity() - 1;
+		}
 	}
-	public List<User> dameUsuarios(){
+
+	public List<User> getUser() {
 
 		return new ArrayList<>(listUsers);
 	}
-    public Course getCourse() {
-        return course;
-    }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
+	public Course getCourse() {
+		return course;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Schedule schedule = (Schedule) o;
-        return idSchedule == schedule.idSchedule;
-    }
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 
-    @Override
-    public int hashCode() {
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Schedule schedule = (Schedule) o;
+		return idSchedule == schedule.idSchedule;
+	}
 
-        return Objects.hash(idSchedule);
-    }
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(idSchedule);
+	}
 }
