@@ -41,7 +41,7 @@ public class DatabaseUsage implements CommandLineRunner {
 		user1.setImgSrc("/uploads/img/default");
 		User user2 = new User("Travis", "Filmer", 29, "pass", "tt@gmail.com", "TF", "ROLE_USER");
 		user2.setImgSrc("/uploads/img/default");
-		User user3 = new User("Cillian", "Murphy", 28, "pass", "cm@email.com", "CM", "ROLE_USER");
+		User user3 = new User("Cillian", "Murphy", 28, "pass", "cm@gmail.com", "CM", "ROLE_USER");
 		user3.setImgSrc("/uploads/img/default");
 		
 		Schedule schedule1 = new Schedule ("10:00-11:00");
