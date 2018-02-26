@@ -68,8 +68,6 @@ public class DatabaseUsage implements CommandLineRunner {
 		Schedule schedule22 = new Schedule ("11:00-12:00");
 		Schedule schedule23 = new Schedule ("12:00-13:00");
         Schedule schedule24 = new Schedule ("17:00-18:00");
-        Schedule schedule25 = new Schedule ("18:00-19:00");
-        Schedule schedule26 = new Schedule ("10:00-11:00");
         
         //ADD THE COURSES WITH THEIR SCHEDULE
 
@@ -93,15 +91,11 @@ public class DatabaseUsage implements CommandLineRunner {
 		schedule9.setCourse(course12);
 		schedule10.setCourse(course12);
 		
-		Course course13 = new Course("Dumbbells", Category.CARDIO, "Enjoy the best fitness rooms with the best equipment and training programmes adapted for you, allowing you to get the best from your training.", schedule11, schedule12);
-		schedule11.setCourse(course13);
-		schedule12.setCourse(course13);
-		
-		// STRENGTH CATEGORIES
-		Course course3 = new Course("Physical Therapy", Category.STRENGTH, "Physiotherapy is considered a key treatment in rehabilitation for people who play sport, who have some injury or condition", schedule13, schedule14);
+		Course course3 = new Course("Dumbbells", Category.CARDIO, "Enjoy the best fitness rooms with the best equipment and training programmes adapted for you, allowing you to get the best from your training.", schedule13, schedule14);
 		schedule13.setCourse(course3);
 		schedule14.setCourse(course3);
 		
+		// STRENGTH CATEGORIES
 		Course course4 = new Course("Pilates", Category.STRENGTH, "system of exercises of stretching and muscular strengthening, it also helps us to unify body and mind", schedule15, schedule16);
 		schedule15.setCourse(course4);
 		schedule16.setCourse(course4);
@@ -125,9 +119,9 @@ public class DatabaseUsage implements CommandLineRunner {
 		schedule24.setCourse(course8);
 		
 		// MIND CATEGORIES
-		Course course9 = new Course("Yoga", Category.MIND, "Exercises to stretch, strengthen and balance the body. Improves posture, provides flexibility and balance, unifies mind and body and creates a more stylized figure.", schedule25, schedule26);
-		schedule25.setCourse(course9);
-		schedule26.setCourse(course9);
+		Course course9 = new Course("Yoga", Category.MIND, "Exercises to stretch, strengthen and balance the body. Improves posture, provides flexibility and balance, unifies mind and body and creates a more stylized figure.", schedule11, schedule12);
+		schedule11.setCourse(course9);
+		schedule12.setCourse(course9);
 		
 		
 		courseRepository.save(course1);
@@ -142,7 +136,6 @@ public class DatabaseUsage implements CommandLineRunner {
 		courseRepository.save(course10);
 		courseRepository.save(course11);
 		courseRepository.save(course12);
-		courseRepository.save(course13);
 	
 
 	/*	user2.addCourse(course1);*/
