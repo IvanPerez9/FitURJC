@@ -48,11 +48,13 @@ public class UserController {
 		if(!userComponent.isLoggedUser()){
 			return "redirect:/403.html";
 		}
-		User userLogged = userComponent.getLoggedUser();
+		User userLogged = userComponent.getLoggedUser(); // Check if the user is logged
+		
+		// 3 task in the user interface 
 
 		model.addAttribute("userPage", userLogged);
 		model.addAttribute("recomendations", userService.getRecommendedCoursesForUser(userLogged));
-		model.addAttribute("schedules", scheduleRepository.findByListUsersContains(userLogged));
+		model.addAttribute("schedules", scheduleRepository.findByListUsersContains(userLogged)); 
 		return "user";
 	}
 

@@ -34,6 +34,8 @@ public class DatabaseUsage implements CommandLineRunner {
 	
 	@Override
 	public void run(String... arg0) {
+		
+		//DEFAULT USERS
 
 		User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
 		user1.setImgSrc("/uploads/img/default");
@@ -68,6 +70,8 @@ public class DatabaseUsage implements CommandLineRunner {
         Schedule schedule24 = new Schedule ("17:00-18:00");
         Schedule schedule25 = new Schedule ("18:00-19:00");
         Schedule schedule26 = new Schedule ("10:00-11:00");
+        
+        //ADD THE COURSES WITH THEIR SCHEDULE
 
         Course course1 = new Course("Aerobic", Category.CARDIO, "Turn your heartbeat up while you dance to the latest music hits! A real fat burning session", schedule1, schedule2);
         schedule1.setCourse(course1);

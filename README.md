@@ -70,12 +70,15 @@
     * Description: If you are identified like a member, you have the possibility to change your profile pic, password or even set your birthdate.
 	
 * __Class Diagram:__
+
     ![Class Diagram](FitURJC/img/captures/ClassDiagram.png)
 	
 * __Template Diagram:__
+
     ![Template Diagram](FitURJC/img/captures/TemplateDiagram.png)
 	
 * __Data Base Model:__
+
     ![EER Data Base Model](FitURJC/img/captures/EERModelDataBase.png)
     
 * __Configuration Instructions:__
