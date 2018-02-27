@@ -135,6 +135,7 @@ public class User {
 
 	}
 
+	// String .. roles admin various roles names 
 	public User(String name, String surname, int age, String passwordHash, String email,
 			String nickname, String... roles) {
 		super();
