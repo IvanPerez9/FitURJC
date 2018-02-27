@@ -39,7 +39,7 @@ public class Course {
 		
 	}
 
-	public Course(String name, Category category, String description, int capacity, Schedule... schedules) {
+	public Course(String name, Category category, String description, Schedule... schedules) {
 		super();
 		this.name = name;
 		this.category = category;

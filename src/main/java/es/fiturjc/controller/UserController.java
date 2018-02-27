@@ -60,16 +60,6 @@ public class UserController {
 
 	@RequestMapping("/")
 	public String userRedirectToProfile(Principal p) {
-/*
-		if (p == null || p.getName().isEmpty())
-			throw new AuthorizationServiceException("Al carrer al carrer y al carrer");
-
-		User u = userComponent.getLoggedUser();
-
-		if (u == null) {
-			throw new IllegalArgumentException("User not found");
-		}*/
-
 		return "redirect:/user/profile";
 	}
 

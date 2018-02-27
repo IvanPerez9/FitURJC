@@ -58,8 +58,7 @@ public class CourseController {
 		// Esta en CascadeAll
 		scheduleRepository.save(sch);
 
-		Thread.sleep(1500);
-		return "redirect:/user/profile";
+		return "redirect:/courses";
 	}
 	
 }
