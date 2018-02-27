@@ -81,13 +81,6 @@ public class UserService {
 		}
 	}
 
-	/**
-	 * Edit user with all the parameters
-	 * 
-	 * @param user
-	 * @param params
-	 */
-
 	public void editUser(User user, Map<String, String> params) {
 		for (Entry<String, String> entry : params.entrySet()) {
 			switch (entry.getKey()) {
@@ -131,16 +124,7 @@ public class UserService {
 		User user = new User(name,surname,Integer.parseInt(age),password,email, nickname,"ROLE_USER");
 		userRepository.save(user);
 		return user;
-		
-	//	User user1 = new User("William", "Wallace", 25, "pass", "ww@gmail.com", "WW", "ROLE_USER");
 	}
-
-	// MAL MAL MAL
-//	public User addUserToSchedule(User user, Course course, Schedule schedule) {
-//		schedule.annadirUsuario(user);
-//		userRepository.save(user);
-//		return user;
-//	}
 
     public Collection<Course> getRecommendedCoursesForUser(User u){
        Optional<Entry<Category, Long>> favouriteCategory = getCourses(u).stream().map(Course::getCategory)

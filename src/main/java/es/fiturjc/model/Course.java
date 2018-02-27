@@ -31,11 +31,15 @@ public class Course {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="course")
 	private List<Schedule> schedules = new ArrayList<Schedule>();
 	
+	//DANI
+	@ManyToMany(mappedBy="courseList")
+	private List<User> participants_IDs = new ArrayList<>();
+	
 	protected Course() {
+		
 	}
 
-
-	public Course(String name, Category category, String description, Schedule... schedules) {
+	public Course(String name, Category category, String description, int capacity, Schedule... schedules) {
 		super();
 		this.name = name;
 		this.category = category;

@@ -274,6 +274,11 @@ header.masthead p {
   font-size: 10px;
 }
 
+.project-capactiy {
+  text-align: right;
+  font-size: 10px;
+}
+
 .project-join {
   font-size: 10px;
   color: #212529;
