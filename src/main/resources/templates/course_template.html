@@ -17,10 +17,10 @@
 		</div>
 	</div>
 	<div class="card-footer">
-	{{#schedules}}
-		<a href="courses/{{idSchedule}}/add" class="btn btn-warning btn-block" id="klik">
+	{{#schedules}}	
 		{{schedule}}
-   		</a>
+		<a class="btn btn-primary simple_confirmSign" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">SIGN UP</a>
+		<a class="btn btn-primary simple_confirmQuit" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">QUIT</a>
    		Capacity: {{capacity}}/50
 	{{/schedules}}
     </div>

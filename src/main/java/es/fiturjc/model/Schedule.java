@@ -51,7 +51,7 @@ public class Schedule {
 	}
 
 	public void deleteUser(User user) {
-		if(!listUsers.contains(user)) {
+		if(listUsers.contains(user)) {
 			this.listUsers.remove(user);
 			this.capacity = getCapacity() - 1;
 		}
