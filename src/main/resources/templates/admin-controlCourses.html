@@ -3,16 +3,16 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Usuarios</h4>
+                    <h4 class="title">Courses</h4>
                 </div>
                 <div class="content">
                     <ul>
-	                    {{#users}}
-	                    	<li>
-                    		<a href="/adminPage/manageUsers/delete/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    		<a href="/user/{{nickname}}">{{nickname}}</a>
+                    {{#courses}}
+                    	<li>
+                    		<a href="/adminPage/manageCourses/delete/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    		<a href="/course/{{id}}">{{name}}</a>
                     	</li>
-	                    {{/users}}
+                    {{/courses}}
                     </ul>
                 </div>
             </div>

@@ -6,9 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import es.fiturjc.model.Course;
 
+
 import java.util.List;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
+	
     public List<Course> findByCategory(Category category);
+    
+    public List<Course> findByName(String name);
+    
 }

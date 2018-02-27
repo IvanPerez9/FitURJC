@@ -43,6 +43,10 @@ public class DatabaseUsage implements CommandLineRunner {
 		user2.setImgSrc("/uploads/img/default");
 		User user3 = new User("Cillian", "Murphy", 28, "pass", "cm@gmail.com", "CM", "ROLE_USER");
 		user3.setImgSrc("/uploads/img/default");
+		// Admin user 
+		
+		User user4 = new User("Admin", "Admin", 25, "pass", "admin@gmail.com", "admin", "ROLE_ADMIN");
+		user1.setImgSrc("/uploads/img/default");
 		
 		Schedule schedule1 = new Schedule ("10:00-11:00");
 		Schedule schedule2 = new Schedule ("11:00-12:00");
@@ -149,6 +153,8 @@ public class DatabaseUsage implements CommandLineRunner {
 		userRepository.save(user1);
 		userRepository.save(user2);
 		userRepository.save(user3);
+		// Admin save 
+		userRepository.save(user4);
 
 		for (int i = 1; i <= 40; i++) {
 			facilitiesRepository.save(new Facilities("/img/facilities/facilities_" + i + ".jpeg"));

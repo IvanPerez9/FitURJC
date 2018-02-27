@@ -36,5 +36,5 @@ public class CourseService {
 			user.addCourse(course);
 		}
 	}
-
+	
 }
