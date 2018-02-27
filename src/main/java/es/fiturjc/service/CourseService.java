@@ -27,6 +27,6 @@ public class CourseService {
 	public Course findCourse(long id) {
 		return courseRepository.findOne(id);
 	}
-	
 
+	
 }
