@@ -11,9 +11,9 @@
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
-<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
 <!--  Light Bootstrap Table core CSS    -->
-<link href="css/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link href="/css/light-bootstrap-dashboard.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
@@ -23,19 +23,12 @@
 <body>
 	<div class="wrapper">
 		<div class="sidebar" data-color="blue"
-			data-image="img/lateralAdmin.jpg">
+			data-image="/img/lateralAdmin.jpg">
 			<div class="sidebar-wrapper">
 				<div class="logo">
-					<a href="index.html" class="simple-text"> FitURJC </a>
+					<a href="/" class="simple-text"> FitURJC </a>
 				</div>
 				<ul class="nav">
-					<li><a href="/adminPage/edit"> <i
-							class="fa fa-user-circle-o"></i>
-							<p>Edit profile</p>
-					</a></li>
-					<li><a href="/adminPage/changePass"> <i class="fa fa-key"></i>
-							<p>Change password</p>
-					</a></li>
 					<li><a href="/adminPage/manageUsers"> <i
 							class="fa fa-user"></i>
 							<p>User management</p>
@@ -44,7 +37,7 @@
 							class="fa fa-users"></i>
 							<p>Course management</p>
 					</a></li>
-					<li><a href="/adminPAge/graphics"> <i class="fa fa-flag"></i>
+					<li><a href="/adminPage/graphics"> <i class="fa fa-flag"></i>
 							<p>Graphics</p>
 					</a></li>
 				</ul>
@@ -61,19 +54,12 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/"><span class="fa fa-reply"></span>
-							Volver</a>
+						<a class="navbar-brand" href="/user/profile"><span class="fa fa-reply"></span>
+							Return</a>
 					</div>
 				</div>
 			</nav>
-			<div class="content"></div> <!-- Mustache in -->
-				{{# editSection}}
-                	{{> admin-edit}}
-              	{{/ editSection}}
-              	
-              	{{# changePassSection}}
-                	{{> admin-passwordChange}}
-              	{{/ changePassSection}}
+			<!-- Mustache in -->
               	
               	{{# manageUsersSection}}
                 	{{> admin-controlUsers}}
@@ -92,25 +78,18 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/bootstrap/js/light-bootstrap-dashboard.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrap/js/light-bootstrap-dashboard.js"></script>
 
 <!-- TOGGLE MENU -->
 
 <div class="collapse navbar-collapse has-image" data-color="purple"
-	style="background: transparent url(img/lateralAdmin.jpg) repeat scroll 0% 0%;">
+	style="background: transparent url(/img/lateralAdmin.jpg) repeat scroll 0% 0%;">
 	<div class="logo">
 		<a href="/" class="simple-text"> FitURJC </a>
 	</div>
 	<div class="sidebar-wrapper">
 		<ul class="nav navbar-nav">
-			<li><a href="/adminPage/edit"> <i
-					class="fa fa-user-circle-o"></i>
-					<p>Edit profile</p>
-			</a></li>
-			<li><a href="/adminPage/changePass"> <i class="fa fa-key"></i>
-					<p>Change password</p>
-			</a></li>
 			<li><a href="/adminPage/manageUsers"> <i class="fa fa-user"></i>
 					<p>User management</p>
 			</a></li>

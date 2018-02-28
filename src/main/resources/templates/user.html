@@ -2,36 +2,40 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	
-	
-	<title>FitURJC User</title>
-	<link rel="shortcut icon" href="/img/iconLogo.ico" />
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-	
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	
-	<link
-		href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-		rel='stylesheet' type='text/css'>
-	
-	<link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-	
-	<link rel="stylesheet" href="/css/creative.css">
-	<link rel="stylesheet" href="/css/user.css">
-	<link rel="stylesheet" href="/css/calendar.css" />
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+
+<title>FitURJC User</title>
+<link rel="shortcut icon" href="/img/iconLogo.ico" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<link
+	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+	rel='stylesheet' type='text/css'>
+
+<link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/creative.css">
+<link rel="stylesheet" href="/css/user.css">
+<link rel="stylesheet" href="/css/calendar.css" />
 
 </head>
 
 <body id="page-top">
 
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+		id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="#page-top">HOME</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -49,25 +53,19 @@
 						href="#calendar">Calendar</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#recomendation">Recommendation</a></li>
-					
+
 					<li class="nav-item">
 						<div class="btn-group">
 							<button type="button" class="btn btn-danger">
-								{{userPage.name}}
-							</button>
-							<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-							</button>
+								{{userPage.name}}</button>
+							<button type="button" class="btn btn-danger dropdown-toggle"
+								data-toggle="dropdown"></button>
 							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="/user/editUser">
-										Edit profile
-									</a>
-								</li>
-								<li>
-									<a href="/logout">
-										Sign off
-									</a>
-								</li>
+								<li><a href="/user/editUser"> Edit profile </a></li>
+								{{#editSection}}
+									<li><a href="/adminPage"> Admin Page </a></li>
+								{{/editSection}}
+								<li><a href="/logout"> Sign off </a></li>
 							</ul>
 						</div>
 					</li>
@@ -88,30 +86,23 @@
 					<div class="row" id="card_body">
 						<div class="col-md-3" id="personal_information">
 							<div id="profile_pic">
-								<img src="{{userPage.imgSrc}}" class="img-circle" alt="Profile Image" style='object-fit: contain'>
-							</div> 
-						</div>		
-						<div class="col-md-6 text-left"  id="performance_profile">
+								<img src="{{userPage.imgSrc}}" class="img-circle"
+									alt="Profile Image" style='object-fit: contain'>
+							</div>
+						</div>
+						<div class="col-md-6 text-left" id="performance_profile">
 							<div id="information_user">
 								<h1>
-									<strong>
-										My data
-									</strong>
+									<strong> My data </strong>
 								</h1>
-							<br>
+								<br>
 								<div id="user_name">
-									<h4>
-										Name: {{userPage.name}}
-									</h4>
-									<h4>
-										Surname: {{userPage.surname}}
-									</h4>
-								 
-								<div id="age">
-									<h4>
-										Years: {{userPage.age}}
-									</h4>
-								</div>
+									<h4>Name: {{userPage.name}}</h4>
+									<h4>Surname: {{userPage.surname}}</h4>
+
+									<div id="age">
+										<h4>Years: {{userPage.age}}</h4>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -130,55 +121,46 @@
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading">Schedule</h2>
 					<hr class="my-4">
-					{{#schedules}}
-						{{> schedule_template}}
-					{{/schedules}}
-					
+					{{#schedules}} {{> schedule_template}} {{/schedules}}
+
 					{{^schedules}}
-					<p class="mb-5">
-						You have not signed up for any course yet
-					</p>
+					<p class="mb-5">You have not signed up for any course yet</p>
 					<form method="get" action="/courses">
 						<button id="subscribe" type="submit" class="btn btn-warning">
-							Subscribe!
-						</button>
+							Subscribe!</button>
 					</form>
-					{{/schedules}} 
+					{{/schedules}}
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<section id="recomendation">
 		<div class="col-lg-12 text-center">
 			<h2 class="section-heading">Recommendation</h2>
 			<hr class="my-4"></hr>
 			<div class="container-fluid p-0">
-		    		{{#recommendations}}
-					{{> recommendation_template}}
-		        {{/recommendations}}
-		
-				{{^recommendations}}
-					<p class="mb-5">
-						You have not signed up for any course yet
-					</p>
-					<form method="get" action="/courses">
-						<button id="subscribe" type="submit" class="btn btn-warning">
-							Subscribe!
-						</button>
-					</form>
-				{{/recommendations}}     
+				{{#recommendations}} {{> recommendation_template}}
+				{{/recommendations}} {{^recommendations}}
+				<p class="mb-5">You have not signed up for any course yet</p>
+				<form method="get" action="/courses">
+					<button id="subscribe" type="submit" class="btn btn-warning">
+						Subscribe!</button>
+				</form>
+				{{/recommendations}}
 			</div>
 		</div>
 	</section>
-	
+
 	<section id="contact">
 		<div class="container"></div>
 	</section>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

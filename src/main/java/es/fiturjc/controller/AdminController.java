@@ -37,18 +37,6 @@ public class AdminController {
 		return "admin";
 	}
 	
-	@RequestMapping("/adminPage/edit")
-	public String edit(Model model, String action) {
-		model.addAttribute("editSection", true);
-		return "admin";
-	}
-	
-	@RequestMapping("/adminPage/changePass")
-	public String changePass(Model model, String action) {
-		model.addAttribute("changePassSection", true);
-		return "admin";
-	}
-	
 	@RequestMapping("/adminPage/manageUsers")
 	public String manageUsers(Model model, String action) {
 		model.addAttribute("manageUsersSection", true);

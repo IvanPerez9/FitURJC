@@ -55,6 +55,8 @@ public class UserController {
 		model.addAttribute("userPage", userLogged);
 		model.addAttribute("recommendations", userService.getRecommendedCoursesForUser(userLogged));
 		model.addAttribute("schedules", scheduleRepository.findByListUsersContains(userLogged)); 
+		
+		model.addAttribute("editSection", userLogged.getRoles().contains("ROLE_ADMIN")); // Return a true o false 
 		return "user";
 	}
 
