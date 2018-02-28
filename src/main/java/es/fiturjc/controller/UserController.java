@@ -53,7 +53,7 @@ public class UserController {
 		// 3 task in the user interface 
 
 		model.addAttribute("userPage", userLogged);
-		model.addAttribute("recomendations", userService.getRecommendedCoursesForUser(userLogged));
+		model.addAttribute("recommendations", userService.getRecommendedCoursesForUser(userLogged));
 		model.addAttribute("schedules", scheduleRepository.findByListUsersContains(userLogged)); 
 		return "user";
 	}

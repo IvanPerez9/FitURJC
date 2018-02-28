@@ -42,7 +42,7 @@ public class CourseController {
 
 	
 	@GetMapping("/{idSchedule}/add")
-	public String addCourse(@PathVariable long idSchedule) {
+	public String addCourse(@PathVariable long idSchedule) throws InterruptedException {
 
 		if(!userComponent.isLoggedUser())
 			return "redirect:/403.html";
@@ -57,12 +57,13 @@ public class CourseController {
 
 		// Esta en CascadeAll
 		scheduleRepository.save(sch);
-
-		return "redirect:/courses";
+		
+		Thread.sleep(2000);
+		return "redirect:/user/profile";
 	}
 	
 	@GetMapping("/{idSchedule}/delete")
-	public String deleteCourse(@PathVariable long idSchedule) {
+	public String deleteCourse(@PathVariable long idSchedule) throws InterruptedException {
 
 		if(!userComponent.isLoggedUser())
 			return "redirect:/403.html";
@@ -77,8 +78,9 @@ public class CourseController {
 		sch.deleteUser(user);
 
 		scheduleRepository.save(sch);
-
-		return "redirect:/courses";
+		
+		Thread.sleep(2000);
+		return "redirect:/user/profile";
 	}
 	
 }

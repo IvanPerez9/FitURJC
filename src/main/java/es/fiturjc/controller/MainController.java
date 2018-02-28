@@ -27,13 +27,7 @@ public class MainController {
 	@Autowired
 	private UserComponent userComponent;
 
-	/**
-	 * Index html page
-	 * 
-	 * @param model
-	 *            for the courses
-	 * @return the view for the index.
-	 */
+
 	@RequestMapping(value = "/")
 	public String getIndex(Model model, HttpServletRequest request) {
 		Page<Course> coursesIndex = courseService.getPageCourses();

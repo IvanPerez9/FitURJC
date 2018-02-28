@@ -24,7 +24,7 @@
 	<link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 	
 	<link rel="stylesheet" href="/css/creative.css">
-	
+	<link rel="stylesheet" href="/css/user.css">
 	<link rel="stylesheet" href="/css/calendar.css" />
 
 </head>
@@ -197,11 +197,11 @@
 			<h2 class="section-heading">Recommendation</h2>
 			<hr class="my-4"></hr>
 			<div class="container-fluid p-0">
-		    		{{#recomendations}}
-					{{> course_template}}
-		        {{/recomendations}}
+		    		{{#recommendations}}
+					{{> recommendation_template}}
+		        {{/recommendations}}
 		
-				{{^recomendations}}
+				{{^recommendations}}
 					<p class="mb-5">
 						You have not signed up for any course yet
 					</p>
@@ -210,7 +210,7 @@
 							Subscribe!
 						</button>
 					</form>
-				{{/recomendations}}     
+				{{/recommendations}}     
 			</div>
 		</div>
 	</section>

@@ -16,14 +16,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="card-footer">
+	<div class="card-footer-course">
 	{{#schedules}}	
 		{{schedule}}
-		<a class="btn btn-primary simple_confirmSign" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">SIGN UP</a>
-		<a class="btn btn-primary simple_confirmQuit" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">QUIT</a>
+		<a class="btn btn-sign simple_confirmSign" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">SIGN UP</a>
+		<a class="btn btn-quit simple_confirmQuit" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">QUIT</a>
    		Capacity: {{capacity}}/50
+   		<br>
 	{{/schedules}}
     </div>
+    <br>
 </div>
    		
 

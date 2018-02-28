@@ -81,10 +81,18 @@ a, a:hover{
 .btn:hover, .btn:focus {
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.15);
 }
-.btn-primary{
-    background-color: #ff5722 !important;
-    border-color: #ff5722 !important;
+.btn-quit{
+    background-color: #cf2925c7 !important;
+    border-color: #000 !important;
+    border-bottom-style: outset;
 }
+
+.btn-sign{
+    background-color: #04ff028f !important;
+    border-color: #000 !important;
+    border-bottom-style: outset;
+}
+
 .btn-primary:hover, .btn-primary:focus{
     color: #fff !important;
 }
@@ -184,6 +192,10 @@ a, a:hover{
     margin-top: 55px;
     margin-bottom: 20px;
 }
+.card-footer-course {
+    padding: .75rem 1.25rem;
+    background-color: rgba(240, 95, 64, 0.9);
+    border-top: 1px solid rgba(0,0,0,.125);
 }
 
 }
