@@ -128,65 +128,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">Calendar</h2>
+					<h2 class="section-heading">Schedule</h2>
 					<hr class="my-4">
-
-                    {{#schedules}}
-                       <strong>Time: </strong>{{schedule}}
-                       <strong>Course Name: </strong>{{course.name}}
-                       <hr>
-                    {{/schedules}}
-					 
-
-					<!--<div class="agenda">
-						<!--<div class="table-responsive">
-							<table class="table table-condensed table-bordered">
-								<thead>
-									<tr>
-										<th>Date</th>
-										<th>Time</th>
-										<th>Event</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="agenda-date" class="active" rowspan="1">
-											<div class="dayofmonth">26</div>
-											<div class="dayofweek">Saturday</div>
-											<div class="shortdate text-muted">July, 2014</div>
-										</td>
-										<td class="agenda-time">5:30 AM</td>
-										<td class="agenda-events">
-											<div class="agenda-event">Aerobic</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="agenda-date" class="active" rowspan="3">
-											<div class="dayofmonth">24</div>
-											<div class="dayofweek">Thursday</div>
-											<div class="shortdate text-muted">July, 2014</div>
-										</td>
-										<td class="agenda-time">8:00 - 9:00 AM</td>
-										<td class="agenda-events">
-											<div class="agenda-event">Zumba</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="agenda-time">8:15 - 9:00 PM</td>
-										<td class="agenda-events">
-											<div class="agenda-event">Boxeo</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="agenda-time">7:00 - 9:00 PM</td>
-										<td class="agenda-events">
-											<div class="agenda-event">Swimming</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>-->
-					</div>
+					{{#schedules}}
+						{{> schedule_template}}
+					{{/schedules}}
+					
+					{{^schedules}}
+					<p class="mb-5">
+						You have not signed up for any course yet
+					</p>
+					<form method="get" action="/courses">
+						<button id="subscribe" type="submit" class="btn btn-warning">
+							Subscribe!
+						</button>
+					</form>
+					{{/schedules}} 
 				</div>
 			</div>
 		</div>
