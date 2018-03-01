@@ -49,8 +49,14 @@ public class AdminController {
 	public String manageUsersDelete(@PathVariable long id) {
 		User user = usersRepository.findOne(id);
 		usersRepository.delete(user);
-		return "redirect:/adminPanel/manageUsers";
+		return "redirect:/adminPage/manageUsers";
 	}
+//	//Try
+//	@RequestMapping("/adminPage/manageUsers/createNewUser")
+//	public String manageUsersCreateNewUser(@PathVariable User user, @PathVariable String pass) {
+//		usersRepository.createNewUser(user, pass);
+//		return "redirect:/adminPage/manageUsers";
+//	}
 	
 	@RequestMapping("/adminPage/manageCourses")
 	public String manageGroups(Model model, String action) {
@@ -64,7 +70,7 @@ public class AdminController {
 	public String manageGroupsDelete(@PathVariable long id) {
 		Course course = courseRepository.findOne(id);
 		courseRepository.delete(course);
-		return "redirect:/adminPanel/manageCourse";
+		return "redirect:/adminPage/manageCourses";
 	}
 	
 	// For future graphics 

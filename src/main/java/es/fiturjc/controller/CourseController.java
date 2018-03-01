@@ -83,4 +83,5 @@ public class CourseController {
 		return "redirect:/user/profile";
 	}
 	
+	
 }
