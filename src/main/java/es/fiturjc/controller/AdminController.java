@@ -73,6 +73,12 @@ public class AdminController {
 		return "redirect:/adminPage/manageCourses";
 	}
 	
+	@RequestMapping("/adminPage/manageCourses/addCourse")
+	public String addCourset(Model model) {
+		model.addAttribute("addCourse", true);
+		return "addCourse";
+	}
+	
 	// For future graphics 
 	
 	@RequestMapping("/adminPage/graphics")

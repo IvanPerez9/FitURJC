@@ -1,21 +1,24 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Courses</h4>
-                </div>
-                <div class="content">
-                    <ul>
-                    {{#courses}}
-                    	<li>
-                    		<a href="/adminPage/manageCourses/delete/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    		<a href="/course/{{id}}">{{name}}</a>
-                    	</li>
-                    {{/courses}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="header">
+					<h4 class="title">Courses</h4>
+				</div>
+				<div class="content">
+					<ul>
+						{{#courses}}
+						<li><a href="/adminPage/manageCourses/delete/{{id}}"><i
+								class="fa fa-times" aria-hidden="true"></i></a> <a
+							href="/course/{{id}}">{{name}}</a></li> {{/courses}}
+					</ul>
+					<br>
+					<a class="btn " href="/courses">
+						View Current Courses</a>
+					<a class="btn " href="/adminPage/manageCourses/addCourse">
+						Add New Course</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
