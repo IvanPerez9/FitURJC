@@ -41,35 +41,38 @@
 		<div class="main-panel">
 			<div class="container-fluid">
 				<div class="form-container">
-					<form class="form-group">
+					<form class="form-group" method="post"
+						action="/adminPage/manageCourses/addCourse" enctype="multipart/form-data">
 						<div class="form-group">
-							<br> <label for="newName">Name</label> <input type="text"
-								class="form-control" id="courseName" placeholder="Previous Name">
+							<br> <label for="newName">Name</label> <input name="name" type="text"
+								class="form-control" id="name" placeholder="Previous Name">
 						</div>
 						<div class="form-group">
-							<label for="newName">Category*</label> <input type="text"
-								class="form-control" id="courseCategory" placeholder="Category">
+							<label for="newName">Category *</label>
+							<select class="form-control" name="category"required="required">
+								{{#categories}}
+							 		<option>{{.}}</option>
+							 	{{/categories}}
+                    		</select>
 						</div>
 						<div class="form-group">
-							<label for="newName">Description</label> <input type="text"
-								class="form-control" id="courseDescription"
+							<label for="newName">Description</label> <input name="description" type="text"
+								class="form-control" id="description"
 								placeholder="Description">
 						</div>
 						<div class="form-group">
-							<label for="newName">Schedule</label> <input type="text"
-								class="form-control" id="courseSchedule" placeholder="Schedules">
+							<label for="newName">Schedule</label> <input name="schedules" type="text"
+								class="form-control" id="schedules" placeholder="Schedules">
 						</div>
+						<div class="form-group">
+							<input type="file" name="file" id="file" /> <label
+								for="file" class="btn ">Upload Image</label>
+						</div>
+						<div class="form-group">
+								<button type="submit" class="btn btn-primary">Save Course</button>
+						</div>
+					</form>
 				</div>
-				<div class="form-group">
-					<label for="eventImage">Photo</label> <input type="file"
-						class="form-control-file" id="courseImage"
-						aria-describedby="fileHelp"> <small id="fileHelp"
-						class="form-text text-muted"></small>
-				</div>
-				<div style="text-align: center;">
-					<button type="submit" class="btn btn-primary ">Save</button>
-				</div>
-				</form>
 			</div>
 		</div>
 	</div>

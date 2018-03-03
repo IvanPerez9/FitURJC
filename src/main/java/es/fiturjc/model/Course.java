@@ -38,13 +38,17 @@ public class Course {
 	protected Course() {
 		
 	}
-
+	
 	public Course(String name, Category category, String description, Schedule... schedules) {
+		this(name,category,description,Arrays.asList(schedules));
+	}
+
+	public Course(String name, Category category, String description, List<Schedule> schedules) {
 		super();
 		this.name = name;
 		this.category = category;
 		this.description = description;
-		this.schedules = Arrays.asList(schedules);
+		this.schedules = schedules;
 	}
 
 	public long getId() {

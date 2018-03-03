@@ -1,13 +1,13 @@
 <div class="col-lg-4 col-sm-6">
 	<div class="portfolio-box"> 
-	<img class="img-fluid" src="/img/courses/{{name}}.jpg" alt="{{name}}"/>
+	<img class="img-fluid" src="{{src}}" alt="{{name}}"/>
 		<div class="portfolio-box-caption">
 			<div class="portfolio-box-caption-content">
 				<div class="project-category text-faded">
 					Category
 				</div>
 				<div class="project-name">
-					{{name}}
+					{{name}}{{participants_IDs}}
 				</div>
 				<div class="project-description">
 					{{description}}
@@ -19,8 +19,8 @@
 	<div class="card-footer-course">
 	{{#schedules}}	
 		{{schedule}}
-		<a class="btn btn-sign simple_confirmSign" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">SIGN UP</a>
-		<a class="btn btn-quit simple_confirmQuit" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">QUIT</a>
+			<a class="btn btn-sign simple_confirmSign" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">SIGN UP</a>	
+			<a class="btn btn-quit simple_confirmQuit" data-coursename="{{course.name}}" data-idschedule="{{idSchedule}}">QUIT</a>
    		Capacity: {{capacity}}/50
    		<br>
 	{{/schedules}}
