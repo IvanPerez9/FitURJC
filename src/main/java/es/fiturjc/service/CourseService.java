@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import es.fiturjc.model.Category;
 import es.fiturjc.model.Schedule;
@@ -64,4 +66,24 @@ public class CourseService {
 		courseRepository.save(course);
 		return course;
 	}
+	
+	// New 
+	
+//	public Course editCourse(String name, Category category, String description, MultipartFile file,
+//			List<Schedule> schedules) {
+//		
+//		Course course = new Course(name, category, description, schedules);
+//		
+//		if (!file.isEmpty()) {
+//			course.setSrc(imageService.uploadImage(file));
+//		} else {
+//			course.setSrc("/uploads/img/default");
+//		}
+//		for(Schedule schedule:schedules) {
+//			schedule.setCourse(course);
+//		}
+//		courseRepository.save(course);
+//		return course;
+//	}
+	
 }

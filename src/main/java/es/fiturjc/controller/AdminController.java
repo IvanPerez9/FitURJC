@@ -44,12 +44,13 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminPage/manageUsers")
-	public String manageUsers(Model model, String action) {
+	public String manageUsers(Model model) {
 		model.addAttribute("manageUsersSection", true);
 		List<User> users = usersRepository.findAll();
 		model.addAttribute("users", users);
 		return "admin";
 	}
+	
 
 	@RequestMapping("/adminPage/manageUsers/delete/{id}")
 	public String manageUsersDelete(@PathVariable long id) {
@@ -72,6 +73,7 @@ public class AdminController {
 		courseRepository.delete(course);
 		return "redirect:/adminPage/manageCourses";
 	}
+	
 
 	// For future graphics
 
@@ -83,31 +85,33 @@ public class AdminController {
 
 	// From Denise
 
-	@RequestMapping(value = "/editProfile/{nickname}", method = RequestMethod.PUT)
-	public String editProfile(@PathVariable String nickname, @RequestBody Map<String, String> params) {
-		userService.editUser(usersRepository.findByNickname(nickname), params);
-		return "admin";
-	}
-
-	@RequestMapping(value = "/{nickname}/users", method = RequestMethod.GET)
-	public String registeredUsers(Model model, @PathVariable String nickname) {
-		User user = usersRepository.findByNickname(nickname);
-		if (user.getRoles().contains("Admin")) {
-			List<User> users = usersRepository.findAll();
-			users.remove(user);
-			model.addAttribute("users", users);
-		}
-		return "admin-controlUsers";
-	}
-
-	@RequestMapping(value = "{nickname}/changePass", method = RequestMethod.PUT)
-	public String passwordChange(@PathVariable String nickname, @RequestBody User user) {
-		userService.updateUserInfo(nickname, user);
-		return "admin-passwordChange";
-	}
+//	@RequestMapping(value = "/editProfile/{nickname}", method = RequestMethod.PUT)
+//	public String editProfile(@PathVariable String nickname, @RequestBody Map<String, String> params) {
+//		userService.editUser(usersRepository.findByNickname(nickname), params);
+//		return "admin";
+//	}
+//
+//	@RequestMapping(value = "/{nickname}/users", method = RequestMethod.GET)
+//	public String registeredUsers(Model model, @PathVariable String nickname) {
+//		User user = usersRepository.findByNickname(nickname);
+//		if (user.getRoles().contains("Admin")) {
+//			List<User> users = usersRepository.findAll();
+//			users.remove(user);
+//			model.addAttribute("users", users);
+//		}
+//		return "admin-controlUsers";
+//	}
+//
+//	@RequestMapping(value = "{nickname}/changePass", method = RequestMethod.PUT)
+//	public String passwordChange(@PathVariable String nickname, @RequestBody User user) {
+//		userService.updateUserInfo(nickname, user);
+//		return "admin-passwordChange";
+//	}
+	
+	// NEW 
 
 	@RequestMapping("/adminPage/manageCourses/addCourse")
-	public String addCourset(Model model) {
+	public String addCourse(Model model) {
 		model.addAttribute("addCourse", true);
 		EnumSet<Category> categories = EnumSet.allOf(Category.class);
 		model.addAttribute("categories", categories);
@@ -127,4 +131,32 @@ public class AdminController {
 		courseService.createNewCourse(name, category, description, file, listSchedule);
 		return "redirect:/adminPage/manageCourses";
 	}
+	
+	@RequestMapping("/adminPage/manageCourses/edit/{id}")
+	public String editedCourse(Model model) {
+		model.addAttribute("editCourse", true);
+		EnumSet<Category> categories = EnumSet.allOf(Category.class);
+		model.addAttribute("categories", categories);
+		return "/editCourse";
+	}
+	
+	
+	@PostMapping("/adminPage/manageCourses/editCourse")
+	public String editedCourse(@PathVariable long id,@RequestParam String name, @RequestParam Category category,
+			@RequestParam String description, @RequestParam MultipartFile file, @RequestParam String schedules) {
+		String[] schedule = schedules.split(" ");
+		List<Schedule> listSchedule = new ArrayList<Schedule>();
+		for (String item : schedule) {
+			Schedule subSchedule = new Schedule(item);
+			listSchedule.add(subSchedule);
+		}
+
+		Course course = courseRepository.findOne(id);
+		courseRepository.delete(course);
+		
+		courseService.createNewCourse(name, category, description, file, listSchedule);
+		
+		return "redirect:/adminPage/manageCourses";
+	}
+	
 }

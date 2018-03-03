@@ -10,7 +10,11 @@
 	                    {{#users}}
 	                    	<li>
                     		<a href="/adminPage/manageUsers/delete/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    		<a href="/user/{{nickname}}">{{nickname}}</a>
+                    		<a href="/adminPage/manageUsers/">{{Name}}</a>
+                    		<a href="/adminPage/manageUsers/">{{Surname}}</a>
+                    		<a href="/adminPage/manageUsers/">"{{Nickname}}"</a>
+                    		
+                    		<p align="center" ><b>Email:</b> {{email}}<a href="/adminPage/manageUsers/"><i class="fa fa-pencil-square-o"></i></a></p>
                     	</li>
 	                    {{/users}}
                     </ul>
