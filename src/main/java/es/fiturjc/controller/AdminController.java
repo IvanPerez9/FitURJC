@@ -1,16 +1,16 @@
 package es.fiturjc.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
-import java.util.Map;
 
 import es.fiturjc.model.Category;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.service.CourseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,13 +44,17 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminPage/manageUsers")
-	public String manageUsers(Model model) {
+	public String manageUsers(Model model, Pageable page) {
+		Page<User> users = usersRepository.findAll(page);
 		model.addAttribute("manageUsersSection", true);
-		List<User> users = usersRepository.findAll();
 		model.addAttribute("users", users);
+		model.addAttribute("showNext", !users.isLast());
+		model.addAttribute("showPrev", !users.isFirst());
+		model.addAttribute("numPage", users.getNumber());
+		model.addAttribute("nextPage", users.getNumber() + 1);
+		model.addAttribute("prevPage", users.getNumber() - 1);
 		return "admin";
 	}
-	
 
 	@RequestMapping("/adminPage/manageUsers/delete/{id}")
 	public String manageUsersDelete(@PathVariable long id) {
@@ -60,10 +64,15 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminPage/manageCourses")
-	public String manageGroups(Model model, String action) {
+	public String manageGroups(Model model, Pageable page) {
 		model.addAttribute("manageCoursesSection", true); // For the template
-		List<Course> courses = courseRepository.findAll();
+		Page<Course> courses = courseRepository.findAll(page);
 		model.addAttribute("courses", courses);
+		model.addAttribute("showNext", !courses.isLast());
+		model.addAttribute("showPrev", !courses.isFirst());
+		model.addAttribute("numPage", courses.getNumber());
+		model.addAttribute("nextPage", courses.getNumber() + 1);
+		model.addAttribute("prevPage", courses.getNumber() - 1);
 		return "admin";
 	}
 
@@ -73,7 +82,6 @@ public class AdminController {
 		courseRepository.delete(course);
 		return "redirect:/adminPage/manageCourses";
 	}
-	
 
 	// For future graphics
 
@@ -83,32 +91,35 @@ public class AdminController {
 		return "admin";
 	}
 
-	// From Denise
+	// By Denise
 
-//	@RequestMapping(value = "/editProfile/{nickname}", method = RequestMethod.PUT)
-//	public String editProfile(@PathVariable String nickname, @RequestBody Map<String, String> params) {
-//		userService.editUser(usersRepository.findByNickname(nickname), params);
-//		return "admin";
-//	}
-//
-//	@RequestMapping(value = "/{nickname}/users", method = RequestMethod.GET)
-//	public String registeredUsers(Model model, @PathVariable String nickname) {
-//		User user = usersRepository.findByNickname(nickname);
-//		if (user.getRoles().contains("Admin")) {
-//			List<User> users = usersRepository.findAll();
-//			users.remove(user);
-//			model.addAttribute("users", users);
-//		}
-//		return "admin-controlUsers";
-//	}
-//
-//	@RequestMapping(value = "{nickname}/changePass", method = RequestMethod.PUT)
-//	public String passwordChange(@PathVariable String nickname, @RequestBody User user) {
-//		userService.updateUserInfo(nickname, user);
-//		return "admin-passwordChange";
-//	}
-	
-	// NEW 
+	// @RequestMapping(value = "/editProfile/{nickname}", method =
+	// RequestMethod.PUT)
+	// public String editProfile(@PathVariable String nickname, @RequestBody
+	// Map<String, String> params) {
+	// userService.editUser(usersRepository.findByNickname(nickname), params);
+	// return "admin";
+	// }
+	//
+	// @RequestMapping(value = "/{nickname}/users", method = RequestMethod.GET)
+	// public String registeredUsers(Model model, @PathVariable String nickname) {
+	// User user = usersRepository.findByNickname(nickname);
+	// if (user.getRoles().contains("Admin")) {
+	// List<User> users = usersRepository.findAll();
+	// users.remove(user);
+	// model.addAttribute("users", users);
+	// }
+	// return "admin-controlUsers";
+	// }
+	//
+	// @RequestMapping(value = "{nickname}/changePass", method = RequestMethod.PUT)
+	// public String passwordChange(@PathVariable String nickname, @RequestBody User
+	// user) {
+	// userService.updateUserInfo(nickname, user);
+	// return "admin-passwordChange";
+	// }
+
+	// NEW
 
 	@RequestMapping("/adminPage/manageCourses/addCourse")
 	public String addCourse(Model model) {
@@ -131,7 +142,7 @@ public class AdminController {
 		courseService.createNewCourse(name, category, description, file, listSchedule);
 		return "redirect:/adminPage/manageCourses";
 	}
-	
+
 	@RequestMapping("/adminPage/manageCourses/edit/{id}")
 	public String editedCourse(Model model) {
 		model.addAttribute("editCourse", true);
@@ -139,10 +150,9 @@ public class AdminController {
 		model.addAttribute("categories", categories);
 		return "/editCourse";
 	}
-	
-	
+
 	@PostMapping("/adminPage/manageCourses/editCourse")
-	public String editedCourse(@PathVariable long id,@RequestParam String name, @RequestParam Category category,
+	public String editedCourse(@PathVariable long id, @RequestParam String name, @RequestParam Category category,
 			@RequestParam String description, @RequestParam MultipartFile file, @RequestParam String schedules) {
 		String[] schedule = schedules.split(" ");
 		List<Schedule> listSchedule = new ArrayList<Schedule>();
@@ -153,10 +163,10 @@ public class AdminController {
 
 		Course course = courseRepository.findOne(id);
 		courseRepository.delete(course);
-		
+
 		courseService.createNewCourse(name, category, description, file, listSchedule);
-		
+
 		return "redirect:/adminPage/manageCourses";
 	}
-	
+
 }
