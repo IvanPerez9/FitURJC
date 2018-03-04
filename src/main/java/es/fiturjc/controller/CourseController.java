@@ -90,7 +90,7 @@ public class CourseController {
 		return "redirect:/user/profile";
 	}
 	
-	//New 
+	//Editing a course - SOON 
 	
 	@GetMapping("/{idSchedule}/edit")
 	public String editCourse(@PathVariable long idSchedule, String name, Category category,String description,MultipartFile file,String schedules) throws InterruptedException {

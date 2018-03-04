@@ -8,10 +8,17 @@
 				<div class="content">
 					<ul>
 						{{#courses}}
-						<li><a href="/adminPage/manageCourses/delete/{{id}}"><i
-								class="fa fa-times" aria-hidden="true"></i></a> <a
-							href="/courses/">{{name}}</a> Edit <a href="/adminPage/manageCourses"><i class="fa fa-pencil-square-o"></i></a></li>
-							 {{/courses}}
+						
+								<h4><u>{{name}} </u>: <h8>{{description}}</h8> </h4><br>
+								<ul>
+									 {{#schedules}}
+									 <li type="circle"><a href="/adminPage/manageCourses">Participants in Schedule {{idSchedule}}: {{capacity}}	</a></li>
+									 <li type="circle"><a>Users: {{listUsers}} </a> </li>
+									 {{/schedules}}
+									 <li type="circle"><a href="/adminPage/manageCourses/delete/{{id}}">Delete {{name}}<i class="fa fa-times" aria-hidden="true"></i></a></li> 
+								 </ul>
+						
+						{{/courses}}
 					</ul>
 					<br>
 					<a class="btn " href="/courses">

@@ -18,6 +18,7 @@
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -54,24 +55,16 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/user/profile"><span class="fa fa-reply"></span>
-							Return</a>
+						<a class="navbar-brand" href="/user/profile"><span
+							class="fa fa-reply"></span> Return</a>
 					</div>
 				</div>
 			</nav>
 			<!-- Mustache in -->
-              	
-              	{{# manageUsersSection}}
-                	{{> admin-controlUsers}}
-              	{{/ manageUsersSection}}
-              	
-              	{{# manageCoursesSection}}
-                	{{> admin-controlCourses}}
-              	{{/ manageCoursesSection}}
-              	
-              	{{# graphicsSection}}
-                	{{> admin-graphics}}
-              	{{/ graphicsSection}}
+
+			{{# manageUsersSection}} {{> admin-controlUsers}} {{/manageUsersSection}} 
+			{{# manageCoursesSection}} {{>admin-controlCourses}} {{/ manageCoursesSection}}
+			 {{#graphicsSection}} {{> admin-graphics}} {{/ graphicsSection}}
 		</div>
 	</div>
 </body>
@@ -81,7 +74,8 @@
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrap/js/light-bootstrap-dashboard.js"></script>
 
-<!-- TOGGLE MENU -->
+
+<!-- TOGGLE MENU, ERRORS WITH MANAGECOURSE FULL SIZE, NOT RESPONSIVE FOR THE MOMENT -->
 
 <!--<div class="collapse navbar-collapse has-image" data-color="purple"
 	style="background: transparent url(/img/lateralAdmin.jpg) repeat scroll 0% 0%;">

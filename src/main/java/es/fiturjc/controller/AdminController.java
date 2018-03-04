@@ -79,13 +79,11 @@ public class AdminController {
 		user.setId(id);
 		user.changePassword(passwordHash);
 		user.setImgSrc("/img/uploads/default");
-//		user.setSurname(surname);
-//		user.setAge(age);
         List<String> roles = new ArrayList<String>();
         roles.add("ROLE_USER");
 		user.setRoles(roles);
 
-		//Problems with the role while editing 
+		//Problems with the role while editing SOLVED
 		usersRepository.saveAndFlush(user); // flush to the DB
 		
 		return "redirect:/adminPage/manageUsers";

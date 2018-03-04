@@ -21,4 +21,30 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	// Alert to delete o save in Admin page. Not used, just in case. Add js and css to the html if necessary
+	
+	$(".simple_confirmSignDelete").click(function(){
+		button = this;
+		alertify.confirm("Do you want to delete this?", function(e){
+			if(e){
+				alertify.alert("Delete ");
+				document.location = "/adminPage/manageUsers/delete/id";
+			}else{
+				alertify.alert("Delete Cancelled");
+			}
+		});
+	});
+	$(".simple_confirmSave").click(function(){
+		button = this;
+		alertify.confirm("Do you really want to save?", function(e){
+			if(e){
+				alertify.alert("Succesfully saved ");
+				document.location = "/manageUsers";
+			}else{
+				alertify.alert("Unsaved changes");
+			}
+		});
+	});
+	
 });
