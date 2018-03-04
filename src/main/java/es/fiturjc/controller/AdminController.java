@@ -81,6 +81,10 @@ public class AdminController {
 		user.setImgSrc("/img/uploads/default");
 //		user.setSurname(surname);
 //		user.setAge(age);
+        List<String> roles = new ArrayList<String>();
+        roles.add("ROLE_USER");
+		user.setRoles(roles);
+
 		//Problems with the role while editing 
 		usersRepository.saveAndFlush(user); // flush to the DB
 		
