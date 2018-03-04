@@ -1,27 +1,19 @@
 package es.fiturjc.controller;
 
 import java.security.Principal;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 
 import es.fiturjc.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.fiturjc.component.UserComponent;
-import es.fiturjc.model.Category;
-import es.fiturjc.model.Course;
 import es.fiturjc.model.User;
 import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;

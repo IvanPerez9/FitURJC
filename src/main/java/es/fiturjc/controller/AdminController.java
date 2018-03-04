@@ -62,6 +62,31 @@ public class AdminController {
 		usersRepository.delete(user);
 		return "redirect:/adminPage/manageUsers";
 	}
+	
+	// Edit user 
+	
+	@RequestMapping("/adminPage/manageUsers/edit/{id}")
+	public String editSingleUser (Model model, @PathVariable long id) {
+		User u = usersRepository.findById(id);
+		model.addAttribute("usersEdit",u);
+		
+		return "admin";
+	}
+	
+	@RequestMapping("/adminPage/editandsave/{id}")
+	public String editAndSave (Model model, User user, @PathVariable long id, @RequestParam String passwordHash,@RequestParam String surname, @RequestParam int age) {
+		
+		user.setId(id);
+		user.changePassword(passwordHash);
+		user.setImgSrc("/img/uploads/default");
+		user.setSurname(surname);
+		user.setAge(age);
+		usersRepository.saveAndFlush(user); // flush to the DB
+		
+		return "redirect:/adminPage/manageUsers";
+	}
+	
+	//Courses
 
 	@RequestMapping("/adminPage/manageCourses")
 	public String manageGroups(Model model, Pageable page) {
@@ -82,42 +107,6 @@ public class AdminController {
 		courseRepository.delete(course);
 		return "redirect:/adminPage/manageCourses";
 	}
-
-	// For future graphics
-
-	@RequestMapping("/adminPage/graphics")
-	public String graphics(Model model, String action) {
-		model.addAttribute("graphicsSection", true);
-		return "admin";
-	}
-
-	// By Denise
-
-	// @RequestMapping(value = "/editProfile/{nickname}", method =
-	// RequestMethod.PUT)
-	// public String editProfile(@PathVariable String nickname, @RequestBody
-	// Map<String, String> params) {
-	// userService.editUser(usersRepository.findByNickname(nickname), params);
-	// return "admin";
-	// }
-	//
-	// @RequestMapping(value = "/{nickname}/users", method = RequestMethod.GET)
-	// public String registeredUsers(Model model, @PathVariable String nickname) {
-	// User user = usersRepository.findByNickname(nickname);
-	// if (user.getRoles().contains("Admin")) {
-	// List<User> users = usersRepository.findAll();
-	// users.remove(user);
-	// model.addAttribute("users", users);
-	// }
-	// return "admin-controlUsers";
-	// }
-	//
-	// @RequestMapping(value = "{nickname}/changePass", method = RequestMethod.PUT)
-	// public String passwordChange(@PathVariable String nickname, @RequestBody User
-	// user) {
-	// userService.updateUserInfo(nickname, user);
-	// return "admin-passwordChange";
-	// }
 
 	// NEW
 
@@ -142,14 +131,15 @@ public class AdminController {
 		courseService.createNewCourse(name, category, description, file, listSchedule);
 		return "redirect:/adminPage/manageCourses";
 	}
+	
 
-	@RequestMapping("/adminPage/manageCourses/edit/{id}")
-	public String editedCourse(Model model) {
-		model.addAttribute("editCourse", true);
-		EnumSet<Category> categories = EnumSet.allOf(Category.class);
-		model.addAttribute("categories", categories);
-		return "/editCourse";
-	}
+//	@RequestMapping("/adminPage/manageCourses/edit/{id}")
+//	public String editedCourse(Model model) {
+//		model.addAttribute("editCourse", true);
+//		EnumSet<Category> categories = EnumSet.allOf(Category.class);
+//		model.addAttribute("categories", categories);
+//		return "/editCourse";
+//	}
 
 	@PostMapping("/adminPage/manageCourses/editCourse")
 	public String editedCourse(@PathVariable long id, @RequestParam String name, @RequestParam Category category,
@@ -169,4 +159,12 @@ public class AdminController {
 		return "redirect:/adminPage/manageCourses";
 	}
 
+	
+	// For future graphics
+
+		@RequestMapping("/adminPage/graphics")
+		public String graphics(Model model, String action) {
+			model.addAttribute("graphicsSection", true);
+			return "admin";
+		}
 }

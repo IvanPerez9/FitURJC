@@ -1,25 +1,74 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Usuarios</h4>
-                </div>
-                <div class="content">
-                    <ul>
-	                    {{#users}}
-	                    	<li>
-                    		<a href="/adminPage/manageUsers/delete/{{id}}"><i class="fa fa-times" aria-hidden="true"></i></a>
-                    		<a href="/adminPage/manageUsers/">{{Name}}</a>
-                    		<a href="/adminPage/manageUsers/">{{Surname}}</a>
-                    		<a href="/adminPage/manageUsers/">"{{Nickname}}"</a>
-                    		
-                    		<p align="center" ><b>Email:</b> {{email}}<a href="/adminPage/manageUsers/"><i class="fa fa-pencil-square-o"></i></a></p>
-                    	</li>
-	                    {{/users}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="header">
+					<h4 class="title">Users</h4>
+				</div>
+				<div class="content">
+
+					{{#users}}
+					<div>
+						<h2>{{Name}} {{Surname}}</h2> 
+					</div>
+					
+					<form action="/adminPage/editandsave/{{id}}" method="post"
+						id="form_add_user" modelAttribute="user">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="row justify-content-md-center login-img"></div>
+								<div class="form-group">
+									<label for="signup_username">Name</label> <input
+										id="signup_username" type="text" class="form-control"
+										name="name" value="{{Name}}">
+								</div>
+								<div class="form-group">
+									<label for="signup_username">Surname</label> <input
+										id="signup_surname" type="text" class="form-control"
+										name="surname" value="{{surname}}">
+								</div>
+								<div class="form-group">
+									<label for="signup_email">Email</label> <input
+										id="signup_email" type="text" class="form-control"
+										name="email" value="{{email}}">
+								</div>
+
+								<div class="form-group">
+									<label for="signup_password1">Password</label> <input
+										id="signup_password1" class="form-control" name="passwordHash"
+										value="{{passwordHash}}">
+								</div>
+								<div class="form-group">
+									<label for="age">Age</label> <input
+										id="signup_age" class="form-control" name="age"
+										value="{{age}}">
+								</div>
+								<div class="form-group">
+									<label>Roles</label> <input id="admin_roles" type="text"
+										class="form-control" name="roles" value="{{roles}}">
+								</div>
+
+								<div class="row justify-content-md-center">
+									<div class="col-12 col-md-auto btn-enter-div">
+										<div class="row">
+											<div class="col-md-1">
+												<button type="submit" class="btn btn-primary">Save</button>
+											</div>
+											<div class="col-md-1">
+												<a class="btn btn-main btn-enter"
+													href="/adminPage/manageUsers/delete/{{id}}"> Delete</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					</form>
+					{{/users}}
+					<div>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
