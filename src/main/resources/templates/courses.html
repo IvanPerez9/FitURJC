@@ -75,14 +75,27 @@
 	
 	<section class="p-0">
 		<div class="container-fluid p-0">
-			<div class="coursesUser">
+			<div class="row" id=listCourses>
 			{{#courses}}
 				 {{> course_template}}
 			{{/courses}}
 			</div>
+			<br>
+			<div class="styleMoreEvents">
+				<div id="spinner"></div>
+				<p class="text-center">
+					<button id="btnMoreCourses" type="button"
+						class="btn btn-primary">See more</button>
+				<form method="get" action="/">
+					<button id="goBack" type="submit" class="btn btn-warning">Go
+						back</button>
+				</form>
+			</div>
 		</div>
 	</section>
-	
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/moreCourses.js"></script>
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.fiturjc.model.Course;
+import es.fiturjc.model.Facilities;
 import es.fiturjc.model.User;
 import es.fiturjc.repository.CourseRepository;
 import es.fiturjc.repository.ScheduleRepository;
@@ -36,9 +37,13 @@ public class CourseService {
 	}
 
 	public Page<Course> getPageCourses() {
-		return courseRepository.findAll(new PageRequest(0, 12));
+		return courseRepository.findAll(new PageRequest(0, 10));
 	}
 
+	public Page<Course> moreCourses(int page) {
+		return courseRepository.findAll(new PageRequest(page, 10));
+	}
+	
 	public Course findCourse(long id) {
 		return courseRepository.findOne(id);
 	}

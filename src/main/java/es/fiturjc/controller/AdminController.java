@@ -167,7 +167,7 @@ public class AdminController {
 
 		@RequestMapping("/adminPage/graphics")
 		public String graphics(Model model, String action) {
-			model.addAttribute("graphicsSection", true);
+			model.addAttribute("graphicsSection", true);			
 			return "admin";
 		}
 }

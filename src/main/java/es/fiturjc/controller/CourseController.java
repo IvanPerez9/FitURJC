@@ -8,6 +8,7 @@ import es.fiturjc.model.Schedule;
 import es.fiturjc.repository.CourseRepository;
 import es.fiturjc.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Category;
 import es.fiturjc.model.Course;
+import es.fiturjc.model.Facilities;
 import es.fiturjc.model.User;
 import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
 
 @Controller
-@RequestMapping(value = "/courses")
 public class CourseController {
 
 	@Autowired
@@ -37,18 +38,25 @@ public class CourseController {
 	@Autowired
 	ScheduleRepository scheduleRepository;
 
-	@RequestMapping(value = "")
+	@RequestMapping(value = "/courses")
 	public String getCourses(Model model, Principal principal) {
 		boolean isLogged = principal != null;
 		User visitor = (isLogged) ? userService.findByEmail(principal.getName()) : null;
-		List<Course> courses = courseService.getAllCourses();
+		Page<Course> courses = courseService.getPageCourses();
 		model.addAttribute("courses", courses);
 		model.addAttribute("visitor", visitor);
 		return "courses";
 	}
+	
+	@RequestMapping(value = "/moreCourses")
+	public String getMoreCourses(Model model, @RequestParam int page) {
+		Page<Course> courses = courseService.moreCourses(page);
+	    model.addAttribute("course", courses);
+	    return "list_courses";
+	}
 
 	
-	@GetMapping("/{idSchedule}/add")
+	@GetMapping("/courses/{idSchedule}/add")
 	public String addCourse(@PathVariable long idSchedule) throws InterruptedException {
 
 		if(!userComponent.isLoggedUser())
@@ -62,14 +70,14 @@ public class CourseController {
 
 		sch.addUser(user);
 
-		// Esta en CascadeAll
+		//CascadeAll
 		scheduleRepository.save(sch);
 		
 		Thread.sleep(2000);
 		return "redirect:/user/profile";
 	}
 	
-	@GetMapping("/{idSchedule}/delete")
+	@GetMapping("/courses/{idSchedule}/delete")
 	public String deleteCourse(@PathVariable long idSchedule) throws InterruptedException {
 
 		if(!userComponent.isLoggedUser())
@@ -92,7 +100,7 @@ public class CourseController {
 	
 	//Editing a course - SOON 
 	
-	@GetMapping("/{idSchedule}/edit")
+	@GetMapping("/courses/{idSchedule}/edit")
 	public String editCourse(@PathVariable long idSchedule, String name, Category category,String description,MultipartFile file,String schedules) throws InterruptedException {
 
 		if(!userComponent.isLoggedUser())
