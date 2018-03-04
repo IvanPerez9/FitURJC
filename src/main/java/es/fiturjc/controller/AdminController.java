@@ -79,8 +79,8 @@ public class AdminController {
 		user.setId(id);
 		user.changePassword(passwordHash);
 		user.setImgSrc("/img/uploads/default");
-		user.setSurname(surname);
-		user.setAge(age);
+//		user.setSurname(surname);
+//		user.setAge(age);
 		//Problems with the role while editing 
 		usersRepository.saveAndFlush(user); // flush to the DB
 		
