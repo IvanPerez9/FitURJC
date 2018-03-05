@@ -11,6 +11,8 @@ public class Schedule {
 	private long idSchedule;
 	private String schedule;
 	private int capacity;
+	
+	private static final long MAXIMUM_CAPACITY = 2;
 
 	public int getCapacity() {
 		return capacity;
@@ -44,9 +46,11 @@ public class Schedule {
 	}
 
 	public void addUser(User user) {
-		if(!listUsers.contains(user)) {
-			this.listUsers.add(user);
-			this.capacity = getCapacity() + 1;
+		if (listUsers.size() <= MAXIMUM_CAPACITY) {
+			if(!listUsers.contains(user)) {
+				this.listUsers.add(user);
+				this.capacity = getCapacity() + 1;
+			}
 		}
 	}
 
