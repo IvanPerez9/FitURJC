@@ -15,9 +15,9 @@
 									 <li type="circle"><a >Participants in Schedule {{idSchedule}}: {{listUsers.size}}	</a></li>
 									 <li type="circle"><a>Users: {{listUsers}} </a> </li>
 									 {{/schedules}}
-									 <li type="circle"><a href="/adminPage/manageCourses/delete/{{id}}">Delete {{name}}<i class="fa fa-times" aria-hidden="true"></i></a></li> 
+									 <li type="circle"><a class="btn btn-main btn-enter btn" data-coursename="{{name}}" data-idcourse="{{id}}" onclick="deleteCourse(this)">Delete {{name}}<i class="fa fa-times" aria-hidden="true"></i></a></li> 
 								 </ul>
-						
+							
 						{{/courses}}
 					</ul>
 					<br>

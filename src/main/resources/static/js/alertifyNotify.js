@@ -75,3 +75,34 @@ function showDialogUnEnroll(element) {
 function showDialogSoldOut(element) {
     alertify.alert("Full course Try another time.");
 }
+
+
+function deleteUser(element) {
+    var button = element;
+    alertify.confirm("Delete user?", function(e){
+        if(e){
+            alertify.alert("Deleted: " + $(button).data('username'));
+            document.location = "manageUsers/delete/" + $(button).data('iduser');
+        }else{
+            alertify.alert("Not deleted");
+        }
+    });
+}
+
+
+function saveUser(element) {
+    alertify.alert("User save");
+}
+
+function deleteCourse(element) {
+    var button = element;
+    alertify.confirm("Delete course?", function(e){
+        if(e){
+            alertify.alert("Deleted: " + $(button).data('coursename'));
+            document.location = "manageCourses/delete/" + $(button).data('idcourse');
+        }else{
+            alertify.alert("Not deleted");
+        }
+    });
+}
+

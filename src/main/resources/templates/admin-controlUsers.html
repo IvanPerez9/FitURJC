@@ -34,7 +34,7 @@
 								</div>
 
 								<div class="form-group">
-									<label for="signup_password1">Password *</label> <input
+									<label for="signup_password1">Password (Required)</label> <input
 										id="signup_password1" class="form-control" name="passwordHash" required="required">
 										<!--value="{{passwordHash}}">-->
 								</div>
@@ -48,11 +48,11 @@
 									<div class="col-12 col-md-auto btn-enter-div">
 										<div class="row">
 											<div class="col-md-1">
-												<button type="submit" class="btn btn-primary">Save</button>
+												<button type="submit" class="btn btn-primary" onclick="saveUser(this)">Save</button>
 											</div>
 											<div class="col-md-1">
 												<a class="btn btn-main btn-enter btn"
-													href="/adminPage/manageUsers/delete/{{id}}"> Delete</a>
+												 data-username="{{Name}}" data-iduser="{{id}}" onclick="deleteUser(this)"> Delete</a>
 											</div>
 										</div>
 									</div>

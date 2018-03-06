@@ -57,9 +57,10 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminPage/manageUsers/delete/{id}")
-	public String manageUsersDelete(@PathVariable long id) {
+	public String manageUsersDelete(@PathVariable long id) throws InterruptedException {
 		User user = usersRepository.findOne(id);
 		usersRepository.delete(user);
+		Thread.sleep(3000);
 		return "redirect:/adminPage/manageUsers";
 	}
 	
@@ -74,7 +75,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminPage/editandsave/{id}")
-	public String editAndSave (Model model, User user, @PathVariable long id, @RequestParam String passwordHash,@RequestParam String surname, @RequestParam int age) {
+	public String editAndSave (Model model, User user, @PathVariable long id, @RequestParam String passwordHash,@RequestParam String surname, @RequestParam int age) throws InterruptedException {
 		
 		user.setId(id);
 		user.changePassword(passwordHash);
@@ -86,6 +87,7 @@ public class AdminController {
 		//Problems with the role while editing SOLVED
 		usersRepository.saveAndFlush(user); // flush to the DB
 		
+		Thread.sleep(3000);
 		return "redirect:/adminPage/manageUsers";
 	}
 	
@@ -105,9 +107,10 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminPage/manageCourses/delete/{id}")
-	public String manageGroupsDelete(@PathVariable long id) {
+	public String manageGroupsDelete(@PathVariable long id) throws InterruptedException {
 		Course course = courseRepository.findOne(id);
 		courseRepository.delete(course);
+		Thread.sleep(3000);
 		return "redirect:/adminPage/manageCourses";
 	}
 
