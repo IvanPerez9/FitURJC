@@ -78,6 +78,8 @@ This is the client profile. For example you can check your profile section, desc
 	
 * __Admin.html:__
     ![Admin.html](FitURJC/img/captures/admin1.png)
+    ![Admin.html](FitURJC/img/captures/admin2.png)
+    ![Admin.html](FitURJC/img/captures/admin3.png)
     * Description: The page of an User that has Admin role. He can manage Users (Delete users, Edit users) and Courses (Delete courses, add courses) In a future this page will have a Graphic part where you will see stadistics about the user preferences.
 	
 * __Class Diagram:__
