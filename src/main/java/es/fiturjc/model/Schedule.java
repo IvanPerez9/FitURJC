@@ -10,23 +10,22 @@ public class Schedule {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idSchedule;
 	private String schedule;
-	private int capacity;
+
+    @ManyToMany
+    private Set<User> listUsers = new HashSet<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    Course course;
+
+    @Transient
+	public boolean signup;
 	
 	private static final long MAXIMUM_CAPACITY = 2;
 
-	public int getCapacity() {
-		return capacity;
+	public boolean isFull(){
+		return MAXIMUM_CAPACITY <= listUsers.size();
 	}
 
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
-
-	@ManyToMany
-	private Set<User> listUsers = new HashSet<>();
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	Course course;
 
 	protected Schedule() {
 
@@ -49,7 +48,6 @@ public class Schedule {
 		if (listUsers.size() <= MAXIMUM_CAPACITY) {
 			if(!listUsers.contains(user)) {
 				this.listUsers.add(user);
-				this.capacity = getCapacity() + 1;
 			}
 		}
 	}
@@ -57,7 +55,6 @@ public class Schedule {
 	public void deleteUser(User user) {
 		if(listUsers.contains(user)) {
 			this.listUsers.remove(user);
-			this.capacity = getCapacity() - 1;
 		}
 	}
 

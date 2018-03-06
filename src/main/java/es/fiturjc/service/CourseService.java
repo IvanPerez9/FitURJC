@@ -48,13 +48,14 @@ public class CourseService {
 		return courseRepository.findOne(id);
 	}
 
-	public void follow(User user, Course course) {
-		if (user.getCourseList().contains(course)) {
-			user.removeCourse(course);
-		} else {
-			user.addCourse(course);
-		}
-	}
+//
+//	public void follow(User user, Course course) {
+//		if (user.getCourseList().contains(course)) {
+//			user.removeCourse(course);
+//		} else {
+//			user.addCourse(course);
+//		}
+//	}
 
 	public Course createNewCourse(String name, Category category, String description, MultipartFile file,
 			List<Schedule> schedules) {

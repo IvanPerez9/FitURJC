@@ -29,11 +29,11 @@ public class Course {
 	private String description;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="course")
-	private List<Schedule> schedules = new ArrayList<Schedule>();
+	private List<Schedule> schedules = new ArrayList<>();
 	
-	//DANI
-	@ManyToMany(mappedBy="courseList")
-	private List<User> participants_IDs = new ArrayList<>();
+//	//DANI
+//	@ManyToMany(mappedBy="courseList")
+//	private List<User> participants_IDs = new ArrayList<>();
 	
 	protected Course() {
 		

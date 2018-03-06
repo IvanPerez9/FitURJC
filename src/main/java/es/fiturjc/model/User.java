@@ -30,9 +30,9 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	//DANI
-	@ManyToMany
-	private List<Course> courseList = new ArrayList<>();
+//	//DANI
+//	@ManyToMany
+//	private List<Course> courseList = new ArrayList<>();
 	
 /*	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
@@ -122,16 +122,16 @@ public class User {
 
 	}
 	
-	//DANI
-	public void removeCourse(Course course) {
-		this.courseList.remove(course);
-
-	}
-
-	public void addCourse(Course course) {
-		this.courseList.add(course);
-
-	}
+//	//DANI
+//	public void removeCourse(Course course) {
+//		this.courseList.remove(course);
+//
+//	}
+//
+//	public void addCourse(Course course) {
+//		this.courseList.add(course);
+//
+//	}
 
 	// String .. roles admin various roles names 
 	public User(String name, String surname, int age, String passwordHash, String email,
@@ -155,13 +155,13 @@ public class User {
 		return id == user.id;
 	}
 
-	public List<Course> getCourseList() {
-		return courseList;
-	}
-
-	public void setCourseList(List<Course> courseList) {
-		this.courseList = courseList;
-	}
+//	public List<Course> getCourseList() {
+//		return courseList;
+//	}
+//
+//	public void setCourseList(List<Course> courseList) {
+//		this.courseList = courseList;
+//	}
 
 	@Override
 	public int hashCode() {

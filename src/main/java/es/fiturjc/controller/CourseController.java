@@ -43,15 +43,18 @@ public class CourseController {
 		boolean isLogged = principal != null;
 		User visitor = (isLogged) ? userService.findByEmail(principal.getName()) : null;
 		Page<Course> courses = courseService.getPageCourses();
+		courses.getContent().forEach(c -> c.getSchedules().forEach(s -> s.signup = s.getUser().contains(visitor)));
 		model.addAttribute("courses", courses);
 		model.addAttribute("visitor", visitor);
 		return "courses";
 	}
 	
 	@RequestMapping(value = "/moreCourses")
-	public String getMoreCourses(Model model, @RequestParam int page) {
+	public String getMoreCourses(Model model, @RequestParam int page, Principal principal) {
+		User visitor = principal != null ? userService.findByEmail(principal.getName()) : null;
 		Page<Course> courses = courseService.moreCourses(page);
-	    model.addAttribute("course", courses);
+		courses.getContent().forEach(c -> c.getSchedules().forEach(s -> s.signup = s.getUser().contains(visitor)));
+		model.addAttribute("course", courses);
 	    return "list_courses";
 	}
 

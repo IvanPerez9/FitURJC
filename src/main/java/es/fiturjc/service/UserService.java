@@ -143,12 +143,22 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public List<Course> getCourses(User u){
+    public Collection<Course> getCourses(User u){
         return scheduleRepository
                 .findByListUsersContains(u)
                 .stream().map(Schedule::getCourse)
                 .collect(Collectors.toList());
     }
+
+//	/**
+//	 *
+//	 * @param c
+//	 * @param u
+//	 * @return
+//	 */
+//	public boolean isEnrrolledInSchedule(Schedule c, User u){
+//		return scheduleRepository.findByListUsersContains(u).contains(c);
+//	}
 
 
 }

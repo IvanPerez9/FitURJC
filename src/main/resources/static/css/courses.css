@@ -55,8 +55,9 @@ a, a:hover{
     text-decoration: underline;
 }
 @media (min-width:576px){
-    section{
+    section.margin{
         padding: 40px 0px;
+        padding-top: 54px;
     }
     .hero .card .card-block{
         padding-left: 4rem;
