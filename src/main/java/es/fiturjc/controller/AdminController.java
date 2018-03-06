@@ -6,6 +6,7 @@ import java.util.List;
 
 import es.fiturjc.model.Category;
 import es.fiturjc.model.Schedule;
+import es.fiturjc.service.AdminService;
 import es.fiturjc.service.CourseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ public class AdminController {
 	private CourseRepository courseRepository;
 
 	@Autowired
-	private UserService userService;
-
-	@Autowired
 	private CourseService courseService;
+	
+	@Autowired
+	private AdminService adminService;
 
 	@RequestMapping("/adminPage")
 	public String adminRoot(Model model) {
@@ -75,18 +76,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminPage/editandsave/{id}")
-	public String editAndSave (Model model, User user, @PathVariable long id, @RequestParam String passwordHash,@RequestParam String surname, @RequestParam int age) throws InterruptedException {
+	public String editAndSave (Model model, User user, @PathVariable long id,@RequestParam String passwordHash) throws InterruptedException{
 		
-		user.setId(id);
-		user.changePassword(passwordHash);
-		user.setImgSrc("/img/uploads/default");
-        List<String> roles = new ArrayList<String>();
-        roles.add("ROLE_USER");
-		user.setRoles(roles);
-
-		//Problems with the role while editing SOLVED
-		usersRepository.saveAndFlush(user); // flush to the DB
+		try {
+			adminService.editUser(id, user,passwordHash);
+		} catch (Exception e) {
+			return "404.html";
+		}
 		
+//        List<String> roles = new ArrayList<String>();
+//        roles.add("ROLE_USER");
+//		user.setRoles(roles);
 		Thread.sleep(3000);
 		return "redirect:/adminPage/manageUsers";
 	}
@@ -114,7 +114,7 @@ public class AdminController {
 		return "redirect:/adminPage/manageCourses";
 	}
 
-	// NEW
+	// NEW, goes to Course Repository 
 
 	@RequestMapping("/adminPage/manageCourses/addCourse")
 	public String addCourse(Model model) {
@@ -127,17 +127,13 @@ public class AdminController {
 	@PostMapping("/adminPage/manageCourses/addCourse")
 	public String registerCourse(@RequestParam String name, @RequestParam Category category,
 			@RequestParam String description, @RequestParam MultipartFile file, @RequestParam String schedules) {
+		
 		String[] schedule = schedules.split(" ");
 		List<Schedule> listSchedule = new ArrayList<Schedule>();
-		for (String item : schedule) {
-			Schedule subSchedule = new Schedule(item);
-			listSchedule.add(subSchedule);
-		}
-
 		courseService.createNewCourse(name, category, description, file, listSchedule);
 		return "redirect:/adminPage/manageCourses";
 	}
-	
+	// For the AdminRestController without HTML 
 
 //	@RequestMapping("/adminPage/manageCourses/edit/{id}")
 //	public String editedCourse(Model model) {

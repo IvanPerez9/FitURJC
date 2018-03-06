@@ -73,23 +73,31 @@ public class CourseService {
 		return course;
 	}
 	
-	// New 
+	// New , viene de Admin controller 
 	
-//	public Course editCourse(String name, Category category, String description, MultipartFile file,
-//			List<Schedule> schedules) {
-//		
-//		Course course = new Course(name, category, description, schedules);
-//		
-//		if (!file.isEmpty()) {
-//			course.setSrc(imageService.uploadImage(file));
-//		} else {
-//			course.setSrc("/uploads/img/default");
-//		}
-//		for(Schedule schedule:schedules) {
-//			schedule.setCourse(course);
-//		}
-//		courseRepository.save(course);
-//		return course;
-//	}
+	public boolean deleteCourse(long id) {
+		Course c = courseRepository.findOne(id);
+		if(c != null) {
+			courseRepository.delete(c);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public Course editCourse(Course c, long id) throws Exception {
+		
+		Course courseOld = courseRepository.getOne(id);
+		if( c!= null) {
+			courseOld.setCategory(c.getCategory());
+			courseOld.setDescription(c.getDescription());
+			courseOld.setName(c.getName());
+			courseOld.setSrc(c.getSrc());
+			courseOld.setSchedules(c.getSchedules());
+			return courseOld;
+		}else {
+			throw new Exception("Course not found");
+		}
+	}
 	
 }

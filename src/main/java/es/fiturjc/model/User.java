@@ -168,4 +168,8 @@ public class User {
 
 		return Objects.hash(id);
 	}
+	
+	public boolean isAdmin() {
+		return this.getRoles().stream().anyMatch(x-> x.equals("ROLE_ADMIN"));
+	}
 }
