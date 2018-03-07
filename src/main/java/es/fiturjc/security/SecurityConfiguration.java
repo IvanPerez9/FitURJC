@@ -1,24 +1,58 @@
 package es.fiturjc.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.social.connect.mem.InMemoryUsersConnectionRepository;
+import org.springframework.social.connect.web.ProviderSignInController;
+
+import es.fiturjc.controller.FacebookSignInAdapter;
+import es.fiturjc.service.FacebookConnectionSignup;
 
 @Configuration
+@EnableWebSecurity
+@ComponentScan(basePackages = {"org.baeldung.security"})
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+	
+	//FACEBOOK
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private ConnectionFactoryLocator connectionFactoryLocator;
+	
+	@Autowired
+	private UsersConnectionRepository usersConnectionRepository;
+	
+	@Autowired
+	private FacebookConnectionSignup facebookConnectionSignup;
+	//
+	
 	@Autowired
 	public UserRepositoryAuthenticationProvider authenticationProvider;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
+		//FACEBOOK
+		http
+		.csrf().disable()
+		.authorizeRequests()
+		.antMatchers("/login*","/signin/**","/signup/**").permitAll()
+		.anyRequest().authenticated()
+		.and()
+		.formLogin().loginPage("/login").permitAll();
+		
 		// Public pages
-
 		http.authorizeRequests().antMatchers("/").permitAll();
 		http.authorizeRequests().antMatchers("/login").permitAll();
 		http.authorizeRequests().antMatchers("/loginerror").permitAll();
@@ -29,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// User Pages
 		http.authorizeRequests().antMatchers("/courses").hasAnyRole("USER");
 		
-		//Admnin pages
+		//Admin pages
 		http.authorizeRequests().antMatchers("/adminPage/**").hasAnyRole("ADMIN");
 
 		// Login form
@@ -50,10 +84,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// Disable CSRF Protection, not compatible with current version of Mustache
 		http.csrf().disable();
 	}
-
+	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) {
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		//FACEBOOK
+		auth.userDetailsService(userDetailsService);
+		
 		// Database authentication provider
 		auth.authenticationProvider(authenticationProvider);
 	}
+	
+	
+	//FACEBOOK
+	@Bean
+    public ProviderSignInController providerSignInController() {
+        ((InMemoryUsersConnectionRepository) usersConnectionRepository)
+          .setConnectionSignUp(facebookConnectionSignup);
+         
+        return new ProviderSignInController(
+          connectionFactoryLocator, 
+          usersConnectionRepository, 
+          new FacebookSignInAdapter());
+    }
 }
