@@ -1,9 +1,12 @@
 package es.fiturjc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import es.fiturjc.model.Course;
 import es.fiturjc.model.User;
+import es.fiturjc.repository.CourseRepository;
 import es.fiturjc.repository.UserRepository;
 
 @Service
@@ -11,6 +14,9 @@ public class AdminService {
 
 	@Autowired
 	private UserRepository usersRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
 
 	
 	public boolean deleteUser (Long id) {
@@ -37,5 +43,9 @@ public class AdminService {
 			throw new Exception("User not found");
 		}
 	}
+	
+	// Courses en courseService el resto 
+	
+	
 	
 }

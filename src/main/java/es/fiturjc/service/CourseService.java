@@ -43,21 +43,23 @@ public class CourseService {
 	public Page<Course> moreCourses(int page) {
 		return courseRepository.findAll(new PageRequest(page, 6));
 	}
-	
+
 	public Course findCourse(long id) {
 		return courseRepository.findOne(id);
 	}
 
-//
-//	public void follow(User user, Course course) {
-//		if (user.getCourseList().contains(course)) {
-//			user.removeCourse(course);
-//		} else {
-//			user.addCourse(course);
-//		}
-//	}
-
-	public Course createNewCourse(String name, Category category, String description, MultipartFile file,
+	public Course createNewCourse(Course course, MultipartFile file) {
+		
+		if (!file.isEmpty()) {
+			course.setSrc(imageService.uploadImage(file));
+		} else {
+			course.setSrc("/uploads/img/default");
+		}
+		courseRepository.save(course);
+		return course;
+	}
+	
+	public Course createNewCourse2 (String name, Category category, String description, MultipartFile file,
 			List<Schedule> schedules) {
 		Course course = new Course(name, category, description, schedules);
 		
@@ -72,32 +74,34 @@ public class CourseService {
 		courseRepository.save(course);
 		return course;
 	}
-	
-	// New , viene de Admin controller 
-	
+
+	// New , viene de Admin controller
+
 	public boolean deleteCourse(long id) {
 		Course c = courseRepository.findOne(id);
-		if(c != null) {
+		if (c != null) {
 			courseRepository.delete(c);
 			return true;
 		}
 		return false;
 	}
 	
-	
-	public Course editCourse(Course c, long id) throws Exception {
+	public Course saveCourse (Course c) {
+		courseRepository.save(c);
+		return c ;
+	}
+
+	public Course editCourse(Course c, long id) {
 		
 		Course courseOld = courseRepository.getOne(id);
-		if( c!= null) {
-			courseOld.setCategory(c.getCategory());
-			courseOld.setDescription(c.getDescription());
-			courseOld.setName(c.getName());
-			courseOld.setSrc(c.getSrc());
-			courseOld.setSchedules(c.getSchedules());
-			return courseOld;
-		}else {
-			throw new Exception("Course not found");
-		}
+		courseOld.setCategory(c.getCategory());
+		courseOld.setDescription(c.getDescription());
+		courseOld.setName(c.getName());
+		courseOld.setSrc(c.getSrc());
+		courseOld.setSchedules(c.getSchedules());
+		saveCourse(courseOld);
+		return courseOld;
+		
 	}
-	
+
 }
