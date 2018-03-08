@@ -130,9 +130,14 @@ public class AdminController {
 		
 		String[] schedule = schedules.split(" ");
 		List<Schedule> listSchedule = new ArrayList<Schedule>();
+		for (String item : schedule) {
+			Schedule subSchedule = new Schedule(item);
+			listSchedule.add(subSchedule);
+		}
 		courseService.createNewCourse2(name, category, description, file, listSchedule);
 		return "redirect:/adminPage/manageCourses";
 	}
+	
 	// For the AdminRestController without HTML 
 
 //	@RequestMapping("/adminPage/manageCourses/edit/{id}")
