@@ -35,8 +35,14 @@ public class AdminRestController {
 	
 	@Autowired
 	private UserComponent userComponent;
+	
+	/**
+	 * Delete an User using the id
+	 * @param id
+	 * @return
+	 */
 
-	@DeleteMapping (value="/User/{id}")
+	@DeleteMapping (value="/user/delete/{id}")
 	public ResponseEntity<?> deleteUser (@PathVariable long id) {
 		if(adminService.deleteUser(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
@@ -44,14 +50,31 @@ public class AdminRestController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-//	@PutMapping (value="/{id}")
+	/**
+	 * NO SE SI ESTO ESTA BIEN 
+	 * @param id
+	 * @param user
+	 * @return
+	 */
+	
+//	@PutMapping (value="/user/edit/{id}")
 //	public ResponseEntity<?> editUser(@PathVariable long id, @RequestBody User user ) {
-//		adminService.editUser(id, user);
-//			return new ResponseEntity<>(HttpStatus.OK);
+//		if(adminService.editUser(id, user, user.getPasswordHash()){
+//			return new ResponseEntity<>(user, HttpStatus.OK);
 //		}
+//		return new ResponseEntity<>(HttpStatus.NOT_FOUND ); 
 //	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	
+	// COURSES 
+	
+	/**
+	 * 
+	 * @param course
+	 * @return new course
+	 */
+	
+	@RequestMapping(value = "/course/add", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> addCourse(@RequestBody Course course) {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
@@ -63,15 +86,28 @@ public class AdminRestController {
 		}
 	}
 	
-	@DeleteMapping(value="/{id}") 
-	public ResponseEntity<?> deleteCourse(@PathVariable long id) { // En vez de pathvariable, hago request body ? 
+	/**
+	 * Delete user by id
+	 * @param id
+	 * @return
+	 */
+	
+	@DeleteMapping(value="/course/delete/{id}") 
+	public ResponseEntity<?> deleteCourse(@PathVariable long id) { 
 		if(courseService.deleteCourse(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PutMapping (value="/{id}")
+	/**
+	 * Edit course by id 
+	 * @param id
+	 * @param course
+	 * @return course
+	 */
+	
+	@PutMapping (value="/course/edit/{id}")
 	public ResponseEntity<?> editCourse(@PathVariable long id , @RequestBody Course course) { 
 		Course c = courseService.findCourse(id);
 		if(c != null) {

@@ -42,6 +42,10 @@ public class UserService {
 	public User getUser(String nickname) {
 		return userRepository.findByNickname(nickname);
 	}
+	
+	public User getUserbyID (Long id) {
+		return userRepository.findById(id);
+	}
 
 	public User findOne(long id) {
 		return userRepository.findOne(id);

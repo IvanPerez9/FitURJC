@@ -47,7 +47,7 @@ public class UserRestController {
 	 * @return user
 	 */
 	
-	@RequestMapping(value = "/{nickname}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/edit/{nickname}", method = RequestMethod.PUT)
 	public ResponseEntity<User> editUserProfile(@PathVariable String nickname, @RequestBody User user) {
 		User updatedUser = userService.getUser(nickname);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
@@ -69,7 +69,7 @@ public class UserRestController {
 	 * @return newUser
 	 */
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> createNewUser(@RequestBody User user ) {
 		User newUser = userService.createNewUser(user, user.getPasswordHash());
