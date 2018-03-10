@@ -41,7 +41,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * Checks if the user is logged the it update user info using the service 
+	 * Checks if the user is logged the it update user info using the service . MIRAR OJO 
 	 * @param nickname
 	 * @param user
 	 * @return user

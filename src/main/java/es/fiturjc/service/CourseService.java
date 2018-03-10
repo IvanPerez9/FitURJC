@@ -47,6 +47,10 @@ public class CourseService {
 	public Course findCourse(long id) {
 		return courseRepository.findOne(id);
 	}
+	
+	public void save(Course course) {
+		courseRepository.save(course);
+	}
 
 	public Course createNewCourse(Course course, MultipartFile file) {
 		
