@@ -154,15 +154,4 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-//	/**
-//	 *
-//	 * @param c
-//	 * @param u
-//	 * @return
-//	 */
-//	public boolean isEnrrolledInSchedule(Schedule c, User u){
-//		return scheduleRepository.findByListUsersContains(u).contains(c);
-//	}
-
-
 }

@@ -1,5 +1,7 @@
 package es.fiturjc.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +39,23 @@ public class AdminRestController {
 	private UserComponent userComponent;
 	
 	/**
-	 * Delete an User using the id
+	 * Get users. checked 
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<List<User>> getUsers() {
+		List<User> users = userService.getUsers();
+		if (users != null) {
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	/**
+	 * Delete an User using the id. Checked
 	 * @param id
 	 * @return
 	 */
@@ -67,6 +85,22 @@ public class AdminRestController {
 	
 	
 	// COURSES 
+	
+	/**
+	 * MIRAR PORQUE NO VA
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/courses", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<List<Course>> getCourses() {
+		List<Course> courses = courseService.getAllCourses();
+		if (courses != null) {
+			return new ResponseEntity<>(courses, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 	
 	/**
 	 * 

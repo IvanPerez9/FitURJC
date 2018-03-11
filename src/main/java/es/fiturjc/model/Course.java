@@ -35,8 +35,8 @@ public class Course {
 //	@ManyToMany(mappedBy="courseList")
 //	private List<User> participants_IDs = new ArrayList<>();
 	
+	//Json to object
 	protected Course() {
-		
 	}
 	
 	public Course(String name, Category category, String description, Schedule... schedules) {

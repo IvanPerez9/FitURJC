@@ -1,5 +1,7 @@
 package es.fiturjc.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +43,29 @@ public class UserRestController {
 	}
 	
 	/**
+	 * List of all the Users. CHECKED 
+	 * @return users 
+	 */
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<List<User>> getUsers() {
+		List<User> users = userService.getUsers();
+		if (users != null) {
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	/**
 	 * Checks if the user is logged the it update user info using the service . MIRAR OJO 
 	 * @param nickname
 	 * @param user
 	 * @return user
 	 */
 	
-	@RequestMapping(value = "/edit/{nickname}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{nickname}", method = RequestMethod.PUT)
 	public ResponseEntity<User> editUserProfile(@PathVariable String nickname, @RequestBody User user) {
 		User updatedUser = userService.getUser(nickname);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
@@ -64,7 +82,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * Create a new user , user and pass
+	 * Create a new user , user and pass. CHECKED
 	 * @param user
 	 * @return newUser
 	 */
