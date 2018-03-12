@@ -17,3 +17,6 @@ target
 .bin
 /bin
 .springBeans
+FitURJC.iml
+FitURJC.iml
+src/main/resources/application.properties
