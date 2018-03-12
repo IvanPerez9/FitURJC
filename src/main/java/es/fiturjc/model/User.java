@@ -3,6 +3,7 @@ package es.fiturjc.model;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,24 +14,40 @@ import java.util.Objects;
 @Entity
 public class User {
 
+	public interface Basic{}
+	public interface Details{}
+	public interface None{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
 
 	@Column(unique = true)
+	@JsonView(Basic.class)
 	private String nickname;
+	
+	@JsonView(Details.class)
 	private String name;
+	
+	@JsonView(Details.class)
 	private String surname;
+	
 	@JsonIgnore
-	private String passwordHash; // Do not see in Rest 
+	private String passwordHash; // Do not see in Rest
+	
+	@JsonView(Details.class)
 	private String imgSrc;
 
 	@Column(unique = true)
+	@JsonView(Basic.class)
 	private String email;
 
+	@JsonView(Details.class)
 	private int age;
 
 	@ElementCollection(fetch = FetchType.EAGER)
+	@JsonView(Details.class)
 	private List<String> roles;
 
 //	//DANI

@@ -1,11 +1,17 @@
 package es.fiturjc.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+@Configuration
+@Order(1)
+@EnableWebSecurity
 public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -13,21 +19,21 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.antMatcher("/api/**");
-		
-		// URLs that need authentication to access to it
-		
-		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/courses/**").hasRole("USER");	 For everyone 	
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/courses/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN");
-		
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");	
-		
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/schedules/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/schedules/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/schedules/**").hasRole("ADMIN");		
+//		http.antMatcher("/api/**");
+//		
+//		// URLs that need authentication to access to it
+//		
+//		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/courses/**").hasRole("USER");	 For everyone 	
+//		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/courses/**").hasRole("USER");
+//		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("USER");
+//		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN");
+//		
+//		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
+//		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");	
+//		
+//		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/schedules/**").hasRole("ADMIN");
+//		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/schedules/**").hasRole("ADMIN");
+//		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/schedules/**").hasRole("ADMIN");		
 			
 		
 		
