@@ -2,6 +2,8 @@ package es.fiturjc.model;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +21,8 @@ public class User {
 	private String nickname;
 	private String name;
 	private String surname;
-	private String passwordHash;
+	@JsonIgnore
+	private String passwordHash; // Do not see in Rest 
 	private String imgSrc;
 
 	@Column(unique = true)

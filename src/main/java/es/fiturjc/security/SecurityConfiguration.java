@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) {
+	protected void configure(AuthenticationManagerBuilder auth) { // mirar ejercicio de seguridad, http.httpBasic() y http.logout y tal 
 		// Database authentication provider
 		auth.authenticationProvider(authenticationProvider);
 	}
