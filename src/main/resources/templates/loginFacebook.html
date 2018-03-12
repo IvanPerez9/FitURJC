@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>FitURJC Login</title>
+<title>FitURJC LoginFacebook</title>
 <link rel="shortcut icon" href="img/iconLogo.ico" />
 
 <meta name="description" content="Love Authority." />
@@ -29,48 +29,27 @@
 						<div class="card-body">
 							<div class="mt-2"></div>
 							<p class="mt-4 text-white lead text-center">Sign in to access
-								your FitURJC account</p>
+								your FitURJC account with Facebook</p>
 							<div class="mt-4">
 								<form method="post" action="/login">
 									<div class="form-group">
 										<input type="text" class="form-control" id="name"
-											name="name" value="" placeholder="Enter email">
-										<!--  Poner el correo  -->
+											name="name" value="" placeholder="Enter name">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" id="password"
 											name="password" value="" placeholder="Enter Password">
 									</div>
-									<label class="custom-control custom-checkbox mt-2"> <input
-										type="checkbox" class="custom-control-input"> <span
-										class="custom-control-indicator"></span> <span
-										class="custom-control-description text-white">Keep me
-											logged in</span>
-									</label> <input type="submit" name="login-submit" id="login-submit"
-										tabindex="4" class="form-control btn btn-login btn-primary"
-										value="Log In">
+									<input type="submit" name="login-submit" id="login-submit"
+									tabindex="4" class="form-control btn btn-login btn-primary"
+									value="Log In">
 								</form>
-								<div class="clearfix"></div>
-								<p class="content-divider center mt-4">
-									<span>or</span>
-								</p>
 							</div>
-							<!-- FACEBOOK BOTTOM -->
-							<form action="/signin/facebook" method="POST">
-    								<button class="loginBtnFacebook loginFacebook--facebook" type="submit" >
-    									Login using Facebook
-    								</button>
-    								<input type="hidden" name="scope" value="public_profile,email" />
-							</form>
-							<br>
-							<p class="text-center">
-								Don't have an account yet? <a href="register.html">Sign Up
-									Now</a>
-							</p>
 							<p class="text-center">
 							<form method="get" action="/">
-								<button type="submit" class= "btn btn-primary btn-block">Go
-									back</button>
+								<button type="submit" class= "btn btn-primary btn-block">
+									Go back
+								</button>
 							</form>
 							</p>
 						</div>
@@ -83,9 +62,6 @@
 			</div>
 		</div>
 	</section>
-	
-	
-
 </body>
 
 </html>

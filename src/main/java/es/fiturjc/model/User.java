@@ -21,22 +21,11 @@ public class User {
 	private String surname;
 	private String passwordHash;
 	private String imgSrc;
-
 	@Column(unique = true)
 	private String email;
-
 	private int age;
-
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
-
-//	//DANI
-//	@ManyToMany
-//	private List<Course> courseList = new ArrayList<>();
-	
-/*	@ManyToMany(fetch = FetchType.EAGER)
-	@Fetch(FetchMode.SELECT)
-	private List<Course> courses = new ArrayList<Course>();*/
 
 	public User() {
 	}
@@ -72,6 +61,7 @@ public class User {
 	public void setImgSrc(String imgSrc) {
 		this.imgSrc = imgSrc;
 	}
+	
 	public int getAge() {
 		return age;
 	}
@@ -82,6 +72,10 @@ public class User {
 
 	public String getNickname() {
 		return nickname;
+	}
+	
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 
 	public String getPasswordHash() {
@@ -121,17 +115,6 @@ public class User {
 		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + " ]";
 
 	}
-	
-//	//DANI
-//	public void removeCourse(Course course) {
-//		this.courseList.remove(course);
-//
-//	}
-//
-//	public void addCourse(Course course) {
-//		this.courseList.add(course);
-//
-//	}
 
 	// String .. roles admin various roles names 
 	public User(String name, String surname, int age, String passwordHash, String email,
