@@ -42,6 +42,10 @@ public class UserService {
 	public User getUser(String nickname) {
 		return userRepository.findByNickname(nickname);
 	}
+	
+	public User getUserbyID (Long id) {
+		return userRepository.findById(id);
+	}
 
 	public User findOne(long id) {
 		return userRepository.findOne(id);
@@ -149,16 +153,5 @@ public class UserService {
                 .stream().map(Schedule::getCourse)
                 .collect(Collectors.toList());
     }
-
-//	/**
-//	 *
-//	 * @param c
-//	 * @param u
-//	 * @return
-//	 */
-//	public boolean isEnrrolledInSchedule(Schedule c, User u){
-//		return scheduleRepository.findByListUsersContains(u).contains(c);
-//	}
-
 
 }
