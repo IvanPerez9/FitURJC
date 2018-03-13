@@ -78,11 +78,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-<<<<<<< HEAD
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-=======
-	protected void configure(AuthenticationManagerBuilder auth) { // mirar ejercicio de seguridad, http.httpBasic() y http.logout y tal 
->>>>>>> f5e4a96aa1cf8dbd349e9607b175f9c32772cfa2
+ 
+
 		// Database authentication provider
 		auth.authenticationProvider(authenticationProvider);
 		

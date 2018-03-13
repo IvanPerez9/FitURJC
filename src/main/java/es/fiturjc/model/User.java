@@ -41,11 +41,8 @@ public class User {
 	@Column(unique = true)
 	@JsonView(Basic.class)
 	private String email;
-<<<<<<< HEAD
-=======
 
 	@JsonView(Details.class)
->>>>>>> f5e4a96aa1cf8dbd349e9607b175f9c32772cfa2
 	private int age;
 	@ElementCollection(fetch = FetchType.EAGER)
 	@JsonView(Details.class)
