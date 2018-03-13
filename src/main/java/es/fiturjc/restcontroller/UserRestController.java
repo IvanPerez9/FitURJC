@@ -91,13 +91,13 @@ public class UserRestController {
 	 * @return user
 	 */
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
-	public ResponseEntity<User> editUserProfile(@PathVariable long id, @RequestBody User user) {
-		User updatedUser = userService.findOne(id);
+	@RequestMapping(value = "/{nickname}", method = RequestMethod.PATCH)
+	public ResponseEntity<User> editUserProfile(@PathVariable String nickname, @RequestBody User user) {
+		User updatedUser = userService.getUser(nickname);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
 		if (updatedUser == userLogged) {
 			if (updatedUser != null) {
-				updatedUser = userService.updateUserInfo(id, user);
+				updatedUser = userService.updateUserInfo(nickname, user);
 				return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

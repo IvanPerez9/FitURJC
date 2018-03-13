@@ -63,8 +63,8 @@ public class UserService {
 		}
 	}
 
-	public User updateUserInfo(long id, User user) {
-		User userToEdit = userRepository.findById(id);
+	public User updateUserInfo(String nickname, User user) {
+		User userToEdit = userRepository.findByNickname(nickname);
 		if (userToEdit != null) {
 			user.changePassword(userToEdit.getPasswordHash());
 			userRepository.save(user);

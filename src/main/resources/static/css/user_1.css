@@ -1,0 +1,6 @@
+.card-footer-user {
+    padding: .75rem 1.25rem;
+    background-color: rgba(240, 95, 64, 0.9);
+    border-top: 1px solid rgba(0,0,0,.125);
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}

@@ -8,8 +8,6 @@ import es.fiturjc.model.User;
 @Repository
 public interface UserRepository extends JpaRepository <User, Long>{
 	
-	User findByName(String name);
-	
 	User findByNickname(String nickname);
 	
 	User findByEmail(String email);
