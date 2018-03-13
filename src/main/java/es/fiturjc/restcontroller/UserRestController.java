@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,7 +52,7 @@ public class UserRestController {
 	
 	/**
 	 * Simple getUser by nickname
-	 * @param nickname
+	 * @param id
 	 * @return user 
 	 */
 	@JsonView(UserDetail.class)
@@ -65,6 +66,22 @@ public class UserRestController {
 		}
 	}
 	
+//	/**
+//	 * Simple getUser by nickname
+//	 * @param nickname
+//	 * @return user 
+//	 */
+//	@JsonView(UserDetail.class)
+//	@RequestMapping(value = "/{nickname}", method = RequestMethod.GET)
+//	public ResponseEntity<User> getUser(@RequestParam(value="nickname") String nickname) {
+//		User user = userService.getUser(nickname);
+//		if (user != null) {
+//			return new ResponseEntity<>(user, HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//	}
+	
 	
 	
 	/**
@@ -74,13 +91,13 @@ public class UserRestController {
 	 * @return user
 	 */
 	
-	@RequestMapping(value = "/{nickname}", method = RequestMethod.PUT)
-	public ResponseEntity<User> editUserProfile(@PathVariable String nickname, @RequestBody User user) {
-		User updatedUser = userService.getUser(nickname);
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	public ResponseEntity<User> editUserProfile(@PathVariable long id, @RequestBody User user) {
+		User updatedUser = userService.findOne(id);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
 		if (updatedUser == userLogged) {
 			if (updatedUser != null) {
-				updatedUser = userService.updateUserInfo(nickname, user);
+				updatedUser = userService.updateUserInfo(id, user);
 				return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -96,6 +113,7 @@ public class UserRestController {
 	 * @return newUser
 	 */
 	
+	@JsonView(UserDetail.class)
 	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> createNewUser(@RequestBody User user ) {

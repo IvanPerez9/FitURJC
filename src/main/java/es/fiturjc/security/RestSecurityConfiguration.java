@@ -19,21 +19,21 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 
-//		http.antMatcher("/api/**");
-//		
-//		// URLs that need authentication to access to it
-//		
-//		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/courses/**").hasRole("USER");	 For everyone 	
-//		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/courses/**").hasRole("USER");
-//		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("USER");
-//		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN");
-//		
-//		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
-//		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");	
-//		
-//		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/schedules/**").hasRole("ADMIN");
-//		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/schedules/**").hasRole("ADMIN");
-//		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/schedules/**").hasRole("ADMIN");		
+		http.antMatcher("/api/**");
+		
+		// URLs that need authentication to access to it
+		
+		//http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/courses/**").hasRole("USER");	 For everyone 	
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/courses/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN");
+		
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");	
+		
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/schedules/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/schedules/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/schedules/**").hasRole("ADMIN");		
 			
 		
 		

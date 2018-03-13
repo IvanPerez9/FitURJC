@@ -19,7 +19,6 @@ import es.fiturjc.controller.LoginController;
 import es.fiturjc.model.User;
 
 @RestController
-@RequestMapping("/api")
 public class LoginRestController {
 
 	private static final Logger log = LoggerFactory.getLogger(LoginController.class);
@@ -31,8 +30,8 @@ public class LoginRestController {
 	}
 	
 	@JsonView(UserDetail.class)
-	@RequestMapping("/logIn")
-	public ResponseEntity<User> logIn(Principal principal){
+	@RequestMapping("/api/logIn")
+	public ResponseEntity<User> logIn(){
 		if(!userComponent.isLoggedUser()){
 			log.info("Not user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -44,7 +43,7 @@ public class LoginRestController {
 	}
 
 	@JsonView(UserDetail.class)
-	@RequestMapping("/logOut")
+	@RequestMapping("/api/logOut")
 	public ResponseEntity<Boolean> logOut(HttpSession session){
 		if(!userComponent.isLoggedUser()){
 			log.info("No user logged");
