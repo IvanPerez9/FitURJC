@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.User;
-import es.fiturjc.restcontroller.LoginRestController.UserDetail;
 import es.fiturjc.service.UserService;
 
 @RestController
@@ -108,7 +106,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * Create a new user , user and pass. CHECKED
+	 * Create a new user , user and pass. MOVE TO REGISTER REST CONTROLLER 
 	 * @param user
 	 * @return newUser
 	 */
