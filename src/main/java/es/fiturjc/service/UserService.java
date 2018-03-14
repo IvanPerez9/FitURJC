@@ -55,6 +55,7 @@ public class UserService {
 		if (userRepository.findByNickname(user.getNickname()) == null) {
 			ArrayList<String> roles = new ArrayList<>(Arrays.asList("ROLE_USER"));
 			user.setRoles(roles);
+			user.setImgSrc("/uploads/img/default");
 			user.changePassword(pass);
 			userRepository.save(user);
 			return user;

@@ -55,19 +55,14 @@
 									<span>or</span>
 								</p>
 							</div>
-							<p class="mt-4 social-login text-center">
-								<a href="#" class="btn btn-twitter"> <em
-									class="ion-social-twitter"></em>
-								</a> <a href="#" class="btn btn-facebook"> <em
-									class="ion-social-facebook"></em>
-								</a> <a href="#" class="btn btn-linkedin"> <em
-									class="ion-social-linkedin"></em>
-								</a> <a href="#" class="btn btn-google"> <em
-									class="ion-social-googleplus"></em>
-								</a> <a href="#" class="btn btn-github"> <em
-									class="ion-social-github"></em>
-								</a>
-							</p>
+							<!-- FACEBOOK BOTTOM -->
+ 							<form action="/signin/facebook" method="POST">
+     								<button class="loginBtnFacebook loginFacebook--facebook" type="submit" >
+     									Login using Facebook
+     								</button>
+     								<input type="hidden" name="scope" value="public_profile,email" />
+ 							</form>
+ 							<br>
 							<p class="text-center">
 								Don't have an account yet? <a href="register.html">Sign Up
 									Now</a>

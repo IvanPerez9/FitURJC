@@ -2,6 +2,9 @@ package es.fiturjc.model;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,32 +14,39 @@ import java.util.Objects;
 @Entity
 public class User {
 
+	public interface Basic{}
+	public interface Details{}
+	public interface None{}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
 
 	@Column(unique = true)
+	@JsonView(Basic.class)
 	private String nickname;
+	
+	@JsonView(Details.class)
 	private String name;
+	
+	@JsonView(Details.class)
 	private String surname;
-	private String passwordHash;
+	
+	@JsonIgnore
+	private String passwordHash; // Do not see in Rest
+	
+	@JsonView(Details.class)
 	private String imgSrc;
-
 	@Column(unique = true)
+	@JsonView(Basic.class)
 	private String email;
 
+	@JsonView(Details.class)
 	private int age;
-
 	@ElementCollection(fetch = FetchType.EAGER)
+	@JsonView(Details.class)
 	private List<String> roles;
-
-//	//DANI
-//	@ManyToMany
-//	private List<Course> courseList = new ArrayList<>();
-	
-/*	@ManyToMany(fetch = FetchType.EAGER)
-	@Fetch(FetchMode.SELECT)
-	private List<Course> courses = new ArrayList<Course>();*/
 
 	public User() {
 	}
@@ -72,6 +82,7 @@ public class User {
 	public void setImgSrc(String imgSrc) {
 		this.imgSrc = imgSrc;
 	}
+	
 	public int getAge() {
 		return age;
 	}
@@ -82,6 +93,10 @@ public class User {
 
 	public String getNickname() {
 		return nickname;
+	}
+	
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 
 	public String getPasswordHash() {
@@ -121,17 +136,6 @@ public class User {
 		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + " ]";
 
 	}
-	
-//	//DANI
-//	public void removeCourse(Course course) {
-//		this.courseList.remove(course);
-//
-//	}
-//
-//	public void addCourse(Course course) {
-//		this.courseList.add(course);
-//
-//	}
 
 	// String .. roles admin various roles names 
 	public User(String name, String surname, int age, String passwordHash, String email,

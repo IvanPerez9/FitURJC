@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,16 +14,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
+import es.fiturjc.restcontroller.UserRestController.UserDetail;
 import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
 
 @RestController
 @RequestMapping("/api/courses")
 public class CourseRestController {
+	
+	interface CourseDetail extends Course.Basic,Course.Details , Schedule.Basic,Schedule.Details{
+	}
 	
 	@Autowired
 	private CourseService courseService;
@@ -41,6 +48,7 @@ public class CourseRestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
+	@JsonView(Course.Basic.class)
 	public ResponseEntity<List<Course>> getCourses() {
 		List<Course> courses = courseService.getAllCourses();
 		if (courses != null) {
@@ -58,6 +66,7 @@ public class CourseRestController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
+	@JsonView(CourseDetail.class)
 	public ResponseEntity<Course> getCourseId(@PathVariable long id) {
 		Course course = courseService.findCourse(id);
 		if (course != null) {
@@ -118,6 +127,7 @@ public class CourseRestController {
 	 */
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> deleteCourse(@PathVariable long id) {
 		courseService.deleteCourse(id);
 		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);

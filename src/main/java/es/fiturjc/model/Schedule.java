@@ -1,27 +1,51 @@
 package es.fiturjc.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import es.fiturjc.model.User.Details;
+
 import java.util.*;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idSchedule")
 public class Schedule {
+	
+	public interface Basic{}
+	public interface Details{}
+	public interface None{}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long idSchedule;
+	
+	@JsonView(Basic.class)
 	private String schedule;
 
     @ManyToMany
+    @JsonView(Details.class)
     private Set<User> listUsers = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
-    Course course;
+    @JsonView(Details.class)
+    private Course course;
 
     @Transient
+    @JsonIgnore
 	public boolean signup;
 	
 	private static final long MAXIMUM_CAPACITY = 2;
 
+	@JsonIgnore
 	public boolean isFull(){
 		return MAXIMUM_CAPACITY <= listUsers.size();
 	}
@@ -57,7 +81,8 @@ public class Schedule {
 			this.listUsers.remove(user);
 		}
 	}
-
+	
+@JsonIgnore
 	public List<User> getUser() {
 
 		return new ArrayList<>(listUsers);

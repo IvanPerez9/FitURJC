@@ -38,6 +38,8 @@ public class AdminRestController {
 	@Autowired
 	private UserComponent userComponent;
 	
+	// ************* USERS *****************
+	
 	/**
 	 * Get users. checked 
 	 * @return
@@ -84,7 +86,7 @@ public class AdminRestController {
 //	}
 	
 	
-	// COURSES 
+	//****************** COURSES **************
 	
 	/**
 	 * MIRAR PORQUE NO VA

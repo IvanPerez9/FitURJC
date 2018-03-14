@@ -1,6 +1,7 @@
 package es.fiturjc.model;
 
 import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -17,18 +18,43 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import es.fiturjc.model.User.Basic;
+
 @Entity
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id") // Resuelve la circular 
 public class Course {
+	
+	public interface Basic{}
+	public interface Details{}
+	public interface None{}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(Basic.class)
 	private long id;
+	
+	@JsonView(Details.class)
 	private String src;
+	
+	@JsonView(Basic.class)
 	private String name;
+	
+	@JsonView(Details.class)
 	private Category category;
+	
+	@JsonView(Details.class)
 	private String description;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="course")
+	@JsonView(Details.class)
 	private List<Schedule> schedules = new ArrayList<>();
 	
 //	//DANI
