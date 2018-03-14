@@ -1,8 +1,6 @@
 package es.fiturjc.controller;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.*;
 
 import es.fiturjc.model.Category;
 import es.fiturjc.model.Schedule;
@@ -31,6 +29,7 @@ public class AdminController {
 
 	@Autowired
 	private CourseRepository courseRepository;
+
 
 	@Autowired
 	private CourseService courseService;
@@ -166,12 +165,19 @@ public class AdminController {
 		return "redirect:/adminPage/manageCourses";
 	}
 
-	
-	// For future graphics
+
 
 		@RequestMapping("/adminPage/graphics")
 		public String graphics(Model model, String action) {
-			model.addAttribute("graphicsSection", true);			
+			model.addAttribute("graphicsSection", true);
+            Map<String,String> stats = new HashMap<>();
+
+            for(Category category: Category.values()) {
+                List<Course> courses = courseRepository.findByCategory(category);
+                stats.put(category.name(),String.valueOf(courses.size()));
+            }
+            Set<Map.Entry<String,String>> statsEntrySet = stats.entrySet();
+            model.addAttribute("stats",statsEntrySet);
 			return "admin";
 		}
 }
