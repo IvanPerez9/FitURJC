@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-spring
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fiturjc
+ 
+  spring-repository:
+    depends_on:
+      - mysql
+    image: fiturjc/fiturjc:latest
+    container_name: springbackend
+    ports:
+      - 8443:8443
+    links:
+      - mysql:mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/fiturjc
