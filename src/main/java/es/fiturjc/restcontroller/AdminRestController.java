@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +48,7 @@ public class AdminRestController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<List<User>> getUsers() {
 		List<User> users = userService.getUsers();
 		if (users != null) {
@@ -63,6 +65,7 @@ public class AdminRestController {
 	 */
 
 	@DeleteMapping (value="/user/delete/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> deleteUser (@PathVariable long id) {
 		if(adminService.deleteUser(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
@@ -112,6 +115,7 @@ public class AdminRestController {
 	
 	@RequestMapping(value = "/course/add", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> addCourse(@RequestBody Course course) {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 		if (userLogged != null) {
@@ -129,6 +133,7 @@ public class AdminRestController {
 	 */
 	
 	@DeleteMapping(value="/course/delete/{id}") 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> deleteCourse(@PathVariable long id) { 
 		if(courseService.deleteCourse(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
@@ -144,6 +149,7 @@ public class AdminRestController {
 	 */
 	
 	@PutMapping (value="/course/edit/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> editCourse(@PathVariable long id , @RequestBody Course course) { 
 		Course c = courseService.findCourse(id);
 		if(c != null) {

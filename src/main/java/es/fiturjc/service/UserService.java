@@ -63,16 +63,36 @@ public class UserService {
 			return null;
 		}
 	}
+	
+	public User createNewUser2(User user) {
+		User u = new User (user.getName(),user.getSurname(),user.getAge(),user.getPasswordHash(),user.getEmail(),user.getNickname(), "USER");
+		userRepository.save(u);
+		return u;
+	}
 
-	public User updateUserInfo(String nickname, User user) {
-		User userToEdit = userRepository.findByNickname(nickname);
-		if (userToEdit != null) {
-			user.changePassword(userToEdit.getPasswordHash());
-			userRepository.save(user);
-			return user;
-		} else {
-			return null;
+	public User updateUserInfo(long id, User user) {
+		User userToEdit = userRepository.findById(id);
+		if(user.getEmail()!= null) {
+			userToEdit.setEmail(user.getEmail());
 		}
+		if(user.getName()!= null) {
+			userToEdit.setName(user.getName());
+		}
+		if(user.getSurname()!= null) {
+			userToEdit.setSurname(user.getSurname());
+		}
+		if(user.getPasswordHash()!= null) {
+			userToEdit.changePassword(user.getPasswordHash());
+		}
+		if(user.getImgSrc()!= null) {
+			userToEdit.setImgSrc(user.getImgSrc());
+		}
+		if(user.getAge() != userToEdit.getAge()) {
+			userToEdit.setAge(user.getAge());
+		}
+		
+		userRepository.save(userToEdit);
+		return userToEdit;
 	}
 
 	public User findByEmail(String email) {

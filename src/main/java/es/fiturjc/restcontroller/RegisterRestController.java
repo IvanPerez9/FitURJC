@@ -29,7 +29,7 @@ public class RegisterRestController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> createUser(@RequestBody User user ) {
-		User newUser = userService.createNewUser(user, user.getPasswordHash());
+		User newUser = userService.createNewUser2(user);
 		if (newUser != null) {
 			return new ResponseEntity<>(newUser, HttpStatus.OK);
 		} else {
