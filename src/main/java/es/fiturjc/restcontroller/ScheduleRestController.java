@@ -12,20 +12,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.Schedule;
+import es.fiturjc.model.User;
 import es.fiturjc.repository.ScheduleRepository;
 import es.fiturjc.service.ScheduleService;
+import es.fiturjc.service.UserService;
 
 @RestController
 @RequestMapping("/api/schedules")
 public class ScheduleRestController {
 	
-	@Autowired
-	private ScheduleRepository scheduleRepository;
 	
 	@Autowired
 	private ScheduleService scheduleService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private UserComponent userComponent;
+	
+	/**
+	 * List of all the schedules, join with their course 
+	 * @return
+	 */
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -39,6 +51,12 @@ public class ScheduleRestController {
 		}
 	}
 	
+	/**
+	 * Get specific schedule 
+	 * @param id
+	 * @return
+	 */
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	//@JsonView(CourseDetail.class)
@@ -51,11 +69,36 @@ public class ScheduleRestController {
 		}
 	}
 	
+	/**
+	 * Delete Schedule only for admin 
+	 * @param id
+	 * @return
+	 */
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Schedule> deleteSchedule(@PathVariable long id) {
 		scheduleService.deleteSchedule(id);
 		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+	}
+	
+	/**
+	 * Join a Schedule with the logged user . Need to be checked
+	 * @param id
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/{id}/join", method = RequestMethod.PUT)
+	public ResponseEntity<Schedule> joinSchedule(@PathVariable long id) {
+		Schedule schedule = scheduleService.findById(id);
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+		if (schedule != null && userLogged != null) {
+			scheduleService.join(userLogged, schedule);
+			scheduleService.save(schedule);
+			return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 }

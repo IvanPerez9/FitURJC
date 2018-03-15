@@ -84,6 +84,7 @@ public class CourseRestController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 		if (userLogged != null) {
@@ -103,6 +104,7 @@ public class CourseRestController {
 	 */
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> editCourse(@PathVariable long id, @RequestBody Course editCourse) {
 		Course course = courseService.findCourse(id);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());

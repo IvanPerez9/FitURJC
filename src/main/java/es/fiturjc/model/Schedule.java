@@ -82,7 +82,6 @@ public class Schedule {
 		}
 	}
 	
-@JsonIgnore
 	public List<User> getUser() {
 
 		return new ArrayList<>(listUsers);
