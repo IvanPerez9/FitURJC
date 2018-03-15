@@ -1,0 +1,79 @@
+<title>FitURJC Add Course</title>
+<link rel="shortcut icon" href="img/iconLogo.ico" />
+
+<meta
+	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+	name='viewport' />
+<meta name="viewport" content="width=device-width" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<!--  Light Bootstrap Table core CSS    -->
+<link href="/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="sidebar" data-color="blue"
+			data-image="/img/lateralAdmin.jpg">
+			<div class="sidebar-wrapper">
+				<div class="logo">
+					<a href="/" class="simple-text"> FitURJC </a>
+				</div>
+				<ul class="nav">
+					<li><a href="/adminPage/manageUsers"> <i
+							class="fa fa-user"></i>
+							<p>User management</p>
+					</a></li>
+					<li><a href="/adminPage/manageCourses"> <i
+							class="fa fa-users"></i>
+							<p>Course management</p>
+					</a></li>
+					<li><a href="/adminPage/graphics"> <i class="fa fa-flag"></i>
+							<p>Graphics</p>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="main-panel">
+			<div class="container-fluid">
+				<div class="form-container">
+					<form class="form-group" method="post"
+						action="/adminPage/manageCourses/editCourse" enctype="multipart/form-data">
+						<div class="form-group">
+							<br> <label for="newName">Name</label> <input name="name" type="text"
+								class="form-control" id="name" placeholder="Course Name">
+						</div>
+						<div class="form-group">
+							<label for="newName">Category </label>
+							<select class="form-control" name="category"required="required">
+								{{#categories}}
+							 		<option>{{.}}</option>
+							 	{{/categories}}
+                    		</select>
+						</div>
+						<div class="form-group">
+							<label for="newName">Description</label> <input name="description" type="text"
+								class="form-control" id="description"
+								placeholder="Description">
+						</div>
+						<div class="form-group">
+							<label for="newName">Schedule</label> <input name="schedules" type="text"
+								class="form-control" id="schedules" placeholder="Schedules">
+						</div>
+						<div class="form-group">
+							<input type="file" name="file" id="file" /> <label
+								for="file" class="btn ">Upload Image</label>
+						</div>
+						<div class="form-group">
+								<button type="submit" class="btn btn-primary">Edit Course</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
