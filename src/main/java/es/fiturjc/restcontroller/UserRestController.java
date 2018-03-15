@@ -89,38 +89,23 @@ public class UserRestController {
 	 * @return user
 	 */
 	
-	@RequestMapping(value = "/{nickname}", method = RequestMethod.PATCH)
-	public ResponseEntity<User> editUserProfile(@PathVariable String nickname, @RequestBody User user) {
-		User updatedUser = userService.getUser(nickname);
-		User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
-		if (updatedUser == userLogged) {
-			if (updatedUser != null) {
-				updatedUser = userService.updateUserInfo(nickname, user);
-				return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	public ResponseEntity<User> editUserProfile(@PathVariable long id, @RequestBody User user) {
+		if(userComponent.isLoggedUser() == true) {
+			User updatedUser = userService.getUserbyID(id);
+			User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
+			if (updatedUser == userLogged) {
+				if (updatedUser != null) {
+					updatedUser = userService.updateUserInfo(id, user);
+					return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+				} else {
+					return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+				}
 			} else {
-				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
-		} else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-	}
-	
-	/**
-	 * Create a new user , user and pass. MOVE TO REGISTER REST CONTROLLER 
-	 * @param user
-	 * @return newUser
-	 */
-	
-	@JsonView(UserDetail.class)
-	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<User> createNewUser(@RequestBody User user ) {
-		User newUser = userService.createNewUser(user, user.getPasswordHash());
-		if (newUser != null) {
-			return new ResponseEntity<>(newUser, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 	}
 	
 	

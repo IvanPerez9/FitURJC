@@ -29,12 +29,18 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/courses/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/courses/**").hasRole("ADMIN");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/register").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/register").permitAll();
+	
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/admin/**").hasRole("ADMIN");
 		
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");	
+		http.authorizeRequests().antMatchers(HttpMethod.PATCH, "/api/users/**").hasRole("USER");
 		
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/schedules/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/schedules/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/schedules/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/schedules/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/schedules/**").hasRole("ADMIN");		

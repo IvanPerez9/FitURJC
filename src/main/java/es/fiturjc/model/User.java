@@ -33,7 +33,7 @@ public class User {
 	@JsonView(Details.class)
 	private String surname;
 	
-	@JsonIgnore
+	@JsonView(None.class)
 	private String passwordHash; // Do not see in Rest
 	
 	@JsonView(Details.class)
