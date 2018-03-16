@@ -44,7 +44,32 @@ public class AdminService {
 		}
 	}
 	
-	// Courses en courseService el resto 
+	public User updateUserInfo(long id, User user) {
+		User userToEdit = usersRepository.findById(id);
+		if(user.getEmail()!= null) {
+			userToEdit.setEmail(user.getEmail());
+		}
+		if(user.getName()!= null) {
+			userToEdit.setName(user.getName());
+		}
+		if(user.getSurname()!= null) {
+			userToEdit.setSurname(user.getSurname());
+		}
+		if(user.getPasswordHash()!= null) {
+			userToEdit.changePassword(user.getPasswordHash());
+		}
+		if(user.getImgSrc()!= null) {
+			userToEdit.setImgSrc(user.getImgSrc());
+		}
+		if(user.getAge() != userToEdit.getAge()) {
+			userToEdit.setAge(user.getAge());
+		}
+		
+		usersRepository.save(userToEdit);
+		return userToEdit;
+	}
+	
+	// Courses in CourseService
 	
 	
 	

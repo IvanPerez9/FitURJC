@@ -2,11 +2,14 @@ package es.fiturjc.restcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,7 +45,7 @@ public class AdminRestController {
 	// ************* USERS *****************
 	
 	/**
-	 * Get users. checked 
+	 * Get users List
 	 * @return
 	 */
 	
@@ -53,6 +56,22 @@ public class AdminRestController {
 		List<User> users = userService.getUsers();
 		if (users != null) {
 			return new ResponseEntity<>(users, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	/**
+	 * Get specific user
+	 * @param id
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable long id) {
+		User user = userService.getUserbyID(id);
+		if (user != null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -74,19 +93,28 @@ public class AdminRestController {
 	}
 	
 	/**
-	 * NO SE SI ESTO ESTA BIEN 
+	 * METHOD PATCH TO EDIT THE INFORMATION THAT IS PROVIDED ONLY 
 	 * @param id
 	 * @param user
-	 * @return
+	 * @return edited user
 	 */
 	
-//	@PutMapping (value="/user/edit/{id}")
-//	public ResponseEntity<?> editUser(@PathVariable long id, @RequestBody User user ) {
-//		if(adminService.editUser(id, user, user.getPasswordHash()){
-//			return new ResponseEntity<>(user, HttpStatus.OK);
-//		}
-//		return new ResponseEntity<>(HttpStatus.NOT_FOUND ); 
-//	}
+	@PatchMapping (value="/user/edit/{id}")
+	public ResponseEntity<?> editUser(@PathVariable long id, @RequestBody User user) {
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+	
+		if (userLogged.isAdmin() == true) {	
+			User userUpdated = userService.getUserbyID(id);		
+			if(userUpdated!=null) {
+				userUpdated = userService.updateUserInfo(id, user);
+				return new ResponseEntity<>(userUpdated, HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}else {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+	}
 	
 	
 	//****************** COURSES **************
