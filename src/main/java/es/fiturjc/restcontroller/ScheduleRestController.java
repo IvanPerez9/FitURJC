@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -104,5 +105,69 @@ public class ScheduleRestController {
 			return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	/**
+	 * Same method but different URL to make a difference 
+	 * @param id
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/{id}/unsubscribe", method = RequestMethod.PUT)
+	@JsonView(ScheduleDetails.class)
+	public ResponseEntity<Schedule> unsubscribeSchedule(@PathVariable long id) {
+		Schedule schedule = scheduleService.findById(id);
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+		if (schedule != null && userLogged != null) {
+			scheduleService.join(userLogged, schedule);
+			scheduleService.save(schedule);
+			return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	/* EDITAR UN SCHEDULE 
+	 * @JsonView(CompleteEvent.class)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Event> updateEvent(@PathVariable long id, @RequestBody Event updatedEvent) {
+		Event event = eventService.findOne(id);
+		User ownerEvent = userService.findOne(event.getOwner_id().getId());
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+		if (userLogged.getId() == ownerEvent.getId()) {
+			if (event != null && updatedEvent != null) {
+				updatedEvent.setId(id);
+				eventService.save(updatedEvent);
+				return new ResponseEntity<>(updatedEvent, HttpStatus.ACCEPTED);
+				// return new ResponseEntity<Event>(updatedEvent,
+				// HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
+			}
+		} else {
+			return new ResponseEntity<Event>(HttpStatus.UNAUTHORIZED);
+		}
+
+	}
+	 */
+	
+//	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+//	public ResponseEntity<Schedule> updateEvent(@PathVariable long id, @RequestBody Schedule updatedEvent) {
+//		Schedule schedule = scheduleService.findById(id);
+//		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+//		if (userLogged.getId() == ownerEvent.getId()) {
+//			if (event != null && updatedEvent != null) {
+//				updatedEvent.setId(id);
+//				eventService.save(updatedEvent);
+//				return new ResponseEntity<>(updatedEvent, HttpStatus.ACCEPTED);
+//				// return new ResponseEntity<Event>(updatedEvent,
+//				// HttpStatus.OK);
+//			} else {
+//				return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
+//			}
+//		} else {
+//			return new ResponseEntity<Event>(HttpStatus.UNAUTHORIZED);
+//		}
+//
+//	}
 	
 }
