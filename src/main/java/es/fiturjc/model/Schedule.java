@@ -36,7 +36,7 @@ public class Schedule {
     private Set<User> listUsers = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonView(Details.class)
+    @JsonView(Basic.class)
     private Course course;
 
     @Transient
@@ -45,7 +45,7 @@ public class Schedule {
 	
 	private static final long MAXIMUM_CAPACITY = 2;
 
-	@JsonIgnore
+	@JsonView(Details.class)
 	public boolean isFull(){
 		return MAXIMUM_CAPACITY <= listUsers.size();
 	}

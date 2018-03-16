@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.Schedule;
@@ -24,6 +26,8 @@ import es.fiturjc.service.UserService;
 @RequestMapping("/api/schedules")
 public class ScheduleRestController {
 	
+	interface ScheduleDetails extends Schedule.Basic,Schedule.Details{
+	}
 	
 	@Autowired
 	private ScheduleService scheduleService;
@@ -41,7 +45,7 @@ public class ScheduleRestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	//@JsonView(CourseDetail.class)
+	@JsonView(ScheduleDetails.class)
 	public ResponseEntity<List<Schedule>> getSchedules() {
 		List<Schedule> schedules = scheduleService.getAllSchedule();
 		if (schedules != null) {
@@ -59,7 +63,6 @@ public class ScheduleRestController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	//@JsonView(CourseDetail.class)
 	public ResponseEntity<Schedule> getScheduleID(@PathVariable long id) {
 		Schedule schedule = scheduleService.findById(id);
 		if (schedule != null) {
@@ -89,6 +92,7 @@ public class ScheduleRestController {
 	 */
 	
 	@RequestMapping(value = "/{id}/join", method = RequestMethod.PUT)
+	@JsonView(ScheduleDetails.class)
 	public ResponseEntity<Schedule> joinSchedule(@PathVariable long id) {
 		Schedule schedule = scheduleService.findById(id);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
