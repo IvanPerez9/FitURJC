@@ -54,6 +54,14 @@ public class Schedule {
 	protected Schedule() {
 
 	}
+	
+	public long getIdSchedule() {
+		return idSchedule;
+	}
+
+	public void setIdSchedule(long idSchedule) {
+		this.idSchedule = idSchedule;
+	}
 
 	public String getSchedule() {
 		return schedule;

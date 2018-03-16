@@ -46,7 +46,7 @@ public class ScheduleRestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	@JsonView(ScheduleDetails.class)
+	@JsonView(Schedule.Basic.class)
 	public ResponseEntity<List<Schedule>> getSchedules() {
 		List<Schedule> schedules = scheduleService.getAllSchedule();
 		if (schedules != null) {
@@ -82,8 +82,12 @@ public class ScheduleRestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Schedule> deleteSchedule(@PathVariable long id) {
-		scheduleService.deleteSchedule(id);
-		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+		if(userLogged.isAdmin()) {
+			scheduleService.deleteSchedule(id);
+			return new ResponseEntity<>(null, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
 	}
 	
 	/**
@@ -126,46 +130,29 @@ public class ScheduleRestController {
 		}
 	}
 	
-	/* EDITAR UN SCHEDULE 
-	 * @JsonView(CompleteEvent.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Event> updateEvent(@PathVariable long id, @RequestBody Event updatedEvent) {
-		Event event = eventService.findOne(id);
-		User ownerEvent = userService.findOne(event.getOwner_id().getId());
-		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-		if (userLogged.getId() == ownerEvent.getId()) {
-			if (event != null && updatedEvent != null) {
-				updatedEvent.setId(id);
-				eventService.save(updatedEvent);
-				return new ResponseEntity<>(updatedEvent, HttpStatus.ACCEPTED);
-				// return new ResponseEntity<Event>(updatedEvent,
-				// HttpStatus.OK);
-			} else {
-				return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
-			}
-		} else {
-			return new ResponseEntity<Event>(HttpStatus.UNAUTHORIZED);
-		}
-
-	}
+	/**
+	 * Edit a Schedule . Needs to be Checked 
+	 * @param id
+	 * @param updatedSchedule
+	 * @return
 	 */
 	
 //	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
-//	public ResponseEntity<Schedule> updateEvent(@PathVariable long id, @RequestBody Schedule updatedEvent) {
+//	@JsonView(Schedule.Basic.class)
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	public ResponseEntity<Schedule> updateSchedule(@PathVariable long id, @RequestBody Schedule updatedSchedule) {
 //		Schedule schedule = scheduleService.findById(id);
 //		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-//		if (userLogged.getId() == ownerEvent.getId()) {
-//			if (event != null && updatedEvent != null) {
-//				updatedEvent.setId(id);
-//				eventService.save(updatedEvent);
-//				return new ResponseEntity<>(updatedEvent, HttpStatus.ACCEPTED);
-//				// return new ResponseEntity<Event>(updatedEvent,
-//				// HttpStatus.OK);
+//		if (userLogged.isAdmin()) {
+//			if (schedule != null && updatedSchedule != null) {
+//				updatedSchedule.setIdSchedule(id);
+//				scheduleService.save(updatedSchedule);
+//				return new ResponseEntity<>(updatedSchedule, HttpStatus.ACCEPTED);
 //			} else {
-//				return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
+//				return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
 //			}
 //		} else {
-//			return new ResponseEntity<Event>(HttpStatus.UNAUTHORIZED);
+//			return new ResponseEntity<Schedule>(HttpStatus.UNAUTHORIZED);
 //		}
 //
 //	}
