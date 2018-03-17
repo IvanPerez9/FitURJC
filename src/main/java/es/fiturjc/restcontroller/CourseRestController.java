@@ -57,7 +57,7 @@ public class CourseRestController {
 	}
 	
 	/**
-	 * Get 1 course, why a list  ?¿?????
+	 * Get 1 course
 	 * @param id
 	 * @return
 	 */

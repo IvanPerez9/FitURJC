@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.User;
+import es.fiturjc.restcontroller.CourseRestController.CourseDetail;
 import es.fiturjc.service.AdminService;
 import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
@@ -150,6 +151,29 @@ public class AdminRestController {
     		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     	}
     }
+    
+    /**
+	 * Get 1 course
+	 * @param id
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@JsonView(CourseDetail.class)
+	public ResponseEntity<Course> getCourseId(@PathVariable long id) {
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+		Course course = courseService.findCourse(id);
+		if(userLogged.isAdmin()) {
+			if (course != null) {
+				return new ResponseEntity<>(course, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		} else {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+	}
 
     /**
      * @param course
