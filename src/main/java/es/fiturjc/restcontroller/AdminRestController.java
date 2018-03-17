@@ -91,10 +91,14 @@ public class AdminRestController {
     @DeleteMapping(value = "/user/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> deleteUser(@PathVariable long id) {
-        if (adminService.deleteUser(id)) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+    	if(userLogged.isAdmin()== true) {
+	        if (adminService.deleteUser(id)) {
+	            return new ResponseEntity<>(HttpStatus.OK);
+	        }
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+    	return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     /**
@@ -123,10 +127,10 @@ public class AdminRestController {
     }
 
 
-    //****************** COURSES **************
+    /****************** COURSES **************/
 
     /**
-     * MIRAR PORQUE NO VA
+     * 
      *
      * @return
      */
@@ -134,12 +138,17 @@ public class AdminRestController {
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Course>> getCourses() {
+    	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
         List<Course> courses = courseService.getAllCourses();
-        if (courses != null) {
-            return new ResponseEntity<>(courses, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    	if(userLogged.isAdmin()) {
+	        if (courses != null) {
+	            return new ResponseEntity<>(courses, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        }
+    	} else {
+    		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    	}
     }
 
     /**
@@ -153,6 +162,7 @@ public class AdminRestController {
     @ResponseStatus(HttpStatus.CREATED)
 
     public ResponseEntity<Course> addCourse(@RequestBody Course course) {
+    	
         if (userComponent.isLoggedUser()) {
             courseService.save(course);
             return new ResponseEntity<>(course, HttpStatus.OK);
@@ -171,10 +181,15 @@ public class AdminRestController {
     @DeleteMapping(value = "/course/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> deleteCourse(@PathVariable long id) {
-        if (courseService.deleteCourse(id)) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+    	if(userLogged.isAdmin()) {
+	        if (courseService.deleteCourse(id)) {
+	            return new ResponseEntity<>(HttpStatus.OK);
+	        }
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}else {
+    		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    	}
     }
 
     /**
@@ -188,12 +203,17 @@ public class AdminRestController {
     @PutMapping(value = "/course/edit/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> editCourse(@PathVariable long id, @RequestBody Course course) {
+    	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
         Course c = courseService.findCourse(id);
-        if (c != null) {
-            courseService.editCourse(course, id);
-            return new ResponseEntity<>(course, HttpStatus.OK);
+        if(userLogged.isAdmin()) {
+	        if (c != null) {
+	            courseService.editCourse(course, id);
+	            return new ResponseEntity<>(course, HttpStatus.OK);
+	        }
+	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else {
+        	return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
 

@@ -64,26 +64,9 @@ public class UserRestController {
 		}
 	}
 	
-//	/**
-//	 * Simple getUser by nickname
-//	 * @param nickname
-//	 * @return user 
-//	 */
-//	@JsonView(UserDetail.class)
-//	@RequestMapping(value = "/{nickname}", method = RequestMethod.GET)
-//	public ResponseEntity<User> getUser(@RequestParam(value="nickname") String nickname) {
-//		User user = userService.getUser(nickname);
-//		if (user != null) {
-//			return new ResponseEntity<>(user, HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
-	
-	
-	
 	/**
-	 * Checks if the user is logged the it update user info using the service . MIRAR OJO 
+	 * Checks if the user is logged the it update user info using the service . 
+	 * Checks if the user is the same that its trying to edit 
 	 * @param nickname
 	 * @param user
 	 * @return user

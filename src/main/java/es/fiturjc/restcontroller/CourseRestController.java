@@ -3,7 +3,6 @@ package es.fiturjc.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,7 +19,6 @@ import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
-import es.fiturjc.restcontroller.UserRestController.UserDetail;
 import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
 
@@ -82,7 +80,7 @@ public class CourseRestController {
 	 * @return new course
 	 */
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
@@ -123,12 +121,12 @@ public class CourseRestController {
 	}
 	
 	/**
-	 * HACER UN DELETE POR SCHEDULE TAMBIEN ?? - Simple delete courses 
+	 * Simple delete courses 
 	 * @param id
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> deleteCourse(@PathVariable long id) {
 		courseService.deleteCourse(id);
