@@ -132,7 +132,7 @@ public class CourseRestController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> deleteCourse(@PathVariable long id) {
 		courseService.deleteCourse(id);
-		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
 	/**

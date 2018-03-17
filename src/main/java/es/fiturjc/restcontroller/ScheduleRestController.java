@@ -52,7 +52,7 @@ public class ScheduleRestController {
 		if (schedules != null) {
 			return new ResponseEntity<>(schedules, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			retu	rn new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	

@@ -65,7 +65,7 @@ public class UserService {
 	}
 	
 	public User createNewUser2(User user) {
-		User u = new User (user.getName(),user.getSurname(),user.getAge(),user.getPasswordHash(),user.getEmail(),user.getNickname(), "USER");
+		User u = new User (user.getName(),user.getSurname(),user.getAge(),user.getPasswordHash(),user.getEmail(),user.getNickname(),true, "USER");
 		userRepository.save(u);
 		return u;
 	}
@@ -146,7 +146,7 @@ public class UserService {
 	}
 
 	public User createNewUser(String nickname, String name, String surname, String email, String password, String age) {
-		User user = new User(name,surname,Integer.parseInt(age),password,email, nickname,"ROLE_USER");
+		User user = new User(name,surname,Integer.parseInt(age),password,email, nickname,true,"ROLE_USER");
 		userRepository.save(user);
 		return user;
 	}

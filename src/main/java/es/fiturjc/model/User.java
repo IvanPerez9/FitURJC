@@ -48,7 +48,10 @@ public class User {
 	@JsonView(Details.class)
 	private List<String> roles;
 
-	public User() {
+	private boolean fullProfile;
+
+
+    public User() {
 	}
 
 	public long getId() {
@@ -131,6 +134,14 @@ public class User {
 		this.roles = roles;
 	}
 
+    public boolean isFullProfile() {
+        return fullProfile;
+    }
+
+    public void setFullProfile(boolean fullProfile) {
+        this.fullProfile = fullProfile;
+    }
+
 	@Override
 	public String toString() {
 		return "user [id=" + id + ", name=" + name + ", surname=" + surname + ", age=" + age + " ]";
@@ -139,7 +150,7 @@ public class User {
 
 	// String .. roles admin various roles names 
 	public User(String name, String surname, int age, String passwordHash, String email,
-			String nickname, String... roles) {
+			String nickname, boolean fullProfile, String... roles) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -149,7 +160,9 @@ public class User {
 		this.nickname = nickname;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.imgSrc = "/uploads/img/default";
+		this.fullProfile = fullProfile;
 	}
+
 
 	@Override
 	public boolean equals(Object o) {

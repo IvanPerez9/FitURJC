@@ -20,7 +20,7 @@ public class FacebookConnectionSignup implements ConnectionSignUp {
     @Override
     public String execute(Connection<?> connection) {
         UserProfile up = connection.fetchUserProfile();
-        User user = new User(up.getFirstName(), up.getLastName(), 25, Integer.toHexString(new Random().nextInt(99999999)), up.getEmail(), up.getUsername(), "ROLE_USER");
+        User user = new User(up.getFirstName(), up.getLastName(), 25, Integer.toHexString(new Random().nextInt(99999999)), up.getEmail(), up.getUsername(),true, "ROLE_USER");
         user.setImgSrc(connection.getImageUrl());;
         userRepository.save(user);
         return user.getName();
