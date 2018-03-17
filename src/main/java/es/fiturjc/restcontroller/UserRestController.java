@@ -56,13 +56,23 @@ public class UserRestController {
 	@JsonView(UserDetail.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable long id) {
-		User user = userService.getUserbyID(id);
-		if (user != null) {
-			return new ResponseEntity<>(user, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		if(userComponent.isLoggedUser() == true) {
+			User user = userService.getUserbyID(id);
+			User userLogged = userService.findOne(userComponent.getLoggedUser().getId()); 
+				if (user == userLogged) {
+					if (user != null) {
+						return new ResponseEntity<>(user, HttpStatus.OK);
+					} else {
+						return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+					}
+				}else {
+					return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+				}		
+			}else {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
 		}
-	}
 	
 	/**
 	 * Checks if the user is logged the it update user info using the service . 
