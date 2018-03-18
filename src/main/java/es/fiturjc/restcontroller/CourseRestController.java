@@ -3,7 +3,6 @@ package es.fiturjc.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,7 +19,6 @@ import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
-import es.fiturjc.restcontroller.UserRestController.UserDetail;
 import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
 
@@ -52,14 +50,14 @@ public class CourseRestController {
 	public ResponseEntity<List<Course>> getCourses() {
 		List<Course> courses = courseService.getAllCourses();
 		if (courses != null) {
-			return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
+			return new ResponseEntity<>(courses, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	/**
-	 * Get 1 course, why a list  ?¿?????
+	 * Get 1 course
 	 * @param id
 	 * @return
 	 */
@@ -82,16 +80,16 @@ public class CourseRestController {
 	 * @return new course
 	 */
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 		if (userLogged != null) {
 			courseService.save(course);
-			return new ResponseEntity<Course>(course, HttpStatus.OK);
+			return new ResponseEntity<>(course, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<Course>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 	}
@@ -114,25 +112,25 @@ public class CourseRestController {
 				courseService.save(editCourse);
 				return new ResponseEntity<>(editCourse, HttpStatus.ACCEPTED);
 			} else {
-				return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		} else {
-			return new ResponseEntity<Course>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 
 	}
 	
 	/**
-	 * HACER UN DELETE POR SCHEDULE TAMBIEN ?? - Simple delete courses 
+	 * Simple delete courses 
 	 * @param id
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> deleteCourse(@PathVariable long id) {
 		courseService.deleteCourse(id);
-		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	/**

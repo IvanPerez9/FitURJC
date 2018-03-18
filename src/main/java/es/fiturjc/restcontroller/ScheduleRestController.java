@@ -101,12 +101,16 @@ public class ScheduleRestController {
 	public ResponseEntity<Schedule> joinSchedule(@PathVariable long id) {
 		Schedule schedule = scheduleService.findById(id);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-		if (schedule != null && userLogged != null) {
-			scheduleService.join(userLogged, schedule);
-			scheduleService.save(schedule);
-			return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
+		if(schedule.getUser().contains(userLogged)) {
+			return new ResponseEntity<Schedule>(HttpStatus.FORBIDDEN);
+		}else {
+			if (schedule != null && userLogged != null) {
+				scheduleService.join(userLogged, schedule);
+				scheduleService.save(schedule);
+				return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
+			}
 		}
 	}
 	
@@ -121,17 +125,21 @@ public class ScheduleRestController {
 	public ResponseEntity<Schedule> unsubscribeSchedule(@PathVariable long id) {
 		Schedule schedule = scheduleService.findById(id);
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-		if (schedule != null && userLogged != null) {
-			scheduleService.join(userLogged, schedule);
-			scheduleService.save(schedule);
-			return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
+		if(!schedule.getUser().contains(userLogged)) {
+			return new ResponseEntity<Schedule>(HttpStatus.FORBIDDEN);
+		}else {
+			if (schedule != null && userLogged != null) {
+				scheduleService.join(userLogged, schedule);
+				scheduleService.save(schedule);
+				return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Schedule>(HttpStatus.NOT_FOUND);
+			}
 		}
 	}
 	
 	/**
-	 * Edit a Schedule . Needs to be Checked 
+	 * Edit a Schedule . Needs to be Checked  !!! 
 	 * @param id
 	 * @param updatedSchedule
 	 * @return

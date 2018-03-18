@@ -21,54 +21,54 @@ import es.fiturjc.repository.UserRepository;
 @Service
 public class UserService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	private ScheduleRepository scheduleRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Autowired
-	private ImageService imageService;
+    @Autowired
+    private ScheduleRepository scheduleRepository;
 
-	@Autowired
-	private CourseRepository courseRepository;
+    @Autowired
+    private ImageService imageService;
 
-	private static final long MAXIMUM_RECOMMENDED_COURSES = 3;
+    @Autowired
+    private CourseRepository courseRepository;
 
-	public List<User> getUsers() {
-		return userRepository.findAll();
-	}
+    private static final long MAXIMUM_RECOMMENDED_COURSES = 3;
 
-	public User getUser(String nickname) {
-		return userRepository.findByNickname(nickname);
-	}
-	
-	public User getUserbyID (Long id) {
-		return userRepository.findById(id);
-	}
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 
-	public User findOne(long id) {
-		return userRepository.findOne(id);
-	}
+    public User getUser(String nickname) {
+        return userRepository.findByNickname(nickname);
+    }
 
-	public User createNewUser(User user, String pass) {
-		if (userRepository.findByNickname(user.getNickname()) == null) {
-			ArrayList<String> roles = new ArrayList<>(Arrays.asList("ROLE_USER"));
-			user.setRoles(roles);
-			user.setImgSrc("/uploads/img/default");
-			user.changePassword(pass);
-			userRepository.save(user);
-			return user;
-		} else {
-			return null;
-		}
-	}
-	
-	public User createNewUser2(User user) {
-		User u = new User (user.getName(),user.getSurname(),user.getAge(),user.getPasswordHash(),user.getEmail(),user.getNickname(), "USER");
-		userRepository.save(u);
-		return u;
-	}
+    public User getUserbyID(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public User findOne(long id) {
+        return userRepository.findOne(id);
+    }
+
+    public User createNewUser(User user, String pass) {
+        if (userRepository.findByNickname(user.getNickname()) == null) {
+            ArrayList<String> roles = new ArrayList<>(Arrays.asList("ROLE_USER"));
+            user.setRoles(roles);
+            user.setImgSrc("/uploads/img/default");
+            user.changePassword(pass);
+            userRepository.save(user);
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    public User createNewUser2(User user) {
+        User u = new User(user.getName(), user.getSurname(), user.getAge(), user.getPasswordHash(), user.getEmail(), user.getNickname(), true, "USER");
+        userRepository.save(u);
+        return u;
+    }
 
 	public User updateUserInfo(long id, User user) {
 		User userToEdit = userRepository.findById(id);
@@ -98,72 +98,72 @@ public class UserService {
 		return userToEdit;
 	}
 
-	public User findByEmail(String email) {
-		return userRepository.findByEmail(email);
-	}
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
-	public void setImage(User u, MultipartFile file) {
-		if (imageService.isValidImage(file)) {
-			u.setImgSrc(imageService.uploadImage(file));
-			userRepository.save(u);
-		}
-	}
+    public void setImage(User u, MultipartFile file) {
+        if (imageService.isValidImage(file)) {
+            u.setImgSrc(imageService.uploadImage(file));
+            userRepository.save(u);
+        }
+    }
 
-	public void editUser(User user, Map<String, String> params) {
-		for (Entry<String, String> entry : params.entrySet()) {
-			switch (entry.getKey()) {
-			case "name":
-				String newName = entry.getValue();
-				if (!newName.isEmpty())
-					user.setName(entry.getValue());
-				break;
-			case "surname":
-				String newSurname = entry.getValue();
-				if (!newSurname.isEmpty())
-					user.setSurname(entry.getValue());
-				break;
-			case "email":
-				String newEmail = entry.getValue();
-				if (!newEmail.isEmpty())
-					user.setEmail(entry.getValue());
-				break;
-			case "password":
-				String newPassword = entry.getValue();
-				if (!newPassword.isEmpty())
-					user.changePassword(entry.getValue());
-				break; 
-			case "age":
-				String newAge = entry.getValue();
-				if (!newAge.isEmpty())
-					user.setAge(Integer.parseInt(entry.getValue()));
-				break;
-			default:
-				break;
-			}
-		}
-		userRepository.save(user);
-	}
+    public void editUser(User user, Map<String, String> params) {
+        for (Entry<String, String> entry : params.entrySet()) {
+            switch (entry.getKey()) {
+                case "name":
+                    String newName = entry.getValue();
+                    if (!newName.isEmpty())
+                        user.setName(entry.getValue());
+                    break;
+                case "surname":
+                    String newSurname = entry.getValue();
+                    if (!newSurname.isEmpty())
+                        user.setSurname(entry.getValue());
+                    break;
+                case "email":
+                    String newEmail = entry.getValue();
+                    if (!newEmail.isEmpty())
+                        user.setEmail(entry.getValue());
+                    break;
+                case "password":
+                    String newPassword = entry.getValue();
+                    if (!newPassword.isEmpty())
+                        user.changePassword(entry.getValue());
+                    break;
+                case "age":
+                    String newAge = entry.getValue();
+                    if (!newAge.isEmpty())
+                        user.setAge(Integer.parseInt(entry.getValue()));
+                    break;
+                default:
+                    break;
+            }
+        }
+        userRepository.save(user);
+    }
 
-	public User findByNickname(User u) {
-		return userRepository.findByNickname(u.getNickname());
-	}
+    public User findByNickname(User u) {
+        return userRepository.findByNickname(u.getNickname());
+    }
 
-	public User createNewUser(String nickname, String name, String surname, String email, String password, String age) {
-		User user = new User(name,surname,Integer.parseInt(age),password,email, nickname,"ROLE_USER");
-		userRepository.save(user);
-		return user;
-	}
+    public User createNewUser(String nickname, String name, String surname, String email, String password, String age) {
+        User user = new User(name, surname, Integer.parseInt(age), password, email, nickname, true, "ROLE_USER");
+        userRepository.save(user);
+        return user;
+    }
 
-    public Collection<Course> getRecommendedCoursesForUser(User u){
-       Optional<Entry<Category, Long>> favouriteCategory = getCourses(u).stream().map(Course::getCategory)
-               .collect(Collectors.groupingBy(category -> category, Collectors.counting()))
-               .entrySet().stream().max(Comparator.comparingLong(Entry::getValue));
+    public Collection<Course> getRecommendedCoursesForUser(User u) {
+        Optional<Entry<Category, Long>> favouriteCategory = getCourses(u).stream().map(Course::getCategory)
+                .collect(Collectors.groupingBy(category -> category, Collectors.counting()))
+                .entrySet().stream().max(Comparator.comparingLong(Entry::getValue));
 
-       if(!favouriteCategory.isPresent()){
-           return null;
-       }
+        if (!favouriteCategory.isPresent()) {
+            return null;
+        }
 
-       Set<Course> coursesEnrrolled = new HashSet<>(this.getCourses(u));
+        Set<Course> coursesEnrrolled = new HashSet<>(this.getCourses(u));
 
         return courseRepository.findByCategory(favouriteCategory.get().getKey())
                 .stream()
@@ -171,11 +171,64 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public Collection<Course> getCourses(User u){
+    public Collection<Course> getCourses(User u) {
         return scheduleRepository
                 .findByListUsersContains(u)
                 .stream().map(Schedule::getCourse)
                 .collect(Collectors.toList());
+    }
+
+    public boolean isUserFull(User user, Map<String, String> params) {
+        boolean full = true;
+        for (Entry<String, String> entry : params.entrySet()) {
+            switch (entry.getKey()) {
+                case "name":
+                    String Name = entry.getValue();
+                    if (Name.isEmpty())
+                        full = false;
+                    /*user.setFullProfile(false);*/
+                    break;
+                case "surname":
+                    String Surname = entry.getValue();
+                    if (Surname.isEmpty())
+                        full = false;
+                    break;
+                case "email":
+                    String Email = entry.getValue();
+                    if (Email.isEmpty())
+                        full = false;
+                    break;
+                case "password":
+                    String Password = entry.getValue();
+                    if (Password.isEmpty())
+                        full = false;
+                    break;
+                case "age":
+                    String Age = entry.getValue();
+                    if (Age.isEmpty())
+                        full = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return full;
+    }
+    public boolean isUserFull(User user){
+        boolean full = true;
+        if (user.getName() == null || user.getName().isEmpty())
+            full = false;
+        if (user.getSurname() == null || user.getSurname().isEmpty())
+            full = false;
+        if (user.getPasswordHash() == null || user.getPasswordHash().isEmpty())
+            full = false;
+        if (user.getAge() == 0)
+            full = false;
+        if (user.getEmail() == null || user.getEmail().isEmpty())
+            full = false;
+        if(user.getNickname() == null || user.getNickname().isEmpty())
+            full = false;
+        return full;
     }
 
 }
