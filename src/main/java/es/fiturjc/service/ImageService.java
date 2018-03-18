@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImageService {
 
 	private static final SimpleDateFormat fileNameFormat = new SimpleDateFormat("'img-'yyyyMMdd-hhmmss-SSS");
-	public static final String IMG_FOLDER = "src/main/resources/static/img/uploads/";
+	public static final String IMG_FOLDER = "app/images";
 	public static final String IMG_CONTROLLER_URL = "/uploads/img/";
 
 	public boolean isValidImage(MultipartFile file) {
