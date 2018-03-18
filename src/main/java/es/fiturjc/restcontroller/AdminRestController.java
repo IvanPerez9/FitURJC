@@ -177,24 +177,28 @@ public class AdminRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    //to do: solve the way to modify schedules
+
     /**
-     * Edit course by id
-     *
      * @param id
      * @param course
-     * @return course
+     * @return
      */
+    @PatchMapping(value = "/course/edit/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable long id, @RequestBody Course course) {
+        User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 
-    @PutMapping(value = "/course/edit/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<?> editCourse(@PathVariable long id, @RequestBody Course course) {
-        Course c = courseService.findCourse(id);
-        if (c != null) {
-            courseService.editCourse(course, id);
-            return new ResponseEntity<>(course, HttpStatus.OK);
+        if (userLogged.isAdmin()) {
+            Course courseUpdated = courseService.getCourseById(id);
+            if (courseUpdated != null) {
+                courseUpdated = courseService.updateCourse(id, course);
+                return new ResponseEntity<>(courseUpdated, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
 
 }

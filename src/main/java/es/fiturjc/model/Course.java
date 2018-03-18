@@ -1,7 +1,9 @@
 package es.fiturjc.model;
 
 import java.util.ArrayList;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import com.fasterxml.jackson.annotation.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -17,11 +19,6 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonView;
 
 import es.fiturjc.model.User.Basic;
 
@@ -42,7 +39,7 @@ public class Course {
 	
 	@JsonView(Details.class)
 	private String src;
-	
+
 	@JsonView(Basic.class)
 	private String name;
 	
@@ -51,9 +48,9 @@ public class Course {
 	
 	@JsonView(Details.class)
 	private String description;
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="course")
+	//orphanRemoval = true eliminated by errors in the course modification
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="course")
 	@JsonView(Details.class)
 	private List<Schedule> schedules = new ArrayList<>();
 	
