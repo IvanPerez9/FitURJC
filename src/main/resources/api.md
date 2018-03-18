@@ -53,13 +53,6 @@ It shows all the database of the users.
           }
       ]
       
-* ##### Success Response:
-      
-      	* HttpStatus.OK
-      
-* ##### Error Response:
-      
-      	* Code: 404 NOT FOUND
       	
 ### OBTAIN THE DATA OF THE USER LOGGED 
       
