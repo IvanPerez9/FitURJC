@@ -18,7 +18,7 @@ public class ImageService {
     private UserRepository userRepository;
 
 	private static final SimpleDateFormat fileNameFormat = new SimpleDateFormat("'img-'yyyyMMdd-hhmmss-SSS");
-	private static final String IMG_FOLDER = "C://temp/images/";
+	private static final String IMG_FOLDER = "/temp/images/";
 	private static final String IMG_CONTROLLER_URL = "/uploads/img/";
 
 	public boolean isValidImage(MultipartFile file) {
