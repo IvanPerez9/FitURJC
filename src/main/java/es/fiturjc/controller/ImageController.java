@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ImageController {
 
-	public static final String DEFAULT_IMG_FOLDER = "C://temp/images/";
+	public static final String DEFAULT_IMG_FOLDER = "/temp/images/";
 	public static final String IMG_CONTROLLER_URL = "/uploads/img/";
 
 	@RequestMapping(value = { IMG_CONTROLLER_URL + "{filename}",
