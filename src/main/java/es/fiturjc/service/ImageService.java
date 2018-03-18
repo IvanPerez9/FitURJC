@@ -38,7 +38,7 @@ public class ImageService {
         u.setImgSrc(path);
         userRepository.save(u);
         return path;
-    }/**/
+    }
 
     public String uploadImage(MultipartFile file) {
         String fileName = generateFileName();
