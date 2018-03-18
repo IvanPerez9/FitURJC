@@ -84,6 +84,9 @@ public class UserService {
 		if(user.getPasswordHash()!= null) {
 			userToEdit.changePassword(user.getPasswordHash());
 		}
+		if(user.getNickname()!= null) {
+			userToEdit.setNickname(user.getNickname());
+		}
 		if(user.getImgSrc()!= null) {
 			userToEdit.setImgSrc(user.getImgSrc());
 		}
