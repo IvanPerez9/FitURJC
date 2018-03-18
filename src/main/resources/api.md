@@ -52,9 +52,81 @@ It shows all the database of the users.
               "email": "fiturjc@gmail.com"
           }
       ]
+      
+* ##### Success Response:
+      
+      	* HttpStatus.OK
+      
+* ##### Error Response:
+      
+      	* Code: 404 NOT FOUND
+      	
+### OBTAIN THE DATA OF THE USER LOGGED 
+      
+      It can change all the data of an user.
+      
+* ##### URL
+      
+      	< / >
+      
+* ##### Method:
+      
+      	`GET`
+
+* ##### URL Params
+
+	* Required:
+
+		`id=[long]`
+* ##### Success Response:
+              {
+                  "id": 4,
+                  "nickname": "admin",
+                  "name": "Admin",
+                  "surname": "Admin",
+                  "imgSrc": "/uploads/img/default",
+                  "email": "admin@gmail.com",
+                  "age": 25
+              }	
+
+### CHANGE A SPECIFIC USER 
+      
+      It can change all the data of an user.
+      
+* ##### URL
+      
+      	< / >
+      
+* ##### Method:
+      
+      	`PATCH`
+
+* ##### URL Params
+
+	* Required:
+
+		`id=[long]`
+		
+* ##### Success Response:
+      {
+              "id": 4,
+              "nickname": "admin",
+              "name": "Xilliam",
+              "surname": "Xallace",
+              "passwordHash": "$2a$10$UjjW8rl8YlBrFsNvKXSYP.WkbTFKZMKv8zMZkSL1WVnXkgZM80vN.",
+              "imgSrc": "/uploads/img/default",
+              "email": "xx@gmail.com",
+              "age": 25,
+              "roles": [
+                  "ROLE_USER",
+                  "ROLE_ADMIN"
+              ],
+              "fullProfile": true,
+              "admin": true
+      }
 
 ## Schedules
-Below are queries regarding the schedules entity. These must be preceded by /schedule.
+Below are queries regarding the schedules entity. These must be preceded by /schedules.
 
 * ##### Success Response:
 
@@ -199,7 +271,62 @@ It shows all the database of the schedules.
               "course": 12
           }
       ]
-      
+### SUBSCRIBE IN A SPECIFIC SCHEDULE
+
+You can join any schedule. (If its not already full).
+
+* ##### URL
+
+	< /{id}/join >
+
+* ##### Method:
+
+	`PUT`
+
+* ##### URL Params
+
+	* Required:
+
+		`id=[long]`
+		
+* ##### Success Response:
+              {
+                  "idSchedule": 2,
+                  "schedule": "11:00-12:00",
+                  "listUsers": [
+                      {}
+                  ],
+                  "course": {},
+                  "full": false
+              }
+
+### UNSUBSCRIBE IN A SPECIFIC SCHEDULE
+
+You can unsubscribe on any schedule.
+
+* ##### URL
+
+	< /{id}/unsubscribe >
+
+* ##### Method:
+
+	`PUT`
+
+* ##### URL Params
+
+	* Required:
+
+		`id=[long]`
+		
+* ##### Success Response:
+              {
+                  "idSchedule": 1,
+                  "schedule": "10:00-11:00",
+                  "listUsers": [],
+                  "course": {},
+                  "full": false
+              }
+
 ### OBTAIN A SPECIFIC DATA OF A SCHEDULE
 
 It shows all the data of any schedule.
@@ -385,31 +512,6 @@ It shows all the data of any course.
 	
 	
 
-### REMOVE A SCHEDULE
-
-delete a schedule specifying its id.
-
-* ##### URL
-
-	< / >
-
-* ##### Method:
-
-	`DELETE`
-
-* ##### URL Params
-
-	* Required:
-
-		`id=[long]`
-
-* ##### Success Response:
-
-		* HttpStatus.OK
-
-* ##### Error Response:
-
-	* Code: 405 METHOD NOT ALLOWED
 
 ## Admin
 Below are queries regarding the admin entity. These must be preceded by /admin.
@@ -728,3 +830,60 @@ It shows all the database of the schedules.
           "nickname": "XX",
           "email": "xxx@gmail.com"
       }
+      
+## Course
+Below is query that regards the course funcionality. These must be preceded by /course.
+
+* ##### Success Response:
+
+	* HttpStatus.OK
+
+* ##### Error Response:
+
+	* Code: 405 METHOD NOT ALLOWED
+
+### ADD COURSE (ADMIN)
+
+It shows all the database of the schedules.
+
+* ##### URL
+
+	< /add >
+
+* ##### Method:
+
+	`POST`
+
+* ##### Success Response:
+      {
+          "src": "/img/courses/Aerobic.jpg",
+          "category": "CARDIO",
+          "description": "Turn sddsds heartbeat up while you dance to the latest music hits! A real fat burning session",
+          "schedules": []
+      }
+
+### REMOVE A COURSE
+
+delete a course specifying its id.
+
+* ##### URL
+
+	< /delete >
+
+* ##### Method:
+
+	`DELETE`
+
+* ##### URL Params
+
+	* Required:
+
+		`id=[long]`
+
+* ##### Success Response:
+
+		* HttpStatus.OK
+
+* ##### Error Response:
+
+	* Code: 405 METHOD NOT ALLOWED
