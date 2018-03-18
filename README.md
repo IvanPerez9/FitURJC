@@ -24,9 +24,9 @@
   * One user can not be registered in two or more activities at the same time. 
   * Personalized Recommendations.
 * __Technology__:
-  * Sent an email when an user has registered
+  * Can register using Facebook acount.
 * __Graphics__:
-  * Dashboard about affluence of users in each activity
+  * Dashboard about affluence of users in each activity and courses by category.
 * __Authors:__
   * **Carlos Olmo Sahuquillo** [@CarlUndert] (https://github.com/CarlUndert)  
   Contact: c.olmosa@alumnos.urjc.es
