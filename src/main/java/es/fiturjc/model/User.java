@@ -98,6 +98,11 @@ public class User {
 		return nickname;
 	}
 	
+	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}

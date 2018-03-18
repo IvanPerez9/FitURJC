@@ -131,7 +131,7 @@ public class AdminRestController {
     /****************** COURSES **************/
 
     /**
-     * 
+     *
      *
      * @return
      */
@@ -151,13 +151,13 @@ public class AdminRestController {
     		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     	}
     }
-    
+
     /**
 	 * Get 1 course
 	 * @param id
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@JsonView(CourseDetail.class)
@@ -186,7 +186,7 @@ public class AdminRestController {
     @ResponseStatus(HttpStatus.CREATED)
 
     public ResponseEntity<Course> addCourse(@RequestBody Course course) {
-    	
+
         if (userComponent.isLoggedUser()) {
             courseService.save(course);
             return new ResponseEntity<>(course, HttpStatus.OK);
@@ -216,29 +216,28 @@ public class AdminRestController {
     	}
     }
 
+    //to do: solve the way to modify schedules
+
     /**
-     * Edit course by id
-     *
      * @param id
      * @param course
-     * @return course
+     * @return
      */
+    @PatchMapping(value = "/course/edit/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable long id, @RequestBody Course course) {
+        User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 
-    @PutMapping(value = "/course/edit/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public ResponseEntity<?> editCourse(@PathVariable long id, @RequestBody Course course) {
-    	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-        Course c = courseService.findCourse(id);
-        if(userLogged.isAdmin()) {
-	        if (c != null) {
-	            courseService.editCourse(course, id);
-	            return new ResponseEntity<>(course, HttpStatus.OK);
-	        }
-	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else {
-        	return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        if (userLogged.isAdmin()) {
+            Course courseUpdated = courseService.getCourseById(id);
+            if (courseUpdated != null) {
+                courseUpdated = courseService.updateCourse(id, course);
+                return new ResponseEntity<>(courseUpdated, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-
     }
 
 }

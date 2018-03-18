@@ -70,30 +70,33 @@ public class UserService {
         return u;
     }
 
-    public User updateUserInfo(long id, User user) {
-        User userToEdit = userRepository.findById(id);
-        if (user.getEmail() != null) {
-            userToEdit.setEmail(user.getEmail());
-        }
-        if (user.getName() != null) {
-            userToEdit.setName(user.getName());
-        }
-        if (user.getSurname() != null) {
-            userToEdit.setSurname(user.getSurname());
-        }
-        if (user.getPasswordHash() != null) {
-            userToEdit.changePassword(user.getPasswordHash());
-        }
-        if (user.getImgSrc() != null) {
-            userToEdit.setImgSrc(user.getImgSrc());
-        }
-        if (user.getAge() != userToEdit.getAge()) {
-            userToEdit.setAge(user.getAge());
-        }
-
-        userRepository.save(userToEdit);
-        return userToEdit;
-    }
+	public User updateUserInfo(long id, User user) {
+		User userToEdit = userRepository.findById(id);
+		if(user.getEmail()!= null) {
+			userToEdit.setEmail(user.getEmail());
+		}
+		if(user.getName()!= null) {
+			userToEdit.setName(user.getName());
+		}
+		if(user.getSurname()!= null) {
+			userToEdit.setSurname(user.getSurname());
+		}
+		if(user.getPasswordHash()!= null) {
+			userToEdit.changePassword(user.getPasswordHash());
+		}
+		if(user.getNickname()!= null) {
+			userToEdit.setNickname(user.getNickname());
+		}
+		if(user.getImgSrc()!= null) {
+			userToEdit.setImgSrc(user.getImgSrc());
+		}
+		if(user.getAge() != userToEdit.getAge()) {
+			userToEdit.setAge(user.getAge());
+		}
+		
+		userRepository.save(userToEdit);
+		return userToEdit;
+	}
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);

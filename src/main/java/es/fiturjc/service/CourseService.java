@@ -51,6 +51,10 @@ public class CourseService {
 	public void save(Course course) {
 		courseRepository.save(course);
 	}
+	public Course getCourseById (Long id) {
+		return courseRepository.findById(id);
+	}
+
 
 	public Course createNewCourse(Course course, MultipartFile file) {
 		
@@ -106,6 +110,28 @@ public class CourseService {
 		saveCourse(courseOld);
 		return courseOld;
 		
+	}
+	public Course updateCourse(long id, Course course){
+		Course courseToEdit = courseRepository.findById(id);
+		if (course.getCategory()!=null){
+			courseToEdit.setCategory(course.getCategory());
+		}
+		if(course.getDescription()!= null){
+			courseToEdit.setDescription(course.getDescription());
+		}
+		if(course.getName()!=null){
+			courseToEdit.setName(course.getName());
+		}
+		if(course.getSrc()!=null){
+			courseToEdit.setSrc(course.getSrc());
+		}
+		if(course.getSchedules()!=null){
+			courseToEdit.setSchedules(course.getSchedules());
+		}
+		courseRepository.save(courseToEdit);
+
+		return courseToEdit;
+
 	}
 
 }
