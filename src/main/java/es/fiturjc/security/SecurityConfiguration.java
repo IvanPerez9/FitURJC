@@ -1,5 +1,6 @@
 package es.fiturjc.security;
 
+import es.fiturjc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -36,6 +37,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   
     @Autowired
     private FacebookConnectionSignup facebookConnectionSignup;
+
+    @Autowired
+	private UserRepository userRepository;
      
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -89,13 +93,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	//facebook
  	@Bean
      public ProviderSignInController providerSignInController() {
-         ((InMemoryUsersConnectionRepository) usersConnectionRepository)
+         usersConnectionRepository
            .setConnectionSignUp(facebookConnectionSignup);
           
          return new ProviderSignInController(
            connectionFactoryLocator, 
            usersConnectionRepository, 
-           new FacebookSignInAdapter());
+           new FacebookSignInAdapter(userRepository));
      }
 	 	
 	 	

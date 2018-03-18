@@ -2,8 +2,10 @@ package es.fiturjc.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import es.fiturjc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,8 @@ import es.fiturjc.model.User;
 import es.fiturjc.repository.UserRepository;
 import es.fiturjc.service.CourseService;
 
+import java.security.Principal;
+
 
 @Controller
 public class MainController {
@@ -23,24 +27,27 @@ public class MainController {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private UserComponent userComponent;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserComponent userComponent;
 
 
 	@RequestMapping(value = "/")
-	public String getIndex(Model model, HttpServletRequest request) {
+	public String getIndex(Model model, HttpServletRequest request, Principal p) {
 		Page<Course> coursesIndex = courseService.getPageCourses();
 		model.addAttribute("courses", coursesIndex);
-		// New
-		// Check if a user is logged
-		if ((userComponent.isLoggedUser())) {
-			long userLogged_id = userComponent.getLoggedUser().getId();
-			User userLogged = userRepository.findOne(userLogged_id);
+
+		if (p != null) {
+			User userLogged = userRepository.findByEmail(p.getName());
+            userComponent.setLoggedUser(userLogged);
+            model.addAttribute("logged", true);
+
+            if (!userService.isUserFull(userLogged))
+                throw new UserNotFullException();
 			model.addAttribute("user", userLogged);
-			if (userComponent.getLoggedUser().getId() == userLogged.getId()) {
-				model.addAttribute("logged", true);
-			}
 			// Check if is an Admin
 			model.addAttribute("admin", request.isUserInRole("ROLE_ADMIN"));
 			return "index";

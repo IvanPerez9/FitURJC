@@ -50,7 +50,7 @@ public class CourseRestController {
 	public ResponseEntity<List<Course>> getCourses() {
 		List<Course> courses = courseService.getAllCourses();
 		if (courses != null) {
-			return new ResponseEntity<List<Course>>(courses, HttpStatus.OK);
+			return new ResponseEntity<>(courses, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -87,9 +87,9 @@ public class CourseRestController {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 		if (userLogged != null) {
 			courseService.save(course);
-			return new ResponseEntity<Course>(course, HttpStatus.OK);
+			return new ResponseEntity<>(course, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<Course>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 	}
@@ -112,10 +112,10 @@ public class CourseRestController {
 				courseService.save(editCourse);
 				return new ResponseEntity<>(editCourse, HttpStatus.ACCEPTED);
 			} else {
-				return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 		} else {
-			return new ResponseEntity<Course>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 
 	}
@@ -130,7 +130,7 @@ public class CourseRestController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> deleteCourse(@PathVariable long id) {
 		courseService.deleteCourse(id);
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	/**
