@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import es.fiturjc.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.multipart.MultipartFile;
@@ -229,6 +231,11 @@ public class UserService {
         if(user.getNickname() == null || user.getNickname().isEmpty())
             full = false;
         return full;
+    }
+
+    //Pagination
+    public Page<User> findAllusers(PageRequest page) {
+        return userRepository.findAll(page);
     }
 
 }

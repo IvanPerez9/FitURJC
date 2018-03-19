@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -63,6 +65,12 @@ public class AdminRestController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    //Pagination
+    @RequestMapping(value = "/paginate/{page}", method = RequestMethod.GET)
+    public Page<User> getAllUsers(@PathVariable("page") int page) {
+        return userService.findAllusers(new PageRequest(page, 10));
     }
 
     /**
