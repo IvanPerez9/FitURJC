@@ -3,6 +3,8 @@ package es.fiturjc.restcontroller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -54,6 +56,17 @@ public class ScheduleRestController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+	}
+
+    /**
+     *
+     * @param page
+     * @return
+     */
+	//Pagination
+	@RequestMapping(value = "/paginate/{page}", method = RequestMethod.GET)
+	public Page<Schedule> getAllSchedules(@PathVariable("page") int page) {
+		return scheduleService.findAllSchedules(new PageRequest(page, 10));
 	}
 	
 	/**

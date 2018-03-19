@@ -3,6 +3,8 @@ package es.fiturjc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import es.fiturjc.model.Course;
@@ -50,5 +52,10 @@ public class ScheduleService {
 		}else {
 			schedule.addUser(user);
 		}
+	}
+
+	//Pagination
+	public Page<Schedule> findAllSchedules(PageRequest page) {
+		return scheduleRepository.findAll(page);
 	}
 }
