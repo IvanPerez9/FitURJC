@@ -134,4 +134,9 @@ public class CourseService {
 
 	}
 
+	//Pagination
+	public Page<Course> findAllCourses(PageRequest page) {
+		return courseRepository.findAll(page);
+	}
+
 }

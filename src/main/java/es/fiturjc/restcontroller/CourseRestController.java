@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.fiturjc.component.UserComponent;
@@ -37,13 +40,12 @@ public class CourseRestController {
 	
 	@Autowired
 	private UserComponent userComponent;
-	
-	
+
+
 	/**
-	 * Simple Get all the list of courses 
+	 *
 	 * @return
 	 */
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@JsonView(Course.Basic.class)
@@ -55,7 +57,20 @@ public class CourseRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
+	/**
+	 *
+	 * @param page
+	 * @return
+	 */
+	//Pagination
+	@RequestMapping(value = "/paginate/{page}", method = RequestMethod.GET)
+	public Page<Course> getAllCourses(@PathVariable("page") int page) {
+		return courseService.findAllCourses(new PageRequest(page, 10));
+	}
+
+
+
 	/**
 	 * Get 1 course
 	 * @param id
