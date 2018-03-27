@@ -90,17 +90,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		auth.userDetailsService(userDetailsService);
 	}
 	
-	//facebook
- 	@Bean
-     public ProviderSignInController providerSignInController() {
-         usersConnectionRepository
-           .setConnectionSignUp(facebookConnectionSignup);
-          
-         return new ProviderSignInController(
-           connectionFactoryLocator, 
-           usersConnectionRepository, 
-           new FacebookSignInAdapter(userRepository));
-     }
+//	//facebook
+// 	@Bean
+//     public ProviderSignInController providerSignInController() {
+//         usersConnectionRepository
+//           .setConnectionSignUp(facebookConnectionSignup);
+//          
+//         return new ProviderSignInController(
+//           connectionFactoryLocator, 
+//           usersConnectionRepository, 
+//           new FacebookSignInAdapter(userRepository));
+//     }
 	 	
 	 	
 // 	private SocialConfigurer getSpringSocialConfigurer() {
