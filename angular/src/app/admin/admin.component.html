@@ -1,0 +1,45 @@
+<div class="wrapper">
+    <div class="sidebar" data-color="blue"
+        data-image="/img/lateralAdmin.jpg">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a [routerLink]="['/']" class="simple-text"> FitURJC </a>
+            </div>
+            <ul class="nav">
+                <li><a [routerLink]="['/manageUsers']"> <i
+                        class="fa fa-user"></i>
+                        <p>User management</p>
+                </a></li>
+                <li><a [routerLink]="['/manageCourses']"> <i
+                        class="fa fa-users"></i>
+                        <p>Course management</p>
+                </a></li>
+                <li><a [routerLink]="['/Graphics']"> <i class="fa fa-flag"></i>
+                        <p>Graphics</p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/user/profile"><span
+                        class="fa fa-reply"></span> Return</a>
+                </div>
+            </div>
+        </nav>
+        <!-- Mustache in -->
+
+        {{# manageUsersSection}} {{> admin-controlUsers}} {{/manageUsersSection}} 
+        {{# manageCoursesSection}} {{>admin-controlCourses}} {{/ manageCoursesSection}}
+        {{#graphicsSection}} {{> admin-graphics}} {{/ graphicsSection}}
+    </div>
+</div>
