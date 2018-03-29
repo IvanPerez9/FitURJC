@@ -18,12 +18,12 @@ export class LoginComponent {
   constructor(private sessionService: LoginService) {
   }
 
-  logIn(username: string, password: string, event: Event) {
+  logIn(email: string, password: string, event: Event) {
     event.preventDefault(); // Avoid default action for the submit button of the login form
     this.loading = true;
 
     // Calls service to login user to the api rest
-    this.sessionService.logIn(username, password).subscribe(
+    this.sessionService.logIn(email, password).subscribe(
 
       user => {
         this.loading = false;
@@ -34,12 +34,9 @@ export class LoginComponent {
         this.error_login = true;
       },
     );
-
   }
 
-
-
-
-
-
+  logOut() {
+      this.sessionService.logOut();
+  }
 }

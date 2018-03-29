@@ -25,7 +25,7 @@
                   logged in</span>
               </label> <input type="submit" name="login-submit" id="login-submit"
               tabindex="4" class="form-control btn btn-login btn-primary"
-              value="Log In">
+              value="Log In" data-dismiss="modal" (click)="logIn(email.value, password.value)">
             </form>
             <div class="clearfix"></div>
             <p class="content-divider center mt-4">
@@ -41,7 +41,7 @@
           </form>
           <br>
           <p class="text-center">
-            Don't have an account yet? <a href="register.html">Sign Up
+            Don't have an account yet? <a [routerLink]="['/register']" style="text-decoration: none;">Sign Up
               Now</a>
           </p>
           <form method="get" action="/">

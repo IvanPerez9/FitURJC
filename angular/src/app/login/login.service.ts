@@ -6,7 +6,7 @@ import * as globals from '../globals';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { HttpClient } from '../HttpClient/httpClient';
-import 'rxjs/Rx';
+ // import 'rxjs/Rx';
 
 @Injectable()
 export class LoginService {
