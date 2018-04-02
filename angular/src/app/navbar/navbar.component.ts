@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Navbar } from '../navbar';
+import { LISTNAVBAR } from '../navbar-home';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  listnavbar = LISTNAVBAR;
+
+  selectedList: Navbar;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  
+
+  onSelect(navbar: Navbar): void {
+    this.selectedList = navbar;
   }
 
 }
