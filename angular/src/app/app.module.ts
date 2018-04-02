@@ -13,6 +13,7 @@ import { LoginService } from './login/login.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClient } from './HttpClient/httpClient';
+import { CourseComponent } from './course/course.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpClient } from './HttpClient/httpClient';
     HomeComponent,
     UserComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
