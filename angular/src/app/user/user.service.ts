@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '../HttpClient/httpClient';
 import { Observable } from 'rxjs/Observable';
+// tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import * as globals from '../globals';
 
@@ -12,8 +13,6 @@ export class UserService {
     constructor(private http: HttpClient) {
         this.url = globals.USER_BASEURL;
     }
-   
-
 
     getUsers() {
 

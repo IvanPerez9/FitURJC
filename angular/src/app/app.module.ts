@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
 import { LoginService } from './login/login.service';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { HttpClient } from './HttpClient/httpClient';
 
 
@@ -18,7 +19,8 @@ import { HttpClient } from './HttpClient/httpClient';
     NavbarComponent,
     HomeComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
