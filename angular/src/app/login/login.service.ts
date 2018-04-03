@@ -5,16 +5,16 @@ import { Http, Headers } from '@angular/http';
 import * as globals from '../globals';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
-import { HttpClient } from '../HttpClient/httpClient';
- // import 'rxjs/Rx';
+import { HttpClientBasicAuth } from '../HttpClient/httpClient';
+// import 'rxjs/Rx';
 
 @Injectable()
 export class LoginService {
 
-    constructor(private _http: HttpClient, private userService: UserService) { }
+    constructor(private _http: HttpClientBasicAuth, private userService: UserService) { }
 
     public updateUser(username: String) {
-       return this.userService.getUser(username).map(
+        return this.userService.getUser(username).map(
             user => {
 
                 this._http.setUser(user);
@@ -24,7 +24,7 @@ export class LoginService {
     }
 
     public updateUserLogged(nick: String) {
-    this.userService.getUser(nick).subscribe(
+        this.userService.getUser(nick).subscribe(
             user => {
 
                 this._http.setUser(user);
@@ -44,9 +44,10 @@ export class LoginService {
 
         this._http.sessionData.setAmILogged(true);
 
-        return this._http.get(globals.LOGIN_BASEURL).map(
-            response => this.updateUser(username).subscribe())
-            .catch(error => this.loginFailed(error));
+        /* return this._http.get(globals.LOGIN_BASEURL).map(
+             response => this.updateUser(username).subscribe())
+             .catch(error => this.loginFailed(error));*/
+        return null;
 
     }
 

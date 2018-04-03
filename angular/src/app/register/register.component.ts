@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
-import { HttpClient } from '../HttpClient/httpClient';
+import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 
 @Component({
   selector: 'app-register',

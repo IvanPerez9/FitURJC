@@ -1,21 +1,21 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SessionData } from '../login/sessionData.entity';
 import { User } from '../user/user.model';
 import * as globals from '../globals';
 
 @Injectable()
-export class HttpClient {
+export class HttpClientBasicAuth {
 
     public sessionData: SessionData;
 
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
         this.sessionData = new SessionData();
     }
 
     generateHeaders() {
-        const headers = new Headers();
+        const headers = new HttpHeaders();
 
         if (this.sessionData.amILogged()) {
             headers.append('Authorization', this.sessionData.authToken());
@@ -49,15 +49,13 @@ export class HttpClient {
         });
     }
 
-
-
     logOut() {
-        return this.get(globals.LOGOUT_BASEURL).map(
-            response => {
-                this.sessionData.reset();
-            },
-            error => console.log(error)
-        );
+        /* return this.get(globals.LOGOUT_BASEURL).map(
+             response => {
+                 this.sessionData.reset();
+             },
+             error => console.log(error)
+         );*/
     }
 
     setUser(u: User) {

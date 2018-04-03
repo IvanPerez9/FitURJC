@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Navbar } from '../navbar';
-import { LISTNAVBAR } from '../navbar-home';
-
+import { Navbar } from './navbar.model';
+export const LIST_NAVBAR: Navbar[] = [
+  { name: 'register' }, //esta puesto a register porque es la unica pagina de momento 'creada'
+  { name: 'Professionals' },
+  { name: 'Facilities' },
+  { name: 'Contact' }
+];
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +13,7 @@ import { LISTNAVBAR } from '../navbar-home';
 })
 export class NavbarComponent implements OnInit {
 
-  listnavbar = LISTNAVBAR;
+  listnavbar = LIST_NAVBAR;
 
   selectedList: Navbar;
 
@@ -17,8 +21,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  
 
   onSelect(navbar: Navbar): void {
     this.selectedList = navbar;
