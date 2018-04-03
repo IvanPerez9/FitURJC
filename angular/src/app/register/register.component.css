@@ -16,7 +16,7 @@ body{
     width: 120px;
 }
 .hero{
-    /* background-image: url('../img/prueba2.jpg');*/
+    background-image: url("/assets/img/prueba2.jpg");
     background-size: cover;
     background-position: center center;
     min-height: 100%;
@@ -97,6 +97,7 @@ a, a:hover{
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.5);
     color: #FFFFFF; 
+    padding-top: 15px;
 }
 .form-control:focus {
     border-color: #FFFFFF;
@@ -173,7 +174,7 @@ a, a:hover{
 /* For profile settings */
 
 #card{
-    /*background-image: url('../img/prueba2.jpg');*/
+    background-image:url("/assets/img/prueba2.jpg");
     background-size: cover;
     background-position: center center;
     min-height: 100%;

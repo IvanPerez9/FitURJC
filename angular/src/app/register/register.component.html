@@ -9,7 +9,7 @@
                         </div>
                         <p class="mt-4 text-white lead text-center">Sign up to get
                             started</p>
-                        <div class="mt-4">
+                        <div class="mt-4" aling="center">
                             <form method="post" action="/user/register">
                                 <!-- Method to not saw the password -->
                                 <div class="form-group">
@@ -70,7 +70,7 @@
                         </a>
                     </p>
                     <p class="text-center">
-                        Already have an account? <a href="login.html">Login Now</a>
+                        Already have an account? <a [routerLink]="['/login']" style="text-decoration: none;"> Login Now</a>
                     </p>
                     <p class="text-center">
                         <button type="submit" class="btn btn-primary" id="goBackbtn">Go
