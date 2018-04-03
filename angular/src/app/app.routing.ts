@@ -6,7 +6,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-const appRoutes = [
+export const appRoutes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'user', component: UserComponent },
     { path: 'login', component: LoginComponent },

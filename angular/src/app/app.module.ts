@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { routing ,appRoutingProviders} from './app.routing';
+import { routing, appRoutingProviders } from './app.routing';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-
+import { AppRoutingModule } from '../app/app.routing'
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,12 @@ import { CourseComponent } from './course/course.component';
 
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    routing,
+    FormsModule,
+    AppRoutingModule
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -23,12 +29,7 @@ import { CourseComponent } from './course/course.component';
     UserComponent,
     LoginComponent,
     RegisterComponent,
-    CourseComponent
-  ],
-  imports: [
-    BrowserModule,
-    routing,
-    FormsModule
+    CourseComponent,
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService],
   bootstrap: [AppComponent]
