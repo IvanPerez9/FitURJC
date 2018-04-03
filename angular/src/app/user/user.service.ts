@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '../HttpClient/httpClient';
+import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 import { Observable } from 'rxjs/Observable';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
@@ -10,28 +10,16 @@ export class UserService {
 
     url: string;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClientBasicAuth) {
         this.url = globals.USER_BASEURL;
     }
 
-    getUsers() {
-
-        return this.http.get(this.url)
-            .map(response => response.json())
-            .catch(error => this.handleError(error));
-
+    getUsers(): Observable<any> {
+        return this.http.get(this.url);
     }
 
-    getUser(nick: String) {
-        return this.http.get(this.url + nick)
-            .map(response => response.json())
-            .catch(error => this.handleError(error));
+    getUser(nick: String): Observable<any> {
+        return this.http.get(this.url + nick);
     }
 
-
-
-    private handleError(error: any) {
-        console.error(error);
-        return Observable.throw('Server error (' + error.status + '): ' + error.text());
-    }
 }
