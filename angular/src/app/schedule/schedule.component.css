@@ -208,7 +208,7 @@ img::-moz-selection {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: linear-gradient(rgb(82, 72, 72), rgba(15, 19, 20, 0)),url("../img/prueba1.jpg");
+  background-image: linear-gradient(rgb(82, 72, 72), rgba(15, 19, 20, 0)),url("../../assets/img/prueba1.jpg");
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;

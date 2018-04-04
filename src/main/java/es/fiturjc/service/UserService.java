@@ -53,6 +53,10 @@ public class UserService {
         return userRepository.findOne(id);
     }
 
+	public User findOne(String email) {
+        return userRepository.findByEmail(email);
+	}
+
     public User createNewUser(User user, String pass) {
         if (userRepository.findByNickname(user.getNickname()) == null) {
             ArrayList<String> roles = new ArrayList<>(Arrays.asList("ROLE_USER"));
@@ -237,5 +241,6 @@ public class UserService {
     public Page<User> findAllusers(PageRequest page) {
         return userRepository.findAll(page);
     }
+
 
 }
