@@ -1,9 +1,36 @@
-.card-footer-user {
-  padding: .75rem 1.25rem;
-  background-color: rgba(240, 95, 64, 0.9);
-  border-top: 1px solid rgba(0,0,0,.125);
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+.agenda {
 }
+
+/* Dates */
+.agenda .agenda-date {
+  width: 170px;
+}
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em;
+}
+
+
+/* Times */
+.agenda .agenda-time {
+  width: 140px;
+}
+
+
+/* Events */
+.agenda .agenda-events {  }
+.agenda .agenda-events .agenda-event {  }
+
+@media (max-width: 767px) {
+}
+/*MIERDA ?*/
 body,
 html {
   width: 100%;
@@ -310,41 +337,6 @@ header.masthead p {
 
 .text-primary {
   color: #F05F40 !important;
-}
-
-.btn {
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 300px;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-}
-
-.btn-xl {
-  padding: 1rem 2rem;
-}
-
-.btn-primary {
-  background-color: #F05F40;
-  border-color: #F05F40;
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  color: #fff;
-  background-color: #ee4b28 !important;
-}
-
-.btn-primary:active, .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
-}
-
-#registered-activities-user{
-  text-decoration: underline;
-}
-
-#activities{
-  margin: 0px auto;
-  align-content: center;
 }
 
 

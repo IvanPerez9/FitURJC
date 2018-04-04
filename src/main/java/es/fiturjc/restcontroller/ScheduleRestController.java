@@ -98,9 +98,9 @@ public class ScheduleRestController {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 		if(userLogged.isAdmin()) {
 			scheduleService.deleteSchedule(id);
-			return new ResponseEntity<>(null, HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.OK);
 		}
-		return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 	}
 	
 	/**

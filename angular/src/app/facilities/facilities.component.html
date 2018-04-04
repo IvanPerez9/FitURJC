@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>FitURJC Facilities</title>
+  <link rel="shortcut icon" href="/img/iconLogo.ico" />
+
+  <meta name="description" content="Love Authority." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/css/fontawesome-all.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet"
+        href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+  <link rel="stylesheet" href="/css/facilities.css" />
+
+</head>
+
+<body>
+<section class="hero">
+  <div class="container">
+    <p align="center" style = "font-size:26px"> Facilities in your Gym </p>
+    <a>We’re here to help all our members feel positive, motivated and in the perfect mood for a workout. That’s why all our gyms are bright and spacious with a laid- back atmosphere, so when you come in, you feel as comfortable as a pair of old trainers.</a>
+    <a>You’ll also find all the practical bits and bobs you need: showers and changing rooms, lockers – even vending machines in case you’ve left something at home. And to keep you safe and sound day and night, we’ve got a PIN entry door system for our members.</a>
+
+    <div class="row" id="listFacilities">
+      <app-facilities></app-facilities>
+      <br>
+    </div>
+    <br>
+    <div class="styleMoreFacilities">
+      <div id="spinner"></div>
+      <p class="text-center">
+        <button id="btnMoreFacilities" type="button"
+                class="btn btn-primary">See more</button>
+      <form method="get" action="/">
+        <button id="goBack" type="submit" class="btn btn-warning">Go
+          back</button>
+      </form>
+    </div>
+  </div>
+</section>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/moreFacilities.js"></script>
+</body>
+</html>
