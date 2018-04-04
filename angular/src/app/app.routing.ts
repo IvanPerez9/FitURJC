@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 
 
-const appRoutes = [
+export const appRoutes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'user', component: UserComponent },
     { path: 'login', component: LoginComponent },
