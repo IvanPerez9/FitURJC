@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SessionData } from '../login/sessionData.entity';
+import { Observable } from 'rxjs/Observable';
 import { User } from '../user/user.model';
 import * as globals from '../globals';
 

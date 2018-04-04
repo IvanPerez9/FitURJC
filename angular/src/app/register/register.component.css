@@ -13,6 +13,14 @@ body {
 .brand-logo{
     width: 120px;
 }
+
+h2{
+    color:white;
+}
+
+p{
+    color:white;
+}
 .hero{
     background-image: url("/assets/img/prueba2.jpg");
     background-size: cover;
