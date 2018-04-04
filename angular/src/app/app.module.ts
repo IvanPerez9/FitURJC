@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientBasicAuth } from './HttpClient/httpClient';
 import { CourseComponent } from './course/course.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CourseComponent } from './course/course.component';
     UserComponent,
     LoginComponent,
     RegisterComponent,
-    CourseComponent
+    CourseComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

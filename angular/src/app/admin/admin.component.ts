@@ -8,7 +8,7 @@ import { User } from '../user/user.model';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class PrivateComponent {
+export class AdminComponent {
     public msgs: any[] = [];
 
     constructor(private sessionService: LoginService, private router: Router) {
