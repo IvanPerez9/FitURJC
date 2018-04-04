@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Navbar } from './navbar.model';
+import { Router } from '@angular/router';
+import { appRoutes } from '../app.routing';
 export const LIST_NAVBAR: Navbar[] = [
-  { name: 'register' }, //esta puesto a register porque es la unica pagina de momento 'creada'
-  { name: 'Professionals' },
-  { name: 'Facilities' },
-  { name: 'Contact' }
+  { name: 'register' }, //!!!!!!!esta puesto a register porque es la unica pagina de momento 'creada'
+  { name: 'professionals' },
+  { name: 'facilities' },
+  { name: 'contact' }
 ];
 @Component({
   selector: 'app-navbar',
@@ -17,13 +19,21 @@ export class NavbarComponent implements OnInit {
 
   selectedList: Navbar;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   onSelect(navbar: Navbar): void {
     this.selectedList = navbar;
+  }
+  navigateTo(linkRouter: string): string {
+    for (let rout of appRoutes) {
+      if ((linkRouter == rout.path)) {
+        return '/' + linkRouter;
+      }
+    };
+    return '#' + linkRouter;
   }
 
 }
