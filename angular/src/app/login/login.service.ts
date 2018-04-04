@@ -33,7 +33,7 @@ export class LoginService {
     }
     public generateAuthString(username: String, password: String) {
         return 'Basic ' + btoa(username + ':' + password);
-    }
+    } 
 
     public logIn(username: string, password: string) {
 
