@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { FacilitiesComponent } from './facilities/facilities.component';
 
 
 export const appRoutes = [
@@ -15,6 +16,7 @@ export const appRoutes = [
     { path: 'register', component: RegisterComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'users/:id', component: UserComponent },
+    { path: 'facilities', component: FacilitiesComponent },
 ];
 
 @NgModule({
