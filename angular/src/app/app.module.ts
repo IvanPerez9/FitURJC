@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
 import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
 import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -30,7 +31,8 @@ import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.co
     routing,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

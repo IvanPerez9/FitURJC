@@ -1,8 +1,10 @@
+import { OnInit } from '@angular/core';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,34 +12,63 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./login.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
+  ng4LoadingSpinnerService: any;
   error_login: boolean;
   loading: boolean;
-
-
-  constructor(private sessionService: LoginService) {
+  userLogin: FormGroup;
+  userSignIn: UserLogin;
+  ngOnInit() {
+    this.userLogin = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+    });
   }
 
-  logIn(email: string, password: string, event: Event) {
+  constructor(private userService: UserService) {
+  }
+
+  logIn(email: string, password: string) {
     event.preventDefault(); // Avoid default action for the submit button of the login form
     this.loading = true;
 
     // Calls service to login user to the api rest
-    this.sessionService.logIn(email, password).subscribe(
+  }
 
-      user => {
-        this.loading = false;
-
-      },
-      error => {
-        console.error(error);
+  logInTest(email: string, password: string, event: Event) {
+    event.preventDefault();
+    this.ng4LoadingSpinnerService.show();
+    this.error_login = false;
+    this.userService.loginUser(email, password).subscribe(result => {
+        this.userService.setUserLogged(result);
+        this.ng4LoadingSpinnerService.hide();
+    }, error => {
         this.error_login = true;
-      },
-    );
+        this.ng4LoadingSpinnerService.hide();
+    });
   }
 
   logOut() {
-      this.sessionService.logOut();
+      this.userService.logOut();
   }
+
+  onSubmit(form: FormGroup) {
+    console.log(form.value);
+    const valuesForm: any = form.value;
+    this.userSignIn = valuesForm;
+    this.userService.loginUser(this.userSignIn.email, this.userSignIn.password).subscribe(
+      result => {
+          this.userService.setUserLogged(result);
+      },
+      error => {
+        console.log('Error');
+      });
+  }
+}
+
+// tslint:disable-next-line:class-name
+export interface UserLogin {
+  email: string;
+  password: string;
 }

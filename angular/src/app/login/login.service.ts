@@ -33,7 +33,7 @@ export class LoginService {
     }
     public generateAuthString(username: String, password: String) {
         return 'Basic ' + btoa(username + ':' + password);
-    } 
+    }
 
     public logIn(username: string, password: string) {
 
@@ -76,7 +76,7 @@ export class LoginService {
 
     public forceUpdateUser() {
 
-        return this.updateUserLogged(this._http.sessionData.getUserLogged().nick);
+        return this.updateUserLogged(this._http.sessionData.getUserLogged().nickname);
     }
 
     public setNotLogged() {
