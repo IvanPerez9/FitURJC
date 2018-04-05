@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class FacilitiesComponent implements OnInit {
   imagePaths: string[];
 
+
   constructor() {
+
     this.imagePaths = ['/assets/img/facilities/facilities_1.jpeg',
       '/assets/img/facilities/facilities_2.jpeg', '/assets/img/facilities/facilities_3.jpeg',
       '/assets/img/facilities/facilities_4.jpeg', '/assets/img/facilities/facilities_5.jpeg',

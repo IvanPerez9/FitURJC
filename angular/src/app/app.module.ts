@@ -23,6 +23,7 @@ import { AdminControlCoursesComponent } from './admin/admin-control-courses/admi
 import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.component';
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { HeaderComponent } from './admin/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -32,7 +33,8 @@ import { HeaderComponent } from './admin/header/header.component';
     routing,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

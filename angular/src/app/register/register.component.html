@@ -10,35 +10,31 @@
                         <p class="mt-4 text-white lead text-center">Sign up to get
                             started</p>
                         <div class="mt-4" aling="center">
-                            <form method="post" action="/user/register">
+                            <form method="post" action="/user/register" novalidate (ngSubmit)="onSubmit()" [formGroup]="userRegister">
                                 <!-- Method to not saw the password -->
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nickname"
+                                    <input type="text" class="form-control" name="nickname" formControlName="nickname"
                                         placeholder="Acount nickname">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name"
+                                    <input type="text" class="form-control" name="name" formControlName="name"
                                         placeholder="Acount name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="surname"
+                                    <input type="text" class="form-control" name="surname" formControlName="surname"
                                         placeholder="Acount surname">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email"
+                                    <input type="email" class="form-control" name="email" formControlName="email"
                                         placeholder="Enter email address">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password"
+                                    <input type="password" class="form-control" name="password" formControlName="password"
                                         placeholder="Enter password">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control"
                                         name="confirm-password" placeholder="Confirm password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="age"
-                                        placeholder="Age">
                                 </div>
                                 <div style="float: left; width: 48%">
                                     <button type="submit" class="btn btn-primary btn-block">
