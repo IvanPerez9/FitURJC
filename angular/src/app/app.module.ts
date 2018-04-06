@@ -21,8 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
 import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
 import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.component';
-import { SidebarComponent } from './admin/sidebar/sidebar.component';
-import { HeaderComponent } from './admin/header/header.component';
+// import { SidebarComponent } from './admin/sidebar/sidebar.component';
+// import { HeaderComponent } from './admin/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -51,8 +51,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminControlUsersComponent,
     AdminControlCoursesComponent,
     AdminGraphicsComponent,
-    SidebarComponent,
-    HeaderComponent
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService],
   bootstrap: [AppComponent]
