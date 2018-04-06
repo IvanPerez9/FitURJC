@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from '../../login/login.service';
+import { User } from '../../user/user.model';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-admin-control-users',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminControlUsersComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
 
-  ngOnInit() {
+  constructor(private router:Router, private service: UserService, private sessionService: LoginService){}
+
+   ngOnInit() {
+    this.service.getUsers().subscribe(
+      user => {
+        this.users = user;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
-
 }

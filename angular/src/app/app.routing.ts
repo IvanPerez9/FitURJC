@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
+import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
+
 
 
 export const appRoutes = [
@@ -14,10 +17,16 @@ export const appRoutes = [
     { path: 'user', component: UserComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'admin', component: AdminComponent },
+    { path: 'admin', component: AdminComponent,
+    children: [
+        { path: 'controlUsers', component: AdminControlUsersComponent },
+        { path: 'controlCourses', component: AdminControlCoursesComponent }
+    ] },
     { path: 'users/:id', component: UserComponent },
     { path: 'facilities', component: FacilitiesComponent },
 ];
+
+
 
 @NgModule({
     imports: [ RouterModule.forRoot(appRoutes) ],

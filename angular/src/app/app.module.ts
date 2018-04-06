@@ -24,6 +24,7 @@ import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.co
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { HeaderComponent } from './admin/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CourseService } from './course/course.service';
 
 
 
@@ -54,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     HeaderComponent
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService],
+  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

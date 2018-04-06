@@ -1,31 +1,38 @@
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<div class="header">
-					<h4 class="title">Courses</h4>
-				</div>
-				<div class="content">
-					<ul>
-						<!-- {{#courses}} -->
-
-						<!-- <h4><u>{{name}} </u>: <h8>{{description}}</h8> </h4><br>
-
-						<ul>
-
-							{{#schedules}}
-							<li type="circle"><a >Participants in Schedule {{idSchedule}}: {{listUsers.size}} </a></li>
-							<li type="circle"><a>Users: {{listUsers}} </a> </li>
-							{{/schedules}}
-							<li type="circle"><a class="btn btn-main btn-enter btn" data-coursename="{{name}}" data-idcourse="{{id}}" onclick="deleteCourse(this)">Delete {{name}}<i class="fa fa-times" aria-hidden="true"></i></a></li>
-						</ul>
-
-						{{/courses}} -->
-					</ul>
-					<br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Courses</h4>
+                </div>
+                <div class="content" *ngFor="let course of courses">
+                    <ul>
+                        <h4>
+                            <u>Nombre Curso </u>
+                            <h6>Description</h6>
+                        </h4>
+                        <br>
+                        <ul>
+                            SCHEDULES
+                            <li type="circle">
+                                <a>Participants in Schedule IDSCHEDULE: CAPACIDADLISTAUSUARIO </a>
+                            </li>
+                            <li type="circle">
+                                <a>Users: LISTA DE USUARIOS </a>
+                            </li>
+                            SCHEDULES
+                            <li type="circle">
+                                <a class="btn btn-main btn-enter btn" data-coursename="name" data-idcourse="id" onclick="deleteCourse(this)">
+                                    Delete Course
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                    <br>
 					<a class="btn " href="/courses">
 						View Current Courses</a>
-					<a class="btn " href="/adminPage/manageCourses/addCourse">
+					<a class="btn " href="/adminPage/manageCourses/addCourse"> <!-- HAY QUE HACER EL ADDCOURSE -->
 						Add New Course</a>
 				</div>
 			</div>
