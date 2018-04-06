@@ -27,12 +27,19 @@ export class UserService {
         this.http.setUser(user);
     }
 
-    loginUser(nameUser: string, password: string): Observable<any> {
+    loginUser(email: string, password: string): Observable<any> {
+        this.http.sessionData.setAuthToken(this.generateAuthString(email, password));
+        this.http.sessionData.setAmILogged(true);
+        const peticion = globals.USER_BASEURL + email;
+        return this.http.get(peticion);
+    }
+    registerUser(nameUser: string, password: string, nick: string, email: string, surname: string): Observable<any> {
         this.http.sessionData.setAuthToken(this.generateAuthString(nameUser, password));
         this.http.sessionData.setAmILogged(true);
         const peticion = globals.USER_BASEURL + nameUser;
         return this.http.get(peticion);
     }
+
     private generateAuthString(username: String, password: String) {
         return 'Basic ' + btoa(username + ':' + password);
     }

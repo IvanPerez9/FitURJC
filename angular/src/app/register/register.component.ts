@@ -14,6 +14,7 @@ import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 })
 export class RegisterComponent {
 
+  userService: any;
   username: string;
   surname: string;
   nickname: string;
@@ -33,14 +34,28 @@ export class RegisterComponent {
     });
   }
 
+  onSubmit(form: FormGroup) {
+    console.log(form.value);
+    const valuesForm: any = form.value;
+    this.userSignUp = valuesForm;
+    // tslint:disable-next-line:max-line-length nameUser: string, password: string, nick: string, email: string, surname: string
+    this.userService.registerUser(this.userSignUp.username, this.userSignUp.password, this.userSignUp.nickname, this.userSignUp.email, this.userSignUp.surname).subscribe(
+      result => {
+          this.userService.setUserLogged(result);
+      },
+      error => {
+        console.log('Error');
+      });
+  }
+
 }
 
 // tslint:disable-next-line:class-name
 export interface UserRegister {
   username: string;
-  surname: string;
+  password: string;
   nickname: string;
   email: string;
-  password: string;
+  surname: string;
 }
 
