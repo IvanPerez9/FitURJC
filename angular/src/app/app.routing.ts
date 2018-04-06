@@ -25,7 +25,7 @@ export const appRoutes = [
     ] },
     { path: 'users/:id', component: UserComponent },
     { path: 'facilities', component: FacilitiesComponent },
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent }
 
 
 ];
