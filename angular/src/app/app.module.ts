@@ -25,6 +25,7 @@ import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.co
 // import { HeaderComponent } from './admin/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { CourseService } from './course/course.service';
 
 
 
@@ -54,7 +55,7 @@ import { ProfileComponent } from './profile/profile.component';
     AdminGraphicsComponent,
     ProfileComponent,
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService],
+  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
