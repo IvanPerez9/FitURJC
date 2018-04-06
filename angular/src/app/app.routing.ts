@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+import {ProfileComponent} from "./profile/profile.component";
 
 
 export const appRoutes = [
@@ -17,6 +18,9 @@ export const appRoutes = [
     { path: 'admin', component: AdminComponent },
     { path: 'users/:id', component: UserComponent },
     { path: 'facilities', component: FacilitiesComponent },
+    { path: 'profile', component: ProfileComponent },
+
+
 ];
 
 @NgModule({

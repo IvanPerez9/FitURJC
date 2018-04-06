@@ -24,6 +24,7 @@ import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.co
 // import { SidebarComponent } from './admin/sidebar/sidebar.component';
 // import { HeaderComponent } from './admin/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -51,6 +52,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminControlUsersComponent,
     AdminControlCoursesComponent,
     AdminGraphicsComponent,
+    ProfileComponent,
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService],
   bootstrap: [AppComponent]
