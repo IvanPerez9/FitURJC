@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { passwordValidator } from './passwordValidator';
+
 
 import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
@@ -20,17 +22,19 @@ export class RegisterComponent {
   nickname: string;
   email: string;
   password: string;
+  passwordRepeat: string;
   userRegister: FormGroup;
   userSignUp: UserRegister;
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.userRegister = new FormGroup({
-      username: new FormControl(''),
-      surname: new FormControl(''),
-      nickname: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl(''),
+      username: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
+      nickname: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required ),
+      passwordRepeat: new FormControl('', [Validators.required])
     });
   }
 
@@ -54,6 +58,7 @@ export class RegisterComponent {
 export interface UserRegister {
   username: string;
   password: string;
+  passwordRepeat: string;
   nickname: string;
   email: string;
   surname: string;
