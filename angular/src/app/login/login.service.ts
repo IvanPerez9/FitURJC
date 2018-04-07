@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import * as globals from '../globals';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
@@ -10,6 +10,9 @@ import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 
 @Injectable()
 export class LoginService {
+
+    private session: string;
+    private user: User;
 
     constructor(private _http: HttpClientBasicAuth, private userService: UserService) { }
 
@@ -31,6 +34,17 @@ export class LoginService {
             }
         );
     }
+    // New test
+    public getSessionHeader() {
+        const headers = new Headers({'Authorization': this.getAuthHeader()});
+        const options = new RequestOptions({ headers: headers });
+
+        return options;
+    }
+    public getAuthHeader() {
+        return this.session;
+    }
+    // End New
     public generateAuthString(username: String, password: String) {
         return 'Basic ' + btoa(username + ':' + password);
     }
