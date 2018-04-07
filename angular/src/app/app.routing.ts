@@ -23,13 +23,11 @@ export const appRoutes = [
         { path: 'controlUsers', component: AdminControlUsersComponent },
         { path: 'controlCourses', component: AdminControlCoursesComponent }
     ] },
-    { path: 'users/:id', component: UserComponent },
+    { path: 'profile', component: UserComponent },
     { path: 'facilities', component: FacilitiesComponent },
-    { path: 'profile', component: ProfileComponent }
-
+    { path: 'editProfile', component: ProfileComponent }
 
 ];
-
 
 
 @NgModule({
