@@ -16,7 +16,6 @@ import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 })
 export class RegisterComponent {
 
-  userService: any;
   username: string;
   surname: string;
   nickname: string;
@@ -25,6 +24,9 @@ export class RegisterComponent {
   passwordRepeat: string;
   userRegister: FormGroup;
   userSignUp: UserRegister;
+
+  constructor(private userService: UserService) {
+  }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
@@ -42,9 +44,7 @@ export class RegisterComponent {
     console.log(form.value);
     const valuesForm: any = form.value;
     this.userSignUp = valuesForm;
-    console.log(this.userSignUp);
-    // tslint:disable-next-line:max-line-length nameUser: string, password: string, nick: string, email: string, surname: string
-    this.userService.registerUser(this.userSignUp.username, this.userSignUp.password, this.userSignUp.nickname, this.userSignUp.email, this.userSignUp.surname).subscribe(
+    this.userService.registerUser(this.userSignUp).subscribe(
       result => {
           this.userService.setUserLogged(result);
       },
