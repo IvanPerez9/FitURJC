@@ -14,13 +14,13 @@ export class LoginService {
     private session: string;
     private user: User;
 
-    constructor(private _http: HttpClientBasicAuth, private userService: UserService) { }
+    constructor(private http: HttpClientBasicAuth, private userService: UserService) { }
 
     public updateUser(username: String) {
         return this.userService.getUser(username).map(
             user => {
 
-                this._http.setUser(user);
+                this.http.setUser(user);
                 return user;
             }
         );
@@ -30,7 +30,7 @@ export class LoginService {
         this.userService.getUser(nick).subscribe(
             user => {
 
-                this._http.setUser(user);
+                this.http.setUser(user);
             }
         );
     }
@@ -51,12 +51,12 @@ export class LoginService {
 
     public logIn(username: string, password: string) {
 
-        this._http.sessionData.setAuthToken(this.generateAuthString(username, password));
+        this.http.sessionData.setAuthToken(this.generateAuthString(username, password));
 
         // CREEMOS que estamos logeados, hasta que Spring diga lo contrario.
         // Necesario para que HTTP Client pruebe las nuevas cabeceras de autenticacion
 
-        this._http.sessionData.setAmILogged(true);
+        this.http.sessionData.setAmILogged(true);
 
         /* return this._http.get(globals.LOGIN_BASEURL).map(
              response => this.updateUser(username).subscribe())
@@ -66,34 +66,34 @@ export class LoginService {
     }
 
     public loginFailed(error: any) {
-        this._http.sessionData.setAmILogged(false);
+        this.http.sessionData.setAmILogged(false);
         return Observable.throw('Server error (' + error.status + '): ' + error.text());
     }
     public logOut() {
 
         if (!this.isLogged()) { return; }
 
-        return this._http.logOut();
+        return this.http.logOut();
     }
 
     public isLogged() {
-        return this._http.sessionData.amILogged();
+        return this.http.sessionData.amILogged();
     }
 
     public isAdmin() {
-        return this.isLogged() && this._http.sessionData.amIAdmin();
+        return this.isLogged() && this.http.sessionData.amIAdmin();
     }
 
     public getUser() {
-        return this._http.sessionData.getUserLogged();
+        return this.http.sessionData.getUserLogged();
     }
 
     public forceUpdateUser() {
 
-        return this.updateUserLogged(this._http.sessionData.getUserLogged().nickname);
+        return this.updateUserLogged(this.http.sessionData.getUserLogged().nickname);
     }
 
     public setNotLogged() {
-        return this._http.sessionData.setNotLogged();
+        return this.http.sessionData.setNotLogged();
     }
 }

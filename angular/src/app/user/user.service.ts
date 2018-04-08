@@ -6,11 +6,13 @@ import { UserRegister} from '../register/register.component';
 import 'rxjs/Rx';
 import * as globals from '../globals';
 import { User } from './user.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
 
     url: string;
+    user: User;
 
     constructor(private http: HttpClientBasicAuth) {
         this.url = globals.USER_BASEURL;
@@ -23,9 +25,30 @@ export class UserService {
     getUser(email: String ): Observable<any> {
         return this.http.get(this.url + email);
     }
+    getUserByNick(nickname: string ): Observable<any> {
+        return this.http.get(this.url + nickname);
+    }
     /*
     NEW
     */
+
+    createUser(user: User) {
+        return this.http.post(this.url, user);
+    }
+
+    // Avatar
+
+    getUserAvatar (userId: number) {
+        return this.http.get(this.url + userId + '/avatar');
+    }
+
+    setUserAvatar(userId: number, formData: FormData) {
+        return this.http.put(this.url + userId + '/avatar' , formData);
+    }
+
+    setAvatar(nickname: string, formData: FormData) {
+        return this.http.put(this.url + nickname + '/avatar' , formData);
+    }
 
     public editUser(user: User) {
        // return this.http.put(this.url, JSON.stringify(user), this.loginService.getSessionHeader()).map(response => response.json());
@@ -66,6 +89,11 @@ export class UserService {
     }
     logOut(): void {
         console.log('Implementar');
+    }
+
+    private errors (error: any) {
+        console.error(error);
+        return Observable.throw('Error (' + error.status + '): ' + error.text() );
     }
 
 }
