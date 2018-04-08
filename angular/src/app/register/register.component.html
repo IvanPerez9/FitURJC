@@ -10,7 +10,7 @@
                         <p class="mt-4 text-white lead text-center">Sign up to get
                             started</p>
                         <div class="mt-4" aling="center">
-                            <form [formGroup]="userRegister" novalidate (ngSubmit)="onSubmit(userRegister)">
+                            <form role="form" [formGroup]="userRegister" #formDir="ngForm" (ngSubmit)="onSubmit(userRegister)">
                                 <!-- Method to not saw the password -->
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="nickname" formControlName="nickname"

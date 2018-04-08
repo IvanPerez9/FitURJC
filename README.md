@@ -30,8 +30,8 @@
 * __Authors:__
   * **Carlos Olmo Sahuquillo** [@CarlUndert] (https://github.com/CarlUndert)  
   Contact: c.olmosa@alumnos.urjc.es
-  * **Denise Ayala Padrón**       [@Lalita14] (https://github.com/Lalita14)  
- Contact: d.ayala.2016@alumnos.urjc.es
+  * **Maria Victoria Marcos Gómez** [@VictoriaMG] (https://github.com/VictoriaMG)  
+ Contact: mv.marcos@alumnos.urjc.es
   * **Daniel Peña Martinez**     [@dpemar] (https://github.com/dpemar)  
  Contact: d.penam@alumnos.urjc.es
   * **Iván Pérez Huete**      [@IvanPerez9] (https://github.com/IvanPerez9)   

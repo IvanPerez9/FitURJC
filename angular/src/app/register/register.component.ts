@@ -42,6 +42,7 @@ export class RegisterComponent {
     console.log(form.value);
     const valuesForm: any = form.value;
     this.userSignUp = valuesForm;
+    console.log(this.userSignUp);
     // tslint:disable-next-line:max-line-length nameUser: string, password: string, nick: string, email: string, surname: string
     this.userService.registerUser(this.userSignUp.username, this.userSignUp.password, this.userSignUp.nickname, this.userSignUp.email, this.userSignUp.surname).subscribe(
       result => {
