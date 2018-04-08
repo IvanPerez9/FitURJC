@@ -6,6 +6,14 @@ html, body {
   height: 100%;
 }
 
+p{
+  color: #fff;
+}
+
+#text{
+  color: #fff;
+}
+
 body {
   font-family: 'Hind';
   background-color: #000;

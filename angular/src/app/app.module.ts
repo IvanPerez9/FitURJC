@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { CourseService } from './course/course.service';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 

@@ -8,7 +8,7 @@
       in case you’ve left something at home. And to keep you safe and sound day and night, we’ve got a PIN entry door system
       for our members.</a>
 
-    <div class="row" id="listFacilities">
+    <div class="row" id="listFacilities" [@routerTransition] >
       <div class="col-md-3" *ngFor="let path of imagePaths">
         <div class="card">
           <img class="size-img-facilities" [src]="path">
@@ -23,7 +23,7 @@
       <p class="text-center">
         <button id="btnMoreFacilities" type="button" class="btn btn-primary">See more</button>
         <form method="get" action="/">
-          <button id="goBack" type="submit" class="btn btn-warning">Go back
+          <button id="goBack" type="submit" class="btn btn-warning" [routerLink]="['/']">Go back
           </button>
         </form>
     </div>

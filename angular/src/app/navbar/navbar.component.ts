@@ -31,10 +31,10 @@ export class NavbarComponent implements OnInit {
 
   navigateTo(linkRouter: string): string {
     for (let rout of appRoutes) {
-      if ((linkRouter == rout.path)) {
+      if ((linkRouter === rout.path)) {
         return '/' + linkRouter;
       }
-    };
+    }
     return '#' + linkRouter;
   }
 
