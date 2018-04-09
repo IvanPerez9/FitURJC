@@ -2,7 +2,7 @@
   <div class="sidebar" data-color="blue">
     <div class="sidebar-wrapper">
       <div class="logo">
-        <a [routerLink]="['/']" class="simple-text">urTeam</a>
+        <a [routerLink]="['/']" class="simple-text">Admin page</a>
       </div>
       <ul class="nav">
         <li>
@@ -18,7 +18,7 @@
           </a>
         </li>
         <li>
-          <a [routerLink]="['events']">
+          <a [routerLink]="['/admin/graphics']">
             <i class="fa fa-flag"></i>
             <p>Graficos</p>
           </a>
@@ -44,5 +44,5 @@
     <div class="content">
       <router-outlet></router-outlet>
     </div>
-  </div>
+    </div>
 </div>
