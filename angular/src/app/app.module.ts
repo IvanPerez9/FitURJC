@@ -28,6 +28,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CourseService } from './course/course.service';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { DropdownModule } from 'angular-custom-dropdown';
 
 
 
@@ -38,7 +39,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule
   ],
   declarations: [
     AppComponent,

@@ -17,7 +17,8 @@ export const appRoutes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'user', component: UserComponent,
     children: [
-        {path: 'profile', component: UserComponent}
+        { path: 'profile', component: UserComponent },
+        { path: 'editProfile', component: ProfileComponent }
     ] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -26,8 +27,7 @@ export const appRoutes = [
         { path: 'controlUsers', component: AdminControlUsersComponent },
         { path: 'controlCourses', component: AdminControlCoursesComponent }
     ] },
-    { path: 'facilities', component: FacilitiesComponent },
-    { path: 'editProfile', component: ProfileComponent }
+    { path: 'facilities', component: FacilitiesComponent }
 
 ];
 

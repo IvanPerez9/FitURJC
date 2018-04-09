@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "angular-custom-dropdown": "^1.1.1",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "ngx-infinite-scroll": "^0.8.3",
