@@ -40,7 +40,8 @@ import { DropdownModule } from 'angular-custom-dropdown';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    InfiniteScrollModule
   ],
   declarations: [
     AppComponent,
