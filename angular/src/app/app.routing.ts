@@ -10,6 +10,7 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
 import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
 import { EditProfileComponent } from './editProfile/editProfile.component';
+import { CourseProfileComponent } from './course-profile/course-profile.component';
 
 
 export const appRoutes = [
@@ -17,7 +18,6 @@ export const appRoutes = [
     { path: 'user', component: UserComponent,
     children: [
         { path: 'profile', component: UserComponent }
-        
     ] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -27,7 +27,8 @@ export const appRoutes = [
         { path: 'controlCourses', component: AdminControlCoursesComponent }
     ] },
     { path: 'facilities', component: FacilitiesComponent },
-    { path: 'editProfile', component: EditProfileComponent }
+    { path: 'editProfile', component: EditProfileComponent },
+    { path: 'courses', component: CourseProfileComponent}
     
 ];
 

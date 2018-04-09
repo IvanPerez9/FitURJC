@@ -3,8 +3,7 @@ import { Navbar } from './navbar.model';
 import { Router } from '@angular/router';
 import { appRoutes } from '../app.routing';
 export const LIST_NAVBAR: Navbar[] = [
-  { name: 'profile' },
-  { name: 'register' }, //!!!!!!!esta puesto a register porque es la unica pagina de momento 'creada'
+  { name: 'activities' },
   { name: 'professionals' },
   { name: 'facilities' },
   { name: 'contact' }

@@ -29,6 +29,8 @@ import { CourseService } from './course/course.service';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DropdownModule } from 'angular-custom-dropdown';
+import { CourseProfileComponent } from './course-profile/course-profile.component';
+import { NavbarCourseProfileComponent } from './navbar-course-profile/navbar-course-profile.component';
 
 
 
@@ -59,7 +61,9 @@ import { DropdownModule } from 'angular-custom-dropdown';
     AdminControlCoursesComponent,
     AdminGraphicsComponent,
     EditProfileComponent,
-    NavbarProfileComponent
+    NavbarProfileComponent,
+    CourseProfileComponent,
+    NavbarCourseProfileComponent
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService],
   bootstrap: [AppComponent]
