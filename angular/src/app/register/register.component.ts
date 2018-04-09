@@ -45,7 +45,7 @@ export class RegisterComponent {
     this.userService.registerUser(this.userSignUp).subscribe(
       result => {
           this.userService.setUserLogged(result);
-          this.router.navigate(['/user/editProfile']);
+          this.router.navigate(['/user/profile']);
       },
       error => {
         console.log('Error');
