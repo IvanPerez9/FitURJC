@@ -28,7 +28,6 @@ export const appRoutes = [
     ] },
     { path: 'facilities', component: FacilitiesComponent },
     { path: 'editProfile', component: ProfileComponent }
-
 ];
 
 
