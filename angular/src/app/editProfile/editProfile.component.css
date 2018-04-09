@@ -16,7 +16,7 @@ body{
   width: 120px;
 }
 .hero{
-  background-image: url('../../assets/img/prueba2.jpg');
+  background-image: url('/assets/img/prueba2.jpg');
   background-size: cover;
   background-position: center center;
   min-height: 100%;
