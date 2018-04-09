@@ -1,0 +1,37 @@
+<app-navbar-course-profile></app-navbar-course-profile>
+<section class="margin">
+  <div class="container-fluid p-0">
+    <div class="row" id=listCourses>
+      <app-course></app-course>
+      <div class="card-footer-course">
+          <!-- {{#schedules}}	 -->
+            <!-- {{schedule}} -->
+        
+              <!-- {{^signup}} -->
+              <!-- {{^isFull}} -->
+              <a class="btn btn-sign simple_confirmSign" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogEnroll(this)">SIGN UP</a>
+              <!-- {{/isFull}} -->
+              <!-- {{#isFull}} -->
+              <a class="btn btn-dark simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogSoldOut(this)">SOLD OUT</a>
+              <!-- {{/isFull}} -->
+              <!-- {{/signup}} -->
+        
+              
+              <!-- {{#signup}} -->
+              <a class="btn btn-quit simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogUnEnroll(this)">QUIT</a>
+              <!-- {{/signup}} -->
+        
+               Capacity: listUsers.size/MAXIMUM_CAPACITY
+               <br>
+          <!-- {{/schedules}} -->
+            </div>
+            <br>
+    </div>
+    <br>
+    <div class="styleMoreEvents">
+      <div id="spinner"></div>
+      <p class="text-center">
+        <button id="btnMoreCourses" type="button" class="btn btn-primary">See more</button>
+    </div>
+  </div>
+</section>
