@@ -56,7 +56,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AdminControlCoursesComponent,
     AdminGraphicsComponent,
     ProfileComponent,
-    NavbarProfileComponent,
+    NavbarProfileComponent
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService],
   bootstrap: [AppComponent]

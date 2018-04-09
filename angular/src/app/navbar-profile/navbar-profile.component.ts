@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Navbar} from "../navbar/navbar.model";
+import { NavbarProfile } from "../navbar-profile/navbar-profile.model";
 import { Router } from '@angular/router';
 import { appRoutes } from '../app.routing';
-export const LIST_NAVBAR: Navbar[] = [
-  { name: 'Courses' },
-  { name: 'Calendar' },
-  { name: 'Recommendation' }
+export const LIST_NAVBAR: NavbarProfile[] = [
+  { name: 'courses' },
+  { name: 'schedule' },
+  { name: 'recommendation' }
 ];
 @Component({
   selector: 'app-navbar-profile',
@@ -16,22 +16,23 @@ export class NavbarProfileComponent implements OnInit {
 
   listnavbar = LIST_NAVBAR;
 
-  selectedList: Navbar;
+  selectedList: NavbarProfile;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSelect(navbar: Navbar):void{
+  onSelect(navbar: NavbarProfile): void{
     this.selectedList = navbar;
   }
 
-  navigateTo (linkRouter:String): string{
+  navigateTo (linkRouter:string): string{
     for (let rout of appRoutes) {
-      if ((linkRouter == rout.path)){
-        return '/' + linkRouter /*SOLO SE PUEDE IR A COURSES (EXTERNAMENTE)*/
+      if ((linkRouter == rout.path)) {
+        return '/' + linkRouter; /*SOLO SE PUEDE IR A COURSES (EXTERNAMENTE)*/
       }
     }
-    return '#profile' +linkRouter;
+    return '/user/profile/#' + linkRouter;
   }
 }

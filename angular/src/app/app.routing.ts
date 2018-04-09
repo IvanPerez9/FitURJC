@@ -15,7 +15,10 @@ import {ProfileComponent} from "./profile/profile.component";
 
 export const appRoutes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: 'user', component: UserComponent },
+    { path: 'user', component: UserComponent,
+    children: [
+        {path: 'profile', component: UserComponent}
+    ] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'admin', component: AdminComponent,
@@ -23,7 +26,6 @@ export const appRoutes = [
         { path: 'controlUsers', component: AdminControlUsersComponent },
         { path: 'controlCourses', component: AdminControlCoursesComponent }
     ] },
-    { path: 'profile', component: UserComponent },
     { path: 'facilities', component: FacilitiesComponent },
     { path: 'editProfile', component: ProfileComponent }
 
