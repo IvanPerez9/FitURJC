@@ -1,90 +1,67 @@
-<div class="card-body" id="card">
+<section class="hero">
   <div class="container">
-    <!-- Row for the background -->
-    <div class="row" id="row_style">
-      <!-- Section Header -->
-      <div id="imageForm"
-           class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<span id="profile_pic"> <img src="{{userPage.imgSrc}}"
-                                       class="img-circle" alt="Profile Image" style='object-fit: contain' />
-					</span> <br>
-        <div>
-          <form class="form-horizontal" name="registration"
-                action="/user/imageUpload" id="formulario" method="post"
-                enctype="multipart/form-data">
-            <input type="file" name="file" class="hidden" id="files" /> <label
-            for="files" class="btn ">Upload Image</label>
-            <button type="submit" class="btn btn-primary">Update Image</button>
-          </form>
+    <div class="card-body">
+      <p class="mt-4 text-white lead text-center">FitURJC Profile Settings</p>
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
+        <span>
+          <img class="img-circle img-responsive" src="./../../assets/img/profile/default_user.jpg">
+          <!-- Aqui vendria edit mode-->
+        </span><br>
+          <div>
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+              <!--<input type="file"> AQUI NO ESTA ACABADO- REPASAR OTRA VEZ-->
+              <button type="submit" name="update-image-submit" id="image-submit" tabindex="4"
+                      class="form-control btn btn-login btn-primary">Update image
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-      <div id="profileForm"
-           class="col-l-7 col-md-9 col-sm-7 col-xs-12 customized-text wow fadeInDown black-ed">
-        <div id="formCol" class="col-l-12 col-md-12 col-sm-7 col-xs-12">
-          <h1>FitURJC Account</h1>
-          <form role="form" method="post" action="/user/editedUser" enctype="multipart/form-data">
-            <div class="form-group">
+        <div class="col-lg-7 col-md-9 col-sm-7 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
+            <!--<p class="mt-2 text-white lead text-center"> FitURJC Account</p>-->
+            <form method="post" action="/user/editedUser" enctype="multipart/form-data">
+              <!--Mirar bien enlace action, hay un warning del directorio porque no está acabado-->
               <div class="form-group">
-                <label for="name">Name</label> <input
-                style="border-radius: 0px !important" type="text" name="name"
-                class="form-control" id="name" value="{{userPage.name}}">
+                <input type="text" class="form-control" name="name" formControlName="name"
+                       placeholder="Name" value="Nombre del usuario">
               </div>
               <div class="form-group">
-                <label for="name">Surname</label> <input
-                style="border-radius: 0px !important" type="text" name="surname"
-                class="form-control" id="surname" value="{{userPage.surname}}">
+                <input type="text" class="form-control" name="surname" formControlName="surname"
+                       placeholder="Surname" value="Apellidos del usuario">
               </div>
               <div class="form-group">
-                <label for="email">Email:</label> <input
-                style="border-radius: 0px !important" type="text" name="email"
-                class="form-control" id="email" value="{{userPage.email}}">
+                <input type="email" class="form-control" name="email" formControlName="email"
+                       placeholder="Email address" value="Email del usuario">
               </div>
               <div class="form-group">
-                <label for="pwd">New password:</label> <input
-                style="border-radius: 0px !important" type="text" name="password"
-                class="form-control" id="pwd" placeholder="Enter new password">
+                <input type="password" class="form-control" name="password" formControlName="password"
+                       placeholder="Enter new password">
               </div>
               <div class="form-group">
-                <label for="pwd">Confirm new password:</label> <input
-                style="border-radius: 0px !important" type="password"
-                class="form-control" id="pwd"
-                placeholder="Repeat new password">
+                <input type="password" class="form-control" formControlName="passwordRepeat"
+                       name="confirm-password" placeholder="Confirm new password">
               </div>
               <div class="form-group">
-                <label for="age" style="margin-bottom: 10px;">Age:</label> <input
-                style="border-radius: 0px !important" type="text" name="age"
-                class="form-control" id="age" placeholder="Age" value="25">
+                <input type="number" class="form-control" formControlName="newAge"
+                       name="age" placeholder="age" value="25">
               </div>
-              <div id="submit" class="col-l-10 col-md-12 col-sm-10 col-xs-12">
-                <button type="submit" class="btn btn-primary">Update</button>
-                <input class="btn btn-primary " id="cancel-btn" type="reset" onclick="location.href='/user/profile';"
-                       style="text-decoration: none;" value="Cancel" />
+              <div style="float: left; width: 48%">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Update
+                </button>
               </div>
-            </div>
-          </form>
+              <div style="float: right; width: 48%">
+                <button type="reset" class="btn btn-primary btn-block">
+                  Cancel
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="footer-containertent">
-          <p class="mt-4 social-login text-center">
-            <a href="#" class="btn btn-twitter"> <em
-              class="ion-social-twitter"></em>
-            </a> <a href="#" class="btn btn-facebook"> <em
-            class="ion-social-facebook"></em>
-          </a> <a href="#" class="btn btn-linkedin"> <em
-            class="ion-social-linkedin"></em>
-          </a> <a href="#" class="btn btn-google"> <em
-            class="ion-social-googleplus"></em>
-          </a> <a href="#" class="btn btn-github"> <em
-            class="ion-social-github"></em>
-          </a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-</div>
+  <!--Falta mirar bien los metodos de submit-->
+</section>
