@@ -79,9 +79,9 @@ export class UserService {
     }
     */
 
-   registerUser(user: UserRegister): any {
-    const url = globals.USER_REGISTER;
-    return this.http.post(url, user);
+    registerUser(user: UserRegister): any {
+        const url = globals.USER_REGISTER;
+        return this.http.post(url, user);
     }
 
     private generateAuthString(username: String, password: String) {
