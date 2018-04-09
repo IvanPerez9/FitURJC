@@ -38,7 +38,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ],
   declarations: [
     AppComponent,

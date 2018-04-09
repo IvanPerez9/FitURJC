@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   userSignIn: UserLogin;
   ngOnInit() {
     this.userLogin = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
     });
   }
 
@@ -60,10 +60,11 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.userSignIn.email, this.userSignIn.password).subscribe(
       result => {
           this.userService.setUserLogged(result);
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/user/profile']);
       },
       error => {
         console.log('Error');
+        console.log(error.code);
       });
   }
 }
