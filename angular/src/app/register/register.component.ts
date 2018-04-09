@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { passwordValidator } from './passwordValidator';
-
-
 import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
@@ -25,7 +23,7 @@ export class RegisterComponent {
   userRegister: FormGroup;
   userSignUp: UserRegister;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -47,6 +45,7 @@ export class RegisterComponent {
     this.userService.registerUser(this.userSignUp).subscribe(
       result => {
           this.userService.setUserLogged(result);
+          this.router.navigate(['/profile']);
       },
       error => {
         console.log('Error');

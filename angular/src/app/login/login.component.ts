@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   logIn(email: string, password: string) {
@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.userSignIn.email, this.userSignIn.password).subscribe(
       result => {
           this.userService.setUserLogged(result);
+          this.router.navigate(['/profile']);
       },
       error => {
         console.log('Error');
