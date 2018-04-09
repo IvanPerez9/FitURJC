@@ -170,7 +170,7 @@ a, a:hover{
   background: #000000;
 }
 
-/* For profile settings */
+/* For editProfile settings */
 
 #card{
   background-image: url('../../assets/img/prueba2.jpg');
@@ -240,7 +240,7 @@ position: absolute;
   padding-bottom: 4.5em;
 }
 
-/* Change profile pic */
+/* Change editProfile pic */
 
 .custom-file-upload {
   border: 1px solid  #ff5722;

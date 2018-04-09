@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.userSignIn.email, this.userSignIn.password).subscribe(
       result => {
           this.userService.setUserLogged(result);
-          this.router.navigate(['/user/profile']);
+          this.router.navigate(['/user/editProfile']);
       },
       error => {
         console.log('Error');

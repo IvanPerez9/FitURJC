@@ -33,6 +33,6 @@ export class NavbarProfileComponent implements OnInit {
         return '/' + linkRouter; /*SOLO SE PUEDE IR A COURSES (EXTERNAMENTE)*/
       }
     }
-    return '/user/profile/#' + linkRouter;
+    return '/user/editProfile/#' + linkRouter;
   }
 }

@@ -24,7 +24,7 @@ import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.co
 // import { SidebarComponent } from './admin/sidebar/sidebar.component';
 // import { HeaderComponent } from './admin/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './editProfile/editProfile.component';
 import { CourseService } from './course/course.service';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';

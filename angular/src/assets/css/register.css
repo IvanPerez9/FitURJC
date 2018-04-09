@@ -96,12 +96,12 @@ a, a:hover{
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.5);
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 .form-control:focus {
     border-color: #FFFFFF;
     background-color: transparent;
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 .border-none{
     border: none !important;
@@ -113,7 +113,7 @@ a, a:hover{
 .custom-control-input:checked~.custom-control-indicator {
     color: #fff;
     background-color: #ff5722;
-    outline-color: #ff5722; 
+    outline-color: #ff5722;
 }
 .content-divider.center {
     text-align: center;
@@ -170,7 +170,7 @@ a, a:hover{
     background: #000000;
 }
 
-/* For profile settings */
+/* For editProfile settings */
 
 #card{
     background-image: url('../img/prueba2.jpg');
@@ -240,7 +240,7 @@ a, a:hover{
     padding-bottom: 4.5em;
 }
 
-/* Change profile pic */
+/* Change editProfile pic */
 
 .custom-file-upload {
     border: 1px solid  #ff5722;

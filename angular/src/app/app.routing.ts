@@ -10,7 +10,7 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
 import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
 
-import {ProfileComponent} from "./profile/profile.component";
+import {ProfileComponent} from "./editProfile/editProfile.component";
 
 
 export const appRoutes = [

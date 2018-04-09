@@ -76,12 +76,12 @@ a, a:hover{
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.5);
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 .form-control:focus {
     border-color: #FFFFFF;
     background-color: transparent;
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 .border-none{
     border: none !important;
@@ -117,7 +117,7 @@ a, a:hover{
     z-index: -1;
 }
 
-/* For user profile */
+/* For user editProfile */
 p{
     font-size: medium;
 }
@@ -161,7 +161,7 @@ p{
 }
 
 #personal_information{
-    font-size: 12px; 
+    font-size: 12px;
     font: oblique bold 120% cursive;
     font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
     text-align: center;
@@ -169,7 +169,7 @@ p{
 }
 
 #age{
-    font-size: 12px; 
+    font-size: 12px;
     font: oblique bold 120% cursive;
 }
 
@@ -212,8 +212,8 @@ p{
 }
 
 #card_body{
-        -webkit-column-count: 2; 
-        -moz-column-count: 2; 
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
         column-count: 2;
         column-fill: auto;
         column-fill: balance;
