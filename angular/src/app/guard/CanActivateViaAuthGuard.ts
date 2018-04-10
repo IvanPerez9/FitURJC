@@ -11,7 +11,7 @@ export class CanActivateViaAuthGuard implements CanActivateChild {
     canActivateChild() {
         // If the user is not logged in we'll send them back to the home page
         if (!this.authService.isLogged()) {
-            console.log('No estás logueado machote');
+            console.log('No estás logueado');
             this.router.navigate(['/']);
             return false;
         }

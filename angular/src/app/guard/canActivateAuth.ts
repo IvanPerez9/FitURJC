@@ -11,7 +11,7 @@ export class CanActivateAuth implements CanActivate {
     canActivate() {
         // If the user logged in we'll send them back to the home page
         if (this.authService.isLogged()) {
-            console.log('Bienvenido de nuevo machote');
+            console.log('Bienvenido de nuevo');
             this.router.navigate(['/home']);
             return false;
         }
