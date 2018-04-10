@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 import { Observable } from 'rxjs/Observable';
-import { UserRegister} from '../register/register.component';
+import { UserRegister } from '../register/register.component';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import * as globals from '../globals';
@@ -15,64 +15,66 @@ export class UserService {
     user: User;
 
     constructor(private http: HttpClientBasicAuth) {
-        this.url = globals.USER_BASEURL;
     }
 
     getUsers(): Observable<any> {
-        return this.http.get(this.url);
+        let url = globals.USER_BASEURL;
+        return this.http.get(url);
     }
 
-    getUser(email: String ): Observable<any> {
-        return this.http.get(this.url + email);
+    getUser(email: String): Observable<any> {
+        let url = globals.USER_BASEURL;
+        return this.http.get(url + email);
     }
 
-    getUserByNick(nickname: string ): Observable<any> {
-        return this.http.get(this.url + nickname);
+    getUserByNickname(nickname: string): Observable<any> {
+        let url = globals.USER_BASEURL;
+        return this.http.get(url + nickname);
     }
 
     getUserById(userId: number): Observable<any> {
-        return this.http.get(this.url + userId);
+        let url = globals.USER_BASEURL;
+        return this.http.get(url + userId);
     }
 
-    /*
-    NEW
-    */
-
     createUser(user: User) {
-        return this.http.post(this.url, user);
+        let url = globals.USER_BASEURL;
+        return this.http.post(url, user);
+    }
+
+    editUser(userId: number, user: User) {
+        let url = globals.USER_BASEURL;
+        return this.http.put(url + userId, user);
     }
 
     // Avatar
 
-    getUserAvatar (userId: number) {
-        return this.http.get(this.url + userId + '/avatar');
+    getUserAvatar(userId: number) {
+        let url = globals.USER_BASEURL;
+        return this.http.get(url + userId + '/avatar');
     }
 
     setUserAvatar(userId: number, formData: FormData) {
-        return this.http.put(this.url + userId + '/avatar' , formData);
+        let url = globals.USER_BASEURL;
+        return this.http.put(url + userId + '/avatar', formData);
     }
 
     setAvatar(nickname: string, formData: FormData) {
-        return this.http.put(this.url + nickname + '/avatar' , formData);
+        let url = globals.USER_BASEURL;
+        return this.http.put(url + nickname + '/avatar', formData);
     }
 
-    public editUser(user: User) {
-       // return this.http.put(this.url, JSON.stringify(user), this.loginService.getSessionHeader()).map(response => response.json());
-       return this.http.put(this.url, JSON.stringify(user));
-    }
-    // Por ID ???????
-    public deleteUser(user: User) {
-        // return this.http.delete(this.url, this.loginService.getSessionHeader()).map(response => response.json());
-        return this.http.delete(this.url);
-    }
+    // public deleteUser(user: User) {
+    //     return this.http.delete(this.url);
+    // }
+    // DIRECTO AL ADMIN CONTROL USERS (PARA DANI)
 
-
-  setUserLogged(user: User) {
-      this.http.setUser(user);
-  }
+    setUserLogged(user: User) {
+        this.http.setUser(user);
+    }
 
     getLoggedUser(): User {
-    return this.http.sessionData.getUserLogged();
+        return this.http.sessionData.getUserLogged();
     }
 
     loginUser(email: string, password: string): Observable<any> {
@@ -104,9 +106,9 @@ export class UserService {
         this.http.sessionData.reset();
     }
 
-    private errors (error: any) {
+    private errors(error: any) {
         console.error(error);
-        return Observable.throw('Error (' + error.status + '): ' + error.text() );
+        return Observable.throw('Error (' + error.status + '): ' + error.text());
     }
 
 }
