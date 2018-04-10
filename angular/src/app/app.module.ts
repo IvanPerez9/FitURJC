@@ -32,6 +32,9 @@ import { DropdownModule } from 'angular-custom-dropdown';
 import { CourseProfileComponent } from './course-profile/course-profile.component';
 import { NavbarCourseProfileComponent } from './navbar-course-profile/navbar-course-profile.component';
 import { ChartsModule } from 'ng2-charts';
+import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
+import { HttpModule } from '@angular/http';
+import {BrowserXhr} from '@angular/http';
 
 
 
@@ -45,7 +48,9 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     DropdownModule,
     InfiniteScrollModule,
-    ChartsModule
+    ChartsModule,
+    NgProgressModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
@@ -67,7 +72,7 @@ import { ChartsModule } from 'ng2-charts';
     CourseProfileComponent,
     NavbarCourseProfileComponent
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService],
+  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
