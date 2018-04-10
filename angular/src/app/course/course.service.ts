@@ -12,7 +12,7 @@ export class CourseService {
     url: string;
 
     constructor(private http: HttpClientBasicAuth) {
-        this.url = globals.USER_BASEURL;
+        this.url = globals.USER_BASEURL; // This ???????
     }
 
     getCourses(): Observable<any> {

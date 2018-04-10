@@ -39,9 +39,11 @@ export class NavbarProfileComponent implements OnInit {
   }
 
   showIfAdmin() {
-    if (this.loginService.isLogged() === true && this.loginService.isAdmin() === true) {
+    if (this.loginService.isAdmin() === true) {
+        console.log('logeado admin');
         return true;
     } else {
+      console.log('false');
         return false;
     }
   }
