@@ -45,7 +45,7 @@ public class User {
 	@JsonView(Details.class)
 	private int age;
 	@ElementCollection(fetch = FetchType.EAGER)
-	@JsonView(None.class)
+	@JsonView(Details.class)
 	private List<String> roles;
 
 	private boolean fullProfile;
