@@ -12,6 +12,8 @@ import { AdminControlCoursesComponent } from './admin/admin-control-courses/admi
 import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.component';
 import { EditProfileComponent } from './editProfile/editProfile.component';
 import { CourseProfileComponent } from './course-profile/course-profile.component';
+import { CanActivateViaAuthGuard } from './guard/CanActivateViaAuthGuard';
+import { CanActivateAuth } from './guard/canActivateAuth';
 
 
 export const appRoutes = [

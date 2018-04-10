@@ -24,7 +24,7 @@
                 <a *ngIf="showIfAdmin()" [routerLink]="['/admin']"> Admin Page </a>
               </li>
               <li>
-                <a [routerLink]="['/logout']"> Sign Off </a> <!-- FALTA METER EL METODO LOGOUT -->
+                <a (click) ="onLoggedout()" > Sign Off </a> <!-- FALTA METER EL METODO LOGOUT -->
               </li>
             </ul>
           </div>

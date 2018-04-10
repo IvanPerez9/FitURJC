@@ -93,8 +93,10 @@ export class UserService {
     private generateAuthString(username: String, password: String) {
         return 'Basic ' + btoa(username + ':' + password);
     }
+
     logOut(): void {
-        console.log('Implementar');
+        console.log('LogOut');
+        this.http.sessionData.reset();
     }
 
     private errors (error: any) {

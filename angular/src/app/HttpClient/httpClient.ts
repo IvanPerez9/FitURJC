@@ -16,13 +16,12 @@ export class HttpClientBasicAuth {
     }
 
     generateHeaders() {
-        const headers = new HttpHeaders();
-
         if (this.sessionData.amILogged()) {
-            headers.append('Authorization', this.sessionData.authToken());
+            let headers = new HttpHeaders();
+            headers = headers.set('Authorization', this.sessionData.authToken());
+            return headers;
         }
-
-        return headers;
+        return new HttpHeaders();
     }
 
     get(url) {
@@ -59,9 +58,11 @@ export class HttpClientBasicAuth {
          );*/
     }
 
+    // See if is Admin
     setUser(u: User) {
         this.sessionData.setUserLogged(u);
         this.sessionData.setAmILogged(true);
+        this.sessionData.setAmIAdmin(this.sessionData.getUserLogged().roles.indexOf('ROLE_ADMIN') > -1);
         this.sessionData.saveData();
     }
 }

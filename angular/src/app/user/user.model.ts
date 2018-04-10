@@ -7,5 +7,5 @@ export interface User {
     password?: string;
     surname: string;
     photo?: string;
-    role: string[];
+    roles: string[];
 }

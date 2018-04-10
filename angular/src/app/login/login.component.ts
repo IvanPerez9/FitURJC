@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
     this.userSignIn = valuesForm;
     this.userService.loginUser(this.userSignIn.email, this.userSignIn.password).subscribe(
       result => {
+          console.log(result);
           this.userService.setUserLogged(result);
           this.router.navigate(['/user/profile']);
       },
