@@ -35,6 +35,8 @@ import { ChartsModule } from 'ng2-charts';
 import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 import { HttpModule } from '@angular/http';
 import {BrowserXhr} from '@angular/http';
+import { Maps } from './maps/maps.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -50,7 +52,12 @@ import {BrowserXhr} from '@angular/http';
     InfiniteScrollModule,
     ChartsModule,
     NgProgressModule,
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyCCSoAdbLDLW9tKqwjt-H4FkBNl8HhRUFM'
+    })
   ],
   declarations: [
     AppComponent,
@@ -70,7 +77,8 @@ import {BrowserXhr} from '@angular/http';
     EditProfileComponent,
     NavbarProfileComponent,
     CourseProfileComponent,
-    NavbarCourseProfileComponent
+    NavbarCourseProfileComponent,
+    Maps
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
