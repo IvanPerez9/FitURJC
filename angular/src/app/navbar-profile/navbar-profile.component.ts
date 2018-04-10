@@ -3,7 +3,7 @@ import { NavbarProfile } from '../navbar-profile/navbar-profile.model';
 import { appRoutes } from '../app.routing';
 import { LoginService } from '../login/login.service';
 
-import {User} from "../user/user.model";
+import {User} from '../user/user.model';
 
 import { UserService } from '../user/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -25,7 +25,7 @@ export class NavbarProfileComponent implements OnInit {
 
   selectedList: NavbarProfile;
   userLogged: User;
-  constructor(private router: Router , private loginService: LoginService, private userService:UserService) {
+  constructor(private router: Router , private loginService: LoginService, private userService: UserService) {
     this.userLogged = this.userService.getLoggedUser();
   }
 
