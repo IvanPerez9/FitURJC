@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import * as globals from '../globals';
-import { Course } from './course.model';
+import { Course, Category } from './course.model';
+import { Schedule } from '../schedule/schedule.model';
 
 @Injectable()
 export class CourseService {
@@ -23,6 +24,10 @@ export class CourseService {
         return this.http.get(this.url + courseId);
     }
 
+    getListSchedules (schedule: Schedule) {
+        return this.http.get(this.url + schedule);
+    }
+
     createCourse(course: Course) {
         return this.http.post(this.url , course);
     }
@@ -35,12 +40,20 @@ export class CourseService {
         return this.http.put(this.url + courseId , course);
     }
 
-    subscribeToCourse(courseName: string) {
-        return this.http.put(this.url + courseName + '/members', null); // añadir el userLoggedd ???
+    addSchedule (schedule: Schedule) {
+        return this.http.post(this.url, schedule);
     }
+
+    // subscribeToCourse(courseName: string) {
+    //     return this.http.put(this.url + courseName + '/members', null); // añadir el userLoggedd ???
+    // }
 
     setCoursePhoto (courseId: number, formData: FormData ) {
         return this.http.put(this.url + courseId , formData);
+    }
+
+    setCategory (category: Category) {
+        return this.http.put(this.url, category);
     }
 
     private errors (error: any) {
