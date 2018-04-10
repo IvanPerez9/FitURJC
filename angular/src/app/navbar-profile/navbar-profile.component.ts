@@ -3,6 +3,8 @@ import { NavbarProfile } from '../navbar-profile/navbar-profile.model';
 import { Router } from '@angular/router';
 import { appRoutes } from '../app.routing';
 import { LoginService } from '../login/login.service';
+import {User} from "../user/user.model";
+import {UserService} from "../user/user.service";
 
 export const LIST_NAVBAR: NavbarProfile[] = [
   { name: 'courses' },
@@ -19,8 +21,10 @@ export class NavbarProfileComponent implements OnInit {
   listnavbar = LIST_NAVBAR;
 
   selectedList: NavbarProfile;
-
-  constructor(private router: Router , private loginService: LoginService) { }
+  userLogged: User;
+  constructor(private router: Router , private loginService: LoginService, private userService:UserService) {
+    this.userLogged = this.userService.getLoggedUser();
+  }
 
   ngOnInit() {
   }
@@ -46,5 +50,10 @@ export class NavbarProfileComponent implements OnInit {
       console.log('false');
         return false;
     }
+  }
+
+  onLoggedout(){
+    this.userService.logOut();
+    this.router.navigate(['/']);
   }
 }
