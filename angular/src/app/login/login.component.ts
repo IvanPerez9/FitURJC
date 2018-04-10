@@ -14,7 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  ng4LoadingSpinnerService: any;
+  ng4LoadingSpinnerService: any; // No usamos ese login pero bueno
   error_login: boolean;
   loading: boolean;
   userLogin: FormGroup;
@@ -64,8 +64,15 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/user/profile']);
       },
       error => {
-        console.log('Error');
+        console.log(error);
         console.log(error.code);
+        if (error.status === 0) {
+          this.error_login = true;
+        } else if (error.status === 401) {
+          this.error_login = true;
+        } else if (error.status === 403) {
+          this.error_login = true;
+        }
       });
   }
 }
