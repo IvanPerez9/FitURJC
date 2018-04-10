@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item">
           <div class="dropdown" dropdown>
-            <label class="btn btn-danger dropdown-toggle" dropdownToggle>William Wallace</label>
+            <label class="btn btn-danger dropdown-toggle" dropdownToggle>{{userLogged.nickname}}</label>
             <ul class="dropdown-menu" dropdownMenu>
               <li>
                 <a [routerLink]="['/user/editProfile']"> Edit Profile </a> <!-- REVISAR ESTO POR SI ES/user/editProfile -->
@@ -24,7 +24,11 @@
                 <a *ngIf="showIfAdmin()" [routerLink]="['/admin']"> Admin Page </a>
               </li>
               <li>
+<<<<<<< HEAD
+                <a (click)="onLoggedout()"> Sign Off </a> <!-- FALTA METER EL METODO LOGOUT -->
+=======
                 <a (click) ="onLoggedout()" > Sign Off </a> <!-- FALTA METER EL METODO LOGOUT -->
+>>>>>>> 22a212d22c6f4cebfdd0c52b25017e21ac845d6a
               </li>
             </ul>
           </div>

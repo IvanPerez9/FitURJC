@@ -4,7 +4,7 @@ export interface Course {
     name: string;
     category: Category;
     description: string;
-    schedule: string[];
+    schedules: string[];
 }
 
 export enum Category {
