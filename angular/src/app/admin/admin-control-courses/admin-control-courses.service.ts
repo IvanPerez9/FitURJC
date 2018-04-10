@@ -13,30 +13,31 @@ export class AdminControlCoursesService {
     url: string;
 
     constructor(private http: HttpClientBasicAuth) {
-        this.url = globals.BASEURL;
+    
     }
 
     getCourses(): Observable<any> {
-        return this.http.get(this.url);
+        let url = globals.ADMIN_COURSEURL;
+        return this.http.get(url);
     }
 
     getCourseId(courseId: number | string) {
         let url = globals.ADMIN_COURSEURL;
-        return this.http.get(this.url + courseId);
+        return this.http.get(url + courseId);
     }
 
     updateCourse(courseId: number | string, course: Course) {
         let url = globals.ADMIN_COURSEURL;
-        return this.http.patch(this.url + 'edit/' + courseId, course);
+        return this.http.patch(url + 'edit/' + courseId, course);
     }
 
     createCourse(course: Course) {
         let url = globals.ADMIN_COURSEURL;
-        return this.http.post(this.url + 'add', course);
+        return this.http.post(url + 'add', course);
     }
 
     deleteCourse(courseId: number | string) {
         let url = globals.ADMIN_COURSEURL;
-        return this.http.delete(this.url + 'delete/' + courseId);
+        return this.http.delete(url + 'delete/' + courseId);
     }
 }
