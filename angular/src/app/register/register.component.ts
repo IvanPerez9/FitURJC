@@ -20,6 +20,8 @@ export class RegisterComponent {
   email: string;
   password: string;
   passwordRepeat: string;
+
+  error_signUp: boolean;
   userRegister: FormGroup;
   userSignUp: UserRegister;
 
@@ -48,8 +50,17 @@ export class RegisterComponent {
           this.router.navigate(['/user/profile']);
       },
       error => {
-        console.log('Error');
+        console.log(error);
         console.log(error.code);
+        if (error.status === 0) {
+          this.error_signUp = true;
+        } else if (error.status === 401) {
+          this.error_signUp = true;
+        } else if (error.status === 403) {
+          this.error_signUp = true;
+        } else if (error.status === 405) {
+          this.error_signUp = true;
+        }
       });
   }
 
