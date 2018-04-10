@@ -31,7 +31,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DropdownModule } from 'angular-custom-dropdown';
 import { CourseProfileComponent } from './course-profile/course-profile.component';
 import { NavbarCourseProfileComponent } from './navbar-course-profile/navbar-course-profile.component';
-import { Graphics1Component } from './graphics1/graphics1.component';
 import { ChartsModule } from 'ng2-charts';
 
 
@@ -66,8 +65,7 @@ import { ChartsModule } from 'ng2-charts';
     EditProfileComponent,
     NavbarProfileComponent,
     CourseProfileComponent,
-    NavbarCourseProfileComponent,
-    Graphics1Component
+    NavbarCourseProfileComponent
   ],
   providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService],
   bootstrap: [AppComponent]
