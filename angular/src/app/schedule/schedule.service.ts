@@ -11,30 +11,34 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class ScheduleService {
 
-    url: string;
-    schedule: Schedule;
-
     constructor(private http: HttpClientBasicAuth) {
-        this.url = globals.USER_BASEURL; //¿THISSSSSSSSSS?
+
     }
 
     getSchedule(): Observable<any> {
-        return this.http.get(this.url);
+        let url = globals.SCHEDULE_BASEURL;
+        return this.http.get(url);
     }
 
     getScheduleById(sheduleId: number): Observable<any> {
-        return this.http.get(this.url + sheduleId);
+        let url = globals.SCHEDULE_BASEURL;
+        return this.http.get(url + sheduleId);
     }
 
-    public deleteSchedule(schedule: Schedule) {
-        return this.http.delete(this.url);
+    deleteSchedule(schedule: Schedule) {
+        let url = globals.SCHEDULE_BASEURL;
+        return this.http.delete(url);
     }
 
-    public addUser(user: User) {
-        let cosa = this.schedule.listUsers.find(iterator=>iterator==user);
-        console.log(cosa);
-    } //sin acabar
+    joinSchedule(scheduleId: number, schedule: Schedule) {
+        let url = globals.SCHEDULE_BASEURL;
+        return this.http.put(url + scheduleId, schedule);
+    }
 
+    unsubscribeSchedule(scheduleId: number, schedule: Schedule) {
+        let url = globals.SCHEDULE_BASEURL;
+        return this.http.put(url + scheduleId, schedule);
+    }
 
 
 
