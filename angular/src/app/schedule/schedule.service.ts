@@ -3,7 +3,7 @@ import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 import { Observable } from 'rxjs/Observable';
 import { Schedule } from './schedule.model';
 import { User } from '../user/user.model';
-import { UserRegister} from '../register/register.component';
+import { UserRegister } from '../register/register.component';
 import 'rxjs/Rx';
 import * as globals from '../globals';
 import { map } from 'rxjs/operators';
@@ -24,12 +24,22 @@ export class ScheduleService {
 
     getScheduleById(sheduleId: number): Observable<any> {
         return this.http.get(this.url + sheduleId);
-    } 
+    }
+
+    public deleteSchedule(schedule: Schedule) {
+        return this.http.delete(this.url);
+    }
+
+    public addUser(user: User) {
+        let cosa = this.schedule.listUsers.find(iterator=>iterator==user);
+        console.log(cosa);
+    } //sin acabar
 
 
 
 
 
-   
+
+
 
 }
