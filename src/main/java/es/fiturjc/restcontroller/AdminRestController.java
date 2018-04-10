@@ -183,12 +183,13 @@ public class AdminRestController {
 		}
 	}
 
+	private interface CourseDetails extends Course.Details, Course.Basic{}
     /**
      * @param course
      * @return
      */
     //working now
-    @JsonView(Course.Details.class)
+    @JsonView(CourseDetails.class)
     @JsonFormat(shape = JsonFormat.Shape.ARRAY)
     @RequestMapping(value = "/course/add", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
@@ -210,7 +211,7 @@ public class AdminRestController {
      * @return
      */
 
-    @DeleteMapping(value = "/course/delete/{id}")
+    @DeleteMapping(value = "/courses/delete/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> deleteCourse(@PathVariable long id) {
     	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
