@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "./user.model";
 import { UserService } from '../user/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,8 +8,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  constructor() { }
+  userLogged: User;
+  constructor(private userService: UserService) {
+    this.userLogged = this.userService.getLoggedUser();
+  }
 
   ngOnInit() {
   }

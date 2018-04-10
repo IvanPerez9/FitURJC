@@ -51,6 +51,11 @@
                         <p class="content-divider center mt-4">
                             <span>or</span>
                         </p>
+
+                        <div *ngIf="error_signUp" class="alert alert-danger">
+                            <strong>Error. </strong> Unable to register
+                        </div>
+                        
                     </div>
                     <p class="text-center">
                         Already have an account? <a [routerLink]="['/login']"> Login Now</a>

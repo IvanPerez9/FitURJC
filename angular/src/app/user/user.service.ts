@@ -66,8 +66,13 @@ export class UserService {
         return this.http.delete(this.url);
     }
 
-    setUserLogged(user: User) {
-        this.http.setUser(user);
+
+  setUserLogged(user: User) {
+      this.http.setUser(user);
+  }
+
+    getLoggedUser(): User {
+    return this.http.sessionData.getUserLogged();
     }
 
     loginUser(email: string, password: string): Observable<any> {
