@@ -10,51 +10,27 @@ import { Schedule } from '../schedule/schedule.model';
 @Injectable()
 export class CourseService {
 
-    url: string;
-
     constructor(private http: HttpClientBasicAuth) {
-        this.url = globals.USER_BASEURL; // This ???????
     }
 
     getCourses(): Observable<any> {
-        return this.http.get(this.url);
+        let url = globals.COURSE_BASEURL;
+        return this.http.get(url);
     }
 
-    getCourse(courseId: number | string) {
-        return this.http.get(this.url + courseId);
-    }
-
-    getListSchedules (schedule: Schedule) {
-        return this.http.get(this.url + schedule);
-    }
-
-    createCourse(course: Course) {
-        return this.http.post(this.url , course);
-    }
-
-    deleteCourse(courseId: number | string) {
-        return this.http.delete(this.url + courseId);
+    getCourseId(courseId: number | string) {
+        let url = globals.COURSE_BASEURL;
+        return this.http.get(url + courseId);
     }
 
     editCourse (courseId: number | string , course: Course) {
-        return this.http.put(this.url + courseId , course);
+        let url = globals.COURSE_BASEURL;
+        return this.http.put(url + courseId , course);
     }
 
-    addSchedule (schedule: Schedule) {
-        return this.http.post(this.url, schedule);
-    }
-
-    // subscribeToCourse(courseName: string) {
-    //     return this.http.put(this.url + courseName + '/members', null); // añadir el userLoggedd ???
+    // getListSchedules (schedule: Schedule) {
+    //     return this.http.get(this.url + schedule);
     // }
-
-    setCoursePhoto (courseId: number, formData: FormData ) {
-        return this.http.put(this.url + courseId , formData);
-    }
-
-    setCategory (category: Category) {
-        return this.http.put(this.url, category);
-    }
 
     private errors (error: any) {
         console.error(error);
