@@ -5,6 +5,7 @@ import { LoginService } from './login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CourseService } from '../course/course.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private courseService: CourseService) {
   }
 
   logIn(email: string, password: string) {
@@ -41,16 +42,17 @@ export class LoginComponent implements OnInit {
     this.ng4LoadingSpinnerService.show();
     this.error_login = false;
     this.userService.loginUser(email, password).subscribe(result => {
-        this.userService.setUserLogged(result);
-        this.ng4LoadingSpinnerService.hide();
+      this.userService.setUserLogged(result);
+
+      this.ng4LoadingSpinnerService.hide();
     }, error => {
-        this.error_login = true;
-        this.ng4LoadingSpinnerService.hide();
+      this.error_login = true;
+      this.ng4LoadingSpinnerService.hide();
     });
   }
 
   logOut() {
-      this.userService.logOut();
+    this.userService.logOut();
   }
 
   onSubmit(form: FormGroup) {
@@ -59,9 +61,11 @@ export class LoginComponent implements OnInit {
     this.userSignIn = valuesForm;
     this.userService.loginUser(this.userSignIn.email, this.userSignIn.password).subscribe(
       result => {
-          console.log(result);
-          this.userService.setUserLogged(result);
-          this.router.navigate(['/user/profile']);
+        console.log("REALIZANDO")
+        this.courseService.getCourses().subscribe(result => console.log(result), error => console.log(error))
+        console.log(result);
+        this.userService.setUserLogged(result);
+        this.router.navigate(['/user/profile']);
       },
       error => {
         console.log(error);
