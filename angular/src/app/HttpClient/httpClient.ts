@@ -43,6 +43,12 @@ export class HttpClientBasicAuth {
         });
     }
 
+    patch(url, data) {
+        return this.http.patch(url, data, {
+            headers: this.generateHeaders()
+        });
+    }
+
     delete(url) {
         return this.http.delete(url, {
             headers: this.generateHeaders()
