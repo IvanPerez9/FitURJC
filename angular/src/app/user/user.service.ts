@@ -25,9 +25,15 @@ export class UserService {
     getUser(email: String ): Observable<any> {
         return this.http.get(this.url + email);
     }
+
     getUserByNick(nickname: string ): Observable<any> {
         return this.http.get(this.url + nickname);
     }
+
+    getUserById(userId: number): Observable<any> {
+        return this.http.get(this.url + userId);
+    }
+
     /*
     NEW
     */
