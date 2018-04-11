@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
         <span>
-          <img class="img-circle img-responsive" src="../../assets/img/profile/default_user_trans.png">
+          <img class="img-circle img-responsive" src="assets/img/profile/default_user_trans.png">
           <!-- Aqui vendria edit mode-->
         </span><br>
           <div>
@@ -24,15 +24,15 @@
               <!--Mirar bien enlace action, hay un warning del directorio porque no está acabado-->
               <div class="form-group">
                 <input type="text" class="form-control" name="name" formControlName="name"
-                       placeholder="Name" value="Nombre del usuario">
+                       placeholder="Name" value="{{userLogged.name}}">
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="surname" formControlName="surname"
-                       placeholder="Surname" value="Apellidos del usuario">
+                       placeholder="Surname" value="{{userLogged.surname}}">
               </div>
               <div class="form-group">
                 <input type="email" class="form-control" name="email" formControlName="email"
-                       placeholder="Email address" value="Email del usuario">
+                       placeholder="Email address" value="{{userLogged.email}}">
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" name="password" formControlName="password"

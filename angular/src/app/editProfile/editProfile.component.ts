@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from '../login/login.service';
+import { User } from '../user/user.model';
+import { UserService } from '../user/user.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,7 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfileComponent implements OnInit {
 
-  constructor() { }
+  userLogged: User;
+  
+  constructor(private userService: UserService) {
+    this.userLogged = this.userService.getLoggedUser();
+  }
 
   ngOnInit() {
     console.log("Init UserComponent");
