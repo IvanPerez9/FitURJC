@@ -18,14 +18,14 @@ export class CourseProfileComponent implements OnInit {
   courses: Course[];
   imagePaths: string[];
 
-  constructor(private router: Router, private loginService: LoginService, private courseService: CourseProfileService) {
+  constructor(private router: Router, private loginService: LoginService, private courseProfileService: CourseProfileService) {
     this.schedules = ['01:00-02:00', '02:00-03:00', '03:00-04:00', '04:00-05:00', '05:00-06:00',
     '06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00', '12:00-13:00']
   }
 
   ngOnInit() {
      // this.moreCoursesButtonText = "Ver Mas";
-     this.courseService.getCourses().subscribe(
+     this.courseProfileService.getCourses().subscribe(
       courses => {
         this.courses = courses.content;
       },
