@@ -32,6 +32,11 @@ export class UserService {
         return this.http.get(url + nickname);
     }
 
+    getUserByUserName(name: string): Observable<any> {
+        let url = globals.USER_BASEURL;
+        return this.http.get(url + name);
+    }
+
     getUserById(userId: number): Observable<any> {
         let url = globals.USER_BASEURL;
         return this.http.get(url + userId);

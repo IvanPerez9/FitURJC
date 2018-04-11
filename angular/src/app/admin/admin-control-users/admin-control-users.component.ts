@@ -13,10 +13,10 @@ export class AdminControlUsersComponent implements OnInit {
 
   users: User[];
 
-  constructor(private router:Router, private service: UserService, private sessionService: LoginService){}
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService){}
 
    ngOnInit() {
-    this.service.getUsers().subscribe(
+    this.userService.getUsers().subscribe(
       user => {
         this.users = user;
       },

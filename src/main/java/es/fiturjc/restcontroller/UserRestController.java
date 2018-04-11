@@ -36,8 +36,10 @@ public class UserRestController {
 	 * 
 	 * @return users
 	 */
+	public interface UserDetails extends User.Basic, User.Details{}
+	
 	@GetMapping(value = "/")
-	@JsonView(User.Basic.class)
+	@JsonView(UserDetails.class)
 	public ResponseEntity<List<User>> getUsers() {
 		List<User> users = userService.getUsers();
 		if (users != null) {

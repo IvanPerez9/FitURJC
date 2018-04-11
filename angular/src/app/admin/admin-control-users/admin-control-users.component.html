@@ -8,7 +8,7 @@
 				</div>
 				<div class="content" *ngFor="let user of users">
 					<div>
-						<h2>Name Surname</h2>
+						<h2>{{user.nickname}}</h2>
 					</div>
 					<div class="modal-content">
 						<form action="/admin/editandsave/id" method="post" id="form_add_user" modelAttribute="user">
