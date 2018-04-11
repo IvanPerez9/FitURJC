@@ -37,6 +37,7 @@ import { HttpModule } from '@angular/http';
 import {BrowserXhr} from '@angular/http';
 import { Maps } from './maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
+import {ScrollToModule} from "ng2-scroll-to";
 
 
 
@@ -53,6 +54,7 @@ import { AgmCoreModule } from '@agm/core';
     ChartsModule,
     NgProgressModule,
     HttpModule,
+    ScrollToModule.forRoot(),
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
