@@ -6,7 +6,7 @@ const MAXCAPACITY = 3;
 export interface Schedule {
     scheduleId: number;
     shedule: string;
-    listUsers: User[]; 
+    listUsers: User[];
     course: Course;
     signup: boolean;
 }
