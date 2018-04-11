@@ -20,7 +20,7 @@
             <label class="btn btn-danger dropdown-toggle" dropdownToggle>{{userLogged.name}}</label>
             <ul class="dropdown-menu" dropdownMenu>
               <li>
-                <a routerLink="/user/profile/editProfile"> Edit Profile </a> <!-- REVISAR ESTO POR SI ES/user/editProfile -->
+                <a routerLink="/user/editProfile"> Edit Profile </a> <!-- REVISAR ESTO POR SI ES/user/editProfile -->
               </li>
               <li>
                 <a *ngIf="showIfAdmin()" [routerLink]="['/admin']"> Admin Page </a>
