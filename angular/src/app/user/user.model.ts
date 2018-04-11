@@ -1,11 +1,12 @@
 export interface User {
-    userId: number;
+    id: number;
     admin?: boolean;
     email: string;
     name: string;
-    nickname: string;
-    password?: string;
     surname: string;
-    photo?: string;
+    nickname: string;
+    age: number;
+    passwordHash?: string;
+    imgSrc?: string;
     roles: string[];
 }

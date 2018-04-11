@@ -8,23 +8,23 @@
 				</div>
 				<div class="content" *ngFor="let user of users">
 					<div>
-						<h2>{{user.nickname}}</h2>
+						<h2>{{user.name}} {{user.surname}}</h2>
 					</div>
 					<div class="modal-content">
-						<form action="/admin/editandsave/id" method="post" id="form_add_user" modelAttribute="user">
+						<form action="/admin/editandsave/{{user.id}}" method="post" id="form_add_user" modelAttribute="user">
 							<div class="modal-body">
 								<div class="row justify-content-md-center login-img"></div>
 								<div class="form-group">
 									<label for="signup_username">Name</label>
-									<input id="signup_username" type="text" class="form-control" name="name" value="Name">
+									<input id="signup_username" type="text" class="form-control" name="name" value="{{user.name}}">
 								</div>
 								<div class="form-group">
 									<label for="signup_username">Surname</label>
-									<input id="signup_surname" type="text" class="form-control" name="surname" value="surname">
+									<input id="signup_surname" type="text" class="form-control" name="surname" value="{{user.surname}}">
 								</div>
 								<div class="form-group">
 									<label for="signup_email">Email</label>
-									<input id="signup_email" type="text" class="form-control" name="email" value="email">
+									<input id="signup_email" type="text" class="form-control" name="email" value="{{user.email}}">
 								</div>
 								<div class="form-group">
 									<label for="signup_password1">Password (Required)</label>
@@ -33,7 +33,7 @@
 								</div>
 								<div class="form-group">
 									<label for="age">Age</label>
-									<input id="signup_age" class="form-control" name="age" value="age">
+									<input id="signup_age" class="form-control" name="age" value="{{user.age}}">
 								</div>
 								<div class="row justify-content-md-center">
 									<div class="col-12 col-md-auto btn-enter-div">

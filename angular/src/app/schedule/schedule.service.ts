@@ -49,7 +49,7 @@ export class ScheduleService {
     checkIfFollow() {
         if (this.loginService.isLogged) {
           let aux: boolean = (this.schedule.listUsers.find(
-            user1 => user1.userId === this.user.userId) !== undefined); // Done by ID ??
+            user1 => user1.id === this.user.id) !== undefined); // Done by ID ??
           return aux;
         }
     }

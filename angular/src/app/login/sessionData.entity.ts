@@ -27,7 +27,7 @@ export class SessionData {
     public reset() {
         this.sessionData = {
             amILogged: false, amIAdmin: false, userLogged: {
-                userId: 0, email: 'a@a', nickname: '', photo: '', roles: [''], surname: '', name: '', password: '',
+                id: 0, email: 'a@a', nickname: '', imgSrc: '', roles: [''], surname: '', name: '', passwordHash: '', age: 0,
             }, authToken: ''
         };
         if (typeof window !== 'undefined') {
