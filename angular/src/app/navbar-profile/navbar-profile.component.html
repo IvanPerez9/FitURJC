@@ -22,8 +22,8 @@
               <li>
                 <a routerLink="/user/editProfile"> Edit Profile </a> <!-- REVISAR ESTO POR SI ES/user/editProfile -->
               </li>
-              <li>
-                <a *ngIf="showIfAdmin()" [routerLink]="['/admin']"> Admin Page </a>
+              <li *ngIf="showIfAdmin()">
+                <a [routerLink]="['/admin']"> Admin Page </a>
               </li>
               <li>
                 <a (click)="onLoggedout()"> Sign Off </a>

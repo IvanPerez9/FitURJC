@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User} from './user.model';
+import { User } from './user.model';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
   userLogged: User;
+  
   constructor(private userService: UserService) {
     this.userLogged = this.userService.getLoggedUser();
   }
