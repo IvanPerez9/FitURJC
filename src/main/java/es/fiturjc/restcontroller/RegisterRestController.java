@@ -16,7 +16,7 @@ import es.fiturjc.model.User;
 import es.fiturjc.service.UserService;
 
 @RestController
-@RequestMapping("/api/register")
+@RequestMapping("/api")
 public class RegisterRestController {
 
 	public interface UserDetails extends User.Basic,User.Details{
@@ -26,7 +26,7 @@ public class RegisterRestController {
 	private UserService userService;
 
 	@JsonView(User.Basic.class)
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> createUser(@RequestBody User user ) {
 		User newUser = userService.createNewUser2(user);
