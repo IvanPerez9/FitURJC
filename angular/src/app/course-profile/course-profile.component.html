@@ -1,8 +1,31 @@
 <app-navbar-course-profile></app-navbar-course-profile>
 <section class="margin">
   <div class="container-fluid p-0">
-    <div class="row" id=listCourses>
-      <app-course></app-course>
+    <div class="row" id="listCourses" *ngFor="let listcourses of courses">
+
+
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-lg-4 col-sm-6">
+            <div class="portfolio-box">
+              <img class="img-fluid">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    {{listcourses.category}}
+                  </div>
+                  <div class="project-name">
+                    {{listcourses.name}}
+                  </div>
+                  <div class="project-description">
+                    {{listcourses.description}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card-footer-course">
           <!-- {{#schedules}}	 -->
             <!-- {{schedule}} -->
@@ -25,6 +48,8 @@
                <br>
           <!-- {{/schedules}} -->
             </div>
+
+
             <br>
     </div>
     <br>

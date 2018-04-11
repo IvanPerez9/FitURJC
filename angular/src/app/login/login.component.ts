@@ -5,7 +5,7 @@ import { LoginService } from './login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CourseService } from '../course/course.service';
+import { CourseProfileService } from '../course-profile/course-profile.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  constructor(private userService: UserService, private router: Router, private courseService: CourseService) {
+  constructor(private userService: UserService, private router: Router, private courseService: CourseProfileService) {
   }
 
   logIn(email: string, password: string) {
