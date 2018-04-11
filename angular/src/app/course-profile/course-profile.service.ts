@@ -6,11 +6,14 @@ import 'rxjs/Rx';
 import * as globals from '../globals';
 import { Course, Category } from './course-profile.model';
 import { Schedule } from '../schedule/schedule.model';
+import { LoginService } from '../login/login.service';
+import { User } from '../user/user.model';
 
 @Injectable()
 export class CourseProfileService {
 
-    constructor(private http: HttpClientBasicAuth) {
+
+    constructor(private http: HttpClientBasicAuth, private loginService: LoginService) {
     }
 
     getCourses(): Observable<any> {
