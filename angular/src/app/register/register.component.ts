@@ -14,13 +14,6 @@ import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 })
 export class RegisterComponent {
 
-  username: string;
-  surname: string;
-  nickname: string;
-  email: string;
-  password: string;
-  passwordRepeat: string;
-
   error_signUp: boolean;
   userRegister: FormGroup;
   userSignUp: UserRegister;
@@ -35,7 +28,7 @@ export class RegisterComponent {
       surname: new FormControl('', Validators.required),
       nickname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required ),
+      passwordHash: new FormControl('', Validators.required ),
       passwordRepeat: new FormControl('', [Validators.required])
     });
   }
@@ -69,8 +62,7 @@ export class RegisterComponent {
 // tslint:disable-next-line:class-name
 export interface UserRegister {
   username: string;
-  password: string;
-  passwordRepeat: string;
+  passwordHash: string;
   nickname: string;
   email: string;
   surname: string;

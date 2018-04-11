@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="/">HOME</a>
+    <a class="navbar-brand js-scroll-trigger" [routerLink]="['/user/profile']">HOME</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
       aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                 <a *ngIf="showIfAdmin()" [routerLink]="['/admin']"> Admin Page </a>
               </li>
               <li>
-                <a (click)="onLoggedout()"> Sign Off </a> <!-- FALTA METER EL METODO LOGOUT -->
+                <a (click)="onLoggedout()"> Sign Off </a> 
               </li>
             </ul>
           </div>

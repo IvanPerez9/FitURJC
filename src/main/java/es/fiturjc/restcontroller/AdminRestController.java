@@ -1,5 +1,6 @@
 package es.fiturjc.restcontroller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -146,8 +147,8 @@ public class AdminRestController {
 
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Course>> getCourses() {
-    	User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+    public ResponseEntity<List<Course>> getCourses(Principal principal) {
+    	User userLogged = userService.findOne(principal.getName());
         List<Course> courses = courseService.getAllCourses();
     	if(userLogged.isAdmin()) {
 	        if (courses != null) {
