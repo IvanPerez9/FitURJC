@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Init UserComponent");
   }
 
 

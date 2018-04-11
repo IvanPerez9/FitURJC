@@ -18,12 +18,11 @@ import { CanActivateAuth } from './guard/canActivateAuth';
 
 export const appRoutes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: 'user', component: UserComponent,
+    { path: 'user',
     children: [
-        { path: 'profile', component: UserComponent,
-        children: [
-            { path: 'editProfile', component: EditProfileComponent }
-        ]},
+        { path: '', redirectTo: 'profile', pathMatch: 'full' },
+        { path: 'profile', component: UserComponent, useAsDefault: true},
+        { path: 'editProfile', component: EditProfileComponent }
     ] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -45,7 +44,7 @@ export const appRoutes = [
   export class AppRoutingModule {}
 
 export const appRoutingProviders: any[] = [];
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes, {enableTracing: true});
 
 
 

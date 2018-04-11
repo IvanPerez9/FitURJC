@@ -11,6 +11,7 @@ export class EditProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("Init UserComponent");
   }
 
 }
