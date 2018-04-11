@@ -21,9 +21,20 @@ export class AdminControlUsersService {
         return this.http.get(url);
     }
 
-    getUsersId(courseId: number | string) {
-        let url = globals.ADMIN_COURSEURL;
-        return this.http.get(url + courseId);
+    getUsersId(id: number | string) {
+        let url = globals.ADMIN_USERURL;
+        return this.http.get(url + id);
     }
+
+    deleteUser(id: number | string) {
+        let url = globals.ADMIN_USERURL;
+        return this.http.delete(url + 'user/delete/' + id);
+    }
+
+    editUser(id: number, user: User) {
+        let url = globals.ADMIN_USERURL;
+        return this.http.patch(url + 'user/edit/' + id, user);
+    }
+
 
 }
