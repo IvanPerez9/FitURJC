@@ -1,4 +1,4 @@
-import { Course } from '../course/course.model';
+import { Course } from '../course-profile/course-profile.model';
 import { User } from '../user/user.model';
 
 const MAXCAPACITY = 3;

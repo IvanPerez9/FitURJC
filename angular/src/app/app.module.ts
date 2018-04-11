@@ -25,7 +25,7 @@ import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.co
 // import { HeaderComponent } from './admin/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditProfileComponent } from './editProfile/editProfile.component';
-import { CourseService } from './course/course.service';
+import { CourseProfileService } from './course-profile/course-profile.service';
 import { NavbarProfileComponent } from './navbar-profile/navbar-profile.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { DropdownModule } from 'angular-custom-dropdown';
@@ -82,7 +82,7 @@ import {ScrollToModule} from "ng2-scroll-to";
     NavbarCourseProfileComponent,
     Maps
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
+  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseProfileService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

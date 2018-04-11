@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import * as globals from '../../globals';
-import { Course, Category } from '../../course/course.model';
+import { Course, Category } from '../../course-profile/course-profile.model';
 import { Schedule } from '../../schedule/schedule.model';
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from './user.model';
+import { User} from './user.model';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -16,6 +16,5 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     console.log("Init UserComponent");
   }
-
 
 }
