@@ -4,8 +4,8 @@ import { User } from '../user/user.model';
 const MAXCAPACITY = 3;
 
 export interface Schedule {
-    scheduleId: number;
-    shedule: string;
+    idSchedule: number;
+    schedule: string;
     listUsers: User[];
     course: Course;
     signup: boolean;

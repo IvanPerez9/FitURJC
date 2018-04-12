@@ -21,7 +21,7 @@ export class ScheduleService {
 
     }
 
-    getSchedule(): Observable<any> {
+    getSchedules(): Observable<any> {
         let url = globals.SCHEDULE_BASEURL;
         return this.http.get(url);
     }

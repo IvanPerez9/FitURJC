@@ -13,10 +13,10 @@ export class AdminControlCoursesComponent implements OnInit {
 
   courses: Course[];
 
-  constructor(private router:Router, private service: CourseProfileService, private sessionService: LoginService){}
+  constructor(private router:Router, private courseProfileService: CourseProfileService, private loginService: LoginService){}
 
    ngOnInit() {
-    this.service.getCourses().subscribe(
+    this.courseProfileService.getCourses().subscribe(
       course => {
         this.courses = course;
       },
