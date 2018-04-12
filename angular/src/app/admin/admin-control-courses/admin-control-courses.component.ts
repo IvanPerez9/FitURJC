@@ -21,7 +21,7 @@ export class AdminControlCoursesComponent implements OnInit {
 
   ngOnInit() {
     this.initCourses();
-    //  this.initSchedules();
+    // this.initSchedules();
   }
 
   initCourses() {
