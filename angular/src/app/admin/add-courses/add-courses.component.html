@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="form-container">
+    <form class="form-group" [formGroup]="saveCourse" #formDir="ngForm" >
+      <div class="form-group">
+        <br>
+        <label for="newName">Name</label>
+        <input name="name" required="required" type="text" class="form-control" id="name" placeholder="Course name">
+      </div>
+      <div class="form-group">
+        <label for="newName">Category</label>
+        <select class="form-control" name="category" required="required">
+          <option *ngFor="let category of courseCategory">{{category}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="newName">Description</label>
+        <input name="description" type="text" class="form-control" id="description" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="newName">Schedule</label>
+        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules">
+      </div>
+      <div class="form-group">
+        <input type="file" name="file" id="file" />
+        <label for="file"></label>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" (click)="ifSaveCourse">Save Course</button>
+      </div>
+    </form>
+  </div>
+</div>
