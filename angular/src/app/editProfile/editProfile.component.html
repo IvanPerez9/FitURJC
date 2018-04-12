@@ -1,11 +1,10 @@
 <div class="hero">
   <div class="container">
     <div class="card-body">
-    <div class="card border-none">
-
+      <div class="card border-none">
         <div class="mt-4 text-white lead text-center">FitURJC Profile Settings</div>
-      <div class="row"> </div>
-      <br>
+        <div class="row"></div>
+        <br>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
             <div>
@@ -25,67 +24,70 @@
           <form class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
               <fieldset>
-
                 <!--- Name Block --->
-                <div class="form-group">
-                  <label for="inputName">Name</label>
-                  <input type="text"
-                         id="inputName"
-                         placeholder="Name" value="{{userLogged.name}}">
-                </div>
-                <!--- Surname Block --->
-                <div class="form-group">
-                  <label for="inputSurname">Surname</label>
-                  <input type="text"
-                         id="inputSurname"
-                         placeholder="Name" value="{{userLogged.surname}}">
-                </div>
+                <form role="form" [formGroup]="userUpdated" #formDir="ngForm" (ngSubmit)="onSubmit(userUpdated)">
+                  <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control"
+                           id="inputName"
+                           placeholder="Name" value="{{userLogged.name}}">
+                  </div>
+                  <!--- Surname Block --->
+                  <div class="form-group">
+                    <label for="inputSurname">Surname</label>
+                    <input type="text" class="form-control"
+                           id="inputSurname"
+                           placeholder="Name" value="{{userLogged.surname}}">
+                  </div>
 
-                <!--- Email Block --->
-                <div class="form-group">
-                  <label for="inputEmail">Email</label>
-                  <input type="text"
-                         id="inputEmail"
-                         placeholder="Name" value="{{userLogged.email}}">
-                </div>
+                  <!--- Email Block --->
+                  <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="text" class="form-control"
+                           id="inputEmail"
+                           placeholder="Name" value="{{userLogged.email}}">
+                  </div>
 
-                <!--- Password Block --->
-                <div class="form-group">
-                  <label for="inputPassword">Password</label>
-                  <input type="password"
-                         id="inputPassword"
-                         placeholder="Password">
-                </div>
+                  <!--- Password Block --->
+                  <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control"
+                           id="inputPassword"
+                           placeholder="Password">
+                  </div>
 
-                <div class="form-group">
-                  <label for="confirmPassword">Confirm Password</label>
-                  <input type="password"
-                         id="confirmPassword"
-                         placeholder="Password">
-                </div>
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control"
+                           id="confirmPassword"
+                           placeholder="Password">
+                  </div>
+                  <!--
 
-                <!--- Select role Block --->
-                <div class="form-group">
-                  <label for="select">Role</label>
-                  <select id="select">
-                    <option>User</option>
-                    <option>Admin</option>
-                  </select>
-                </div>
-
-                <!--- Terms and conditions Block --->
-                <div class="form-group checkbox">
-                  <label>
-                    <input type="checkbox"> Confirm that you've read the Terms and
-                    Conditions
-                  </label>
-                </div>
-
-                <!--- Buttons Block --->
-                <div class="form-group">
-                  <button type="reset" class="btn btn-default">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Update</button>
-                </div>
+                                  &lt;!&ndash;- Select role Block -&ndash;&gt;
+                                  <div class="form-control">
+                                    <label for="select">Role</label>
+                                    <select id="select">
+                                      <option>User</option>
+                                      <option>Admin</option>
+                                    </select>
+                                  </div>
+                  -->
+                  <!--- Terms and conditions Block --->
+                  <div class="form-group checkbox">
+                    <label>
+                      <input type="checkbox"> Confirm that you've read the Terms and
+                      Conditions
+                    </label>
+                  </div>
+                  <!--<pre>{{form.value | json}}</pre>
+                  <pre>isValid: {{form.valid}}</pre>-->
+                  <!--- Buttons Block --->
+                  <div class="form-group">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </form>
               </fieldset>
             </div>
           </form>

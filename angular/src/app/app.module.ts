@@ -54,6 +54,8 @@ import {ScrollToModule} from "ng2-scroll-to";
     ChartsModule,
     NgProgressModule,
     HttpModule,
+    BrowserModule,
+    ReactiveFormsModule,
     ScrollToModule.forRoot(),
     AgmCoreModule.forRoot({
       // please get your own API key here:
