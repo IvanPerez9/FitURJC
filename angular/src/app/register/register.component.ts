@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { passwordValidator } from './passwordValidator';
+import { matchOtherValidator } from './passwordValidator';
 import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { HttpClientBasicAuth } from '../HttpClient/httpClient';
+
 
 @Component({
   selector: 'app-register',
@@ -18,11 +19,12 @@ export class RegisterComponent {
   userRegister: FormGroup;
   userSignUp: UserRegister;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private http: HttpClientBasicAuth) {
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
+    this.http.logOut();
     this.userRegister = new FormGroup({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
@@ -30,7 +32,7 @@ export class RegisterComponent {
       email: new FormControl('', Validators.required),
       age: new FormControl ('', Validators.required),
       passwordHash: new FormControl('', Validators.required ),
-      passwordRepeat: new FormControl('', [Validators.required])
+      passwordRepeat: new FormControl('', [Validators.required, matchOtherValidator('passwordHash')]),
     });
   }
 
@@ -57,7 +59,6 @@ export class RegisterComponent {
         }
       });
   }
-
 }
 
 // tslint:disable-next-line:class-name

@@ -1,10 +1,41 @@
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
-export function passwordValidator (otherControlName: string) {
 
-    // tslint:disable-next-line:no-shadowed-variable
-    return function passwordValidator(g: FormControl) {
-        return g.get('password').value === g.get('passwordRepeat').value
-           ? null : {'mismatch': true};
-    };
+export function matchOtherValidator (otherControlName: string) {
+
+  let thisControl: FormControl;
+  let otherControl: FormControl;
+
+  return function matchOtherValidate (control: FormControl) {
+
+    if (!control.parent) {
+      return null;
+    }
+
+    // Initializing the validator.
+    if (!thisControl) {
+      thisControl = control;
+      otherControl = control.parent.get(otherControlName) as FormControl;
+      if (!otherControl) {
+        throw new Error('matchOtherValidator(): other control is not found in parent group');
+      }
+      otherControl.valueChanges.subscribe(() => {
+        thisControl.updateValueAndValidity();
+      });
+    }
+
+    if (!otherControl) {
+      return null;
+    }
+
+    if (otherControl.value !== thisControl.value) {
+      return {
+        matchOther: true
+      };
+    }
+
+    return null;
+
+  }
+
 }

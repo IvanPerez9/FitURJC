@@ -29,6 +29,10 @@
                                         placeholder="Enter email address">
                                 </div>
                                 <div class="form-group">
+                                    <input type="text" class="form-control" name="age" formControlName="age"
+                                        placeholder="Acount age">
+                                </div>
+                                <div class="form-group">
                                     <input type="password" class="form-control" name="passwordHash" formControlName="passwordHash"
                                         placeholder="Enter password">
                                 </div>
@@ -37,7 +41,7 @@
                                         name="confirm-password" placeholder="Confirm password">
                                 </div>
                                 <div style="float: left; width: 48%">
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="submit" class="btn btn-primary btn-block" [disabled]="userRegister.invalid">
                                         Create Account</button>
                                 </div>
                                 <div style="float: right; width: 48%">
