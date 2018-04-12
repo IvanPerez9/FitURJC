@@ -12,9 +12,9 @@
                             <h6>{{course.description}}</h6>
                         </h4>
                         <br>
-                        <ul *ngFor="let schedule of schedules">
+                        <ul *ngFor="let schedule of course.schedules">
                             <li type="circle">
-                                <a>Participants in Schedule {{schedule.idSchedule}}: CAPACIDADLISTAUSUARIO </a>
+                                <a>Participants in Schedule {{schedule.idSchedule}}:{{schedule.listUsers}} </a>
                             </li>
                             <li type="circle">
                                 <a>Users: LISTA DE USUARIOS </a>

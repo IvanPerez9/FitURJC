@@ -1,10 +1,12 @@
+import { Schedule } from "../schedule/schedule.model";
+
 export interface Course {
     id: number;
     src: string;
     name: string;
     category: Category;
     description: string;
-    schedules: string[];
+    schedules: Schedule[];
 }
 
 export enum Category {

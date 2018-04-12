@@ -13,21 +13,22 @@ import { ScheduleService } from '../../schedule/schedule.service';
 })
 export class AdminControlCoursesComponent implements OnInit {
 
-  courses: Course[];
+  courses: Array<Course>;
   schedules: Schedule[];
 
-  constructor(private router:Router, private courseProfileService: CourseProfileService, 
-              private loginService: LoginService, private scheduleService: ScheduleService){}
+  constructor(private router: Router, private courseProfileService: CourseProfileService,
+    private loginService: LoginService, private scheduleService: ScheduleService) { }
 
-   ngOnInit() {
+  ngOnInit() {
     this.initCourses();
-    this.initSchedules();
+    //  this.initSchedules();
   }
 
   initCourses() {
     this.courseProfileService.getCourses().subscribe(
-      course => {
-        this.courses = course;
+      resultCourses => {
+        console.log(resultCourses)
+        this.courses = resultCourses;
       },
       error => {
         console.log(error);
@@ -36,6 +37,7 @@ export class AdminControlCoursesComponent implements OnInit {
   }
 
   initSchedules() {
+    this.courses.forEach(course => course.schedules.forEach)
     this.scheduleService.getSchedules().subscribe(
       schedule => {
         this.schedules = schedule;

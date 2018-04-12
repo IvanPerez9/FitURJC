@@ -44,7 +44,7 @@ export const appRoutes = [
   export class AppRoutingModule {}
 
 export const appRoutingProviders: any[] = [];
-export const routing = RouterModule.forRoot(appRoutes, {enableTracing: true});
+export const routing = RouterModule.forRoot(appRoutes);
 
 
 

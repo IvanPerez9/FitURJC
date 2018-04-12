@@ -2,6 +2,7 @@ package es.fiturjc.restcontroller;
 
 import java.util.List;
 
+import org.hibernate.SharedSessionContract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +48,7 @@ public class CourseRestController {
 	 * @return
 	 */
 	
-	public interface CourseDetails extends Course.Basic, Course.Details{}
+	public interface CourseDetails extends Course.Basic, Course.Details, Schedule.Basic, Schedule.Details,User.Basic{}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
