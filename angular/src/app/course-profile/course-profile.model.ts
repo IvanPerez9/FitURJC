@@ -10,9 +10,9 @@ export interface Course {
 }
 
 export enum Category {
-	STRENGTH,
-	CARDIO,
-	FREESTYLE,
-	DANCE,
-	MIND
+    STRENGTH = "STRENGTH",
+    CARDIO = "CARDIO",
+    FREESTYLE = "FREESTYLE",
+    DANCE = "DANCE",
+    MIND = "MIND"
 }

@@ -36,6 +36,11 @@ export class AdminControlCoursesComponent implements OnInit {
     )
   }
 
+  goToAddCourse(){
+    console.log("naveggnado")
+    this.router.navigate(['/admin/controlCourses/addCourse']);
+  }
+
   initSchedules() {
     this.courses.forEach(course => course.schedules.forEach)
     this.scheduleService.getSchedules().subscribe(
