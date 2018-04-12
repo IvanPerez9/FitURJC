@@ -1,67 +1,96 @@
-<section class="hero">
+<div class="hero">
   <div class="container">
     <div class="card-body">
-      <p class="mt-4 text-white lead text-center">FitURJC Profile Settings</p>
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
-        <span>
-          <img class="img-circle img-responsive" src="assets/img/profile/default_user_trans.png">
-          <!-- Aqui vendria edit mode-->
-        </span><br>
-          <div>
-            <form class="form-horizontal" method="post" enctype="multipart/form-data">
-              <!--<input type="file"> AQUI NO ESTA ACABADO- REPASAR OTRA VEZ-->
-              <button type="submit" name="update-image-submit" id="image-submit" tabindex="4"
-                      class="form-control btn btn-login btn-primary">Update image
-              </button>
-            </form>
-          </div>
-        </div>
-        <div class="col-lg-7 col-md-9 col-sm-7 col-xs-12">
-          <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
-            <!--<p class="mt-2 text-white lead text-center"> FitURJC Account</p>-->
-            <form method="post" action="/user/editedUser" enctype="multipart/form-data">
-              <!--Mirar bien enlace action, hay un warning del directorio porque no está acabado-->
-              <div class="form-group">
-                <input type="text" class="form-control" name="name" formControlName="name"
-                       placeholder="Name" value="{{userLogged.name}}">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="surname" formControlName="surname"
-                       placeholder="Surname" value="{{userLogged.surname}}">
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" formControlName="email"
-                       placeholder="Email address" value="{{userLogged.email}}">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" name="password" formControlName="password"
-                       placeholder="Enter new password">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" formControlName="passwordRepeat"
-                       name="confirm-password" placeholder="Confirm new password">
-              </div>
-              <div class="form-group">
-                <input type="number" class="form-control" formControlName="newAge"
-                       name="age" placeholder="age" value="25">
-              </div>
-              <div style="float: left; width: 48%">
-                <button type="submit" class="btn btn-primary btn-block">
-                  Update
-                </button>
-              </div>
-              <div style="float: right; width: 48%">
-                <button type="reset" class="btn btn-primary btn-block">
-                  Cancel
-                </button>
-              </div>
+    <div class="card border-none">
 
-            </form>
+        <div class="mt-4 text-white lead text-center">FitURJC Profile Settings</div>
+      <div class="row"> </div>
+      <br>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
+            <div>
+              <img class="img-circle img-responsive" src="assets/img/profile/default_user_trans.png">
+              <!-- Aqui vendria edit mode-->
+            </div>
+            <br>
+            <div>
+              <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                <!--<input type="file"> AQUI NO ESTA ACABADO- REPASAR OTRA VEZ-->
+                <button type="submit" name="update-image-submit" id="image-submit" tabindex="4"
+                        class="form-control btn btn-login btn-primary">Update image
+                </button>
+              </form>
+            </div>
           </div>
+          <form class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
+              <fieldset>
+
+                <!--- Name Block --->
+                <div class="form-group">
+                  <label for="inputName">Name</label>
+                  <input type="text"
+                         id="inputName"
+                         placeholder="Name" value="{{userLogged.name}}">
+                </div>
+                <!--- Surname Block --->
+                <div class="form-group">
+                  <label for="inputSurname">Surname</label>
+                  <input type="text"
+                         id="inputSurname"
+                         placeholder="Name" value="{{userLogged.surname}}">
+                </div>
+
+                <!--- Email Block --->
+                <div class="form-group">
+                  <label for="inputEmail">Email</label>
+                  <input type="text"
+                         id="inputEmail"
+                         placeholder="Name" value="{{userLogged.email}}">
+                </div>
+
+                <!--- Password Block --->
+                <div class="form-group">
+                  <label for="inputPassword">Password</label>
+                  <input type="password"
+                         id="inputPassword"
+                         placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                  <label for="confirmPassword">Confirm Password</label>
+                  <input type="password"
+                         id="confirmPassword"
+                         placeholder="Password">
+                </div>
+
+                <!--- Select role Block --->
+                <div class="form-group">
+                  <label for="select">Role</label>
+                  <select id="select">
+                    <option>User</option>
+                    <option>Admin</option>
+                  </select>
+                </div>
+
+                <!--- Terms and conditions Block --->
+                <div class="form-group checkbox">
+                  <label>
+                    <input type="checkbox"> Confirm that you've read the Terms and
+                    Conditions
+                  </label>
+                </div>
+
+                <!--- Buttons Block --->
+                <div class="form-group">
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </fieldset>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <!--Falta mirar bien los metodos de submit-->
-</section>
+</div>
