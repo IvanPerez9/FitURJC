@@ -4,4 +4,4 @@ export const USER_REGISTER: string = BASEURL + 'register';
 export const ADMIN_COURSEURL: string = BASEURL + 'admin/course/';
 export const ADMIN_USERURL: string = BASEURL + 'admin/';
 export const COURSE_BASEURL: string = BASEURL + 'courses/';
-export const SCHEDULE_BASEURL: string = BASEURL + 'schedule';
+export const SCHEDULE_BASEURL: string = BASEURL + 'schedules/';

@@ -1,7 +1,7 @@
 <app-navbar-course-profile></app-navbar-course-profile>
 <section class="margin">
   <div class="container-fluid p-0">
-    <div class="row" id="listCourses" *ngFor="let listcourses of courses">
+    <div class="row" id="listCourses" *ngFor="let course of courses">
 
 
       <div class="container-fluid p-0">
@@ -12,13 +12,13 @@
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    {{listcourses.category}}
+                    category
                   </div>
                   <div class="project-name">
-                    {{listcourses.name}}
+                    {{course.name}}
                   </div>
                   <div class="project-description">
-                    {{listcourses.description}}
+                    description
                   </div>
                 </div>
               </div>

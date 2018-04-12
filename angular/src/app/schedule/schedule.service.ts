@@ -9,16 +9,16 @@ import { LoginService } from '../login/login.service';
 import 'rxjs/Rx';
 import * as globals from '../globals';
 import { map } from 'rxjs/operators';
-import { Course } from '../course-profile/course-profile.model';
+import { Course, Category } from '../course-profile/course-profile.model';
+import { CourseProfileService } from '../course-profile/course-profile.service'
+
 
 @Injectable()
 export class ScheduleService {
 
-    schedule: Schedule;
-    user: User;
+    
 
     constructor(private http: HttpClientBasicAuth, private loginService: LoginService)  {
-
     }
 
     getSchedules(): Observable<any> {
@@ -46,11 +46,12 @@ export class ScheduleService {
         return this.http.put(url + scheduleId, schedule);
     }
 
-    checkIfFollow() {
-        if (this.loginService.isLogged) {
-          let aux: boolean = (this.schedule.listUsers.find(
-            user1 => user1.id === this.user.id) !== undefined); // Done by ID ??
-          return aux;
-        }
-    }
+    //IVAN
+    // checkIfFollow() {
+    //     if (this.loginService.isLogged) {
+    //       let aux: boolean = (this.schedule.listUsers.find(
+    //         user1 => user1.id === this.user.id) !== undefined); // Done by ID ??
+    //       return aux;
+    //     }
+    // }
 }

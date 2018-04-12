@@ -12,15 +12,13 @@
                             <h6>{{course.description}}</h6>
                         </h4>
                         <br>
-                        <ul>
-                            SCHEDULES
+                        <ul *ngFor="let schedule of schedules">
                             <li type="circle">
-                                <a>Participants in Schedule IDSCHEDULE: CAPACIDADLISTAUSUARIO </a>
+                                <a>Participants in Schedule {{schedule.idSchedule}}: CAPACIDADLISTAUSUARIO </a>
                             </li>
                             <li type="circle">
                                 <a>Users: LISTA DE USUARIOS </a>
                             </li>
-                            SCHEDULES
                             <li type="circle">
                                 <a class="btn btn-main btn-enter btn" data-coursename="name" data-idcourse="id" onclick="deleteCourse(this)">
                                     Delete Course
