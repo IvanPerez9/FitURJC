@@ -24,10 +24,11 @@ export class RegisterComponent {
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.userRegister = new FormGroup({
-      username: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
       nickname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
+      age: new FormControl ('', Validators.required),
       passwordHash: new FormControl('', Validators.required ),
       passwordRepeat: new FormControl('', [Validators.required])
     });
@@ -61,10 +62,11 @@ export class RegisterComponent {
 
 // tslint:disable-next-line:class-name
 export interface UserRegister {
-  username: string;
+  name: string;
   passwordHash: string;
   nickname: string;
   email: string;
   surname: string;
+  age: number;
 }
 

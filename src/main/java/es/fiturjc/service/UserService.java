@@ -71,7 +71,7 @@ public class UserService {
     }
 
     public User createNewUser2(User user) {
-        User u = new User(user.getName(), user.getSurname(), user.getAge(), user.getPasswordHash(), user.getEmail(), user.getNickname(), true, "USER");
+        User u = new User(user.getName(), user.getSurname(), user.getAge(), user.getPasswordHash(), user.getEmail(), user.getNickname(), true, "ROLE_USER");
         userRepository.save(u);
         return u;
     }
