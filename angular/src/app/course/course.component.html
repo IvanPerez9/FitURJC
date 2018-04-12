@@ -1,24 +1,20 @@
-<section class="p-0" id="activities">
-  <div class="container-fluid p-0">
-    <div class="row no-gutters" *ngFor="let course of courses">
-      <div class="col-lg-4 col-sm-6" *ngFor="let image of imagePaths">
-        <div class="portfolio-box">
-          <img class="img-fluid" [src]="image">
-          <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-              <div class="project-category text-faded">
-                {{course.category}}
-              </div>
-              <div class="project-name">
-                {{course.name}}
-              </div>
-              <div class="project-description">
-                {{course.description}}
-              </div>
-            </div>
+<div class="row no-gutters">
+  <div class="col-lg-4 col-sm-6" *ngFor="let course of courses">
+    <div class="portfolio-box">
+      <img class="img-fluid" src="/assets/img/courses/{{course.name}}.jpg">
+      <div class="portfolio-box-caption">
+        <div class="portfolio-box-caption-content">
+          <div class="project-category text-faded">
+            {{course.category}}
+          </div>
+          <div class="project-name">
+            {{course.name}}
+          </div>
+          <div class="project-description">
+            {{course.description}}
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
