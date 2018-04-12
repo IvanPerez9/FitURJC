@@ -46,9 +46,11 @@ public class ScheduleRestController {
 	 * @return
 	 */
 
+
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	@JsonView(Schedule.Basic.class)
+	@JsonView(ScheduleDetails.class)
 	public ResponseEntity<List<Schedule>> getSchedules() {
 		List<Schedule> schedules = scheduleService.getAllSchedule();
 		if (schedules != null) {

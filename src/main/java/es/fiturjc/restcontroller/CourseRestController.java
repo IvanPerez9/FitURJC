@@ -46,9 +46,12 @@ public class CourseRestController {
 	 *
 	 * @return
 	 */
+	
+	public interface CourseDetails extends Course.Basic, Course.Details{}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
-	@JsonView(Course.Basic.class)
+	@JsonView(CourseDetails.class)
 	public ResponseEntity<List<Course>> getCourses() {
 		List<Course> courses = courseService.getAllCourses();
 		if (courses != null) {
