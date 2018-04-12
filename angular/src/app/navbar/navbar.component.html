@@ -12,10 +12,11 @@
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item" *ngFor="let navbar of listnavbar"  [class.selected]="navbar === selectedList" (click)="onSelect(navbar)">
-					<a class="nav-link" [href]="navigateTo(navbar.name)">
-						{{navbar.name | uppercase}}
-					</a>
+				<li class="nav-item">
+          <a scrollTo href="#activities" class="navbar-brand"><span >ACTIVITIES</span></a>
+          <a scrollTo href="#professionals" class="navbar-brand"><span >PROFESSIONALS</span></a>
+          <a scrollTo href="#contact" class="navbar-brand"><span >CONTACT</span></a>
+          <a routerLink="/facilities" class="navbar-brand"><span >FACILITIES</span></a>
 				</li>
 
 				<li class="nav-item">
