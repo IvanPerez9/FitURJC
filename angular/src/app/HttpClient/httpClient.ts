@@ -68,7 +68,7 @@ export class HttpClientBasicAuth {
     setUser(u: User) {
         this.sessionData.setUserLogged(u);
         this.sessionData.setAmILogged(true);
-        this.sessionData.setAmIAdmin(this.sessionData.getUserLogged().roles.indexOf('ROLE_ADMIN') > -1);
+        this.sessionData.setAmIAdmin(this.sessionData.getUserLogged().roles.indexOf("ROLE_ADMIN") > -1);
         this.sessionData.saveData();
     }
 }

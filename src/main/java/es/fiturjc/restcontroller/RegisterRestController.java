@@ -25,7 +25,7 @@ public class RegisterRestController {
 	@Autowired
 	private UserService userService;
 
-	@JsonView(User.Basic.class)
+	@JsonView(UserDetails.class)
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> createUser(@RequestBody User user ) {
