@@ -5,35 +5,35 @@
                 <div class="header">
                     <h4 class="title">Courses</h4>
                 </div>
-                <div class="content" *ngFor="let course of courses">
-                    <ul>
+                <div class="content">
+                    <ul *ngFor="let course of courses">
                         <h4>
-                            <u>{{course.name}} </u>
+                            <u>{{course.name}}</u>:
                             <h6>{{course.description}}</h6>
                         </h4>
                         <br>
                         <ul *ngFor="let schedule of course.schedules">
                             <li type="circle">
-                                <a>Participants in Schedule {{schedule.idSchedule}}:{{schedule.listUsers}} </a>
+                                <a>Participants in Schedule {{schedule.idSchedule}}: {{schedule.listUsers.length}} </a>
                             </li>
                             <li type="circle">
-                                <a>Users: LISTA DE USUARIOS </a>
-                            </li>
-                            <li type="circle">
-                                <a class="btn btn-main btn-enter btn" data-coursename="name" data-idcourse="id" onclick="deleteCourse(this)">
-                                    Delete Course
-                                    <i class="fa fa-times" aria-hidden="true"></i>
-                                </a>
+                                <a>Users: {{schedule.listUsers}} </a>
                             </li>
                         </ul>
+                        <li type="circle">
+                            <a class="btn btn-main btn-enter btn" data-name="{{course.name}}" data-id="{{course.id}}" onclick="deleteCourse(this)">
+                                Delete {{course.name}}
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                        </li>
                     </ul>
                     <br>
-					<a class="btn " href="/courses">
-						View Current Courses</a>
-					<a class="btn " href="/adminPage/manageCourses/addCourse"> <!-- HAY QUE HACER EL ADDCOURSE -->
-						Add New Course</a>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <a class="btn " href="/courses">
+                        View Current Courses</a>
+                    <a class="btn " href="/adminPage/controlCourses/addCourse">
+                        Add New Course</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
