@@ -20,7 +20,7 @@ export class AddCoursesComponent implements OnInit {
   courseCategory: any = Object.keys(Category);
   courses: Array<Course>;
   ifSaveCourse: FormGroup;
-  // addNewCourse = SaveCourse;
+  addNewCourse: SaveCourses;
 
   constructor(private router: Router, private courseProfileService: CourseProfileService,
     private loginService: LoginService) { }
@@ -50,13 +50,13 @@ export class AddCoursesComponent implements OnInit {
     );
   }
 
-  /*
   saveCourse(form: FormGroup) {
     const valuesForm: any = form.value;
     this.addNewCourse = valuesForm;
     this.controlCourses.createCourse(this.addNewCourse).subscribe(
       result => {
-       // this.controlCourses.createCourse(result);
+        const aux: any = result;
+        this.controlCourses.createCourse(aux);
         this.router.navigate(['/admin/controlCourses']);
       },
       error => {
@@ -66,15 +66,14 @@ export class AddCoursesComponent implements OnInit {
     );
     return;
   }
-  */
 
 }
 
-export interface SaveCourse {
+export interface SaveCourses {
   name: string;
   id: number;
   category: Category;
-  descripcion: string;
-  schedule: Schedule[];
+  description: string;
+  schedules: Schedule[];
   src: string;
 }
