@@ -16,20 +16,20 @@ export class AppComponent implements OnInit{
   }
   ngOnInit() {
 
-    const sampleUrl = 'http://slowwly.robertomurray.co.uk/delay/6000/url/https://jsonplaceholder.typicode.com/posts/1';
+    // const sampleUrl = 'http://slowwly.robertomurray.co.uk/delay/6000/url/https://jsonplaceholder.typicode.com/posts/1';
 
-    /*this.ngProgress.start();
-    setTimeout(() => {
-      this.ngProgress.set(0.1);
-    }, 1000);
-    setTimeout(() => {
-      this.ngProgress.inc(0.2);
-    }, 2000);*/
-    this.http.get(sampleUrl)
-      .subscribe((response) => {
-        // this.ngProgress.done();
-        this.posts = response.json();
-      });
+    // /*this.ngProgress.start();
+    // setTimeout(() => {
+    //   this.ngProgress.set(0.1);
+    // }, 1000);
+    // setTimeout(() => {
+    //   this.ngProgress.inc(0.2);
+    // }, 2000);*/
+    // this.http.get(sampleUrl)
+    //   .subscribe((response) => {
+    //     // this.ngProgress.done();
+    //     this.posts = response.json();
+    //   });
   }
 
 }

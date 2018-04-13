@@ -1,4 +1,5 @@
-<ng-progress></ng-progress>
+<!-- <ng-progress></ng-progress> -->
+<ng4-loading-spinner></ng4-loading-spinner>
 <section class="hero">
   <div class="container">
     <p align="center" style="font-size:26px"> Facilities in your Gym </p>
@@ -9,7 +10,8 @@
       in case you’ve left something at home. And to keep you safe and sound day and night, we’ve got a PIN entry door system
       for our members.</a>
 
-    <div class="row" id="listFacilities" [@routerTransition] >
+    <div class="row" id="listFacilities">
+
       <div class="col-md-3" *ngFor="let path of imagePaths">
         <div class="card">
           <img class="size-img-facilities" [src]="path">
@@ -22,12 +24,8 @@
     <div class="styleMoreFacilities">
       <div id="spinner"></div>
       <p class="text-center">
-        <button id="btnMoreFacilities" type="button" class="btn btn-primary">See more</button>
-        <form method="get" action="/">
-          <button id="goBack" type="submit" class="btn btn-warning" [routerLink]="['/']">Go back
-          </button>
-        </form>
+        <button type="button" class="btn btn-primary" (click)="moreCourses()">See more</button>
+        <button id="goBack" type="submit" class="btn btn-warning" [routerLink]="['/']">Go back</button>
     </div>
   </div>
 </section>
-

@@ -40,6 +40,8 @@ import { BrowserXhr } from '@angular/http';
 import { Maps } from './maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { ScrollToModule } from "ng2-scroll-to";
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
 
 
 
@@ -59,6 +61,7 @@ import { ScrollToModule } from "ng2-scroll-to";
     HttpModule,
     BrowserModule,
     ReactiveFormsModule,
+    Ng4LoadingSpinnerModule.forRoot(),
     ScrollToModule.forRoot(),
     AgmCoreModule.forRoot({
       // please get your own API key here:
