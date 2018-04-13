@@ -30,16 +30,16 @@
 
           <!-- {{^signup}} -->
           <!-- {{^isFull}} -->
-          <a class="btn btn-sign simple_confirmSign" data-name="{{course.name}}" data-idSchedule="idSchedule" onclick="showDialogEnroll(this)">SIGN UP</a>
+          <a class="btn btn-sign simple_confirmSign" data-name="{{course.name}}" data-id="{{schedule.idSchedule}}" onclick="showDialogEnroll(this)">SIGN UP</a>
           <!-- {{/isFull}} -->
           <!-- {{#isFull}} -->
-          <a class="btn btn-dark simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogSoldOut(this)">SOLD OUT</a>
+          <a class="btn btn-dark simple_confirmQuit" data-name="{{course.name}}" data-id="{{schedule.idSchedule}}" onclick="showDialogSoldOut(this)">SOLD OUT</a>
           <!-- {{/isFull}} -->
           <!-- {{/signup}} -->
 
 
           <!-- {{#signup}} -->
-          <a class="btn btn-quit simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogUnEnroll(this)">QUIT</a>
+          <a class="btn btn-quit simple_confirmQuit" data-name="{{course.name}}" data-id="{{schedule.idSchedule}}" onclick="showDialogUnEnroll(this)">QUIT</a>
           <!-- {{/signup}} -->
 
           Capacity: {{schedule.listUsers.length}}/{{maxCapacity}}

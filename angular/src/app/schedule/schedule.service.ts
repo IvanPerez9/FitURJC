@@ -46,6 +46,7 @@ export class ScheduleService {
         return this.http.put(url + scheduleId, schedule);
     }
 
+
     //IVAN
     // checkIfFollow() {
     //     if (this.loginService.isLogged) {
