@@ -36,8 +36,8 @@ export class AdminControlCoursesService {
         return this.http.post(url + 'add', course);
     }
 
-    deleteCourse(courseId: number | string) {
+    deleteCourse(id: number | string) {
         let url = globals.ADMIN_COURSEURL;
-        return this.http.delete(url + 'delete/' + courseId);
+        return this.http.delete(url + 'delete/' + id);
     }
 }

@@ -4,7 +4,7 @@ import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 
 @Component({
-    selector: 'app-admin',  // Mirar lo del kebab case, tsconfig 
+    selector: 'app-admin',  // Mirar lo del kebab case, tsconfig
     templateUrl: './admin.component.html',
     styleUrls: ['./admin.component.css']
 })
