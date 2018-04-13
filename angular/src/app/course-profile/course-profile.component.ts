@@ -6,6 +6,7 @@ import { CourseProfileService } from '../course-profile/course-profile.service';
 import { Schedule } from '../schedule/schedule.model';
 import { ScheduleService } from '../schedule/schedule.service';
 import { error } from 'util';
+import { MAXCAPACITY } from '../schedule/schedule.model';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class CourseProfileComponent implements OnInit {
 
   courses: Array<Course>;
   schedules: Schedule[];
+  maxCapacity = MAXCAPACITY;
 
   constructor(private router: Router, private loginService: LoginService, private courseProfileService: CourseProfileService, 
               private scheduleService: ScheduleService) {

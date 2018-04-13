@@ -22,36 +22,37 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="card-footer-course" *ngFor="let schedule of schedules"> <!-- ME DA QUE ESTE NGFOR NO VA AQUI, PERO NO SE DONDE PUEDE IR-->
-        <!-- {{#schedules}}	 -->
-        <!-- {{schedule}} -->
+        <div class="card-footer-course" *ngFor="let schedule of course.schedules">
+          {{schedule.schedule}}
+          <!-- {{#schedules}}	 -->
+          <!-- {{schedule}} -->
 
-        <!-- {{^signup}} -->
-        <!-- {{^isFull}} -->
-        <a class="btn btn-sign simple_confirmSign" data-name="course.name" data-idSchedule="idSchedule" onclick="showDialogEnroll(this)">SIGN UP</a>
-        <!-- {{/isFull}} -->
-        <!-- {{#isFull}} -->
-        <a class="btn btn-dark simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogSoldOut(this)">SOLD OUT</a>
-        <!-- {{/isFull}} -->
-        <!-- {{/signup}} -->
+          <!-- {{^signup}} -->
+          <!-- {{^isFull}} -->
+          <a class="btn btn-sign simple_confirmSign" data-name="{{course.name}}" data-idSchedule="idSchedule" onclick="showDialogEnroll(this)">SIGN UP</a>
+          <!-- {{/isFull}} -->
+          <!-- {{#isFull}} -->
+          <a class="btn btn-dark simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogSoldOut(this)">SOLD OUT</a>
+          <!-- {{/isFull}} -->
+          <!-- {{/signup}} -->
 
 
-        <!-- {{#signup}} -->
-        <a class="btn btn-quit simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogUnEnroll(this)">QUIT</a>
-        <!-- {{/signup}} -->
+          <!-- {{#signup}} -->
+          <a class="btn btn-quit simple_confirmQuit" data-coursename="course.name" data-idschedule="idschedule" onclick="showDialogUnEnroll(this)">QUIT</a>
+          <!-- {{/signup}} -->
 
-        Capacity: listUsers.size/MAXIMUM_CAPACITY
+          Capacity: {{schedule.listUsers.length}}/{{maxCapacity}}
+          <br>
+          <!-- {{/schedules}} -->
+        </div>
         <br>
-        <!-- {{/schedules}} -->
       </div>
-      <br>
     </div>
-  </div>
-  <div class="styleMoreEvents">
-    <div id="spinner"></div>
-    <p class="text-center">
-      <button id="btnMoreCourses" type="button" class="btn btn-primary">See more</button>
+    <div class="styleMoreEvents">
+      <div id="spinner"></div>
+      <p class="text-center">
+        <button id="btnMoreCourses" type="button" class="btn btn-primary">See more</button>
+    </div>
   </div>
 </section>
