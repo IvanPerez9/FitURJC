@@ -18,7 +18,6 @@ export class AdminComponent {
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit() {
-        console.log("eres Admin");
         let admin: boolean;
         if (this.sessionService.isLogged()) {
             if (this.sessionService.isAdmin()) {

@@ -57,7 +57,7 @@ export class AdminControlCoursesComponent implements OnInit {
       }
     );
   }
-/*
+
   deleteThisCourse(id: number) {
     this.adminControlCoursesService.deleteCourse(id).subscribe(
       response => {
@@ -70,6 +70,6 @@ export class AdminControlCoursesComponent implements OnInit {
       }
     );
   }
-  */
+  
 
 }
