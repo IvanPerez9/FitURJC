@@ -15,12 +15,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-courses.component.css']
 })
 export class AddCoursesComponent implements OnInit {
-  
+
   controlCourses: AdminControlCoursesService;
   courseCategory: any = Object.keys(Category);
   courses: Array<Course>;
   ifSaveCourse: FormGroup;
-  addNewCourse = this.ifSaveCourse;
+  // addNewCourse = SaveCourse;
 
   constructor(private router: Router, private courseProfileService: CourseProfileService,
     private loginService: LoginService) { }
@@ -29,6 +29,7 @@ export class AddCoursesComponent implements OnInit {
   ngOnInit() {
     this.initCourses();
     this.ifSaveCourse = new FormGroup({
+      id: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       descripcion: new FormControl('', Validators.required),
@@ -40,27 +41,38 @@ export class AddCoursesComponent implements OnInit {
   initCourses() {
     this.courseProfileService.getCourses().subscribe(
       resultCourses => {
-        console.log(resultCourses)
+        console.log(resultCourses);
         this.courses = resultCourses;
       },
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
-  saveCourse(form : FormGroup){
+  /*
+  saveCourse(form: FormGroup) {
     const valuesForm: any = form.value;
     this.addNewCourse = valuesForm;
-    //this.controlCourses.createCourse(this.addNewCourse);
+    this.controlCourses.createCourse(this.addNewCourse).subscribe(
+      result => {
+       // this.controlCourses.createCourse(result);
+        this.router.navigate(['/admin/controlCourses']);
+      },
+      error => {
+        console.log(error);
+        console.log(error.code);
+      }
+    );
     return;
-    ;
   }
+  */
 
 }
 
-export interface ifSaveCourse {
+export interface SaveCourse {
   name: string;
+  id: number;
   category: Category;
   descripcion: string;
   schedule: Schedule[];
