@@ -2,15 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 import { Observable } from 'rxjs/Observable';
 import { Schedule } from './schedule.model';
-import { User } from '../user/user.model';
-import { UserRegister } from '../register/register.component';
 import { LoginService } from '../login/login.service';
-// tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import * as globals from '../globals';
-import { map } from 'rxjs/operators';
-import { Course, Category } from '../course-profile/course-profile.model';
-import { CourseProfileService } from '../course-profile/course-profile.service'
 
 
 @Injectable()
@@ -20,9 +14,8 @@ export class ScheduleService {
     constructor(private http: HttpClientBasicAuth, private loginService: LoginService)  {
     }
 
-    getSchedules(): Observable<any> {
-        let url = globals.SCHEDULE_BASEURL;
-        return this.http.get(url);
+    getSchedules(): Observable<Schedule[]> {
+      return this.http.get(globals.SCHEDULE_BASEURL) as Observable<Schedule[]>;
     }
 
     getScheduleById(sheduleId: number): Observable<any> {
@@ -40,9 +33,16 @@ export class ScheduleService {
         return this.http.put(url + scheduleId + '/join', this.getScheduleById(scheduleId));
     }
 
-    unsubscribeSchedule(scheduleId: number, schedule: Schedule) {
+    unsubscribeSchedule(scheduleId: number) {
         let url = globals.SCHEDULE_BASEURL;
         return this.http.put(url + scheduleId + '/unsubscribe', this.getScheduleById(scheduleId));
     }
 
+    /*isUserEnrolled(scheduleID:number, userLogged:User, schedule: Schedule){
+      let url = globals.SCHEDULE_BASEURL;
+      userLogged = this.http.sessionData.getUserLogged();
+      return schedule.signup.valueOf();
+      scheduleID.getUser().contains(userLogged)
+    }
+*/
 }

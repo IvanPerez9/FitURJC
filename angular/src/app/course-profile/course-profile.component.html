@@ -24,27 +24,28 @@
         </div>
 
         <div class="card-footer-course" *ngFor="let schedule of course.schedules">
+
           {{schedule.schedule}}
-          <!-- {{#schedules}}	 -->
-          <!-- {{schedule}} -->
 
-          <!-- {{^signup}} -->
-          <!-- {{^isFull}} -->
-          <a class="btn btn-sign simple_confirmSign" data-name="{{course.name}}" data-id="{{schedule.idSchedule}}" onclick="showDialogEnroll(this)">SIGN UP</a>
-          <!-- {{/isFull}} -->
-          <!-- {{#isFull}} -->
-          <a class="btn btn-dark simple_confirmQuit" data-name="{{course.name}}" data-id="{{schedule.idSchedule}}" onclick="showDialogSoldOut(this)">SOLD OUT</a>
-          <!-- {{/isFull}} -->
-          <!-- {{/signup}} -->
+          <div *ngIf="isUserEnrolled(schedule)">
+            <a class="btn btn-quit simple_confirmQuit" (click)="unEnroll( schedule.idSchedule)">QUIT</a>
+          </div>
+
+          <div *ngIf="!isUserEnrolled(schedule)">
+            <div *ngIf="schedule.full">
+              <a class="btn btn-dark simple_confirmQuit" disabled="">SOLD OUT</a>
+            </div>
+            <div *ngIf="!schedule.full">
+              <a class="btn btn-sign simple_confirmSign" (click)="enroll( schedule.idSchedule)">SIGN UP</a>
+            </div>
+          </div>
 
 
-          <!-- {{#signup}} -->
-          <a class="btn btn-quit simple_confirmQuit" data-name="{{course.name}}" data-id="{{schedule.idSchedule}}" onclick="showDialogUnEnroll(this)">QUIT</a>
-          <!-- {{/signup}} -->
 
-          Capacity: {{schedule.listUsers.length}}/{{maxCapacity}}
+
+
+          Capacity: {{schedule.listUsers.length}}/3 <!-- MAL MAL MAL: Os cuesta 5 minutos meter en el modelo la propiedad capacidad maxima -->
           <br>
-          <!-- {{/schedules}} -->
         </div>
         <br>
       </div>
