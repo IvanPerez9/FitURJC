@@ -16,7 +16,6 @@ import { CourseProfileService } from '../course-profile/course-profile.service'
 @Injectable()
 export class ScheduleService {
 
-    
 
     constructor(private http: HttpClientBasicAuth, private loginService: LoginService)  {
     }
@@ -36,23 +35,14 @@ export class ScheduleService {
         return this.http.delete(url);
     }
 
-    joinSchedule(scheduleId: number, schedule: Schedule) {
+    joinSchedule(scheduleId: number) {
         let url = globals.SCHEDULE_BASEURL;
-        return this.http.put(url + scheduleId, schedule);
+        return this.http.put(url + scheduleId + '/join', this.getScheduleById(scheduleId));
     }
 
     unsubscribeSchedule(scheduleId: number, schedule: Schedule) {
         let url = globals.SCHEDULE_BASEURL;
-        return this.http.put(url + scheduleId, schedule);
+        return this.http.put(url + scheduleId + '/unsubscribe', this.getScheduleById(scheduleId));
     }
 
-
-    //IVAN
-    // checkIfFollow() {
-    //     if (this.loginService.isLogged) {
-    //       let aux: boolean = (this.schedule.listUsers.find(
-    //         user1 => user1.id === this.user.id) !== undefined); // Done by ID ??
-    //       return aux;
-    //     }
-    // }
 }

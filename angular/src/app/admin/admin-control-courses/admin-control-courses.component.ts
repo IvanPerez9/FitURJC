@@ -21,7 +21,7 @@ export class AdminControlCoursesComponent implements OnInit {
 
   constructor(private router: Router, private courseProfileService: CourseProfileService,
     private loginService: LoginService, private scheduleService: ScheduleService,
-    //private adminControlCoursesService: AdminControlCoursesService,
+    private adminControlCoursesService: AdminControlCoursesService,
     private adminComponent: AdminComponent) { }
 
   ngOnInit() {
@@ -38,11 +38,11 @@ export class AdminControlCoursesComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
   goToAddCourse() {
-    console.log("naveggnado")
+    console.log('naveggnado');
     this.router.navigate(['/admin/controlCourses/addCourse']);
   }
 
@@ -70,6 +70,4 @@ export class AdminControlCoursesComponent implements OnInit {
       }
     );
   }
-  
-
 }
