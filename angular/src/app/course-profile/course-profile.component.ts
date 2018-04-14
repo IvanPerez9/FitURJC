@@ -4,9 +4,10 @@ import { LoginService } from '../login/login.service';
 import { Course } from './course-profile.model';
 import { CourseProfileService } from './course-profile.service';
 import { ScheduleService } from '../schedule/schedule.service';
-import {User} from "../user/user.model";
+import { User } from "../user/user.model";
 import { UserService } from '../user/user.service';
-import {Schedule} from "../schedule/schedule.model";
+import { Schedule } from "../schedule/schedule.model";
+
 
 
 @Component({
@@ -18,9 +19,11 @@ export class CourseProfileComponent implements OnInit {
 
   courses: Array<Course>;
   userLogged: User;
+  signup: boolean;
+  quit: boolean;
 
   constructor(private router: Router, private loginService: LoginService, private courseProfileService: CourseProfileService,
-              private scheduleService: ScheduleService, private userService: UserService) {
+    private scheduleService: ScheduleService, private userService: UserService) {
     this.userLogged = this.userService.getLoggedUser();
   }
 
@@ -49,14 +52,21 @@ export class CourseProfileComponent implements OnInit {
       }
     }*/
 
+
   isUserEnrolled(schedule: Schedule): boolean {
-    let user =  schedule.listUsers.find(user => user.id === this.userLogged.id);
+    let user = schedule.listUsers.find(user => user.id === this.userLogged.id);
     return !!user;
   }
 
   unEnroll(idSchedule: number) {
     this.scheduleService.unsubscribeSchedule(idSchedule).subscribe(
-      respuesta => console.log("Todo ha ido bien"),
+      respuesta => {
+        this.quit = true;
+        setTimeout(() => {
+          this.router.navigate(['/user/profile']);
+        },2000);
+        console.log("Todo ha ido bien");
+      },
       error => console.log("Algo ha ido mal"),
       () => console.log("me da igual lo que haya pasado, yo siempre me voy a ejecutar")
     );
@@ -64,7 +74,13 @@ export class CourseProfileComponent implements OnInit {
   }
   enroll(idSchedule: number) {
     this.scheduleService.joinSchedule(idSchedule).subscribe(
-      respuesta => console.log("DE PUTA MARE"),
+      respuesta => {
+        this.signup = true;
+        setTimeout(() => {
+          this.router.navigate(['/user/profile']);
+        },2000);
+        console.log("DE PUTA MARE");
+      },
       error => console.log("AL CARRER")
     );
   }

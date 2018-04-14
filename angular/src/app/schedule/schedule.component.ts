@@ -6,6 +6,7 @@ import { LoginService } from '../login/login.service';
 import { Course } from '../course-profile/course-profile.model';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
+import { CourseProfileService } from '../course-profile/course-profile.service';
 
 
 @Component({
@@ -18,20 +19,33 @@ export class ScheduleComponent implements OnInit {
   schedules: Schedule[];
   idSchedule: number;
   schedule: Schedule;
-  listUsers: User[];
+  users: User[];
+  user: User;
   course: Course;
+  courses: Array<Course>;
   signup: boolean;
 
   constructor
-  (private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService) {
+  (private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService, private courseProfileService: CourseProfileService) {
   }
 
   ngOnInit() {
     this.initSchedules();
   }
 
-  initSchedules() {
+  initCourses() {
+    this.courseProfileService.getCourses().subscribe(
+      course => {
+        this.courses = course;
+        console.log(course);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 
+  initSchedules() {
     this.scheduleService.getSchedules().subscribe(
       schedule => {
         this.schedules = schedule;
@@ -40,6 +54,17 @@ export class ScheduleComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  initUsers() {
+    this.userService.getUsers().subscribe(
+      user => {
+        this.users = user;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   follow() {

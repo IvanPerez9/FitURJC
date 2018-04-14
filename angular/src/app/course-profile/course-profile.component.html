@@ -1,9 +1,13 @@
 <app-navbar-course-profile></app-navbar-course-profile>
 <section class="margin">
+  <div *ngIf="signup" class="alert alert-success">
+    <strong>SIGNUP</strong> You have signed up correctly
+  </div>
+  <div *ngIf="quit" class="alert alert-danger">
+      <strong>QUIT</strong> You have quitted correctly
+    </div>
   <div class="container-fluid p-0">
     <div class="row" id="listCourses">
-
-
       <div class="col-lg-4 col-sm-6" *ngFor="let course of courses">
         <div class="portfolio-box">
           <img class="img-fluid" src="/assets/img/courses/{{course.name}}.jpg">
@@ -22,15 +26,11 @@
             </div>
           </div>
         </div>
-
         <div class="card-footer-course" *ngFor="let schedule of course.schedules">
-
           {{schedule.schedule}}
-
           <div *ngIf="isUserEnrolled(schedule)">
             <a class="btn btn-quit simple_confirmQuit" (click)="unEnroll( schedule.idSchedule)">QUIT</a>
           </div>
-
           <div *ngIf="!isUserEnrolled(schedule)">
             <div *ngIf="schedule.full">
               <a class="btn btn-dark simple_confirmQuit" disabled="">SOLD OUT</a>
@@ -39,12 +39,7 @@
               <a class="btn btn-sign simple_confirmSign" (click)="enroll( schedule.idSchedule)">SIGN UP</a>
             </div>
           </div>
-
-
-
-
-
-          Capacity: {{schedule.listUsers.length}}/3 <!-- MAL MAL MAL: Os cuesta 5 minutos meter en el modelo la propiedad capacidad maxima -->
+          Capacity: {{schedule.listUsers.length}}/2
           <br>
         </div>
         <br>
