@@ -6,7 +6,7 @@ import { CourseProfileService } from '../../course-profile/course-profile.servic
 import { Schedule } from '../../schedule/schedule.model';
 import { ScheduleService } from '../../schedule/schedule.service';
 import { Response } from '@angular/http';
-//import { AdminControlCoursesService } from './admin-control-courses.service';
+import { AdminControlCoursesService } from './admin-control-courses.service';
 import { AdminComponent } from '../../admin/admin.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class AdminControlCoursesComponent implements OnInit {
 
   constructor(private router: Router, private courseProfileService: CourseProfileService,
     private loginService: LoginService, private scheduleService: ScheduleService,
-    //  private adminControlCoursesService: AdminControlCoursesService,
+    private adminControlCoursesService: AdminControlCoursesService,
     private adminComponent: AdminComponent) { }
 
   ngOnInit() {
