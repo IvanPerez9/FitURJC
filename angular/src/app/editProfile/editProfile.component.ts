@@ -39,6 +39,10 @@ export class EditProfileComponent implements OnInit {
     console.log("Init UserComponent");
   }
   onSubmit(form:FormGroup){
+    console.log("Updating user");
+    const newValues: any=form.value;
+    this.userUpdated=newValues;
+
     this.userService.editUser(this.userLogged.id,this.userLogged).subscribe(
       response=> {
         console.log("User edited");

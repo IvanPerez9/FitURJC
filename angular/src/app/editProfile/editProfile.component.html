@@ -25,7 +25,7 @@
             <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
               <fieldset>
                 <!--- Name Block --->
-                <form role="form" [formGroup]="userUpdated" #formDir="ngForm" (ngSubmit)="onSubmit(userUpdated)">
+                <form role="form" [formGroup]="userUpdated" (ngSubmit)="onSubmit(userUpdated)">
                   <div class="form-group">
                     <label for="inputName">Name</label>
                     <input type="text" class="form-control"
@@ -83,6 +83,9 @@
                   <!--<pre>{{form.value | json}}</pre>
                   <pre>isValid: {{form.valid}}</pre>-->
                   <!--- Buttons Block --->
+                  <div *ngIf="error_updated" class="alert alert-danger">
+                    <strong>Error. </strong> Unable to register
+                  </div>
                   <div class="form-group">
                     <button type="reset" class="btn btn-default">Cancel</button>
                     <button type="submit" class="btn btn-primary">Update</button>
