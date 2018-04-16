@@ -40,5 +40,10 @@ export class CourseProfileService {
         return Observable.throw('Error (' + error.status + '): ' + error.text() );
     }
 
+    deleteCourse(id: number | string): Observable<any> {
+        let url = globals.ADMIN_COURSEURL;
+        return this.http.delete(url + 'delete/' + id);
+    }
+
 
 }

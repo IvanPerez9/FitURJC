@@ -21,23 +21,24 @@ export class AdminControlCoursesService {
         return this.http.get(url);
     }
 
-    getCourseId(courseId: number | string) {
+    getCourseId(courseId: number | string): Observable<any> {
         let url = globals.ADMIN_COURSEURL;
         return this.http.get(url + courseId);
     }
 
-    updateCourse(courseId: number | string, course: Course) {
+    updateCourse(courseId: number | string, course: Course): Observable<any> {
         let url = globals.ADMIN_COURSEURL;
         return this.http.patch(url + 'edit/' + courseId, course);
     }
 
-    createCourse(course: Course) {
+    createCourse(course: Course): Observable<any> {
         let url = globals.ADMIN_COURSEURL;
         return this.http.post(url + 'add', course);
     }
 
-    deleteCourse(id: number | string) {
+    deleteCourse(id: number | string): Observable<any> {
         let url = globals.ADMIN_COURSEURL;
         return this.http.delete(url + 'delete/' + id);
     }
+
 }

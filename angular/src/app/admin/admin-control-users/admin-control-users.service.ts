@@ -21,17 +21,17 @@ export class AdminControlUsersService {
         return this.http.get(url);
     }
 
-    getUsersId(id: number | string) {
+    getUsersId(id: number | string): Observable<any> {
         let url = globals.ADMIN_USERURL;
         return this.http.get(url + id);
     }
 
-    deleteUser(id: number | string) {
+    deleteUser(id: number | string): Observable<any> {
         let url = globals.ADMIN_USERURL;
         return this.http.delete(url + 'user/delete/' + id);
     }
 
-    editUser(id: number, user: User) {
+    editUser(id: number, user: User): Observable<any> {
         let url = globals.ADMIN_USERURL;
         return this.http.patch(url + 'user/edit/' + id, user);
     }

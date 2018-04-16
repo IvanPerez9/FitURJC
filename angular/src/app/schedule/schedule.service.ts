@@ -38,11 +38,4 @@ export class ScheduleService {
         return this.http.put(url + scheduleId + '/unsubscribe', this.getScheduleById(scheduleId));
     }
 
-    /*isUserEnrolled(scheduleID:number, userLogged:User, schedule: Schedule){
-      let url = globals.SCHEDULE_BASEURL;
-      userLogged = this.http.sessionData.getUserLogged();
-      return schedule.signup.valueOf();
-      scheduleID.getUser().contains(userLogged)
-    }
-*/
 }

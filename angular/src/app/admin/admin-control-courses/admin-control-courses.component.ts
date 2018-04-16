@@ -61,11 +61,13 @@ export class AdminControlCoursesComponent implements OnInit {
   deleteThisCourse(id: number) {
     this.adminControlCoursesService.deleteCourse(id).subscribe(
       response => {
+        console.log("Borrado");
         this.adminComponent.msgs.push({severity: 'Success', summary: 'Delete Course', detail: 'Course has been deleted'});
       },
       error => {
         console.log(error);
         console.log(error.code);
+        console.log("Fallo");
         this.adminComponent.msgs.push({severity: 'Fail', summary: 'Error', detail: 'theres been an error deleting the expecified course'});
       }
     );

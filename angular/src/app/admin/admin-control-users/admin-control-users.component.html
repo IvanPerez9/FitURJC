@@ -42,7 +42,7 @@
 													<button type="submit" class="btn btn-primary" onclick="editUser(user)">Save</button>
 												</div>
 												<div class="col-md-1">
-													<a class="btn btn-danger" data-username="{{user.name}}" data-id="{{user.id}}" onclick="deleteUser(user)"> Delete</a>
+													<a class="btn btn-danger" data-username="{{user.name}}" data-id="{{user.id}}" (click)="deleteThisUser(user.id)"> Delete</a>
 												</div>
 											</div>
 										</div>

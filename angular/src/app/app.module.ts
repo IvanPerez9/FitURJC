@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { EditProfileComponent } from './editProfile/editProfile.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
+import { AdminControlUsersService } from './admin/admin-control-users/admin-control-users.service';
 import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
 import { AdminControlCoursesService } from './admin/admin-control-courses/admin-control-courses.service';
 import { AddCoursesComponent } from './admin/add-courses/add-courses.component';
@@ -30,6 +31,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleService } from './schedule/schedule.service';
 import { RecomendationComponent } from './recomendation/recomendation.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+
 
 //blacklist
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -93,7 +95,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     Maps,
     AddCoursesComponent
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService ,UserService, LoginService, CourseProfileService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
+  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService, AdminControlUsersService ,UserService, LoginService, CourseProfileService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
