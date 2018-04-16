@@ -20,6 +20,7 @@ import { EditProfileComponent } from './editProfile/editProfile.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminControlUsersComponent } from './admin/admin-control-users/admin-control-users.component';
 import { AdminControlCoursesComponent } from './admin/admin-control-courses/admin-control-courses.component';
+import { AdminControlCoursesService } from './admin/admin-control-courses/admin-control-courses.service';
 import { AddCoursesComponent } from './admin/add-courses/add-courses.component';
 import { AdminGraphicsComponent } from './admin/admin-graphics/admin-graphics.component';
 import { CourseProfileService } from './course-profile/course-profile.service';
@@ -92,7 +93,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     Maps,
     AddCoursesComponent
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, UserService, LoginService, CourseProfileService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
+  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService ,UserService, LoginService, CourseProfileService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
