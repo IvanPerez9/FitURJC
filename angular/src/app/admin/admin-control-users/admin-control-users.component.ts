@@ -32,6 +32,7 @@ export class AdminControlUsersComponent implements OnInit {
     this.adminUserService.deleteUser(id).subscribe(
       response => {
         console.log("Borrado");
+        this.router.navigate(['/admin/controlUsers']);
       },
       error => {
         console.log(error);
