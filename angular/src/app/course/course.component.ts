@@ -19,6 +19,10 @@ export class CourseComponent implements OnInit {
 
 
   ngOnInit() {
+    
+  }
+
+  initCourses() {
     this.courseProfileService.getCourses().subscribe(
       courses => {
         this.courses = courses;
@@ -28,5 +32,4 @@ export class CourseComponent implements OnInit {
       }
     )
   }
-
 }

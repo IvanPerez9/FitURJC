@@ -21,7 +21,7 @@ export class CourseProfileService {
         return this.http.get(url);
     }
 
-    getCourseId(courseId: number | string) {
+    getCourseId(courseId: number | string):Observable<any> {
         let url = globals.COURSE_BASEURL;
         return this.http.get(url + courseId);
     }

@@ -7,6 +7,7 @@ import { Course } from '../course-profile/course-profile.model';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { CourseProfileService } from '../course-profile/course-profile.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -16,28 +17,32 @@ import { CourseProfileService } from '../course-profile/course-profile.service';
 })
 export class ScheduleComponent implements OnInit {
 
-  schedules: Schedule[];
+  schedules: Schedule[] = [];
   idSchedule: number;
   schedule: Schedule;
-  users: User[];
+  users: User[] = [];
   user: User;
   course: Course;
   courses: Array<Course>;
   signup: boolean;
+  userLogged: User;
+  listScheduleWithUser: Schedule[] = [];
+  canEvaluate: boolean;
 
-  constructor
-  (private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService, private courseProfileService: CourseProfileService) {
+  constructor (private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService, private courseProfileService: CourseProfileService) {
+   
+    this.userLogged = this.userService.getLoggedUser();
   }
 
   ngOnInit() {
-    this.initSchedules();
+    this.initCourses();
   }
 
   initCourses() {
     this.courseProfileService.getCourses().subscribe(
       course => {
         this.courses = course;
-        console.log(course);
+        this.fillShedules(this.courses);
       },
       error => {
         console.log(error);
@@ -45,6 +50,27 @@ export class ScheduleComponent implements OnInit {
     )
   }
 
+  fillShedules(courses: Course[]): void {
+    for (let course of courses) {
+      this.schedules.push.apply(this.schedules, course.schedules)
+    }
+    console.log(this.schedules)
+    this.fillUserLoggedSchedules();
+  }
+
+  fillUserLoggedSchedules() {
+    for (let schedule of this.schedules) {
+      console.log("Passsnado por aqui")
+      for (let user of schedule.listUsers) {
+        if (user.email.indexOf(this.userLogged.email) > -1) {
+          console.log("Añadiento usuario")
+          this.listScheduleWithUser.push(schedule);
+        }
+      }
+    }
+    this.canEvaluate = true;
+  }
+  
   initSchedules() {
     this.scheduleService.getSchedules().subscribe(
       schedule => {
@@ -56,9 +82,10 @@ export class ScheduleComponent implements OnInit {
     );
   }
 
-  initUsers() {
+  initUsers() {
     this.userService.getUsers().subscribe(
       user => {
+        console.log("Pidiendo usuarios y su devolucion")
         this.users = user;
       },
       error => {
@@ -70,15 +97,15 @@ export class ScheduleComponent implements OnInit {
   follow() {
     this.scheduleService.joinSchedule(this.idSchedule).subscribe(
       response => {
-       // this.listUsers = this.listUsers.push(this.userService.getLoggedUser()); FALTA QUE SEA METER USUARIOS ENTEROS
+        // this.listUsers = this.listUsers.push(this.userService.getLoggedUser()); FALTA QUE SEA METER USUARIOS ENTEROS
         this.loginService.getUser();
         this.scheduleService.getScheduleById(this.idSchedule);
-        console.log ('Success, Join' + this.loginService.getUser() + 'Schedule:' + this.scheduleService.getScheduleById(this.idSchedule));
+        console.log('Success, Join' + this.loginService.getUser() + 'Schedule:' + this.scheduleService.getScheduleById(this.idSchedule));
       },
       error => {
         console.log(error.code);
-        console.log ('Fail to Join' + this.loginService.getUser() + 'Schedule:' + this.scheduleService.getScheduleById(this.idSchedule));
-    });
+        console.log('Fail to Join' + this.loginService.getUser() + 'Schedule:' + this.scheduleService.getScheduleById(this.idSchedule));
+      });
   }
 
   /*

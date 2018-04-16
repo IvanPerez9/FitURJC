@@ -1,9 +1,10 @@
-<div class="container">
+<div class="container"> 
   <div class="row">
     <div class="col-lg-12 text-center">
       <h2 class="section-heading">Schedule</h2>
       <hr class="my-4">
-      <div class="agenda"> <!-- ¿POR QUE NO COGE EL PUTO CSS DE AGENDA? -->
+      <div class="agenda">
+        <!-- ¿POR QUE NO COGE EL PUTO CSS DE AGENDA? -->
         <div class="table-responsive">
           <table class="table table-condensed table-bordered">
             <thead>
@@ -15,25 +16,27 @@
             </thead>
 
 
-            <tbody *ngFor="let schedule of schedule.users"><!-- AQUI HAY QUE HACER UN NGFOR CON LOS SCHEDULES A LOS QUE SE APUNTA EL USER-->
-            <tr>
-              <td class="agenda-date" class="active" rowspan="1">
-                <div class="dayofmonth">23</div> <!-- PONER EL DIA QUE PRESENTEMOS ANGULAR --> 
-                <div class="dayofweek">Monday</div>
-                <div class="shortdate text-muted">April, 2018</div>
-              </td>
-              <td class="agenda-time">{{schedule.schedule}}</td>
-              <td class="agenda-events">
-                <div class="agenda-event">{{course.name}}</div>
-              </td>
-            </tr>
+            <tbody *ngFor="let schedule of listScheduleWithUser">
+              <!-- AQUI HAY QUE HACER UN NGFOR CON LOS SCHEDULES A LOS QUE SE APUNTA EL USER-->
+              <tr >
+                <td class="agenda-date" class="active" rowspan="1">
+                  <div class="dayofmonth">23</div>
+                  <!-- PONER EL DIA QUE PRESENTEMOS ANGULAR -->
+                  <div class="dayofweek">Monday</div>
+                  <div class="shortdate text-muted">April, 2018</div>
+                </td>
+                <td class="agenda-time">{{schedule.schedule}}</td>
+                <td class="agenda-events">
+                  <div class="agenda-event">{{schedule.course}}</div>
+                </td>
+              </tr>
             </tbody>
-
           </table>
         </div>
       </div>
 
-      <p class="mb-5">You have not signed up for any course yet</p> <!-- AQUI UN NGIF DE SI NO TE HAS APUNTADO A NINGUN SCHEDULE, APAREZCA EL MENSAJE-->
+      <p  *ngIf="!isJoin(this)" class="mb-5">You have not signed up for any course yet</p>
+      <!-- AQUI UN NGIF DE SI NO TE HAS APUNTADO A NINGUN SCHEDULE, APAREZCA EL MENSAJE-->
       <form method="get" action="/courses">
         <button id="subscribe" type="submit" class="btn btn-warning">
           Subscribe!</button>
