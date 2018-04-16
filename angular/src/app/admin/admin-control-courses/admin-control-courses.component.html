@@ -1,3 +1,6 @@
+<div *ngIf="courseDelete" class="alert alert-success">
+    <strong>COURSE DELETE</strong> Course delete correctly
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -21,7 +24,7 @@
                             </li>
                         </ul>
                         <li type="circle">
-                            <a class="btn btn-main btn-enter btn" (click)="deleteThisCourse(course.id)" >
+                            <a class="btn btn-main btn-enter btn" (click)="deleteThisCourse(course.id)">
                                 Delete {{course.name}}
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </a>

@@ -1,4 +1,7 @@
 <div class="content">
+	<div *ngIf="userDelete" class="alert alert-success">
+		<strong>USER DELETE</strong> User delete correctly
+	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
@@ -42,7 +45,7 @@
 													<button type="submit" class="btn btn-primary" onclick="editUser(user)">Save</button>
 												</div>
 												<div class="col-md-1">
-													<a class="btn btn-danger" data-username="{{user.name}}" data-id="{{user.id}}" (click)="deleteThisUser(user.id)"> Delete</a>
+													<a class="btn btn-danger" (click)="deleteThisUser(user.id)"> Delete</a>
 												</div>
 											</div>
 										</div>

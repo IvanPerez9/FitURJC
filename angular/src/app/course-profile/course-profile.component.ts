@@ -64,7 +64,7 @@ export class CourseProfileComponent implements OnInit {
         this.quit = true;
         setTimeout(() => {
           this.router.navigate(['/user/profile']);
-        },2000);
+        }, 2000);
         console.log("Todo ha ido bien");
       },
       error => console.log("Algo ha ido mal"),
@@ -78,7 +78,7 @@ export class CourseProfileComponent implements OnInit {
         this.signup = true;
         setTimeout(() => {
           this.router.navigate(['/user/profile']);
-        },2000);
+        }, 2000);
         console.log("DE PUTA MARE");
       },
       error => console.log("AL CARRER")

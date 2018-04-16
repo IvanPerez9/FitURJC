@@ -13,11 +13,14 @@ import { AdminControlUsersService } from '../admin-control-users/admin-control-u
 export class AdminControlUsersComponent implements OnInit {
 
   users: User[];
+  userDelete: boolean;
 
-  constructor(private router: Router, private userService: UserService, private loginService: LoginService, 
-    private adminUserService: AdminControlUsersService) {}
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService,
+    private adminControlUsersService: AdminControlUsersService) {
 
-   ngOnInit() {
+  }
+
+  ngOnInit() {
     this.userService.getUsers().subscribe(
       user => {
         this.users = user;
@@ -29,10 +32,13 @@ export class AdminControlUsersComponent implements OnInit {
   }
 
   deleteThisUser(id: number) {
-    this.adminUserService.deleteUser(id).subscribe(
+    this.adminControlUsersService.deleteUser(id).subscribe(
       response => {
+        this.userDelete = true;
+        setTimeout(() => {
+          this.router.navigate(['/admin']);
+        }, 2000);
         console.log("Borrado");
-        this.router.navigate(['/admin/controlUsers']);
       },
       error => {
         console.log(error);

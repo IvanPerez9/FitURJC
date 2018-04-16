@@ -18,6 +18,7 @@ export class AdminControlCoursesComponent implements OnInit {
 
   courses: Array<Course>;
   schedules: Schedule[];
+  courseDelete: boolean;
 
   constructor(private router: Router, private courseProfileService: CourseProfileService,
     private loginService: LoginService, private scheduleService: ScheduleService,
@@ -61,8 +62,11 @@ export class AdminControlCoursesComponent implements OnInit {
   deleteThisCourse(id: number) {
     this.adminControlCoursesService.deleteCourse(id).subscribe(
       response => {
+        this.courseDelete = true;
+        setTimeout(() => {
+          this.router.navigate(['/admin']);
+        }, 2000);
         console.log("Borrado");
-        this.router.navigate(['/admin/controlCourses']);
       },
       error => {
         console.log(error);
