@@ -1,36 +1,31 @@
 <div class="container-fluid">
   <div class="form-container">
-    <form class="form-group" [formGroup]="saveCourse" #formDir="ngForm" >
+    <form class="form-group" [formGroup]="ifSaveCourse" #formDir="ngForm" (ngSubmit)="onSubmit(ifSaveCourse)" >
       <div class="form-group">
         <br>
         <label for="newName">Name</label>
         <input name="name" required="required" type="text" class="form-control" id="name" placeholder="Course name" formControlName="name">
       </div>
       <div class="form-group">
-        <br>
-        <label for="newName">Id</label>
-        <input name="id" required="required" type="text" class="form-control" id="id" placeholder="Course id" formControlName="id">
-      </div>
-      <div class="form-group">
         <label for="newName">Category</label>
         <select class="form-control" name="category" required="required">
-          <option *ngFor="let category of courseCategory">{{category}}</option>
+          <option *ngFor="let category of courseCategory"  formControlName="category" value="">{{category}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="newName">Description</label>
-        <input name="description" type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
+        <input name="description" type="text" class="form-control" id="description" placeholder="Description" formControlName="descripcion">
       </div>
       <div class="form-group">
         <label for="newName">Schedule</label>
-        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules" formControlName="schedules">
+        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules" formControlName="schedule">
       </div>
       <div class="form-group">
         <input type="file" name="file" id="file" />
         <label for="file"></label>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" [disabled]="IfSaveCourse.invalid" (click)="ifSaveCourse">Save Course</button>
+        <button type="submit" class="btn btn-primary" (click)="ifSaveCourse">Save Course</button>
       </div>
     </form>
   </div>

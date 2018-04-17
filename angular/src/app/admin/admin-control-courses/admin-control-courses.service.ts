@@ -6,6 +6,7 @@ import 'rxjs/Rx';
 import * as globals from '../../globals';
 import { Course, Category } from '../../course-profile/course-profile.model';
 import { Schedule } from '../../schedule/schedule.model';
+import { SaveCourses } from '../add-courses/add-courses.component';
 
 @Injectable()
 export class AdminControlCoursesService {
@@ -31,7 +32,7 @@ export class AdminControlCoursesService {
         return this.http.patch(url + 'edit/' + courseId, course);
     }
 
-    createCourse(course: Course): Observable<any> {
+    createCourse(course: SaveCourses): Observable<any> {
         let url = globals.ADMIN_COURSEURL;
         return this.http.post(url + 'add', course);
     }
