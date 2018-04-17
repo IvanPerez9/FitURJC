@@ -4,8 +4,7 @@ import { LoginService } from '../../login/login.service';
 import { User } from '../../user/user.model';
 import { UserService } from '../../user/user.service';
 import { AdminControlUsersService } from '../admin-control-users/admin-control-users.service';
-import { FormGroup, FormControl } from '@angular/forms/src/model';
-import { Validators } from '@angular/forms/src/validators';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-control-users',
@@ -16,8 +15,8 @@ export class AdminControlUsersComponent implements OnInit {
 
   users: User[];
   userDelete: boolean;
-  // adminEditUser: FormGroup;
-  // editUser: adminEditUser;
+  adminEditUser: FormGroup;
+  editUser: AdminEditUser;
 
   constructor(private router: Router, private userService: UserService, private loginService: LoginService,
     private adminControlUsersService: AdminControlUsersService) {
@@ -27,12 +26,12 @@ export class AdminControlUsersComponent implements OnInit {
   ngOnInit() {
     this.initUser();
 
-    // this.adminEditUser = new FormGroup({
-    //   name: new FormControl('', Validators.required),
-    //   surname: new FormControl('', Validators.required),
-    //   email: new FormControl('', Validators.required),
-    //   age: new FormControl('', Validators.required)
-    // });
+     this.adminEditUser = new FormGroup({
+      name: new FormControl('', Validators.required),
+      surname: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      age: new FormControl('', Validators.required)
+    });
   }
 
   initUser() {
@@ -63,44 +62,32 @@ export class AdminControlUsersComponent implements OnInit {
     );
   }
 
-  editThisUser(id: number, user: User) {
-    this.adminControlUsersService.editUser(id, user).subscribe(
-      response => {
-        this.router.navigate(['/admin']);
-        console.log("EDITADO");
-      },
-      error => {
-        console.log("ERROR");
-      }
-    );
-  }
-
-  // onSubmit(form: FormGroup) {
-  //   console.log(form.value);
-  //   const valuesForm: any = form.value;
-  //   this.editUser = valuesForm;
-  //   this.adminControlUsersService.editUser(this.editUser.id, this.editUser).subscribe(
-  //     result => {
-  //       this.router.navigate(['/admin']);
-  //     },
-  //     error => {
-  //       console.log(error.code);
-  //     }
-  //   );
-  // }
+ onSubmit(idUserToEdit: number, form: FormGroup) {
+   console.log(form.value);
+   console.log(idUserToEdit);
+   const valuesForm: any = form.value;
+   this.editUser = valuesForm;
+   this.adminControlUsersService.editUser(idUserToEdit, this.editUser).subscribe(
+     result => {
+      console.log(this.editUser);
+      console.log(idUserToEdit);
+      this.router.navigate(['/admin']);
+     },
+     error => {
+       console.log(error.code);
+       }
+     );
+   }
 
 
 
 }
 
-// export interface adminEditUser {
-//   id: number;
-//   name: string;
-//   surname: string;
-//   nickname: string;
-//   email: string;
-//   age: number;
-//   passwordHash?: string;
-//   imgSrc?: string;
-//   roles: string[];
-// }
+ // tslint:disable-next-line:class-name
+ export interface AdminEditUser {
+   name: string;
+   surname: string;
+   nickname: string;
+   email: string;
+   age: number;
+ }

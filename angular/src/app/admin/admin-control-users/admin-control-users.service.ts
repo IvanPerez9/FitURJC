@@ -7,6 +7,7 @@ import * as globals from '../../globals';
 import { Course, Category } from '../../course-profile/course-profile.model';
 import { Schedule } from '../../schedule/schedule.model';
 import { User } from '../../user/user.model';
+import { AdminEditUser } from './admin-control-users.component';
 
 @Injectable()
 export class AdminControlUsersService {
@@ -31,7 +32,7 @@ export class AdminControlUsersService {
         return this.http.delete(url + 'user/delete/' + id);
     }
 
-    editUser(id: number, user: User): Observable<any> {
+    editUser(id: number, user: AdminEditUser): Observable<any> {
         let url = globals.ADMIN_USERURL;
         return this.http.patch(url + 'user/edit/' + id, user);
     }
