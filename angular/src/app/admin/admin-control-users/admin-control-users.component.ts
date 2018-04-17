@@ -78,9 +78,6 @@ export class AdminControlUsersComponent implements OnInit {
        }
      );
    }
-
-
-
 }
 
  // tslint:disable-next-line:class-name

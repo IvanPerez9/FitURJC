@@ -1,19 +1,14 @@
 <div class="container-fluid">
   <div class="form-container">
-    <form class="form-group" [formGroup]="saveCourse" #formDir="ngForm" >
+    <form class="form-group" [formGroup]="ifSaveCourse" #formDir="ngForm" (ngSubmit)="onSubmit(ifSaveCourse)" >
       <div class="form-group">
         <br>
         <label for="newName">Name</label>
         <input name="name" required="required" type="text" class="form-control" id="name" placeholder="Course name" formControlName="name">
       </div>
       <div class="form-group">
-        <br>
-        <label for="newName">Id</label>
-        <input name="id" required="required" type="text" class="form-control" id="id" placeholder="Course id" formControlName="id">
-      </div>
-      <div class="form-group">
         <label for="newName">Category</label>
-        <select class="form-control" name="category" required="required">
+        <select class="form-control" name="category" required="required" formControlName="category">
           <option *ngFor="let category of courseCategory">{{category}}</option>
         </select>
       </div>

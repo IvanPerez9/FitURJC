@@ -50,7 +50,7 @@ export class AddCoursesComponent implements OnInit {
     );
   }
 
-  saveCourse(form: FormGroup) {
+  onSubmit(form: FormGroup) {
     const valuesForm: any = form.value;
     this.addNewCourse = valuesForm;
     this.controlCourses.createCourse(this.addNewCourse).subscribe(
