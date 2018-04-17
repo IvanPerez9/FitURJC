@@ -1,31 +1,26 @@
-<!-- <ng-progress></ng-progress> -->
 <ng4-loading-spinner></ng4-loading-spinner>
 <section class="hero">
   <div class="container">
     <p align="center" style="font-size:26px"> Facilities in your Gym </p>
-    <a>We’re here to help all our members feel positive, motivated and in the perfect mood for a workout. That’s why all our
+    <a id="facility">We’re here to help all our members feel positive, motivated and in the perfect mood for a workout. That’s why all our
       gyms are bright and spacious with a laid- back atmosphere, so when you come in, you feel as comfortable as a pair of
-      old trainers.</a>
-    <a>You’ll also find all the practical bits and bobs you need: showers and changing rooms, lockers – even vending machines
-      in case you’ve left something at home. And to keep you safe and sound day and night, we’ve got a PIN entry door system
-      for our members.</a>
-
+      old trainers. You’ll also find all the practical bits and bobs you need: showers and changing rooms, lockers – even
+      vending machines in case you’ve left something at home. And to keep you safe and sound day and night, we’ve got a PIN
+      entry door system for our members.</a>
     <div class="row" id="listFacilities">
-
-      <div class="col-md-3">
+      <div class="col-md-3" *ngFor="let facility of facilities">
         <div class="card">
-          <img class="size-img-facilities">
+          <img class="size-img-facilities" [src]="getUriImage(facility.src)">
         </div>
       </div>
       <br>
-
     </div>
     <br>
     <div class="styleMoreFacilities">
       <div id="spinner"></div>
       <p class="text-center">
         <button type="button" class="btn btn-primary" (click)="moreCourses()">See more</button>
-        <button id="goBack" type="submit" class="btn btn-warning" [routerLink]="['/']">Go back</button>
     </div>
+    <button type="submit" class="btn btn-warning" id="goBack" [routerLink]="['/']">Go back</button>
   </div>
 </section>

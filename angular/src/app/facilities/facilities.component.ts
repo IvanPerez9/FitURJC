@@ -5,43 +5,31 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { FacilitiesService } from "./facilities.service";
-
-// import { routerTransition } from '../../r';
+import { Facilities } from './facilities.model';
+import * as globals from '../globals';
 
 
 @Component({
   selector: 'app-facilities',
   templateUrl: './facilities.component.html',
   styleUrls: ['./facilities.component.css'],
-  // animations: [routerTransition()]
 })
+
 export class FacilitiesComponent implements OnInit {
 
-
-  // public facilitiesPage: number;
-  // public facilitiesPageActual: number;
-  // public moreEventsButtonText: string;
-  imagePaths: string[];
-  facilities;
+  facilities: Facilities[] = [];
   sum: number;
   finished: boolean;
 
   constructor(private spinnerService: Ng4LoadingSpinnerService, private http: HttpClientBasicAuth, private facilitiesService: FacilitiesService, private router: Router) {
-
-    this.imagePaths = ['/assets/img/facilities/facilities_1.jpeg',
-      '/assets/img/facilities/facilities_2.jpeg', '/assets/img/facilities/facilities_3.jpeg',
-      '/assets/img/facilities/facilities_4.jpeg', '/assets/img/facilities/facilities_5.jpeg',
-      '/assets/img/facilities/facilities_6.jpeg', '/assets/img/facilities/facilities_7.jpeg',
-      '/assets/img/facilities/facilities_8.jpeg', '/assets/img/facilities/facilities_9.jpeg',
-      '/assets/img/facilities/facilities_10.jpeg'];
-  }
-
-  onScroll() {
-    console.log('scrolled!!');
   }
 
   ngOnInit() {
     this.initFacilities();
+  }
+
+  onScroll() {
+    console.log('scrolled!!');
   }
 
   initFacilities() {
@@ -49,7 +37,8 @@ export class FacilitiesComponent implements OnInit {
     this.spinnerService.show();
     this.facilitiesService.getFacilities(this.sum).subscribe(
       result => {
-        this.imagePaths = result;
+        console.log(result)
+        this.facilities = result;
         this.spinnerService.hide();
       },
       error => {
@@ -68,7 +57,7 @@ export class FacilitiesComponent implements OnInit {
             this.finished = true;
           }
           result.forEach(element => {
-            this.imagePaths.push(element);
+            this.facilities.push(element);
           });
           this.spinnerService.hide();
         },
@@ -76,6 +65,10 @@ export class FacilitiesComponent implements OnInit {
           this.spinnerService.hide();
         });
     }
+  }
+
+  getUriImage(uriImage: string): string {
+    return globals.BASEURL_IMAGE + uriImage;
   }
 
 }

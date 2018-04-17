@@ -1,5 +1,3 @@
-/*Google fonts*/
-
 @import url('https://fonts.googleapis.com/css?family=Hind:400,500,700');
 html, body {
   width: 100%;
@@ -36,7 +34,7 @@ body {
   position: absolute;
 }
 
-#spinner {
+#facility{
   color: white;
 }
 
@@ -61,7 +59,7 @@ body {
   background: rgba(0, 0, 0, 0.7);
 }
 
-a, a:hover {
+a {
   color: #fff;
   text-decoration: underline;
 }
