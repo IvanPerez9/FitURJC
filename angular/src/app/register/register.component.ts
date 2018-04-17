@@ -22,17 +22,17 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router, private http: HttpClientBasicAuth) {
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
+
   ngOnInit() {
     this.http.logOut();
     this.userRegister = new FormGroup({
-      name: new FormControl('', Validators.required),
+      /*name: new FormControl('', Validators.required),*/
       surname: new FormControl('', Validators.required),
-      nickname: new FormControl('', Validators.required),
+      /*nickname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       age: new FormControl ('', Validators.required),
       passwordHash: new FormControl('', Validators.required ),
-      passwordRepeat: new FormControl('', [Validators.required, matchOtherValidator('passwordHash')]),
+      passwordRepeat: new FormControl('', [Validators.required, matchOtherValidator('passwordHash')]),*/
     });
   }
 
