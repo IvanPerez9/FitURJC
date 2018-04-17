@@ -19,7 +19,8 @@ export class AdminControlUsersComponent implements OnInit {
   adminEditUser: FormGroup;
   editUser: AdminEditUser;
 
-  constructor(private router: Router, private userService: UserService, private loginService: LoginService, private adminControlUsersService: AdminControlUsersService) {
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService,
+     private adminControlUsersService: AdminControlUsersService) {
 
   }
 
