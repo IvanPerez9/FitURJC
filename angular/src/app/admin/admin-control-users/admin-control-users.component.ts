@@ -19,7 +19,8 @@ export class AdminControlUsersComponent implements OnInit {
   adminEditUser: FormGroup;
   editUser: AdminEditUser;
 
-  constructor(private router: Router, private userService: UserService, private loginService: LoginService, private adminControlUsersService: AdminControlUsersService) {
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService,
+     private adminControlUsersService: AdminControlUsersService) {
 
   }
 
@@ -62,24 +63,6 @@ export class AdminControlUsersComponent implements OnInit {
     );
   }
 
-<<<<<<< HEAD
- onSubmit(idUserToEdit: number, form: FormGroup) {
-   console.log(form.value);
-   console.log(idUserToEdit);
-   const valuesForm: any = form.value;
-   this.editUser = valuesForm;
-   this.adminControlUsersService.editUser(idUserToEdit, this.editUser).subscribe(
-     result => {
-      console.log(this.editUser);
-      console.log(idUserToEdit);
-      this.router.navigate(['/admin']);
-     },
-     error => {
-       console.log(error.code);
-       }
-     );
-   }
-=======
   onSubmit(idUserToEdit: number, form: FormGroup) {
     console.log(form.value);
     console.log(idUserToEdit);
@@ -99,7 +82,6 @@ export class AdminControlUsersComponent implements OnInit {
       }
     );
   }
->>>>>>> d8da77ba958b687a3c7da1013c7170c96f053918
 }
 
 export interface AdminEditUser {

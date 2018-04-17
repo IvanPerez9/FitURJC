@@ -53,10 +53,9 @@ export class AddCoursesComponent implements OnInit {
   onSubmit(form: FormGroup) {
     const valuesForm: any = form.value;
     this.addNewCourse = valuesForm;
+    console.log (this.addNewCourse);
     this.controlCourses.createCourse(this.addNewCourse).subscribe(
       result => {
-        const aux: any = result;
-        this.controlCourses.createCourse(aux);
         this.router.navigate(['/admin/controlCourses']);
       },
       error => {
