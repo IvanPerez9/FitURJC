@@ -19,7 +19,7 @@ export class CourseComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.initCourses();
   }
 
   initCourses() {
