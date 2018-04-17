@@ -28,14 +28,6 @@ public class Facilities {
 	@JsonView(Details.class)
 	private String src;
 
-	@JsonView(Details.class)
-	private List<Facilities> schedules = new ArrayList<>();
-
-	public Facilities(long id, String src) {
-		this.id = id;
-		this.src = src;
-	}
-
 	protected Facilities() {
 	}
 
@@ -62,13 +54,5 @@ public class Facilities {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public List<Facilities> getSchedules() {
-		return schedules;
-	}
-
-	public void setSchedules(List<Facilities> schedules) {
-		this.schedules = schedules;
 	}
 }
