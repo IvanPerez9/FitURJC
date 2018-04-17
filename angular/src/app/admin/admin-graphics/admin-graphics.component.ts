@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AdminGraphicsComponent {
 
   // Doughnut
-  public doughnutChartLabels:string[] = ['Body pump', 'Body combat', 'Cycling'];
-  public doughnutChartData:number[] = [350, 450, 100];
+  public doughnutChartLabels:string[] = ['Strength', 'Cardio', 'Freestyle', 'Dance','Mind'];
+  public doughnutChartData:number[] = [1, 6, 2, 2, 1];
   public doughnutChartType:string = 'doughnut';
 
   // events
@@ -19,13 +19,6 @@ export class AdminGraphicsComponent {
 
   public chartHovered(e:any):void {
     console.log(e);
-  }
-  public nums_rand(){
-    this.doughnutChartData=[
-      Math.round(Math.random()*100),
-      Math.round(Math.random()*100),
-      Math.round(Math.random()*100)
-    ]
   }
 
 }

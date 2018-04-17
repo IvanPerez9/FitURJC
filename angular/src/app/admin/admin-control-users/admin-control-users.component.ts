@@ -15,18 +15,18 @@ export class AdminControlUsersComponent implements OnInit {
 
   users: User[];
   userDelete: boolean;
+  userEdited: boolean;
   adminEditUser: FormGroup;
   editUser: AdminEditUser;
 
-  constructor(private router: Router, private userService: UserService, private loginService: LoginService,
-    private adminControlUsersService: AdminControlUsersService) {
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService, private adminControlUsersService: AdminControlUsersService) {
 
   }
 
   ngOnInit() {
     this.initUser();
 
-     this.adminEditUser = new FormGroup({
+    this.adminEditUser = new FormGroup({
       name: new FormControl('', Validators.required),
       surname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -62,6 +62,7 @@ export class AdminControlUsersComponent implements OnInit {
     );
   }
 
+<<<<<<< HEAD
  onSubmit(idUserToEdit: number, form: FormGroup) {
    console.log(form.value);
    console.log(idUserToEdit);
@@ -78,13 +79,33 @@ export class AdminControlUsersComponent implements OnInit {
        }
      );
    }
+=======
+  onSubmit(idUserToEdit: number, form: FormGroup) {
+    console.log(form.value);
+    console.log(idUserToEdit);
+    const valuesForm: any = form.value;
+    this.editUser = valuesForm;
+    this.adminControlUsersService.editUser(idUserToEdit, this.editUser).subscribe(
+      result => {
+        this.userEdited = true;
+        setTimeout(() => {
+          this.router.navigate(['/admin']);
+        }, 2000);
+        console.log(this.editUser);
+        console.log(idUserToEdit);
+      },
+      error => {
+        console.log(error.code);
+      }
+    );
+  }
+>>>>>>> d8da77ba958b687a3c7da1013c7170c96f053918
 }
 
- // tslint:disable-next-line:class-name
- export interface AdminEditUser {
-   name: string;
-   surname: string;
-   nickname: string;
-   email: string;
-   age: number;
- }
+export interface AdminEditUser {
+  name: string;
+  surname: string;
+  nickname: string;
+  email: string;
+  age: number;
+}

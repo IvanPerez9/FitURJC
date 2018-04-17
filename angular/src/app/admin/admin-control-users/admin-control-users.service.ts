@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientBasicAuth } from '../../HttpClient/httpClient';
 import { Observable } from 'rxjs/Observable';
-// tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
 import * as globals from '../../globals';
 import { Course, Category } from '../../course-profile/course-profile.model';
@@ -32,10 +31,8 @@ export class AdminControlUsersService {
         return this.http.delete(url + 'user/delete/' + id);
     }
 
-    editUser(id: number, user: AdminEditUser): Observable<any> {
+    editUser(id: number, user: AdminEditUser): Observable<any>  {
         let url = globals.ADMIN_USERURL;
         return this.http.patch(url + 'user/edit/' + id, user);
     }
-
-
 }
