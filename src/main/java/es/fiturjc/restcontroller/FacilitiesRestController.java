@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -23,7 +24,7 @@ import es.fiturjc.service.UserService;
 @RequestMapping("/api")
 public class FacilitiesRestController {
 
-	interface FacilitiesDetail extends Facilities.Basic, Facilities.Details{
+	interface FacilitiesDetail extends Facilities.Basic, Facilities.Details {
 	}
 
 	@Autowired
@@ -35,41 +36,20 @@ public class FacilitiesRestController {
 	@Autowired
 	private UserComponent userComponent;
 
-
 	/**
 	 * 
 	 * @return
 	 */
-
 	@RequestMapping(value = "/facilities", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@JsonView(FacilitiesDetail.class)
-	public ResponseEntity<Page<Facilities>> getFacilities() {
-		Page <Facilities> facilities = facilitiesService.getFacilities();
+	public ResponseEntity<?> getFacilities(Pageable page) {
+		Page<Facilities> facilities = facilitiesService.getFacilities(page);
 		if (facilities != null) {
-			return new ResponseEntity<>(facilities, HttpStatus.OK);
+			return new ResponseEntity<>(facilities.getContent(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	/**
-	 * Return more facilities 
-	 * @return
-	 */
-	
-	@RequestMapping(value = "/moreFacilities", method = RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
-	@JsonView(FacilitiesDetail.class)
-	public ResponseEntity<Page<Facilities>> moreFacilities() {
-		Page <Facilities> facilities = facilitiesService.getFacilities();
-		if (facilities != null) {
-			return new ResponseEntity<>(facilities, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-
-
 
 }

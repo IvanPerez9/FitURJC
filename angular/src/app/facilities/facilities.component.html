@@ -12,9 +12,9 @@
 
     <div class="row" id="listFacilities">
 
-      <div class="col-md-3" *ngFor="let facilities  of facilities">
+      <div class="col-md-3">
         <div class="card">
-          <img class="size-img-facilities" src="{{facilities.src}}">
+          <img class="size-img-facilities">
         </div>
       </div>
       <br>
@@ -24,7 +24,7 @@
     <div class="styleMoreFacilities">
       <div id="spinner"></div>
       <p class="text-center">
-        <button type="button" class="btn btn-primary" (click)="moreCourses()">{{moreEventsButtonText}}</button>
+        <button type="button" class="btn btn-primary" (click)="moreCourses()">See more</button>
         <button id="goBack" type="submit" class="btn btn-warning" [routerLink]="['/']">Go back</button>
     </div>
   </div>

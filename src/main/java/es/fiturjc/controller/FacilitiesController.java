@@ -28,6 +28,7 @@ public class FacilitiesController {
 	}
 	
 	
+	
 	@RequestMapping(value = "/moreFacilities")
 	  public String moreAllShelf(Model model, @RequestParam int page) {
 		

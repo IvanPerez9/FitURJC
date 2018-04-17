@@ -14,7 +14,7 @@
 							<h2>{{user.name}} {{user.surname}}</h2>
 						</div>
 						<div class="modal-content">
-							<form action="/admin/editandsave/{{user.id}}" method="post" id="form_add_user" modelAttribute="user">
+							<form method="post" id="form_add_user" modelAttribute="user" [formGroup]="adminEditUser" (ngSubmit)="onSubmit(adminEditUser)">
 								<div class="modal-body">
 									<div class="row justify-content-md-center login-img"></div>
 									<div class="form-group">
@@ -42,7 +42,7 @@
 										<div class="col-12 col-md-auto btn-enter-div">
 											<div class="row">
 												<div class="col-md-6">
-													<button type="submit" class="btn btn-primary" onclick="editUser(user)">Save</button>
+													<button type="submit" class="btn btn-primary" (click)="editThisUser(user.id, this.user)">Save</button>
 												</div>
 												<div class="col-md-1">
 													<a class="btn btn-danger" (click)="deleteThisUser(user.id)"> Delete</a>

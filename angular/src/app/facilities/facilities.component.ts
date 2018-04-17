@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { HttpClientBasicAuth } from '../HttpClient/httpClient';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import {FacilitiesService} from "./facilities.service";
+import { FacilitiesService } from "./facilities.service";
 
 // import { routerTransition } from '../../r';
 
@@ -18,14 +18,15 @@ import {FacilitiesService} from "./facilities.service";
 export class FacilitiesComponent implements OnInit {
 
 
-  // necessary variables
-  public facilitiesPage: number;
-  public facilitiesPageActual: number;
-  public moreEventsButtonText: string;
-  public imagePaths: string[];
-  public facilities;
+  // public facilitiesPage: number;
+  // public facilitiesPageActual: number;
+  // public moreEventsButtonText: string;
+  imagePaths: string[];
+  facilities;
+  sum: number;
+  finished: boolean;
 
-  constructor(private spinnerService: Ng4LoadingSpinnerService, private http: HttpClientBasicAuth, private service: FacilitiesService, private router: Router) {
+  constructor(private spinnerService: Ng4LoadingSpinnerService, private http: HttpClientBasicAuth, private facilitiesService: FacilitiesService, private router: Router) {
 
     this.imagePaths = ['/assets/img/facilities/facilities_1.jpeg',
       '/assets/img/facilities/facilities_2.jpeg', '/assets/img/facilities/facilities_3.jpeg',
@@ -40,27 +41,41 @@ export class FacilitiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.facilitiesPage = 0;
-    this.moreEventsButtonText="Show more";
-    this.service.getFacilities(this.facilitiesPage).subscribe(
-      response => {
-        this.facilitiesPage++;
-        this.facilities = response.content;
-        this.facilitiesPageActual= response.totalPages;
+    this.initFacilities();
+  }
+
+  initFacilities() {
+    this.sum = 0;
+    this.spinnerService.show();
+    this.facilitiesService.getFacilities(this.sum).subscribe(
+      result => {
+        this.imagePaths = result;
+        this.spinnerService.hide();
       },
-      error=>{
+      error => {
         console.log(error);
-      }
-
-    )
-
-
+        this.spinnerService.hide();
+      });
   }
 
   moreCourses() {
-    this.spinnerService.show();
-    setTimeout(function() {
-      this.spinnerService.hide();//AQUI HAY QUE HACER LA LLAMADA A LA API
-    }.bind(this.imagePaths),4000);
+    if (!this.finished) {
+      this.spinnerService.show();
+      this.sum += 1;
+      this.facilitiesService.getFacilities(this.sum).subscribe(
+        result => {
+          if (result.length < 10) {
+            this.finished = true;
+          }
+          result.forEach(element => {
+            this.imagePaths.push(element);
+          });
+          this.spinnerService.hide();
+        },
+        error => {
+          this.spinnerService.hide();
+        });
+    }
   }
+
 }

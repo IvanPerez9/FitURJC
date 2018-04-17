@@ -19,7 +19,8 @@ export class FacilitiesService {
   }
 
   getFacilities(page: number): Observable<any> {
-    let url = globals.FACILITIES_BASEURL + "?page=" + page +"&size=6";
-    return this.http.get(url);
+    return this.http.get(globals.FACILITIES_BASEURL + '?page=' + String(page) + '&size=10');
   }
+
+
 }

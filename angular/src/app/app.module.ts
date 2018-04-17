@@ -31,7 +31,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleService } from './schedule/schedule.service';
 import { RecomendationComponent } from './recomendation/recomendation.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
-
+import { FacilitiesService } from './facilities/facilities.service';
 
 //blacklist
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -95,7 +95,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     Maps,
     AddCoursesComponent
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService, AdminControlUsersService ,UserService, LoginService, CourseProfileService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
+  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService, AdminControlUsersService ,UserService, LoginService, CourseProfileService, FacilitiesService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
