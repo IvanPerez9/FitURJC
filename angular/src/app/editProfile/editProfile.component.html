@@ -12,86 +12,42 @@
               <!-- Aqui vendria edit mode-->
             </div>
             <br>
-            <div>
-              <form class="form-horizontal" method="post" enctype="multipart/form-data">
-                <!--<input type="file"> AQUI NO ESTA ACABADO- REPASAR OTRA VEZ-->
-                <button type="submit" name="update-image-submit" id="image-submit" tabindex="4"
-                        class="form-control btn btn-login btn-primary">Update image
-                </button>
-              </form>
-            </div>
           </div>
-          <form class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
+          <form form method="post" modelAttribute="user" [formGroup]="userUpdated" (ngSubmit)="onSubmit(userLogged.id,userUpdated)"
+                class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
-              <fieldset>
-                <!--- Name Block --->
-                <form role="form" [formGroup]="userUpdated" (ngSubmit)="onSubmit(userUpdated)">
-                  <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="text" class="form-control"
-                           id="inputName"
-                           placeholder="Name" value="{{userLogged.name}}">
+              <div class="modal-body">
+                <div class="row justify-content-md-center login-img"></div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" formControlName="name" value="{{userLogged.name}}"
+                         placeholder="Enter name here">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="surname" formControlName="surname" value="{{userLogged.surname}}"
+                         placeholder="Enter surname here">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" formControlName="email" value="{{userLogged.email}}"
+                         placeholder="Enter email here">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="age" formControlName="age" value="{{userLogged.age}}"
+                         placeholder="Enter age here">
+                </div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-12 col-md-auto btn-enter-div">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input class="btn btn-warning " id="cancel-btn" type="reset" onclick="location.href='/user/profile';"
+                             style="text-decoration: none;" value="Cancel" />
+                    </div>
+                      <div class="col-md-6">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
                   </div>
-                  <!--- Surname Block --->
-                  <div class="form-group">
-                    <label for="inputSurname">Surname</label>
-                    <input type="text" class="form-control"
-                           id="inputSurname"
-                           placeholder="Name" value="{{userLogged.surname}}">
-                  </div>
-
-                  <!--- Email Block --->
-                  <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="text" class="form-control"
-                           id="inputEmail"
-                           placeholder="Name" value="{{userLogged.email}}">
-                  </div>
-
-                  <!--- Password Block --->
-                  <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control"
-                           id="inputPassword"
-                           placeholder="Password">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" class="form-control"
-                           id="confirmPassword"
-                           placeholder="Password">
-                  </div>
-                  <!--
-
-                                  &lt;!&ndash;- Select role Block -&ndash;&gt;
-                                  <div class="form-control">
-                                    <label for="select">Role</label>
-                                    <select id="select">
-                                      <option>User</option>
-                                      <option>Admin</option>
-                                    </select>
-                                  </div>
-                  --><!--
-                  &lt;!&ndash;- Terms and conditions Block -&ndash;&gt;
-                  <div class="form-group checkbox">
-                    <label>
-                      <input type="checkbox"> Confirm that you've read the Terms and
-                      Conditions
-                    </label>
-                  </div>-->
-                  <!--<pre>{{form.value | json}}</pre>
-                  <pre>isValid: {{form.valid}}</pre>-->
-                  <!--- Buttons Block --->
-                  <div *ngIf="error_updated" class="alert alert-danger">
-                    <strong>Error. </strong> Unable to register
-                  </div>
-                  <div class="form-group">
-                    <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                  </div>
-                </form>
-              </fieldset>
+                </div>
+              </div>
             </div>
           </form>
         </div>

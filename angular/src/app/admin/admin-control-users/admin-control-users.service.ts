@@ -31,8 +31,10 @@ export class AdminControlUsersService {
         return this.http.delete(url + 'user/delete/' + id);
     }
 
-    editUser(id: number, user: AdminEditUser): Observable<any>  {
+    editUser(id: number, user: AdminEditUser): Observable<any> {
         let url = globals.ADMIN_USERURL;
         return this.http.patch(url + 'user/edit/' + id, user);
     }
+
+
 }
