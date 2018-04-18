@@ -1,6 +1,8 @@
 package es.fiturjc.restcontroller;
 
+import java.nio.file.attribute.UserPrincipalLookupService;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +23,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import es.fiturjc.component.UserComponent;
+import es.fiturjc.model.Category;
 import es.fiturjc.model.Course;
+import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
 import es.fiturjc.restcontroller.CourseRestController.CourseDetail;
 import es.fiturjc.service.AdminService;
@@ -249,5 +255,25 @@ public class AdminRestController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
+	
+	@PostMapping(value= "/course/add")
+	public ResponseEntity<Course> addCourse (@RequestParam String name, @RequestParam Category category,
+			@RequestParam String description, @RequestParam MultipartFile src, @RequestParam String schedules){
+
+		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+		Course newCourse;
+		if(userLogged.isAdmin()) {
+			String[] schedule = schedules.split(" ");
+			List<Schedule> listSchedule = new ArrayList<Schedule>();
+			for (String item : schedule) {
+				Schedule subSchedule = new Schedule(item);
+				listSchedule.add(subSchedule);
+			}
+			newCourse = courseService.createNewCourse2(name, category, description, src, listSchedule);
+			return new ResponseEntity<>(newCourse, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);		
+	}
+	
 
 }
