@@ -30,29 +30,28 @@ import es.fiturjc.service.UserService;
 @RestController
 @RequestMapping("/api/course")
 public class CourseRestController {
-	
-	interface CourseDetail extends Course.Basic,Course.Details , Schedule.Basic,Schedule.Details{
+
+	interface CourseDetail extends Course.Basic, Course.Details, Schedule.Basic, Schedule.Details {
 	}
-	
+
 	@Autowired
 	private CourseService courseService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private UserComponent userComponent;
-
 
 	/**
 	 *
 	 * @return
 	 */
-	
-	public interface CourseDetails extends Course.Basic, Course.Details, Schedule.Basic, User.Basic{}
-	
+
+	public interface CourseDetails extends Course.Basic, Course.Details, Schedule.Basic, User.Basic {
+	}
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
 	@JsonView(CourseDetails.class)
 	public ResponseEntity<List<Course>> getCourses() {
 		List<Course> courses = courseService.getAllCourses();
@@ -68,23 +67,21 @@ public class CourseRestController {
 	 * @param page
 	 * @return
 	 */
-	//Pagination
+	// Pagination
 	@RequestMapping(value = "/paginate/{page}", method = RequestMethod.GET)
 	public Page<Course> getAllCourses(@PathVariable("page") int page) {
 		return courseService.findAllCourses(new PageRequest(page, 10));
 	}
 
-
-
 	/**
 	 * Get 1 course
+	 * 
 	 * @param id
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
-	@JsonView(CourseDetail.class)
+	@JsonView(CourseDetails.class)
 	public ResponseEntity<Course> getCourseId(@PathVariable long id) {
 		Course course = courseService.findCourse(id);
 		if (course != null) {
@@ -93,13 +90,14 @@ public class CourseRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	/**
 	 * Create new Course
+	 * 
 	 * @param course
 	 * @return new course
 	 */
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> createCourse(@RequestBody CourseDTO course) {
@@ -110,64 +108,68 @@ public class CourseRestController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-
 	}
-	
+
 	/**
-	 * EditTest VERIFICAR 
+	 * EditTest VERIFICAR
+	 * 
 	 * @param id
 	 * @param editCourse
 	 * @return
 	 */
-	
-//	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
-//	public ResponseEntity<Course> editCourse(@PathVariable long id, @RequestBody Course editCourse) {
-//		Course course = courseService.findCourse(id);
-//		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-//		if (userLogged != null) {
-//			if (course != null && editCourse != null) {
-//				editCourse.setId(id);
-//				courseService.save(editCourse);
-//				return new ResponseEntity<>(editCourse, HttpStatus.ACCEPTED);
-//			} else {
-//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//			}
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//		}
-//	}
-	
+
+	// @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	// @PreAuthorize("hasRole('ROLE_ADMIN')")
+	// public ResponseEntity<Course> editCourse(@PathVariable long id, @RequestBody
+	// Course editCourse) {
+	// Course course = courseService.findCourse(id);
+	// User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+	// if (userLogged != null) {
+	// if (course != null && editCourse != null) {
+	// editCourse.setId(id);
+	// courseService.save(editCourse);
+	// return new ResponseEntity<>(editCourse, HttpStatus.ACCEPTED);
+	// } else {
+	// return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	// }
+	// } else {
+	// return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	// }
+	// }
+
 	/**
-	 * Simple delete courses 
+	 * Simple delete courses
+	 * 
 	 * @param id
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Course> deleteCourse(@PathVariable long id) {
 		courseService.deleteCourse(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	/**
-	 * Add new Schedule 
+	 * Add new Schedule
+	 * 
 	 * @param id
 	 * @param schedule
 	 * @return
 	 */
-	
-//	@RequestMapping(value = "/{id}/schedule", method = RequestMethod.POST)
-//	@ResponseStatus(HttpStatus.CREATED)
-//	public ResponseEntity<Schedule> addSchedule(@PathVariable long id, @RequestBody Schedule schedule) {
-//
-//		Course course = courseService.findCourse(id);
-//		
-//		
-//
-//	}
-	
-	// MOVER LOGICA DEL COURSECONTROLLER PARA LOS SCHEDULES 
-	
+
+	// @RequestMapping(value = "/{id}/schedule", method = RequestMethod.POST)
+	// @ResponseStatus(HttpStatus.CREATED)
+	// public ResponseEntity<Schedule> addSchedule(@PathVariable long id,
+	// @RequestBody Schedule schedule) {
+	//
+	// Course course = courseService.findCourse(id);
+	//
+	//
+	//
+	// }
+
+	// MOVER LOGICA DEL COURSECONTROLLER PARA LOS SCHEDULES
+
 }
