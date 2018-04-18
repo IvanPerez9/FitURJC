@@ -17,6 +17,9 @@
     </div>
     <br>
     <div class="styleMoreFacilities">
+      <div *ngIf="finished" class="alert alert-secondary align-content-center">
+        <strong>There are no more results</strong>
+      </div>
       <div id="spinner"></div>
       <p class="text-center">
         <button type="button" class="btn btn-primary" (click)="moreCourses()">See more</button>
