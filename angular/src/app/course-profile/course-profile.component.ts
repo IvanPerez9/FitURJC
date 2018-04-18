@@ -44,14 +44,6 @@ export class CourseProfileComponent implements OnInit {
     )
   }
 
-  /*showIfAdmin() {
-      if (this.scheduleService.isUserEnrolled(1,this.userLogged,this.schedules) === true) {
-        return true;
-      } else {
-        return false;
-      }
-    }*/
-
 
   isUserEnrolled(schedule: Schedule): boolean {
     let user = schedule.listUsers.find(user => user.id === this.userLogged.id);

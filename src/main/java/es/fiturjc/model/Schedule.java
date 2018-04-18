@@ -29,7 +29,7 @@ public class Schedule {
 	private String schedule;
 
     @ManyToMany
-    @JsonView(Details.class)
+    @JsonView(Basic.class)
     private Set<User> listUsers = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
