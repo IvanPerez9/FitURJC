@@ -8,17 +8,17 @@
       </div>
       <div class="form-group">
         <label for="newName">Category</label>
-        <select class="form-control" name="category" required="required">
-          <option *ngFor="let category of courseCategory"  formControlName="category" value="">{{category}}</option>
+        <select class="form-control" name="category"  formControlName="category"  required="required">
+          <option *ngFor="let category of courseCategory" value="{{category}}">{{category}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="newName">Description</label>
-        <input name="description" type="text" class="form-control" id="description" placeholder="Description" formControlName="descripcion">
+        <input name="description" type="text" class="form-control" id="description" placeholder="Description" formControlName="description">
       </div>
       <div class="form-group">
         <label for="newName">Schedule</label>
-        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules" formControlName="schedule">
+        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules" formControlName="schedules">
       </div>
       <div class="form-group">
         <input type="file" name="file" id="file" />

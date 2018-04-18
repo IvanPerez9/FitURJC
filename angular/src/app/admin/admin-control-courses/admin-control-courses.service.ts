@@ -7,6 +7,7 @@ import * as globals from '../../globals';
 import { Course, Category } from '../../course-profile/course-profile.model';
 import { Schedule } from '../../schedule/schedule.model';
 import { SaveCourses } from '../add-courses/add-courses.component';
+import { Scheduler } from 'rxjs/Scheduler';
 
 @Injectable()
 export class AdminControlCoursesService {
@@ -14,7 +15,7 @@ export class AdminControlCoursesService {
     url: string;
 
     constructor(private http: HttpClientBasicAuth) {
-    
+
     }
 
     getCourses(): Observable<any> {
@@ -33,6 +34,15 @@ export class AdminControlCoursesService {
     }
 
     createCourse(course: SaveCourses): Observable<any> {
+        const listSchedules: Schedule[] = [];
+        const schedul: Schedule = { course: null, full: false, idSchedule: undefined, listUsers: null, schedule: "" };
+        schedul.schedule=course.schedules;
+        listSchedules.push(schedul);
+        console.log("Antes de cambiarlo")
+        console.log(course)
+        course.schedules=listSchedules;
+        console.log("Despues de cambiarlo")
+        console.log(course)
         let url = globals.ADMIN_COURSEURL;
         return this.http.post(url + 'add', course);
     }

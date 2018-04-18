@@ -27,7 +27,7 @@ import es.fiturjc.service.CourseService;
 import es.fiturjc.service.UserService;
 
 @RestController
-@RequestMapping("/api/courses")
+@RequestMapping("/api/course")
 public class CourseRestController {
 	
 	interface CourseDetail extends Course.Basic,Course.Details , Schedule.Basic,Schedule.Details{
