@@ -23,9 +23,6 @@ import org.hibernate.annotations.FetchMode;
 import es.fiturjc.model.User.Basic;
 
 @Entity
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id") // Resuelve la circular 
 public class Course {
 	
 	public interface Basic{}

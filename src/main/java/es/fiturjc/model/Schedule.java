@@ -14,9 +14,6 @@ import java.util.*;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "idSchedule")
 public class Schedule {
 	
 	public interface Basic{}
@@ -35,8 +32,8 @@ public class Schedule {
     @JsonView(Details.class)
     private Set<User> listUsers = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonView(Basic.class)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonView(Details.class)
     private Course course;
 
     @Transient

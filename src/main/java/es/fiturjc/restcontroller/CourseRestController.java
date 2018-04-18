@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Course;
+import es.fiturjc.model.CourseDTO;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
 import es.fiturjc.service.CourseService;
@@ -48,7 +49,7 @@ public class CourseRestController {
 	 * @return
 	 */
 	
-	public interface CourseDetails extends Course.Basic, Course.Details, Schedule.Basic, Schedule.Details,User.Basic{}
+	public interface CourseDetails extends Course.Basic, Course.Details, Schedule.Basic, User.Basic{}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -100,13 +101,12 @@ public class CourseRestController {
 	 */
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
+	public ResponseEntity<Course> createCourse(@RequestBody CourseDTO course) {
 		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
 		if (userLogged != null) {
-			courseService.save(course);
-			return new ResponseEntity<>(course, HttpStatus.OK);
+			Course c = courseService.save(course);
+			return new ResponseEntity<>(c, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
@@ -120,24 +120,23 @@ public class CourseRestController {
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<Course> editCourse(@PathVariable long id, @RequestBody Course editCourse) {
-		Course course = courseService.findCourse(id);
-		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-		if (userLogged != null) {
-			if (course != null && editCourse != null) {
-				editCourse.setId(id);
-				courseService.save(editCourse);
-				return new ResponseEntity<>(editCourse, HttpStatus.ACCEPTED);
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		}
-
-	}
+//	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	public ResponseEntity<Course> editCourse(@PathVariable long id, @RequestBody Course editCourse) {
+//		Course course = courseService.findCourse(id);
+//		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+//		if (userLogged != null) {
+//			if (course != null && editCourse != null) {
+//				editCourse.setId(id);
+//				courseService.save(editCourse);
+//				return new ResponseEntity<>(editCourse, HttpStatus.ACCEPTED);
+//			} else {
+//				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//			}
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//		}
+//	}
 	
 	/**
 	 * Simple delete courses 

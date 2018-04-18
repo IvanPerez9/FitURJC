@@ -58,10 +58,6 @@ public class User {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -123,14 +119,6 @@ public class User {
 		this.email = email;
 	}
 
-/*	public List<Course> getCourses() {
-		return new ArrayList<>(this.courses);
-	}
-
-	public void addCourse(Course course) {
-		this.courses.add(course);
-	}*/
-
 	public List<String> getRoles() {
 		return roles;
 	}
@@ -176,14 +164,6 @@ public class User {
 		User user = (User) o;
 		return id == user.id;
 	}
-
-//	public List<Course> getCourseList() {
-//		return courseList;
-//	}
-//
-//	public void setCourseList(List<Course> courseList) {
-//		this.courseList = courseList;
-//	}
 
 	@Override
 	public int hashCode() {

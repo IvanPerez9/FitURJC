@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.fiturjc.model.Course;
+import es.fiturjc.model.CourseDTO;
 import es.fiturjc.model.Facilities;
 import es.fiturjc.model.User;
 import es.fiturjc.repository.CourseRepository;
@@ -48,8 +49,17 @@ public class CourseService {
 		return courseRepository.findOne(id);
 	}
 	
-	public void save(Course course) {
+	
+	public Course save(CourseDTO data) {
+		Course course = new Course(data.name, Category.valueOf(data.category), data.description);
+		String[] array = data.schedule.split(" ");
+		List<Schedule> schedules = new ArrayList<>();
+		for(String s: array){
+			schedules.add(new Schedule(s));
+		}
+		course.setSchedules(schedules);
 		courseRepository.save(course);
+		return course;
 	}
 	public Course getCourseById (Long id) {
 		return courseRepository.findById(id);

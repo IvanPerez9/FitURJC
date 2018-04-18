@@ -72,6 +72,6 @@ export interface SaveCourses {
   //  id: number;
   category: Category;
   description: string;
-  schedules: any;
+  schedules: string;
   // src: string;
 }

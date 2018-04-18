@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import es.fiturjc.component.UserComponent;
 import es.fiturjc.model.Category;
 import es.fiturjc.model.Course;
+import es.fiturjc.model.CourseDTO;
 import es.fiturjc.model.Schedule;
 import es.fiturjc.model.User;
 import es.fiturjc.restcontroller.CourseRestController.CourseDetail;
@@ -190,22 +191,20 @@ public class AdminRestController {
 		}
 	}
 
-	private interface CourseDetails extends Course.Details, Course.Basic {
+	private interface CourseDetails extends Course.Details, Course.Basic, Schedule.Basic {
 	}
 
 	/**
 	 * @param course
 	 * @return
 	 */
-	// working now
 	@JsonView(CourseDetails.class)
-	@JsonFormat(shape = JsonFormat.Shape.ARRAY)
+	// @JsonFormat(shape = JsonFormat.Shape.ARRAY)
 	@RequestMapping(value = "/course/add", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Course> addCourse(@RequestBody Course course) {
-		if (userComponent.isLoggedUser()) {
-			courseService.save(course);
-			return new ResponseEntity<>(course, HttpStatus.OK);
+	public ResponseEntity<Course> addCourse(@RequestBody CourseDTO course, Principal principal) {
+		if (principal != null) {
+			Course c = courseService.save(course);
+			return new ResponseEntity<>(c, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
@@ -255,25 +254,27 @@ public class AdminRestController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
-	
-//	@PostMapping(value= "/course/add1")
-//	public ResponseEntity<Course> addCourse (@RequestBody String name, @RequestBody Category category,
-//			@RequestParam String description, @RequestParam MultipartFile src, @RequestBody String schedules){
-//
-//		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-//		Course newCourse;
-//		if(userLogged.isAdmin()) {
-//			String[] schedule = schedules.split(" ");
-//			List<Schedule> listSchedule = new ArrayList<Schedule>();
-//			for (String item : schedule) {
-//				Schedule subSchedule = new Schedule(item);
-//				listSchedule.add(subSchedule);
-//			}
-//			newCourse = courseService.createNewCourse2(name, category, description, src, listSchedule);
-//			return new ResponseEntity<>(newCourse, HttpStatus.OK);
-//		}
-//		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);		
-//	}
-	
+
+	// @PostMapping(value= "/course/add1")
+	// public ResponseEntity<Course> addCourse (@RequestBody String name,
+	// @RequestBody Category category,
+	// @RequestParam String description, @RequestParam MultipartFile src,
+	// @RequestBody String schedules){
+	//
+	// User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+	// Course newCourse;
+	// if(userLogged.isAdmin()) {
+	// String[] schedule = schedules.split(" ");
+	// List<Schedule> listSchedule = new ArrayList<Schedule>();
+	// for (String item : schedule) {
+	// Schedule subSchedule = new Schedule(item);
+	// listSchedule.add(subSchedule);
+	// }
+	// newCourse = courseService.createNewCourse2(name, category, description, src,
+	// listSchedule);
+	// return new ResponseEntity<>(newCourse, HttpStatus.OK);
+	// }
+	// return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	// }
 
 }

@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <p  *ngIf="!isJoin(this)" class="mb-5">You have not signed up for any course yet</p>
+      <p   class="mb-5">You have not signed up for any course yet</p>
       <!-- AQUI UN NGIF DE SI NO TE HAS APUNTADO A NINGUN SCHEDULE, APAREZCA EL MENSAJE-->
       <form method="get" action="/courses">
         <button id="subscribe" type="submit" class="btn btn-warning" [routerLink]="['/courses']">

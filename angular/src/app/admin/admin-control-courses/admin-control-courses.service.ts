@@ -34,15 +34,6 @@ export class AdminControlCoursesService {
     }
 
     createCourse(course: SaveCourses): Observable<any> {
-        const listSchedules: Schedule[] = [];
-        const schedul: Schedule = { course: null, full: false, idSchedule: undefined, listUsers: null, schedule: "" };
-        schedul.schedule=course.schedules;
-        listSchedules.push(schedul);
-        console.log("Antes de cambiarlo")
-        console.log(course)
-        course.schedules=listSchedules;
-        console.log("Despues de cambiarlo")
-        console.log(course)
         let url = globals.ADMIN_COURSEURL;
         return this.http.post(url + 'add', course);
     }
