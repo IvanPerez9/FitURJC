@@ -1,7 +1,8 @@
 
 hr {
   max-width: 50px;
-  border: 3px #F05F40;
+  border-width: 3px;
+  border-color: #F05F40;
 }
 
 hr.light {
