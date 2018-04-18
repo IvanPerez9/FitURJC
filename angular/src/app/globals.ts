@@ -1,4 +1,4 @@
-export const BASEURL: string = 'https://localhost:8443/api/';
+export const BASEURL: string = 'https://fiturjc.lavandadelpatio.es/api/';
 export const BASEURL_IMAGE: string = 'https://fiturjc.lavandadelpatio.es';
 export const USER_BASEURL: string = BASEURL + 'user/';
 export const USER_REGISTER: string = BASEURL + 'register';
