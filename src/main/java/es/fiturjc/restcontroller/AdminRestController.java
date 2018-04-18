@@ -256,24 +256,24 @@ public class AdminRestController {
 		}
 	}
 	
-	@PostMapping(value= "/course/add")
-	public ResponseEntity<Course> addCourse (@RequestParam String name, @RequestParam Category category,
-			@RequestParam String description, @RequestParam MultipartFile src, @RequestParam String schedules){
-
-		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
-		Course newCourse;
-		if(userLogged.isAdmin()) {
-			String[] schedule = schedules.split(" ");
-			List<Schedule> listSchedule = new ArrayList<Schedule>();
-			for (String item : schedule) {
-				Schedule subSchedule = new Schedule(item);
-				listSchedule.add(subSchedule);
-			}
-			newCourse = courseService.createNewCourse2(name, category, description, src, listSchedule);
-			return new ResponseEntity<>(newCourse, HttpStatus.OK);
-		}
-		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);		
-	}
+//	@PostMapping(value= "/course/add1")
+//	public ResponseEntity<Course> addCourse (@RequestBody String name, @RequestBody Category category,
+//			@RequestParam String description, @RequestParam MultipartFile src, @RequestBody String schedules){
+//
+//		User userLogged = userService.findOne(userComponent.getLoggedUser().getId());
+//		Course newCourse;
+//		if(userLogged.isAdmin()) {
+//			String[] schedule = schedules.split(" ");
+//			List<Schedule> listSchedule = new ArrayList<Schedule>();
+//			for (String item : schedule) {
+//				Schedule subSchedule = new Schedule(item);
+//				listSchedule.add(subSchedule);
+//			}
+//			newCourse = courseService.createNewCourse2(name, category, description, src, listSchedule);
+//			return new ResponseEntity<>(newCourse, HttpStatus.OK);
+//		}
+//		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);		
+//	}
 	
 
 }
