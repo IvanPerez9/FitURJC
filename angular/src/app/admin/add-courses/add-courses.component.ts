@@ -32,7 +32,7 @@ export class AddCoursesComponent implements OnInit {
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      schedules: new FormControl([], Validators.required),
+      schedule: new FormControl([], Validators.required),
       //   src: new FormControl('', Validators.required),
     });
   }
@@ -72,6 +72,6 @@ export interface SaveCourses {
   //  id: number;
   category: Category;
   description: string;
-  schedules: string;
+  schedule: string;
   // src: string;
 }
