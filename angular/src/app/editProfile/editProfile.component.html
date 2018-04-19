@@ -9,8 +9,7 @@
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
             <div id="imageForm"
                  class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<span id="profile_pic"> <img src="{{userLogged.imgSrc}}"
-                                       class="img-circle" alt="Profile Image" style='object-fit: contain' />
+					<span id="profile_pic"> <img [src]="getUriImage(userLogged.imgSrc)" class="img-circle" alt="Profile Image" style='object-fit: contain' />
 					</span> <br>
               <div>
                 <form class="form-horizontal" name="registration"
@@ -18,7 +17,7 @@
                       enctype="multipart/form-data">
                   <input type="file" name="file" class="hidden" id="files" /> <label
                   for="files" class="btn ">Upload Image</label>
-                  <button type="submit" class="btn btn-primary">Update Image</button>
+                  <button type="submit" class="btn btn-primary" >Update Image</button>
                 </form>
               </div>
             </div>
@@ -58,12 +57,16 @@
                     </div>
                       <div class="col-md-6">
                       <button type="submit" class="btn btn-primary">Save</button>
+                        <br><br><br>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </form>
+        </div>
+        <div *ngIf="notification" class="alert alert-success">
+          <strong>USER EDITED</strong> Now you will be redirected to home page, log in again.
         </div>
       </div>
     </div>

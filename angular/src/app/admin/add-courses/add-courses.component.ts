@@ -20,6 +20,7 @@ export class AddCoursesComponent implements OnInit {
   courses: Array<Course>;
   ifSaveCourse: FormGroup;
   addNewCourse: SaveCourses;
+  courseAdded: boolean;
 
   constructor(private router: Router, private courseProfileService: CourseProfileService, private controlCourses: AdminControlCoursesService,
     private loginService: LoginService) { }
@@ -55,7 +56,10 @@ export class AddCoursesComponent implements OnInit {
     console.log(this.addNewCourse);
     this.controlCourses.createCourse(this.addNewCourse).subscribe(
       result => {
-        this.router.navigate(['/admin/controlCourses']);
+        this.courseAdded = true;
+        setTimeout(() => {
+          this.router.navigate(['/admin/controlCourses']);
+        },2000);
       },
       error => {
         console.log(error);

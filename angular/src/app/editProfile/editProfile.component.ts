@@ -5,6 +5,7 @@ import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {matchOtherValidator} from "../register/passwordValidator";
+import * as globals from "../globals";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class EditProfileComponent implements OnInit {
   userLogged: User;
   editUser: userUpdated;
   error_updated: boolean;
+  notification: boolean;
 
 
   constructor(private userService: UserService, private router: Router) {
@@ -70,14 +72,21 @@ export class EditProfileComponent implements OnInit {
     this.editUser = valuesForm;
     this.userService.editUser(idUserToEdit, this.editUser).subscribe(
       result => {
+        this.notification = true;
+        setTimeout(() => {
         console.log(this.editUser);
         console.log(idUserToEdit);
         this.router.navigate(['/']);
+        },5000);
       },
       error => {
         console.log(error.code);
       }
     );
+  }
+
+  getUriImage(uriImage: string): string {
+    return globals.BASEURL_IMAGE + uriImage;
   }
 
 }
