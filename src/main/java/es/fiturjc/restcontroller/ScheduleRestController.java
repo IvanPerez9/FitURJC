@@ -29,7 +29,7 @@ import es.fiturjc.service.UserService;
 @RequestMapping("/api/schedules")
 public class ScheduleRestController {
 	
-	interface ScheduleDetails extends Schedule.Basic,Schedule.Details,Course.Basic{
+	interface ScheduleDetails extends Schedule.Basic,Schedule.Details,Course.Basic, User.Basic{
 	}
 	
 	@Autowired

@@ -3,9 +3,7 @@ import {HttpClientBasicAuth} from '../HttpClient/httpClient';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 import * as globals from '../globals';
-import {FacilitiesComponent} from "./facilities.component";
 import {LoginService} from '../login/login.service';
-import {User} from '../user/user.model';
 
 @Injectable()
 export class FacilitiesService {

@@ -87,6 +87,13 @@ img::-moz-selection {
   background: transparent;
 }
 
+.img-circle{
+  border-radius: 50%;
+  max-height: 250px;
+  max-width: 250px;
+  padding-bottom: 1rem;
+}
+
 #mainNav {
   border-bottom: 1px solid rgba(33, 37, 41, 0.1);
   background-color: #fff;

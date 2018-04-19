@@ -1,3 +1,7 @@
+<div *ngIf="courseAdded" class="alert alert-success">
+  <strong>COURSE ADDED</strong> correctly
+</div>
+
 <div class="container-fluid">
   <div class="form-container">
     <form class="form-group" [formGroup]="ifSaveCourse" #formDir="ngForm" (ngSubmit)="onSubmit(ifSaveCourse)" >
@@ -18,7 +22,7 @@
       </div>
       <div class="form-group">
         <label for="newName">Schedule</label>
-        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules" formControlName="schedules">
+        <input name="schedules" required="required" type="text" class="form-control" id="schedules" placeholder="Schedules" formControlName="schedule">
       </div>
       <div class="form-group">
         <input type="file" name="file" id="file" />

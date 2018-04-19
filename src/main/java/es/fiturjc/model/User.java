@@ -27,10 +27,10 @@ public class User {
 	@JsonView(Basic.class)
 	private String nickname;
 	
-	@JsonView(Details.class)
+	@JsonView(Basic.class)
 	private String name;
 	
-	@JsonView(Details.class)
+	@JsonView(Basic.class)
 	private String surname;
 	
 	@JsonView(None.class)

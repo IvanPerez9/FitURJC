@@ -28,6 +28,7 @@ export class EditProfileComponent implements OnInit {
   private file: File;
   private imageWellUploded:boolean;
   private imageResponse:boolean = false;
+  notification: boolean;
 
 
   constructor(private userService: UserService, private router: Router) {
@@ -37,10 +38,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userUpdated = new FormGroup({
-      name: new FormControl('', Validators.required),
-      surname: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required)
+      name: new FormControl(this.userLogged.name, Validators.required),
+      surname: new FormControl(this.userLogged.surname, Validators.required),
+      email: new FormControl(this.userLogged.email, Validators.required),
+      age: new FormControl(this.userLogged.age, Validators.required)
     });
     this.editMode=0;
     console.log("Init UserComponent");
@@ -78,9 +79,12 @@ export class EditProfileComponent implements OnInit {
     this.editUser = valuesForm;
     this.userService.editUser(idUserToEdit, this.editUser).subscribe(
       result => {
+        this.notification = true;
+        setTimeout(() => {
         console.log(this.editUser);
         console.log(idUserToEdit);
         this.router.navigate(['/']);
+        },5000);
       },
       error => {
         console.log(error.code);
@@ -121,6 +125,10 @@ export class EditProfileComponent implements OnInit {
       }
     };
     multipartItem.upload();
+  }
+
+  getUriImage(uriImage: string): string {
+    return globals.BASEURL_IMAGE + uriImage;
   }
 
 }

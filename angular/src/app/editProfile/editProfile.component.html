@@ -6,11 +6,21 @@
         <div class="row"></div>
         <br>
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading ">
-            <div>
-              <img class="img-circle img-responsive" src="assets/img/profile/default_user_trans.png" (click)="changeEditMode(1)">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
+            <div id="imageForm"
+                 class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+					<span id="profile_pic"> <img [src]="getUriImage(userLogged.imgSrc)" class="img-circle" alt="Profile Image" style='object-fit: contain' />
+					</span> <br>
+              <div>
+                <form class="form-horizontal" name="registration"
+                      action="/user/imageUpload" id="formulario" method="post"
+                      enctype="multipart/form-data">
+                  <input type="file" name="file" class="hidden" id="files" /> <label
+                  for="files" class="btn ">Upload Image</label>
+                  <button type="submit" class="btn btn-primary" >Update Image</button>
+                </form>
+              </div>
             </div>
-            <br>
           </div>
           <form form method="post" modelAttribute="user" [formGroup]="userUpdated" (ngSubmit)="onSubmit(userLogged.id,userUpdated)"
                 class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
@@ -23,14 +33,17 @@
                          placeholder="Enter name here">
                 </div>
                 <div class="form-group">
+                  <label>Surname</label>
                   <input type="text" class="form-control" name="surname" formControlName="surname" value="{{userLogged.surname}}"
                          placeholder="Enter surname here">
                 </div>
                 <div class="form-group">
+                  <label>Email</label>
                   <input type="email" class="form-control" name="email" formControlName="email" value="{{userLogged.email}}"
                          placeholder="Enter email here">
                 </div>
                 <div class="form-group">
+                  <label>Age</label>
                   <input type="text" class="form-control" name="age" formControlName="age" value="{{userLogged.age}}"
                          placeholder="Enter age here">
                 </div>
@@ -69,6 +82,7 @@
                     </div>
                       <div class="col-md-6">
                       <button type="submit" class="btn btn-primary">Save</button>
+                        <br><br><br>
                     </div>
                   </div>
                 </div>
@@ -76,7 +90,10 @@
             </div>
           </form>
         </div>
+        <div *ngIf="notification" class="alert alert-success">
+          <strong>USER EDITED</strong> Now you will be redirected to home page, log in again.
+        </div>
       </div>
     </div>
-    </div>
+  </div>
 </div>
