@@ -5,6 +5,10 @@ import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {matchOtherValidator} from "../register/passwordValidator";
+import {MultipartUploader} from "../multipart-upload/multipart-uploader";
+import {MultipartItem} from "../multipart-upload/multipart-item";
+import * as globals from "../globals";
+import {Alert} from "../directives/alert/alert";
 
 
 @Component({
@@ -16,11 +20,14 @@ import {matchOtherValidator} from "../register/passwordValidator";
 export class EditProfileComponent implements OnInit {
 
 
-  public editMode:number; // 0 nada - 1 mail - 2 pass  - 3 registro histórico de metas - 4 imagen
+  public editMode:number; // 0 nada 1 imagen 2 datos
   userUpdated: FormGroup;
   userLogged: User;
   editUser: userUpdated;
   error_updated: boolean;
+  private file: File;
+  private imageWellUploded:boolean;
+  private imageResponse:boolean = false;
 
 
   constructor(private userService: UserService, private router: Router) {
@@ -35,6 +42,7 @@ export class EditProfileComponent implements OnInit {
       email: new FormControl('', Validators.required),
       age: new FormControl('', Validators.required)
     });
+    this.editMode=0;
     console.log("Init UserComponent");
   }
 
@@ -78,6 +86,41 @@ export class EditProfileComponent implements OnInit {
         console.log(error.code);
       }
     );
+  }
+  changeEditMode(i:number) {
+    this.editMode = i;
+    console.log("Pasa por upload");
+  }
+  selectFile($event) {
+    this.file = $event.target.files[0];
+    console.debug("Imagen selected: " + this.file.name + " type:" + this.file.size + " size:" + this.file.size);
+    console.log("Pasa por select");
+
+  }
+  uploadImage() {
+    console.debug("Uploading file...");
+    if (this.file == null){
+      console.error("You have to select a file and set a description.");
+      return;
+    }
+
+    let formData = new FormData();
+    formData.append("file",  this.file);
+    let multipartItem = new MultipartItem(new MultipartUploader({url: globals.BASEURL_IMAGE +'/api/image'}));
+    multipartItem.formData = formData;
+
+    multipartItem.callback = (data, status, headers) => {
+      this.imageResponse = true;
+      if (status == 201){
+        this.imageWellUploded = true;
+        this.userLogged.imgSrc = data;
+        console.debug("File has been uploaded");
+      } else {
+        this.imageWellUploded = false;
+        console.error("Error uploading file");
+      }
+    };
+    multipartItem.upload();
   }
 
 }

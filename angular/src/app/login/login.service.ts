@@ -96,4 +96,9 @@ export class LoginService {
     public setNotLogged() {
         return this.http.sessionData.setNotLogged();
     }
+    public User(){
+      if(this.isLogged()){
+        return this.getUser();
+      }
+    }
 }

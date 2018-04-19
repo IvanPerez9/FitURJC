@@ -2,14 +2,13 @@
   <div class="container">
     <div class="card-body">
       <div class="card border-none">
-        <div class="mt-4 text-white lead text-center">FitURJC Profile Settings</div>
+        <div *ngIf="editMode == 0" class="mt-4 text-white lead text-center">FitURJC Profile Settings</div>
         <div class="row"></div>
         <br>
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading ">
             <div>
-              <img class="img-circle img-responsive" src="assets/img/profile/default_user_trans.png">
-              <!-- Aqui vendria edit mode-->
+              <img class="img-circle img-responsive" src="assets/img/profile/default_user_trans.png" (click)="changeEditMode(1)">
             </div>
             <br>
           </div>
@@ -35,6 +34,31 @@
                   <input type="text" class="form-control" name="age" formControlName="age" value="{{userLogged.age}}"
                          placeholder="Enter age here">
                 </div>
+                <!-- Cambiar imagen -->
+                  <div class="form-horizontal panel panel-default" *ngIf="editMode == 1">
+                    <div class="panel-heading"><h3 class="text-muted dialog-title">Edit your profile picture</h3></div>
+                    <div class="panel-body">
+                      <form>
+                        <div class=" btn btn-default form-group">
+<!--
+                          //DONDE PONE CANCEL - BTN HAY QUE CAMBIARLO PARA QUE HNO HAGA LA FUNCION DE CANCELAR
+-->
+                          <label for="cancel-btn">Subir imagen</label> <input type="file" (change)="selectFile($event)">
+                        </div>
+                        <div *ngIf="imageResponse" class="alert alert-secondary align-content-center">
+                          <strong> Image updated </strong>
+                        </div>
+                        <div *ngIf="!imageResponse" class="alert alert-secondary align-content-center">
+                          <strong> Not updated </strong>
+                        </div>
+                        <button type="submit" class="btn btn-primary" (click)="uploadImage()"> Save image</button>
+                      </form>
+
+                     <!-- Implementar cierre del dialogo para editar imagen
+                      <span *ngIf="edit_mode != 0" class="btn btn-danger pull-right" (click)="saveChanges(false); imageResponse=false;"> Close</span>-->
+                    </div>
+                  </div>
+
               </div>
               <div class="row justify-content-md-center">
                 <div class="col-12 col-md-auto btn-enter-div">
@@ -54,5 +78,5 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </div>
