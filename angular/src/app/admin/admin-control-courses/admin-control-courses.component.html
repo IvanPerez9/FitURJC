@@ -19,10 +19,11 @@
                             <li type="circle">
                                 <a>Participants in Schedule {{schedule.idSchedule}}: {{schedule.listUsers.length}} </a>
                             </li>
-                            <li type="circle">
-                                <a>Users: {{schedule.listUsers}} </a>
+                            <li *ngFor="let users of schedule.listUsers" type="circle">
+                                <a>User: {{users.name}} {{users.surname}} </a>
                             </li>
                         </ul>
+                        <br>
                         <li type="circle">
                             <a class="btn btn-main btn-enter btn" (click)="deleteThisCourse(course.id)">
                                 Delete {{course.name}}
