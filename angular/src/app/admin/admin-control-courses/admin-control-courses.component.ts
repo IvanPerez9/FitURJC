@@ -20,10 +20,7 @@ export class AdminControlCoursesComponent implements OnInit {
   schedules: Schedule[];
   courseDelete: boolean;
 
-  constructor(private router: Router, private courseProfileService: CourseProfileService,
-    private loginService: LoginService, private scheduleService: ScheduleService,
-    private adminControlCoursesService: AdminControlCoursesService,
-    private adminComponent: AdminComponent) { }
+  constructor(private router: Router, private courseProfileService: CourseProfileService, private loginService: LoginService, private scheduleService: ScheduleService, private adminControlCoursesService: AdminControlCoursesService, private adminComponent: AdminComponent) { }
 
   ngOnInit() {
     this.initCourses();
@@ -63,16 +60,10 @@ export class AdminControlCoursesComponent implements OnInit {
     this.adminControlCoursesService.deleteCourse(id).subscribe(
       response => {
         this.courseDelete = true;
-        setTimeout(() => {
-          this.router.navigate(['/admin']);
-        }, 2000);
-        console.log("Borrado");
+        this.ngOnInit();
       },
       error => {
-        console.log(error);
-        console.log(error.code);
-        console.log("Fallo");
-        this.adminComponent.msgs.push({severity: 'Fail', summary: 'Error', detail: 'theres been an error deleting the expecified course'});
+        this.adminComponent.msgs.push({ severity: 'Fail', summary: 'Error', detail: 'theres been an error deleting the expecified course' });
       }
     );
   }

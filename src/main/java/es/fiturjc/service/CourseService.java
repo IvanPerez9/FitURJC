@@ -26,6 +26,8 @@ import es.fiturjc.repository.ScheduleRepository;
 public class CourseService {
 	@Autowired
 	private CourseRepository courseRepository;
+	@Autowired
+	private ScheduleService scheduleService;
 
 	@Autowired
 	private ScheduleRepository scheduleRepository;
@@ -48,26 +50,26 @@ public class CourseService {
 	public Course findCourse(long id) {
 		return courseRepository.findOne(id);
 	}
-	
-	
+
 	public Course save(CourseDTO data) {
 		Course course = new Course(data.name, Category.valueOf(data.category), data.description);
 		String[] array = data.schedule.split(" ");
 		List<Schedule> schedules = new ArrayList<>();
-		for(String s: array){
+		for (String s : array) {
 			schedules.add(new Schedule(s));
 		}
+		schedules.forEach(shedule -> shedule.setCourse(course));
 		course.setSchedules(schedules);
 		courseRepository.save(course);
 		return course;
 	}
-	public Course getCourseById (Long id) {
+
+	public Course getCourseById(Long id) {
 		return courseRepository.findById(id);
 	}
 
-
 	public Course createNewCourse(Course course, MultipartFile file) {
-		
+
 		if (!file.isEmpty()) {
 			course.setSrc(imageService.uploadImage(file));
 		} else {
@@ -76,17 +78,17 @@ public class CourseService {
 		courseRepository.save(course);
 		return course;
 	}
-	
-	public Course createNewCourse2 (String name, Category category, String description, MultipartFile file,
+
+	public Course createNewCourse2(String name, Category category, String description, MultipartFile file,
 			List<Schedule> schedules) {
 		Course course = new Course(name, category, description, schedules);
-		
+
 		if (!file.isEmpty()) {
 			course.setSrc(imageService.uploadImage(file));
 		} else {
 			course.setSrc("/uploads/img/default");
 		}
-		for(Schedule schedule:schedules) {
+		for (Schedule schedule : schedules) {
 			schedule.setCourse(course);
 		}
 		courseRepository.save(course);
@@ -103,14 +105,14 @@ public class CourseService {
 		}
 		return false;
 	}
-	
-	public Course saveCourse (Course c) {
+
+	public Course saveCourse(Course c) {
 		courseRepository.save(c);
-		return c ;
+		return c;
 	}
 
 	public Course editCourse(Course c, long id) {
-		
+
 		Course courseOld = courseRepository.getOne(id);
 		courseOld.setCategory(c.getCategory());
 		courseOld.setDescription(c.getDescription());
@@ -119,23 +121,24 @@ public class CourseService {
 		courseOld.setSchedules(c.getSchedules());
 		saveCourse(courseOld);
 		return courseOld;
-		
+
 	}
-	public Course updateCourse(long id, Course course){
+
+	public Course updateCourse(long id, Course course) {
 		Course courseToEdit = courseRepository.findById(id);
-		if (course.getCategory()!=null){
+		if (course.getCategory() != null) {
 			courseToEdit.setCategory(course.getCategory());
 		}
-		if(course.getDescription()!= null){
+		if (course.getDescription() != null) {
 			courseToEdit.setDescription(course.getDescription());
 		}
-		if(course.getName()!=null){
+		if (course.getName() != null) {
 			courseToEdit.setName(course.getName());
 		}
-		if(course.getSrc()!=null){
+		if (course.getSrc() != null) {
 			courseToEdit.setSrc(course.getSrc());
 		}
-		if(course.getSchedules()!=null){
+		if (course.getSchedules() != null) {
 			courseToEdit.setSchedules(course.getSchedules());
 		}
 		courseRepository.save(courseToEdit);
@@ -144,7 +147,7 @@ public class CourseService {
 
 	}
 
-	//Pagination
+	// Pagination
 	public Page<Course> findAllCourses(PageRequest page) {
 		return courseRepository.findAll(page);
 	}

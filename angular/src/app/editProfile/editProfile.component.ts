@@ -30,10 +30,10 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userUpdated = new FormGroup({
-      name: new FormControl('', Validators.required),
-      surname: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required)
+      name: new FormControl(this.userLogged.name, Validators.required),
+      surname: new FormControl(this.userLogged.surname, Validators.required),
+      email: new FormControl(this.userLogged.email, Validators.required),
+      age: new FormControl(this.userLogged.age, Validators.required)
     });
     console.log("Init UserComponent");
   }
