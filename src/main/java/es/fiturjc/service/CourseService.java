@@ -58,7 +58,7 @@ public class CourseService {
 		for (String s : array) {
 			schedules.add(new Schedule(s));
 		}
-		schedules.forEach(shedule -> scheduleService.save(shedule));
+		schedules.forEach(shedule -> shedule.setCourse(course));
 		course.setSchedules(schedules);
 		courseRepository.save(course);
 		return course;
