@@ -4,7 +4,7 @@ RUN mkdir temp
 WORKDIR /temp
 RUN mkdir images
 WORKDIR /temp/images
-COPY --from=build /docker/default default
+COPY default default
 WORKDIR /app
 VOLUME /tmp
 ARG JAR_FILE

@@ -5,6 +5,7 @@ jdk:
 install:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" 
 - mvn clean package
+- mv $TRAVIS_BUILD_DIR/docker/default default
 - mv $TRAVIS_BUILD_DIR/target/FitURJC-0.0.1-SNAPSHOT.jar FitURJC-0.0.1-SNAPSHOT.jar
 - docker build -t fiturjc/fiturjc .
 - docker push fiturjc/fiturjc:latest
