@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { SessionData } from '../login/sessionData.entity';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user/user.model';
@@ -70,5 +70,12 @@ export class HttpClientBasicAuth {
         this.sessionData.setAmILogged(true);
         this.sessionData.setAmIAdmin(this.sessionData.getUserLogged().roles.indexOf("ROLE_ADMIN") > -1);
         this.sessionData.saveData();
+    }
+
+    sendImage(url: string, formdata: FormData): Observable<any>  {
+        const req = new HttpRequest('POST', url, formdata, {
+            reportProgress: true, headers: this.generateHeaders()
+        });
+        return this.http.request(req);
     }
 }

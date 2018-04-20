@@ -4,11 +4,12 @@ import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {matchOtherValidator} from "../register/passwordValidator";
 import {MultipartUploader} from "../multipart-upload/multipart-uploader";
 import {MultipartItem} from "../multipart-upload/multipart-item";
-import * as globals from "../globals";
-/*import {Alert} from "../directives/alert/alert";*/
+import * as globals from '../globals';
+import { HttpResponse, HttpEventType } from '@angular/common/http';
+import { UploadFileService } from '../multipart-upload/upload-service';
+
 
 
 @Component({
@@ -20,18 +21,20 @@ import * as globals from "../globals";
 export class EditProfileComponent implements OnInit {
 
 
-  public editMode:number; // 0 nada 1 imagen 2 datos
+  public editMode: number; // 0 nada 1 imagen 2 datos
   userUpdated: FormGroup;
   userLogged: User;
   editUser: userUpdated;
   error_updated: boolean;
   private file: File;
-  private imageWellUploded:boolean;
-  private imageResponse:boolean = false;
+  private imageWellUploded: boolean;
+  private imageResponse: boolean = false;
   notification: boolean;
 
+  uploadImageFile: FormGroup;
 
-  constructor(private userService: UserService, private router: Router) {
+
+  constructor(private userService: UserService, private router: Router, private uploadService: UploadFileService) {
     this.userLogged = this.userService.getLoggedUser();
     this.editMode = 0;
   }
@@ -42,6 +45,9 @@ export class EditProfileComponent implements OnInit {
       surname: new FormControl(this.userLogged.surname, Validators.required),
       email: new FormControl(this.userLogged.email, Validators.required),
       age: new FormControl(this.userLogged.age, Validators.required)
+    });
+    this.uploadImageFile = new FormGroup({
+      fileType: new FormControl('', Validators.required)
     });
     this.editMode=0;
     console.log("Init UserComponent");
@@ -99,8 +105,8 @@ export class EditProfileComponent implements OnInit {
     this.file = $event.target.files[0];
     console.debug("Imagen selected: " + this.file.name + " type:" + this.file.size + " size:" + this.file.size);
     console.log("Pasa por select");
-
   }
+
   uploadImage() {
     console.debug("Uploading file...");
     if (this.file == null){
@@ -129,6 +135,36 @@ export class EditProfileComponent implements OnInit {
 
   getUriImage(uriImage: string): string {
     return globals.BASEURL_IMAGE + uriImage;
+  }
+
+  isFile(): boolean {
+    if (this.file === undefined) {
+    return false;
+    }
+    if (this.file !== null) {
+    return true;
+    }
+    return false;
+}
+
+uploadFileBasic(form: FormGroup) {
+    this.isFile = undefined;
+    this.uploadService.uploadFileBasic(this.file).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+        } else if (event instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+        }
+      },
+      error => {
+        console.log(error);
+        console.log(error.code);
+        if (error.error.code === 15010) {
+          console.log('Error, no existe el archivo');
+        } else if (error.status === 400) {
+          console.log('Error, no hay archivo');
+             }
+      });
   }
 
 }
