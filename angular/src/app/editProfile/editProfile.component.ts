@@ -4,11 +4,11 @@ import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {matchOtherValidator} from "../register/passwordValidator";
-import {MultipartUploader} from "../multipart-upload/multipart-uploader";
-import {MultipartItem} from "../multipart-upload/multipart-item";
-import * as globals from "../globals";
-import {Alert} from "../directives/alert/alert";
+import {matchOtherValidator} from '../register/passwordValidator';
+import {MultipartUploader} from '../multipart-upload/multipart-uploader';
+import {MultipartItem} from '../multipart-upload/multipart-item';
+import * as globals from '../globals';
+//import {Alert} from "../directives/alert/alert";
 
 
 @Component({
@@ -20,14 +20,14 @@ import {Alert} from "../directives/alert/alert";
 export class EditProfileComponent implements OnInit {
 
 
-  public editMode:number; // 0 nada 1 imagen 2 datos
+  public editMode: number; // 0 nada 1 imagen 2 datos
   userUpdated: FormGroup;
   userLogged: User;
   editUser: userUpdated;
   error_updated: boolean;
   private file: File;
-  private imageWellUploded:boolean;
-  private imageResponse:boolean = false;
+  private imageWellUploded: boolean;
+  private imageResponse: boolean = false;
   notification: boolean;
 
 
