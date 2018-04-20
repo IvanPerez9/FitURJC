@@ -8,6 +8,8 @@ import {matchOtherValidator} from '../register/passwordValidator';
 import {MultipartUploader} from '../multipart-upload/multipart-uploader';
 import {MultipartItem} from '../multipart-upload/multipart-item';
 import * as globals from '../globals';
+import { HttpResponse, HttpEventType } from '@angular/common/http';
+import { UploadFileService } from '../multipart-upload/upload-service';
 //import {Alert} from "../directives/alert/alert";
 
 
@@ -31,7 +33,7 @@ export class EditProfileComponent implements OnInit {
   notification: boolean;
 
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private uploadService: UploadFileService) {
     this.userLogged = this.userService.getLoggedUser();
     this.editMode = 0;
   }
@@ -129,6 +131,36 @@ export class EditProfileComponent implements OnInit {
 
   getUriImage(uriImage: string): string {
     return globals.BASEURL_IMAGE + uriImage;
+  }
+
+  isFile(): boolean {
+    if (this.file === undefined) {
+    return false;
+    }
+    if (this.file !== null) {
+    return true;
+    }
+    return false;
+}
+
+uploadFileBasic(form: FormGroup) {
+    this.isFile = undefined;
+    this.uploadService.uploadFileBasic(this.file).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+        } else if (event instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+        }
+      },
+      error => {
+        console.log(error);
+        console.log(error.code);
+        if (error.error.code === 15010) {
+          console.log('Error, no existe el archivo');
+        } else if (error.status === 400) {
+          console.log('Error, no hay archivo');
+             }
+      });
   }
 
 }
