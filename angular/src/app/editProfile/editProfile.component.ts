@@ -32,6 +32,8 @@ export class EditProfileComponent implements OnInit {
   private imageResponse: boolean = false;
   notification: boolean;
 
+  uploadImageFile: FormGroup;
+
 
   constructor(private userService: UserService, private router: Router, private uploadService: UploadFileService) {
     this.userLogged = this.userService.getLoggedUser();
@@ -44,6 +46,9 @@ export class EditProfileComponent implements OnInit {
       surname: new FormControl(this.userLogged.surname, Validators.required),
       email: new FormControl(this.userLogged.email, Validators.required),
       age: new FormControl(this.userLogged.age, Validators.required)
+    });
+    this.uploadImageFile = new FormGroup({
+      fileType: new FormControl('', Validators.required)
     });
     this.editMode=0;
     console.log("Init UserComponent");
@@ -101,8 +106,8 @@ export class EditProfileComponent implements OnInit {
     this.file = $event.target.files[0];
     console.debug("Imagen selected: " + this.file.name + " type:" + this.file.size + " size:" + this.file.size);
     console.log("Pasa por select");
-
   }
+
   uploadImage() {
     console.debug("Uploading file...");
     if (this.file == null){

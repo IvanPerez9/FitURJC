@@ -12,10 +12,8 @@
 					<span id="profile_pic"> <img [src]="getUriImage(userLogged.imgSrc)" (click)="changeEditMode(1)" class="img-circle" alt="Profile Image" style='object-fit: contain' />
 					</span> <br>
               <div>
-                <form class="form-horizontal" name="registration"
-                      action="/user/imageUpload" id="formulario" method="post"
-                      enctype="multipart/form-data">
-                  <input type="file" name="file" class="hidden" id="files" /> <label
+                <form class="form-horizontal" name="registration"id="formulario" method="post" [formGroup]="uploadImageFile" (ngSubmit)="uploadFileBasic(uploadImageFile)">
+                  <input type="file" name="file" class="hidden" id="files"  (change)="selectFile($event)" /> <label
                   for="files" class="btn ">Upload Image</label>
                   <button type="submit" class="btn btn-primary" >Update Image</button>
                 </form>
