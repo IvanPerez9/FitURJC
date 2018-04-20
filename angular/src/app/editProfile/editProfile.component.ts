@@ -8,7 +8,7 @@ import {matchOtherValidator} from "../register/passwordValidator";
 import {MultipartUploader} from "../multipart-upload/multipart-uploader";
 import {MultipartItem} from "../multipart-upload/multipart-item";
 import * as globals from "../globals";
-import {Alert} from "../directives/alert/alert";
+/*import {Alert} from "../directives/alert/alert";*/
 
 
 @Component({
