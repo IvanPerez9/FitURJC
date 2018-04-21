@@ -1,9 +1,8 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { SessionData } from '../login/sessionData.entity';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user/user.model';
-import * as globals from '../globals';
 
 @Injectable()
 export class HttpClientBasicAuth {

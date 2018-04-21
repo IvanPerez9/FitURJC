@@ -1,10 +1,13 @@
 package es.fiturjc.restcontroller;
 
+import java.util.Collection;
 import java.util.List;
 
+import es.fiturjc.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -100,4 +103,15 @@ public class UserRestController {
 		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 	}
 
+	@JsonView(CourseRestController.CourseDetails.class)
+    @GetMapping("/recommendedCourses")
+    public ResponseEntity<Collection<Course>> userProfile() {
+
+        if(!userComponent.isLoggedUser()){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+        User userLogged = userComponent.getLoggedUser(); // Check if the user is logged
+
+        return new ResponseEntity<>(userService.getRecommendedCoursesForUser(userLogged), HttpStatus.OK);
+    }
 }

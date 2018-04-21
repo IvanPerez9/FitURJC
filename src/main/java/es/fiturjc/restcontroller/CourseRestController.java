@@ -31,9 +31,6 @@ import es.fiturjc.service.UserService;
 @RequestMapping("/api/course")
 public class CourseRestController {
 
-	interface CourseDetail extends Course.Basic, Course.Details, Schedule.Basic, Schedule.Details {
-	}
-
 	@Autowired
 	private CourseService courseService;
 

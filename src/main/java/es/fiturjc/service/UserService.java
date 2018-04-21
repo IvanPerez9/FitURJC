@@ -166,7 +166,7 @@ public class UserService {
                 .entrySet().stream().max(Comparator.comparingLong(Entry::getValue));
 
         if (!favouriteCategory.isPresent()) {
-            return null;
+            return new ArrayList<>();
         }
 
         Set<Course> coursesEnrrolled = new HashSet<>(this.getCourses(u));

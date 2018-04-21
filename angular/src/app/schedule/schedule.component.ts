@@ -22,7 +22,7 @@ export class ScheduleComponent implements OnInit {
   schedule: Schedule;
   users: User[] = [];
   user: User;
-  course: Course;
+  //course: Course;
   courses: Array<Course>;
   signup: boolean;
   userLogged: User;
@@ -30,7 +30,7 @@ export class ScheduleComponent implements OnInit {
   canEvaluate: boolean;
 
   constructor (private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService, private courseProfileService: CourseProfileService) {
-   
+
     this.userLogged = this.userService.getLoggedUser();
   }
 
@@ -70,7 +70,7 @@ export class ScheduleComponent implements OnInit {
     }
     this.canEvaluate = true;
   }
-  
+
   initSchedules() {
     this.scheduleService.getSchedules().subscribe(
       schedule => {
