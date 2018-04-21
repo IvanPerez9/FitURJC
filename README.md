@@ -108,4 +108,4 @@ First we create the project, modifying the pom.xml file so that it contains the 
 
 * __[Relative reference to API documentation file](https://github.com/IvanPerez9/FitURJC/blob/master/src/main/resources/api.md)__
 
-* __[Relative reference to Angular Diagrams Folder](https://github.com/IvanPerez9/FitURJC/tree/master/angular/diagrams)
+* __[Relative reference to Angular Diagrams Folder](https://github.com/IvanPerez9/FitURJC/tree/master/angular/diagrams)__
