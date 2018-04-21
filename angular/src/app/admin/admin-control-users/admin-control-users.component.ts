@@ -11,6 +11,7 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
   templateUrl: './admin-control-users.component.html',
   styleUrls: ['./admin-control-users.component.css']
 })
+
 export class AdminControlUsersComponent implements OnInit {
 
   users: User[];
@@ -19,8 +20,7 @@ export class AdminControlUsersComponent implements OnInit {
   adminEditUser: FormGroup;
   editUser: AdminEditUser;
 
-  constructor(private router: Router, private userService: UserService, private loginService: LoginService,
-     private adminControlUsersService: AdminControlUsersService) {
+  constructor(private router: Router, private userService: UserService, private loginService: LoginService, private adminControlUsersService: AdminControlUsersService) {
 
   }
 

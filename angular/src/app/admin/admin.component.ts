@@ -1,4 +1,3 @@
-
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
@@ -16,7 +15,6 @@ export class AdminComponent {
         this.msgs.push({ severity: 'infor', summary: '¡¡Eres Administrador!!' });
     }
 
-    // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit() {
         let admin: boolean;
         if (this.sessionService.isLogged()) {
@@ -35,6 +33,5 @@ export class AdminComponent {
             return this.router.navigate(['/login']);
         }
     }
-
 
 }

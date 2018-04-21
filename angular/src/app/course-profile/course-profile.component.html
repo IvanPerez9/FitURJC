@@ -4,7 +4,7 @@
     <strong>SIGNUP</strong> You have signed up correctly
   </div>
   <div *ngIf="quit" class="alert alert-danger">
-    <strong>QUIT</strong> You have quitted correctly
+    <strong>QUIT</strong> You have quitted correctly 
   </div>
   <div class="container-fluid p-0">
     <div class="row" id="listCourses">
@@ -48,7 +48,7 @@
     <div class="styleMoreEvents">
       <div id="spinner"></div>
       <p class="text-center">
-        <button id="btnMoreCourses" type="button" class="btn btn-primary">See more</button>
+        <button id="btnMoreCourses" type="button" class="btn btn-primary" (click)="moreCourse()">See more</button>
     </div>
   </div>
 </section>

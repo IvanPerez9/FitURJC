@@ -5,19 +5,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin-graphics.component.html',
   styleUrls: ['./admin-graphics.component.css']
 })
+
 export class AdminGraphicsComponent {
 
-  // Doughnut
-  public doughnutChartLabels:string[] = ['Strength', 'Cardio', 'Freestyle', 'Dance','Mind'];
-  public doughnutChartData:number[] = [1, 6, 2, 2, 1];
-  public doughnutChartType:string = 'doughnut';
+  doughnutChartLabels:string[] = ['Strength', 'Cardio', 'Freestyle', 'Dance','Mind'];
+  doughnutChartData:number[] = [1, 6, 2, 2, 1];
+  doughnutChartType:string = 'doughnut';
 
-  // events
-  public chartClicked(e:any):void {
+  chartClicked(e:any):void {
     console.log(e);
   }
 
-  public chartHovered(e:any):void {
+  chartHovered(e:any):void {
     console.log(e);
   }
 

@@ -42,7 +42,7 @@ public class Schedule {
 	
 	private static final long MAXIMUM_CAPACITY = 2;
 
-	@JsonView(Details.class)
+	@JsonView(Basic.class)
 	public boolean isFull(){
 		return MAXIMUM_CAPACITY <= listUsers.size();
 	}

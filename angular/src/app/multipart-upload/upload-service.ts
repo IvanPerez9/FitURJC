@@ -14,7 +14,6 @@ export class UploadFileService {
     let formdata: FormData = new FormData();
     formdata.append('file', file, file.name);
     return this.http.sendImage(globals.BASEURL_IMAGE , formdata);
-
   }
 
 }
