@@ -29,8 +29,8 @@ export class ScheduleComponent implements OnInit {
   listScheduleWithUser: Schedule[] = [];
   canEvaluate: boolean;
 
-  constructor (private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService, private courseProfileService: CourseProfileService) {
-   
+  constructor(private router: Router, private loginService: LoginService, private scheduleService: ScheduleService, private userService: UserService, private courseProfileService: CourseProfileService) {
+
     this.userLogged = this.userService.getLoggedUser();
   }
 
@@ -70,7 +70,7 @@ export class ScheduleComponent implements OnInit {
     }
     this.canEvaluate = true;
   }
-  
+
   initSchedules() {
     this.scheduleService.getSchedules().subscribe(
       schedule => {
@@ -97,7 +97,7 @@ export class ScheduleComponent implements OnInit {
   follow() {
     this.scheduleService.joinSchedule(this.idSchedule).subscribe(
       response => {
-        // this.listUsers = this.listUsers.push(this.userService.getLoggedUser()); FALTA QUE SEA METER USUARIOS ENTEROS
+        // this.listUsers = this.listUsers.push(this.userService.getLoggedUser());
         this.loginService.getUser();
         this.scheduleService.getScheduleById(this.idSchedule);
         console.log('Success, Join' + this.loginService.getUser() + 'Schedule:' + this.scheduleService.getScheduleById(this.idSchedule));
@@ -107,17 +107,4 @@ export class ScheduleComponent implements OnInit {
         console.log('Fail to Join' + this.loginService.getUser() + 'Schedule:' + this.scheduleService.getScheduleById(this.idSchedule));
       });
   }
-
-  /*
-     checkIfFollow(id: number) {
-      this.schedule = this.scheduleService.getScheduleById(id);
-         if (this.loginService.isLogged) {
-           let aux: boolean = (this.schedul(
-             user1 => user1.id === this.userService.getLoggedUser() !== undefined)); // Done by ID ??
-           return aux;
-         }
-     }
-     */
-
-
 }

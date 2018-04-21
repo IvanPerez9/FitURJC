@@ -15,7 +15,6 @@ export class AdminControlCoursesService {
     url: string;
 
     constructor(private http: HttpClientBasicAuth) {
-
     }
 
     getCourses(): Observable<any> {
