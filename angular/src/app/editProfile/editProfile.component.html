@@ -9,13 +9,13 @@
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
             <div id="imageForm"
                  class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<span id="profile_pic"> <img [src]="getUriImage(userLogged.imgSrc)" (click)="changeEditMode(1)" class="img-circle" alt="Profile Image" style='object-fit: contain' />
+					<span id="profile_pic"> <img [src]="getUriImage(userLogged.imgSrc)" class="img-circle" alt="Profile Image" style='object-fit: contain' />
 					</span> <br>
               <div>
                 <form class="form-horizontal" name="registration"id="formulario" method="post" [formGroup]="uploadImageFile" (ngSubmit)="uploadFileBasic(uploadImageFile)">
                   <input type="file" name="file" class="hidden" id="files"  (change)="selectFile($event)" /> <label
                   for="files" class="btn ">Upload Image</label>
-                  <button type="submit" class="btn btn-primary" >Update Image</button>
+                  <button class="btn btn-primary" (click)="changeEditMode(1)" >Update Image</button>
                 </form>
               </div>
             </div>
