@@ -7,7 +7,8 @@ import { ScheduleService } from '../schedule/schedule.service';
 import { User } from "../user/user.model";
 import { UserService } from '../user/user.service';
 import { Schedule } from "../schedule/schedule.model";
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import * as globals from '../globals';
 
 
 @Component({
@@ -15,33 +16,61 @@ import { Schedule } from "../schedule/schedule.model";
   templateUrl: './course-profile.component.html',
   styleUrls: ['./course-profile.component.css']
 })
+
 export class CourseProfileComponent implements OnInit {
 
   courses: Array<Course>;
   userLogged: User;
   signup: boolean;
   quit: boolean;
+  sum: number;
+  finished: boolean;
 
-  constructor(private router: Router, private loginService: LoginService, private courseProfileService: CourseProfileService,
-    private scheduleService: ScheduleService, private userService: UserService) {
+  constructor(private router: Router, private loginService: LoginService, private courseProfileService: CourseProfileService, private scheduleService: ScheduleService, private userService: UserService, private spinnerService: Ng4LoadingSpinnerService) {
     this.userLogged = this.userService.getLoggedUser();
   }
 
   ngOnInit() {
     this.initCourses();
-    // this.initSchedules();
   }
 
   initCourses() {
-    this.courseProfileService.getCourses().subscribe(
+    this.sum = 0;
+    this.spinnerService.show();
+    this.courseProfileService.getCourse(this.sum).subscribe(
       course => {
         this.courses = course;
+        this.spinnerService.hide();
         console.log(course);
       },
       error => {
         console.log(error);
-      }
-    )
+        this.spinnerService.hide();
+      });
+  }
+
+  moreCourse() {
+    if (!this.finished) {
+      this.spinnerService.show();
+      this.sum += 1;
+      this.courseProfileService.getCourse(this.sum).subscribe(
+        result => {
+          if (result.length < 6) {
+            this.finished = true;
+          }
+          result.forEach(element => {
+            this.courses.push(element);
+          });
+          this.spinnerService.hide();
+        },
+        error => {
+          this.spinnerService.hide();
+        });
+    }
+  }
+
+  getUriImage(uriImage: string): string {
+    return globals.COURSE_BASEURL + uriImage;
   }
 
 
@@ -57,13 +86,14 @@ export class CourseProfileComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/user/profile']);
         }, 2000);
-        console.log("Todo ha ido bien");
+        console.log("OK");
       },
-      error => console.log("Algo ha ido mal"),
-      () => console.log("me da igual lo que haya pasado, yo siempre me voy a ejecutar")
+      error => console.log("SOMETHING BAD"),
+      () => console.log("PFF")
     );
 
   }
+
   enroll(idSchedule: number) {
     this.scheduleService.joinSchedule(idSchedule).subscribe(
       respuesta => {
@@ -71,9 +101,9 @@ export class CourseProfileComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/user/profile']);
         }, 2000);
-        console.log("DE PUTA MARE");
+        console.log("GOOD JOIN");
       },
-      error => console.log("AL CARRER")
+      error => console.log("NOT JOIN")
     );
   }
 }
