@@ -7,7 +7,7 @@
 ### Description
 
 * __If you want a online gym, this is the perfect page. You have some filters and inputs fields in order to find your perfect routine.__
-[![Video Demostracion](https://i.imgur.com/MlwydWz.jpg)](https://youtu.be/h2w2BToKEFI "FitURJC : Video Demostracion")
+
   Both sign up as gym and user options availables. As user, you can see the gym page, send feedback and rate them. The restaurant user can   upload images.
   * The private part is the admin's.
   * The public part is the gym's and profile's.
