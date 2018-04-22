@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginService } from '../login/login.service';
-import { Course } from './course-profile.model';
-import { CourseProfileService } from './course-profile.service';
-import { ScheduleService } from '../schedule/schedule.service';
-import { User } from "../user/user.model";
-import { UserService } from '../user/user.service';
-import { Schedule } from "../schedule/schedule.model";
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {LoginService} from '../login/login.service';
+import {Course} from './course-profile.model';
+import {CourseProfileService} from './course-profile.service';
+import {ScheduleService} from '../schedule/schedule.service';
+import {User} from "../user/user.model";
+import {UserService} from '../user/user.service';
+import {Schedule} from "../schedule/schedule.model";
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
 import * as globals from '../globals';
 
 
@@ -32,12 +32,6 @@ export class CourseProfileComponent implements OnInit {
 
   ngOnInit() {
     this.initCourses();
-    if (this.loginService.isLogged()) {
-      return this.router.navigate(['/user/profile']);
-    } else {
-      console.log('Not Logged');
-      return this.router.navigate(['/login']);
-}
   }
 
   initCourses() {
