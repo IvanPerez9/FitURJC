@@ -3,9 +3,6 @@
 <p align="center">
 <img width="300" height="300" src="https://github.com/IvanPerez9/FitURJC/blob/master/FitURJC/img/logoFITURJC.png">
 </p>
-### Demo
-
-[![Demo FitURJC](https://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](https://www.youtube.com/watch?v=J3pR0HiWk8o&feature=youtu.be)
 
 ### Description
 
