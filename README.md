@@ -109,3 +109,33 @@ First we create the project, modifying the pom.xml file so that it contains the 
 * __[Relative reference to API documentation file](https://github.com/IvanPerez9/FitURJC/blob/master/src/main/resources/api.md)__
 
 * __[Relative reference to Angular Diagrams Folder](https://github.com/IvanPerez9/FitURJC/tree/master/angular/diagrams)__
+
+* __Preparation of the development enviroment:__
+  * Description: For installation we must have Node and Npm installed on the computer.
+    Once npm is installed, we execute the following command in the terminal of the equipment:
+
+
+    		npm install -g @angular/cli
+
+
+    We will be able to install Angular cli globally in our team. Angular cli is the Angular console tool that will help us in programming. To create a project, we write:
+
+
+    		ng new name_app
+
+
+    Access in the terminal to the folder that we just created and execute:
+
+
+    		npm install
+
+
+    With this command we install the necessary dependencies in the project. Finally, to run the web application: 
+
+
+    		ng serve --open
+
+
+    By default, Angular runs on port 4200
+
+
