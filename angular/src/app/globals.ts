@@ -1,7 +1,7 @@
-export const BASEURL: string = 'https://localhost:8450/api/';
+export const BASEURL: string = 'https://localhost:8443/api/';
 // export const BASEURL: string = 'https://localhost:8443/api/';//==>> SOLO DESARROLLO
-export const BASEURL_IMAGE: string = 'https://localhost:8450';
-export const BASEURL_UPLOADIMG: string = 'https://localhost:8450/api/image';
+export const BASEURL_IMAGE: string = 'https://localhost:8443';
+export const BASEURL_UPLOADIMG: string = 'https://localhost:8443/api/image';
 export const USER_BASEURL: string = BASEURL + 'user/';
 export const USER_REGISTER: string = BASEURL + 'register';
 export const ADMIN_COURSEURL: string = BASEURL + 'admin/course/';

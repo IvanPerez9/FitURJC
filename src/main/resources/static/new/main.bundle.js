@@ -1902,10 +1902,10 @@ var FacilitiesService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return COURSE_BASEURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return SCHEDULE_BASEURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return FACILITIES_BASEURL; });
-var BASEURL = 'https://localhost:8450/api/';
+var BASEURL = 'https://localhost:8443/api/';
 // export const BASEURL: string = 'https://localhost:8443/api/';//==>> SOLO DESARROLLO
-var BASEURL_IMAGE = 'https://localhost:8450';
-var BASEURL_UPLOADIMG = 'https://localhost:8450/api/image';
+var BASEURL_IMAGE = 'https://localhost:8443';
+var BASEURL_UPLOADIMG = 'https://localhost:8443/api/image';
 var USER_BASEURL = BASEURL + 'user/';
 var USER_REGISTER = BASEURL + 'register';
 var ADMIN_COURSEURL = BASEURL + 'admin/course/';
