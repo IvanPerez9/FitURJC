@@ -1896,7 +1896,8 @@ var FacilitiesService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BASEURL_IMAGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BASEURL_UPLOADIMG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return USER_BASEURL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return USER_REGISTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return USER_RECOMENDED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return USER_REGISTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN_COURSEURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ADMIN_USERURL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return COURSE_BASEURL; });
@@ -1907,6 +1908,7 @@ var BASEURL = 'https://localhost:8443/api/';
 var BASEURL_IMAGE = 'https://localhost:8443';
 var BASEURL_UPLOADIMG = 'https://localhost:8443/api/image';
 var USER_BASEURL = BASEURL + 'user/';
+var USER_RECOMENDED = BASEURL + 'recommendedCourses';
 var USER_REGISTER = BASEURL + 'register';
 var ADMIN_COURSEURL = BASEURL + 'admin/course/';
 var ADMIN_USERURL = BASEURL + 'admin/';
@@ -2639,8 +2641,8 @@ var RecomendationComponent = /** @class */ (function () {
     };
     RecomendationComponent.prototype.getRecommendedCourses = function () {
         var _this = this;
-        var url = __WEBPACK_IMPORTED_MODULE_4__globals__["h" /* USER_BASEURL */];
-        this.httpClient.get(url + "/recommendedCourses").subscribe(function (value) {
+        var url = __WEBPACK_IMPORTED_MODULE_4__globals__["i" /* USER_RECOMENDED */];
+        this.httpClient.get(url).subscribe(function (value) {
             _this.courses = value;
             console.log("Recomendaciones");
             console.log(value);
@@ -3158,7 +3160,7 @@ var UserService = /** @class */ (function () {
     }
     */
     UserService.prototype.registerUser = function (user) {
-        var url = __WEBPACK_IMPORTED_MODULE_4__globals__["i" /* USER_REGISTER */];
+        var url = __WEBPACK_IMPORTED_MODULE_4__globals__["j" /* USER_REGISTER */];
         return this.http.post(url, user);
     };
     UserService.prototype.generateAuthString = function (username, password) {

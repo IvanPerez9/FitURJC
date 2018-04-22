@@ -28,8 +28,8 @@ export class RecomendationComponent implements OnInit {
   }
 
   private getRecommendedCourses() {
-    let url = globals.USER_BASEURL;
-    this.httpClient.get(url + "/recommendedCourses").subscribe(
+    let url = globals.USER_RECOMENDED;
+    this.httpClient.get(url).subscribe(
       value => {
         this.courses = value as Course[];
         console.log("Recomendaciones");
