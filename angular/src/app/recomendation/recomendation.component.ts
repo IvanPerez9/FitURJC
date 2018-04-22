@@ -27,9 +27,9 @@ export class RecomendationComponent implements OnInit {
     this.getRecommendedCourses();
   }
 
-  private getRecommendedCourses(){
-    let url = globals.SCHEDULE_BASEURL;
-    this.httpClient.get("https://fiturjc.lavandadelpatio.es/api/user/recommendedCourses").subscribe(
+  private getRecommendedCourses() {
+    let url = globals.USER_BASEURL;
+    this.httpClient.get(url + "/recommendedCourses").subscribe(
       value => {
         this.courses = value as Course[];
         console.log("Recomendaciones");
