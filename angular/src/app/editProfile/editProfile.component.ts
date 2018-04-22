@@ -4,11 +4,10 @@ import { LoginService } from '../login/login.service';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {MultipartUploader} from "../multipart-upload/multipart-uploader";
-import {MultipartItem} from "../multipart-upload/multipart-item";
+
 import * as globals from '../globals';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
-import { UploadFileService } from '../multipart-upload/upload-service';
+import { UploadFileService } from './upload-service';
 
 
 
@@ -34,6 +33,7 @@ export class EditProfileComponent implements OnInit {
   uploadImageFile: FormGroup;
 
 
+  // tslint:disable-next-line:max-line-length
   constructor(private userService: UserService, private router: Router, private uploadService: UploadFileService, private sessionService: LoginService) {
     this.userLogged = this.userService.getLoggedUser();
     this.editMode = 0;
@@ -54,7 +54,7 @@ export class EditProfileComponent implements OnInit {
         fileType: new FormControl('', Validators.required)
       });
       this.editMode = 0;
-  }
+    }
   }
 
   /*onSubmit(form: FormGroup) {
@@ -100,50 +100,21 @@ export class EditProfileComponent implements OnInit {
       result => {
         this.notification = true;
         setTimeout(() => {
-        console.log(this.editUser);
-        console.log(idUserToEdit);
-        this.router.navigate(['/']);
-        },3000);
+          console.log(this.editUser);
+          console.log(idUserToEdit);
+          this.router.navigate(['/']);
+        }, 3000);
       },
       error => {
         console.log(error.code);
       }
     );
   }
-  changeEditMode(i:number) {
-    this.editMode = i;
-    console.log("Pasa por upload");
-  }
+
   selectFile($event) {
     this.file = $event.target.files[0];
     console.debug("Imagen selected: " + this.file.name + " type:" + this.file.size + " size:" + this.file.size);
     console.log("Pasa por select");
-  }
-
-  uploadImage() {
-    console.debug("Uploading file...");
-    if (this.file == null){
-      console.error("You have to select a file and set a description.");
-      return;
-    }
-
-    let formData = new FormData();
-    formData.append("file",  this.file);
-    let multipartItem = new MultipartItem(new MultipartUploader({url: globals.BASEURL_IMAGE +'/api/image'}));
-    multipartItem.formData = formData;
-
-    multipartItem.callback = (data, status, headers) => {
-      this.imageResponse = true;
-      if (status == 201){
-        this.imageWellUploded = true;
-        this.userLogged.imgSrc = data;
-        console.debug("File has been uploaded");
-      } else {
-        this.imageWellUploded = false;
-        console.error("Error uploading file");
-      }
-    };
-    multipartItem.upload();
   }
 
   getUriImage(uriImage: string): string {
@@ -152,31 +123,32 @@ export class EditProfileComponent implements OnInit {
 
   isFile(): boolean {
     if (this.file === undefined) {
-    return false;
+      return false;
     }
     if (this.file !== null) {
-    return true;
+      return true;
     }
     return false;
-}
+  }
 
-uploadFileBasic(form: FormGroup) {
-    this.isFile = undefined;
-    this.uploadService.uploadFileBasic(this.file).subscribe(
+  uploadFileBasic(file: File) {
+    // this.isFile = undefined;
+    this.uploadService.uploadFile(this.file).subscribe(
       event => {
-        if (event.type === HttpEventType.UploadProgress) {
-        } else if (event instanceof HttpResponse) {
-          console.log('File is completely uploaded!');
-        }
+        this.userService.updateUser().subscribe(
+          result => {
+            this.userService.setUserLogged(result);
+            setTimeout(() => {
+              this.router.navigate(['/user/profile']);
+            },
+              2000);
+          },
+          error => {
+            console.log(error);
+          });
       },
       error => {
         console.log(error);
-        console.log(error.code);
-        if (error.error.code === 15010) {
-          console.log('Error, no existe el archivo');
-        } else if (error.status === 400) {
-          console.log('Error, no hay archivo');
-             }
       });
   }
 

@@ -10,10 +10,10 @@ export class UploadFileService {
 
   constructor(private http: HttpClientBasicAuth) { }
 
-  uploadFileBasic(file: File) {
+  uploadFile(file: File) {
     let formdata: FormData = new FormData();
     formdata.append('file', file, file.name);
-    return this.http.sendImage(globals.BASEURL_IMAGE , formdata);
+    return this.http.sendImage(globals.BASEURL_UPLOADIMG , formdata);
   }
 
 }

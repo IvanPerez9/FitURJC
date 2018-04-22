@@ -23,7 +23,7 @@ export class HttpClientBasicAuth {
         return new HttpHeaders();
     }
 
-    get(url) {
+    get(url):any {
         return this.http.get(url, {
             headers: this.generateHeaders()
         });

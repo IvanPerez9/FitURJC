@@ -7,56 +7,51 @@
         <br>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 section-heading">
-            <div id="imageForm"
-                 class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
-					<span id="profile_pic"> <img [src]="getUriImage(userLogged.imgSrc)" class="img-circle" alt="Profile Image"
-                                       style='object-fit: contain'/>
-					</span> <br>
+            <div id="imageForm" class="col-l-3 col-md-3 col-sm-3 col-xs-12 section-header wow fadeInDown">
+              <span id="profile_pic">
+                <img [src]="getUriImage(userLogged.imgSrc)" class="img-circle" alt="Profile Image" style='object-fit: contain'
+                />
+              </span>
+              <br>
               <div>
-                <form class="form-horizontal" name="registration" id="formulario" method="post"
-                      [formGroup]="uploadImageFile" (ngSubmit)="uploadFileBasic(uploadImageFile)">
-                  <input type="file" name="file" class="hidden" id="files" (change)="selectFile($event)"/> <label
-                  for="files" class="btn ">Upload Image</label>
-                  <button class="btn btn-primary" (click)="changeEditMode(1)">Update Image</button>
+                <form class="form-horizontal" name="registration" id="formulario" method="post" [formGroup]="uploadImageFile" (ngSubmit)="uploadFileBasic(uploadImageFile)">
+                  <input type="file" id="imageProfile" (change)="selectFile($event)" #imageProfile > 
+                  <button type="submit" class="btn btn-primary" (click)="uploadFileBasic(imageProfile.value)"> Save image</button>
                 </form>
               </div>
             </div>
           </div>
-          <form form method="post" modelAttribute="user" [formGroup]="userUpdated"
-                (ngSubmit)="onSubmit(userLogged.id,userUpdated)"
-                class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
+          <form form method="post" modelAttribute="user" [formGroup]="userUpdated" (ngSubmit)="onSubmit(userLogged.id,userUpdated)"
+            class="form-horizontal col-lg-7 col-md-9 col-sm-7 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-7 col-xs-12">
               <div class="modal-body">
                 <div class="row justify-content-md-center login-img"></div>
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="text" class="form-control" name="name" formControlName="name" value="{{userLogged.name}}"
-                         placeholder="Enter name here">
+                  <input type="text" class="form-control" name="name" formControlName="name" value="{{userLogged.name}}" placeholder="Enter name here">
                 </div>
                 <div class="form-group">
                   <label>Surname</label>
-                  <input type="text" class="form-control" name="surname" formControlName="surname"
-                         value="{{userLogged.surname}}"
-                         placeholder="Enter surname here">
+                  <input type="text" class="form-control" name="surname" formControlName="surname" value="{{userLogged.surname}}" placeholder="Enter surname here">
                 </div>
                 <div class="form-group">
                   <label>Email</label>
-                  <input type="email" class="form-control" name="email" formControlName="email"
-                         value="{{userLogged.email}}"
-                         placeholder="Enter email here">
+                  <input type="email" class="form-control" name="email" formControlName="email" value="{{userLogged.email}}" placeholder="Enter email here">
                 </div>
                 <div class="form-group">
                   <label>Age</label>
-                  <input type="text" class="form-control" name="age" formControlName="age" value="{{userLogged.age}}"
-                         placeholder="Enter age here">
+                  <input type="text" class="form-control" name="age" formControlName="age" value="{{userLogged.age}}" placeholder="Enter age here">
                 </div>
                 <!-- Change image -->
                 <div class="form-horizontal panel panel-default" *ngIf="editMode == 1">
-                  <div class="panel-heading"><h3 class="text-muted dialog-title">Edit your profile picture</h3></div>
+                  <div class="panel-heading">
+                    <h3 class="text-muted dialog-title">Edit your profile picture</h3>
+                  </div>
                   <div class="panel-body">
                     <form>
                       <div class=" btn btn-default form-group">
-                        <label for="cancel-btn">Subir imagen</label> <input type="file" (change)="selectFile($event)">
+                        <label for="cancel-btn">Subir imagen</label>
+                        <input type="file" id="imageProfile" (change)="selectFile($event)">
                       </div>
                       <div *ngIf="imageResponse" class="alert alert-secondary align-content-center">
                         <strong> Image updated </strong>
@@ -64,7 +59,7 @@
                       <div *ngIf="!imageResponse" class="alert alert-secondary align-content-center">
                         <strong> Not updated </strong>
                       </div>
-                      <button type="submit" class="btn btn-primary" (click)="uploadImage()"> Save image</button>
+                      <button type="submit" class="btn btn-primary" (click)="uploadFileBasic(imageProfile.value)"> Save image</button>
                     </form>
                   </div>
                 </div>
@@ -74,13 +69,14 @@
                 <div class="col-12 col-md-auto btn-enter-div">
                   <div class="row">
                     <div class="col-md-6">
-                      <input class="btn btn-warning " id="cancel-btn" type="reset"
-                             onclick="location.href='/user/profile';"
-                             style="text-decoration: none;" value="Cancel"/>
+                      <input class="btn btn-warning " id="cancel-btn" type="reset" onclick="location.href='/user/profile';" style="text-decoration: none;"
+                        value="Cancel" />
                     </div>
                     <div class="col-md-6">
                       <button type="submit" class="btn btn-primary">Save</button>
-                      <br><br><br>
+                      <br>
+                      <br>
+                      <br>
                     </div>
                   </div>
                 </div>
@@ -98,19 +94,32 @@
       <div class="row">
         <div class="footer-containertent">
           <div class="mt-4 ">
-            <a class=" mt-4"><a href="https://www.twitter.com/"><img src="../../assets/img/social-icons/twitter.png"
-                                                                     width="40px" height="auto" class="img-responsive"/></a></a>
-            <a class=" mt-4"><a href="https://www.facebook.com/"><img src="../../assets/img/social-icons/facebook.png"
-                                                                      width="40px" height="auto"
-                                                                      class="img-responsive"/></a></a>
-            <a class=" mt-4"><a href="https://www.linkedin.com/"><img src="../../assets/img/social-icons/linkedin.png"
-                                                                      width="40px" height="auto"
-                                                                      class="img-responsive"/></a></a>
-            <a class=" mt-4"><a href="https://www.googleplus.com/"><img
-              src="../../assets/img/social-icons/google-plus.png" width="40px" height="auto"
-              class="img-responsive"/></a></a>
-            <a class=" mt-4"><a href="https://www.github.com/"><img src="../../assets/img/social-icons/github.png"
-                                                                    width="40px" height="auto" class="img-responsive"/></a></a>
+            <a class=" mt-4">
+              <a href="https://www.twitter.com/">
+                <img src="../../assets/img/social-icons/twitter.png" width="40px" height="auto" class="img-responsive" />
+              </a>
+            </a>
+            <a class=" mt-4">
+              <a href="https://www.facebook.com/">
+                <img src="../../assets/img/social-icons/facebook.png" width="40px" height="auto" class="img-responsive" />
+              </a>
+            </a>
+            <a class=" mt-4">
+              <a href="https://www.linkedin.com/">
+                <img src="../../assets/img/social-icons/linkedin.png" width="40px" height="auto" class="img-responsive" />
+              </a>
+            </a>
+            <a class=" mt-4">
+              <a href="https://www.googleplus.com/">
+                <img src="../../assets/img/social-icons/google-plus.png" width="40px" height="auto" class="img-responsive"
+                />
+              </a>
+            </a>
+            <a class=" mt-4">
+              <a href="https://www.github.com/">
+                <img src="../../assets/img/social-icons/github.png" width="40px" height="auto" class="img-responsive" />
+              </a>
+            </a>
 
           </div>
         </div>

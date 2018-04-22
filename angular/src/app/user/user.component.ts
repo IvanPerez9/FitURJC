@@ -15,10 +15,11 @@ export class UserComponent implements OnInit {
   userLogged: User;
 
   constructor(private userService: UserService, private sessionService: LoginService, private router: Router) {
-    this.userLogged = this.userService.getLoggedUser();
+  
   }
 
   ngOnInit() {
+    this.userLogged = this.userService.getLoggedUser();
     if (this.sessionService.isLogged()) {
           return this.router.navigate(['/user/profile']);
     } else {

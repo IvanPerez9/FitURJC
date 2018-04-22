@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 import * as globals from '../globals';
 import { User } from './user.model';
 import { map } from 'rxjs/operators';
-import {userUpdated} from "../editProfile/editProfile.component";
+import { userUpdated } from "../editProfile/editProfile.component";
 
 @Injectable()
 export class UserService {
@@ -48,7 +48,7 @@ export class UserService {
         return this.http.post(url, user);
     }
 
-    editUser(userId: number, user: userUpdated):Observable<any> {
+    editUser(userId: number, user: userUpdated): Observable<any> {
         let url = globals.USER_BASEURL;
         return this.http.patch(url + userId, user);
     }
@@ -119,6 +119,11 @@ export class UserService {
     private errors(error: any) {
         console.error(error);
         return Observable.throw('Error (' + error.status + '): ' + error.text());
+    }
+
+    updateUser() :any{
+        let url = globals.USER_BASEURL + this.getLoggedUser().email;
+      return   this.http.get(url);
     }
 
 }

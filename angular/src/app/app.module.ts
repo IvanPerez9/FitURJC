@@ -29,7 +29,7 @@ import { CourseProfileComponent } from './course-profile/course-profile.componen
 import { CourseComponent } from './course/course.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { ScheduleService } from './schedule/schedule.service';
-import { UploadFileService } from './multipart-upload/upload-service';
+import { UploadFileService } from './editProfile/upload-service';
 import { RecomendationComponent } from './recomendation/recomendation.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
 import { FacilitiesService } from './facilities/facilities.service';
@@ -96,7 +96,8 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     Maps,
     AddCoursesComponent
   ],
-  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService, AdminControlUsersService ,UserService, LoginService, CourseProfileService, FacilitiesService,UploadFileService, ScheduleService, {provide: BrowserXhr, useClass:NgProgressBrowserXhr}],
+  // tslint:disable-next-line:max-line-length
+  providers: [appRoutingProviders, HttpClientBasicAuth, AdminControlCoursesService, AdminControlUsersService , UserService, LoginService, CourseProfileService, FacilitiesService, UploadFileService, ScheduleService, {provide: BrowserXhr, useClass: NgProgressBrowserXhr}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
