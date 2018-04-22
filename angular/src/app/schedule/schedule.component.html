@@ -17,17 +17,20 @@
 
 
             <tbody *ngFor="let schedule of listScheduleWithUser">
-              <!-- AQUI HAY QUE HACER UN NGFOR CON LOS SCHEDULES A LOS QUE SE APUNTA EL USER-->
               <tr >
                 <td class="agenda-date" class="active" rowspan="1">
-                  <div class="dayofmonth">23</div>
-                  <!-- PONER EL DIA QUE PRESENTEMOS ANGULAR -->
-                  <div class="dayofweek">Monday</div>
+                  <div class="dayofmonth">22</div>
+                  <div class="dayofweek">Sunday</div>
                   <div class="shortdate text-muted">April, 2018</div>
                 </td>
                 <td class="agenda-time">{{schedule.schedule}}</td>
+<<<<<<< HEAD
                 <td class="agenda-events" *ngFor="let users of schedule.listUsers">
                   <div class="agenda-event"> <strong> ID:</strong> {{schedule.idSchedule}} - {{users.name}}</div>
+=======
+                <td class="agenda-events">Aerobic
+                  <!--div class="agenda-event">{{schedule.course.name}}</div-->
+>>>>>>> 6cbccc0674019ad5fb8117960117ab0c816a4361
                 </td>
               </tr>
             </tbody>
@@ -35,7 +38,12 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <form method="get" action="/courses" >
+=======
+      <p   class="mb-5">You have not signed up for any course yet</p>
+      <form method="get" action="/courses">
+>>>>>>> 6cbccc0674019ad5fb8117960117ab0c816a4361
         <button id="subscribe" type="submit" class="btn btn-warning" [routerLink]="['/courses']">
           Subscribe!</button>
       </form>

@@ -2,33 +2,45 @@
   <h2 class="section-heading">Recommendation</h2>
   <hr class="my-4">
   <div class="container-fluid p-0">
-
-
-    <div class="col-lg-4 col-sm-6" *ngFor="let course of courses"> 
-      <div class="portfolio-box">
-        <img class="img-fluid" src="/assets/img/courses/{{course.name}}.jpg">
-        <div class="portfolio-box-caption">
-          <div class="portfolio-box-caption-content">
-            <div class="project-category text-faded">
-              Category
-            </div>
-            <div class="project-name">
-              {{course.name}}
-            </div>
-            <div class="project-description">
-              {{course.description}}
-              <hr>
+    <div class="row">
+      <div class="col-lg-4 col-sm-6" *ngFor="let course of courses">
+        <div class="portfolio-box">
+          <img class="img-fluid" src="/assets/img/courses/{{course.name}}.jpg">
+          <div class="portfolio-box-caption">
+            <div class="portfolio-box-caption-content">
+              <div class="project-category text-faded">
+                Category
+              </div>
+              <div class="project-name">
+                {{course.name}}
+              </div>
+              <div class="project-description">
+                {{course.description}}
+                <hr>
+              </div>
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
       <div class="card-footer-user" *ngFor="let schedule of course.schedules">
         Schedule: {{schedule.schedule}}
+=======
+        <div class="card-footer-user" *ngFor="let schedule of course.schedules">
+          Schedule: {{schedule.schedule}}
+          <br>
+        </div>
+        <br>
+>>>>>>> 6cbccc0674019ad5fb8117960117ab0c816a4361
       </div>
-      <br>
     </div>
+<<<<<<< HEAD
 
     <form method="get" >
+=======
+    <p class="mb-5">You have not signed up for any course yet</p>
+    <form method="get" action="/courses">
+>>>>>>> 6cbccc0674019ad5fb8117960117ab0c816a4361
       <button id="subscribe" type="submit" class="btn btn-warning" [routerLink]="['/courses']">
         Subscribe to more courses Now!</button>
     </form>
