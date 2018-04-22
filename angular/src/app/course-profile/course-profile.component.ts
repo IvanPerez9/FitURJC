@@ -31,7 +31,11 @@ export class CourseProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initCourses();
+    if (!this.loginService.isLogged()) {
+      return this.router.navigate(['/login']);
+    } else {
+      this.initCourses();
+    }
   }
 
   initCourses() {
