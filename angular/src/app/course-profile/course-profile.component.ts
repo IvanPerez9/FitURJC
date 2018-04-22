@@ -32,6 +32,12 @@ export class CourseProfileComponent implements OnInit {
 
   ngOnInit() {
     this.initCourses();
+    if (this.loginService.isLogged()) {
+      return this.router.navigate(['/user/profile']);
+    } else {
+      console.log('Not Logged');
+      return this.router.navigate(['/login']);
+}
   }
 
   initCourses() {

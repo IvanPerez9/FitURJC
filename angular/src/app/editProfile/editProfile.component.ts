@@ -34,23 +34,27 @@ export class EditProfileComponent implements OnInit {
   uploadImageFile: FormGroup;
 
 
-  constructor(private userService: UserService, private router: Router, private uploadService: UploadFileService) {
+  constructor(private userService: UserService, private router: Router, private uploadService: UploadFileService, private sessionService: LoginService) {
     this.userLogged = this.userService.getLoggedUser();
     this.editMode = 0;
   }
 
   ngOnInit() {
-    this.userUpdated = new FormGroup({
-      name: new FormControl(this.userLogged.name, Validators.required),
-      surname: new FormControl(this.userLogged.surname, Validators.required),
-      email: new FormControl(this.userLogged.email, Validators.required),
-      age: new FormControl(this.userLogged.age, Validators.required)
-    });
-    this.uploadImageFile = new FormGroup({
-      fileType: new FormControl('', Validators.required)
-    });
-    this.editMode=0;
-    console.log("Init UserComponent");
+    if (!this.sessionService.isLogged()) {
+      return this.router.navigate(['/login']);
+    } else {
+      console.log('Logged');
+      this.userUpdated = new FormGroup({
+        name: new FormControl(this.userLogged.name, Validators.required),
+        surname: new FormControl(this.userLogged.surname, Validators.required),
+        email: new FormControl(this.userLogged.email, Validators.required),
+        age: new FormControl(this.userLogged.age, Validators.required)
+      });
+      this.uploadImageFile = new FormGroup({
+        fileType: new FormControl('', Validators.required)
+      });
+      this.editMode = 0;
+  }
   }
 
   /*onSubmit(form: FormGroup) {
@@ -78,6 +82,15 @@ export class EditProfileComponent implements OnInit {
     });
   }*/
 
+  isLoggedUser() {
+    if (this.sessionService.isLogged()) {
+      return this.router.navigate(['/user/profile']);
+    } else {
+      console.log('Not Logged');
+      return this.router.navigate(['/login']);
+    }
+  }
+
   onSubmit(idUserToEdit: number, form: FormGroup) {
     console.log(form.value);
     console.log(idUserToEdit);
@@ -89,8 +102,8 @@ export class EditProfileComponent implements OnInit {
         setTimeout(() => {
         console.log(this.editUser);
         console.log(idUserToEdit);
-        this.router.navigate(['/']);
-        },5000);
+        this.router.navigate(['/user/profile']);
+        },3000);
       },
       error => {
         console.log(error.code);
