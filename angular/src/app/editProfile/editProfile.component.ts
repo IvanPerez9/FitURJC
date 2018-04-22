@@ -102,7 +102,7 @@ export class EditProfileComponent implements OnInit {
         setTimeout(() => {
         console.log(this.editUser);
         console.log(idUserToEdit);
-        this.router.navigate(['/user/profile']);
+        this.router.navigate(['/']);
         },3000);
       },
       error => {
