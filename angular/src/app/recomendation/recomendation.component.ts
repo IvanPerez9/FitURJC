@@ -5,6 +5,8 @@ import { Course } from '../course-profile/course-profile.model';
 import {HttpClientBasicAuth} from "../HttpClient/httpClient";
 import * as globals from "../globals";
 import {USER_BASEURL} from "../globals";
+import { UserService } from '../user/user.service';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-recomendation',
@@ -14,9 +16,11 @@ import {USER_BASEURL} from "../globals";
 export class RecomendationComponent implements OnInit {
 
   courses: Course[] = [];
+  usuario: User;
 
 
-  constructor(private router: Router, private loginService: LoginService, private httpClient: HttpClientBasicAuth) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private router: Router, private loginService: LoginService, private httpClient: HttpClientBasicAuth, private userService: UserService) {
     }
 
   ngOnInit() {
@@ -34,4 +38,5 @@ export class RecomendationComponent implements OnInit {
           error1 => console.log(error1)
     );
   }
+
 }

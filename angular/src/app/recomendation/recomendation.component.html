@@ -24,17 +24,13 @@
       </div>
       <div class="card-footer-user" *ngFor="let schedule of course.schedules">
         Schedule: {{schedule.schedule}}
-        <br>
       </div>
       <br>
     </div>
 
-
-    <p class="mb-5">You have not signed up for any course yet</p>
-    <!-- AQUI UN NGIF DE SI NO TE HAS APUNTADO A NINGUN SCHEDULE, APAREZCA EL MENSAJE-->
-    <form method="get" action="/courses">
+    <form method="get" >
       <button id="subscribe" type="submit" class="btn btn-warning" [routerLink]="['/courses']">
-        Subscribe!</button>
+        Subscribe to more courses Now!</button>
     </form>
   </div>
 </div>

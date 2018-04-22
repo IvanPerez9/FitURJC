@@ -26,8 +26,8 @@
                   <div class="shortdate text-muted">April, 2018</div>
                 </td>
                 <td class="agenda-time">{{schedule.schedule}}</td>
-                <td class="agenda-events">
-                  <!--div class="agenda-event">{{schedule.course.name}}</div-->
+                <td class="agenda-events" *ngFor="let users of schedule.listUsers">
+                  <div class="agenda-event"> <strong> ID:</strong> {{schedule.idSchedule}} - {{users.name}}</div>
                 </td>
               </tr>
             </tbody>
@@ -35,9 +35,7 @@
         </div>
       </div>
 
-      <p   class="mb-5">You have not signed up for any course yet</p>
-      <!-- AQUI UN NGIF DE SI NO TE HAS APUNTADO A NINGUN SCHEDULE, APAREZCA EL MENSAJE-->
-      <form method="get" action="/courses">
+      <form method="get" action="/courses" >
         <button id="subscribe" type="submit" class="btn btn-warning" [routerLink]="['/courses']">
           Subscribe!</button>
       </form>
