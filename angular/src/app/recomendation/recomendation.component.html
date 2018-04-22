@@ -21,15 +21,17 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="card-footer-user" *ngFor="let schedule of course.schedules">
-        Schedule: {{schedule.schedule}}
+        <div class="card-footer-user" *ngFor="let schedule of course.schedules">
+          Schedule: {{schedule.schedule}}
+          <br>
+        </div>
+        <br>
       </div>
     </div>
-
-    <form method="get" >
+    <p class="mb-5">You have not signed up for any course yet</p>
+    <form method="get" action="/courses">
       <button id="subscribe" type="submit" class="btn btn-warning" [routerLink]="['/courses']">
-        Subscribe to more courses Now!</button>
+        Subscribe!</button>
     </form>
   </div>
 </div>
