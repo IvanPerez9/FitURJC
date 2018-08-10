@@ -1,3 +1,12 @@
+
+![Maintenance](https://img.shields.io/maintenance/no/2018.svg)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/google/skia/infra/config.svg)
+![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)
+
+
+
+
+
 # FitURJC
 
 <p align="center">
